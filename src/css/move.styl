@@ -1,0 +1,160 @@
+/*
+ * Move
+ */
+
+$e_standard = cubic-bezier(0.4, 0.0, 0.2, 1)
+$block_height = 60px
+$block_height_end = 15px
+
+#bn-container
+
+	.block:before
+		width 100%
+		height $block_height
+		top 0
+		left 0
+		position absolute
+		background-color var(--color_secondary_2)
+
+	.is_mouse_over:before
+		content ""
+
+	.drop_area
+		width 100%
+		position absolute
+		display none
+		transition z-index 0s .01s
+		height $block_height
+		cursor pointer
+
+	.can_receive_drop
+		> .drop_area
+			z-index 10
+			display block
+
+	&.moving
+		button.toggle-list
+			pointer-events none
+
+	.is_moving
+		> .list-nested
+		> .block-header
+		> button.toggle-list
+		> .drop_area
+		&:before
+			display none
+
+	#bn-panel-navigation .is_moving
+		+ .no-is_mouse_over
+			> .block-header
+				border-top 1px dashed var(--color_secondary_1)
+				margin-top -1px
+		+ .is_mouse_over
+			&:before
+				background-color var(--color_secondary_1)
+
+	.is_moving ~ .block
+	.no-is_mouse_over_descendant.is_moving_descendant ~ .block
+		transform translateY(-($block_height))
+
+	.is_moving
+		+ .is_mouse_over
+			> .block-header
+				border-top none
+
+	.is_mouse_over
+		> .list-nested
+		> .block-header
+		> button.toggle-list
+			transform translateY($block_height)
+		> .drop_area
+			border-top: 1px solid rgba(0,0,0,0.12);
+			border-bottom: 1px solid rgba(0,0,0,0.12);
+
+	.is_mouse_over
+	.is_mouse_over_descendant.no-is_moving_descendant
+		~ .block
+			> .list-nested
+			> .block-header
+			> button.toggle-list
+				transform translateY($block_height)
+
+	.list-nested:after
+		content ""
+		position absolute
+		top 0
+		bottom $block_height_end
+		left 22px
+		width 1px
+		background-color var(--color_secondary_2)
+	.is_mouse_over_descendant.no-is_moving_descendant > .list-nested:after
+		bottom -($block_height - $block_height_end)
+	.no-is_mouse_over_descendant.is_moving_descendant > .list-nested:after
+		bottom ($block_height + $block_height_end)
+
+	#bn-move-info
+		position absolute
+		top 0
+		left 0
+		z-index 11
+		height 50px
+		width 100%
+		display flex
+		box-shadow 0px 1px 1px 0px rgba(0,0,0,0.1)
+		flex-direction: row;
+		justify-content: space-between;
+		animation slide_down .3s $e_standard
+		background: var(--color_primary)
+		color var(--text_color_strong)
+		fill var(--text_color_strong)
+
+		.block-header
+			height 100%
+			min-width 0
+			background transparent
+		.block-title
+			padding-right: 10px;
+
+	button.cancel-move
+		font-weight 600
+		box-shadow none
+		text-transform uppercase
+		padding 0 10px
+		white-space nowrap
+		color var(--text_color)
+		transition opacity .2s $e_standard
+
+		&:hover
+			opacity .7
+		&:focus
+			background rgba(255,255,255,.1)
+
+	&.color_scheme-dark
+		#bn-move-info
+			background: var(--color_secondary_2)
+			fill var(--background_color)
+		#bn-move-info
+		button.cancel-move
+			color var(--background_color)
+
+	#bn-panel-navigation
+		position relative
+
+	&.move_type-by_click
+		#bn-panel-navigation
+			padding-top 50px
+
+@keyframes slide_down {
+	0% {
+		transform translateY(-30%) translateZ(0)
+		opacity 0
+	}
+	50% {
+		transform translateY(-15%) translateZ(0)
+		opacity 0
+	}
+	100% {
+		transform translateY(0) translateZ(0)
+		opacity 1
+	}
+}

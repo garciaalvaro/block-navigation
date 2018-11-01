@@ -1,0 +1,12 @@
+_extras/backups
+_extras/releases
+_extras/wp_svn
+_extras/_old
+_extras/_tests
+_extras/_assets
+build
+node_modules
+.todo
+.cache
+yarn.lock
+yarn-error.log

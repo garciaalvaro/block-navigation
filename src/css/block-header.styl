@@ -1,0 +1,113 @@
+/*
+ * Block Header
+ */
+
+$block_height = 60px
+
+#bn-container
+
+	.block-header
+		display flex
+		align-items center
+		flex-direction row
+		padding-left 20px
+		height $block_height
+		position relative
+		cursor default
+		background-color var(--background_color)
+
+	&.drop_guides .can_receive_drop.no-is_mouse_over > .block-header
+		border-top 1px dashed var(--color_secondary_2)
+		margin-top -1px
+		height ($block_height + 1)
+
+	.is_selected > .block-header
+		background-color var(--color_primary)
+
+	#bn-panel-navigation
+		.can_move > .block-header:active
+			--is_selected_color var(--background_color)
+			--border_color transparent
+
+			.block-icon
+			+ button.toggle-block-menu
+				transition none
+			.block-icon
+				visibility visible
+			+ button.toggle-block-menu
+				visibility hidden
+
+		.can_move.is_nested > .block-header:active
+			margin-left 1px
+
+			.block-icon
+			+ button.toggle-block-menu
+				margin-left -1px
+
+	.can_move > .block-header
+		// https://stackoverflow.com/a/18294634 | CC BY-SA 3.0
+		cursor move // fallback if grab cursor is unsupported
+		cursor grab
+		cursor -moz-grab
+		cursor -webkit-grab
+
+	&.move_type-by_click
+		.can_move > .block-header
+			cursor default
+
+	&.no-moving .block-header:hover
+		.block-icon
+			visibility hidden
+		+ button.toggle-block-menu
+			visibility visible
+
+	.block-icon
+		min-width 20px
+		width 20px
+		height 20px
+		margin-right 5px
+
+		svg
+			width 20px
+			height 20px
+
+	.block-title
+		white-space nowrap
+		overflow hidden
+		text-overflow ellipsis
+		padding-right 30px
+
+		span::selection
+			background transparent
+
+	.content_type-image
+		display flex
+		align-items center
+
+		.block-content
+			display flex
+			align-items center
+
+	.block-image-container
+		width 22px
+		height 22px
+		border 1px solid var(--text_color)
+		position relative
+		border-radius 50%
+		overflow hidden
+		margin-left 1px
+
+		+ .block-image-container
+			margin-left 8px
+
+	.block-image
+		position absolute
+		width 100%
+		height 100%
+		object-fit cover
+
+	.block-content
+		&:before
+			content "|"
+			content "\007C"
+			margin 0 6px

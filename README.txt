@@ -18,6 +18,14 @@ These functionalities are especially useful for nested blocks - blocks that have
 
 Until WordPress 5 is released this plugin depends on the latest version of Gutenberg plugin.
 
+== Screenshots ==
+
+1. Parent block selected, using a light scheme.
+2. Opened block menu.
+3. Click to move the block to the desired position, without drag.
+4. Parent block selected, using a dark scheme.
+5. List of available color schemes, light and dark.
+
 == Usage ==
 
 Make sure [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) is installed and activated.

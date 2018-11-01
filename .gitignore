@@ -6,6 +6,7 @@ _extras/_tests
 _extras/_assets
 build
 node_modules
+.vscode
 .todo
 .cache
 yarn.lock

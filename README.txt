@@ -29,8 +29,8 @@ Until WordPress 5 is released this plugin depends on the latest version of Guten
 == Usage ==
 
 Make sure [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) is installed and activated.
-On the right side of the top Toolbar the plugin icon should appear (if not, read the section below "I do not see the plugin icon in the post editor").
-Click the icon to open the plugin sidebar.
+Inside the Post editor on the right side of the top Toolbar the plugin icon/button should appear (if not, please read the FAQ below).
+Click the icon/button to open the plugin sidebar.
 
 == Installation ==
 

@@ -92,7 +92,7 @@ const icons = {
 					height="19"
 					x="0"
 					y="0"
-					stroke-width="0"
+					strokeWidth="0"
 				/>
 				<rect
 					className="bn-logo-line bn-logo-line-2"
@@ -101,7 +101,7 @@ const icons = {
 					height="19"
 					x="6"
 					y="3"
-					stroke-width="0"
+					strokeWidth="0"
 				/>
 				<rect
 					className="bn-logo-line bn-logo-line-3"
@@ -110,7 +110,7 @@ const icons = {
 					height="19"
 					x="12"
 					y="6"
-					stroke-width="0"
+					strokeWidth="0"
 				/>
 			</svg>
 		</div>

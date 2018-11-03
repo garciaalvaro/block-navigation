@@ -49,6 +49,10 @@ Installation from the WordPress admin.
 Alternatively the Plugin can be opened from the More button (the 3 dots on the right side of the Gutenberg top Toolbar).
 Click the More button and inside the menu list click on the plugin name "Block Navigation".
 
+== Credits ==
+
+Images from the readme banner and screenshots belong to [Sander Wehkamp](https://unsplash.com/@sanderwehkamp).
+
 == Changelog ==
 
 = 1.0.0 =

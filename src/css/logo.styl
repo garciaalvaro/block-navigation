@@ -16,38 +16,36 @@ $e_deceleration = cubic-bezier(0.0, 0.0, 0.2, 1)
 			bottom 0
 			z-index -1
 
-.logo-container
+#editor
+	.bn-logo-line-1
+		fill #ffa076
+	.bn-logo-line-2
+		fill #b8c9d0
+	.bn-logo-line-3
+		fill #7d7876
+
+	.components-icon-button:hover
+		.bn-logo-line-1
+			fill #ffa076!important
+		.bn-logo-line-2
+			fill #b8c9d0!important
+		.bn-logo-line-3
+			fill #7d7876!important
+
+.bn-logo-container
 	width 20px
 	height 20px
 
 	&:hover
-		.line-1
-			transform scaleX(1.3) scaleY(1.3)
-		.line-2
-			transform scaleX(1.3) scaleY(1.3)
-		.line-3
-			transform scaleX(1.3) scaleY(1.3)
+		.bn-logo-line
+			transform scaleY(1.3)
 
-	.lines-container
-		width 18px
-		height 18px
-		display flex
-		justify-content space-between
-		padding 0 3px
-		margin 0
+	.bn-logo-line
+		transition transform .2s .1s $e_deceleration
 
-	.line
-		width 2px
-		height 14px
-		transform scaleX(1.3)
-		transition .2s .1s $e_deceleration
-	.line-1
-		background-color #ffa076
+	.bn-logo-line-1
 		transform-origin top center
-	.line-2
-		background-color #b8c9d0
-		align-self center
-	.line-3
-		background-color #7d7876
-		align-self flex-end
+	.bn-logo-line-2
+		transform-origin center
+	.bn-logo-line-3
 		transform-origin bottom center

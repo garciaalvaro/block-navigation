@@ -83,12 +83,36 @@ const icons = {
 		</svg>
 	),
 	logo: (
-		<div className="logo-container">
-			<div className="lines-container">
-				<div className="line line-1" />
-				<div className="line line-2" />
-				<div className="line line-3" />
-			</div>
+		<div className="bn-logo-container">
+			<svg width="100%" height="100%" viewBox="0 0 15 25">
+				<rect
+					className="bn-logo-line bn-logo-line-1"
+					fill="#ffa076"
+					width="3"
+					height="19"
+					x="0"
+					y="0"
+					strokeWidth="0"
+				/>
+				<rect
+					className="bn-logo-line bn-logo-line-2"
+					fill="#b8c9d0"
+					width="3"
+					height="19"
+					x="6"
+					y="3"
+					strokeWidth="0"
+				/>
+				<rect
+					className="bn-logo-line bn-logo-line-3"
+					fill="#7d7876"
+					width="3"
+					height="19"
+					x="12"
+					y="6"
+					strokeWidth="0"
+				/>
+			</svg>
 		</div>
 	)
 };

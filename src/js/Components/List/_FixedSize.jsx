@@ -32,7 +32,7 @@ class FixedSize extends Component {
 		if (this.ref.current === null) {
 			return;
 		}
-		const $listcontainer = $(this.ref.current);
+		const $listcontainer = jQuery(this.ref.current);
 		const $edit_post_sidebar = $listcontainer.closest(".edit-post-sidebar");
 		const $edit_post_sidebar_header = $edit_post_sidebar.children(
 			".edit-post-sidebar-header:visible"

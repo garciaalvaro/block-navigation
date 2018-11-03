@@ -3,7 +3,7 @@ Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor
 Requires at least: 4.9.8
 Tested up to: 4.9.8
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,8 +29,8 @@ Until WordPress 5 is released this plugin depends on the latest version of Guten
 == Usage ==
 
 Make sure [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/) is installed and activated.
-On the right side of the top Toolbar the plugin icon should appear (if not, read the section below "I do not see the plugin icon in the post editor").
-Click the icon to open the plugin sidebar.
+Inside the Post editor on the right side of the top Toolbar the plugin icon/button should appear (if not, please read the FAQ below).
+Click the icon/button to open the plugin sidebar.
 
 == Installation ==
 
@@ -48,6 +48,10 @@ Installation from the WordPress admin.
 
 Alternatively the Plugin can be opened from the More button (the 3 dots on the right side of the Gutenberg top Toolbar).
 Click the More button and inside the menu list click on the plugin name "Block Navigation".
+
+== Credits ==
+
+Images from the readme banner and screenshots belong to [Sander Wehkamp](https://unsplash.com/@sanderwehkamp).
 
 == Changelog ==
 

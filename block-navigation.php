@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/block-navigation/
  * Description: Block Navigation panel with useful features.
  * Author: melonpan
- * Version: 1.0.0
+ * Version: 1.0.1
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'BLOCKNAVIGATION_PLUGIN_VERSION' ) ) {
-	define( 'BLOCKNAVIGATION_PLUGIN_VERSION', '1.0.0' );
+	define( 'BLOCKNAVIGATION_PLUGIN_VERSION', '1.0.1' );
 }
 if ( ! defined( 'BLOCKNAVIGATION_BUILD_DIR' ) ) {
 	define( 'BLOCKNAVIGATION_BUILD_DIR', plugins_url( 'build/', __FILE__ ) );

@@ -19,11 +19,11 @@ const ColorSchemeControl = ({ updateColorScheme, color_scheme }) => {
 				},
 				{
 					value: "light-melon",
-					label: "Melon (light)"
+					label: "Melón (light)"
 				},
 				{
 					value: "light-melocoton",
-					label: "Melocoton (light)"
+					label: "Melocotón (light)"
 				},
 				{ value: "light-coco", label: "Coco (light)" },
 				{

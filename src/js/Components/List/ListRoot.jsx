@@ -149,7 +149,7 @@ class ListRoot extends Component {
 	getScrollAlignment = client_id => {
 		let scroll_alignment_new;
 		const root_client_id = getBlockHierarchyRootClientId(client_id);
-		const $root_block = $(`#bn-${root_client_id}`);
+		const $root_block = jQuery(`#bn-${root_client_id}`);
 		const $block = $root_block.find(`#bn-${client_id}`);
 
 		if ($block.length === 0) {

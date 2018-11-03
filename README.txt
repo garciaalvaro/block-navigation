@@ -55,5 +55,10 @@ Images from the readme banner and screenshots belong to [Sander Wehkamp](https:/
 
 == Changelog ==
 
+= 1.0.1 =
+* Fix bug with jQuery variable
+* Upgrade logo to SVG
+* Schemes naming fix
+
 = 1.0.0 =
 * Initial release.

@@ -12,9 +12,9 @@ Block Navigation panel with useful features.
 
 == Description ==
 
-Block Navigation provides panel with the current post/page's blocks and some tools to facilitate the editing process.
-Inside the navigation panel several utilities are included to provide a better UX, such as dragging blocks to a different location, moving them by click, selecting them, display a small snippet of the block content, etc.
-These functionalities are especially useful for nested blocks - blocks that are inside parent blocks which are difficult to select or move inside the editor.
+Block Navigation provides a panel with the current post/page's blocks and some tools to facilitate the editing process.
+Inside the panel several utilities are included to enhance the UX, such as dragging blocks to a different location, moving them by click, selecting them, display a small snippet of the block's content, etc.
+These functionalities are especially useful for nested blocks - blocks that are inside parent blocks which are difficult to select or move in the editor.
 The plugin also provides some features for Plugin and Theme developers such as: click and Copy the block's clientId and click to console.log helpful block's data.
 
 Until WordPress 5 is released this plugin depends on the latest version of [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/).

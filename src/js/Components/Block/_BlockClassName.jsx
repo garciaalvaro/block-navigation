@@ -65,7 +65,7 @@ class BlockClassName extends Component {
 }
 
 export default withSelect((select, { client_id, is_end_of_list }) => {
-	const { getClientIdsOfDescendants, getSelectedBlockClientId } = select(
+	const { getClientIdsOfDescendants, isBlockSelected } = select(
 		"core/editor"
 	);
 	const {
@@ -83,8 +83,7 @@ export default withSelect((select, { client_id, is_end_of_list }) => {
 		moving_client_id: getMovingBlockClientId(),
 		mouse_over_client_id: getMouseOverClientId(),
 		is_mouse_over: isMouseOver(client_id, is_end_of_list),
-		is_selected:
-			getSelectedBlockClientId() === client_id && !is_end_of_list,
+		is_selected: isBlockSelected(client_id) && !is_end_of_list,
 		is_moving: isMoving(client_id) && !is_end_of_list,
 		is_menu_open: isMenuOpen(client_id)
 	};

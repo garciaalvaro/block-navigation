@@ -13,6 +13,12 @@ const reducer = function() {
 		}
 
 		switch (action.type) {
+			case "TOGGLE_DEV_MODE": {
+				return {
+					...state,
+					dev_mode_active: !state.dev_mode_active
+				};
+			}
 			case "TOGGLE_DROP_GUIDES": {
 				return {
 					...state,
@@ -101,6 +107,9 @@ const reducer = function() {
 
 const selectors = function() {
 	return {
+		isDevModeActive(state) {
+			return state.dev_mode_active;
+		},
 		getDropGuides(state) {
 			return state.drop_guides;
 		},
@@ -153,6 +162,11 @@ const selectors = function() {
 
 const actions = function() {
 	return {
+		toggleDevMode() {
+			return {
+				type: "TOGGLE_DEV_MODE"
+			};
+		},
 		triggerSelectBlock(trigger) {
 			return {
 				type: "TRIGGER_SELECTBLOCK",
@@ -227,7 +241,7 @@ const store = registerStore(plugin_namespace, {
 	selectors: selectors(),
 	controls: {},
 	resolvers: {},
-	persist: ["color_scheme", "drop_guides"]
+	persist: ["color_scheme", "drop_guides", "dev_mode_active"]
 });
 
 export default store;

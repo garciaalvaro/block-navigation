@@ -3,6 +3,7 @@ import Html from "../Utils/_Html";
 import PluginInfo from "./PluginInfo";
 import ColorSchemeControl from "./ColorSchemeControl";
 import DropGuidesControl from "./DropGuidesControl";
+import DevSettingsPanel from "./DevSettingsPanel";
 
 const Settings = () => {
 	return (
@@ -10,6 +11,7 @@ const Settings = () => {
 			<PluginInfo />
 			<ColorSchemeControl />
 			<DropGuidesControl />
+			<DevSettingsPanel />
 		</Html>
 	);
 };

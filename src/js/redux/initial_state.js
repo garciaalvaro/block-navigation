@@ -1,6 +1,7 @@
 import l from "../utils/#";
 
 const initial_state = {
+	dev_mode_active: false,
 	drop_guides: true,
 	selectBlock_triggered: false,
 	color_scheme: "light-pistacho",

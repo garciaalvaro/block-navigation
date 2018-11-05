@@ -20,13 +20,18 @@ class Header extends Component {
 			can_move,
 			move_type,
 			moving_block,
+			is_selected,
 			beginMove,
 			finishMove
 		} = this.props;
 		const events = {
 			onClick: () => {
 				triggerSelectBlock(true);
-				selectBlock(client_id);
+				if (is_selected) {
+					selectBlock(null);
+				} else {
+					selectBlock(client_id);
+				}
 			}
 		};
 
@@ -67,12 +72,14 @@ class Header extends Component {
 }
 
 export default compose([
-	withSelect(select => {
+	withSelect((select, { client_id }) => {
 		const { getMoveType, getMovingBlock } = select(plugin_namespace);
+		const { isBlockSelected } = select("core/editor");
 
 		return {
 			move_type: getMoveType(),
-			moving_block: getMovingBlock()
+			moving_block: getMovingBlock(),
+			is_selected: isBlockSelected(client_id)
 		};
 	}),
 	withDispatch(dispatch => {

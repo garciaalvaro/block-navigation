@@ -10,6 +10,9 @@ const Html = ({ children, html_element, ...rest }) => {
 		case "h3":
 			element = <h3 {...rest}>{children}</h3>;
 			break;
+		case "hr":
+			element = <hr {...rest} />;
+			break;
 		default:
 			element = <div {...rest}>{children}</div>;
 	}

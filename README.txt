@@ -24,7 +24,7 @@ Until WordPress 5 is released this plugin depends on the latest version of [Gute
 1. Main view, dark scheme.
 2. Dragging a block to a different position.
 3. Opened block menu.
-4. Parent block selected, dark scheme.
+4. Development Tool, console log block data.
 5. List of available color schemes, light and dark.
 
 == Usage ==

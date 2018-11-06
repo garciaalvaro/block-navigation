@@ -43,43 +43,34 @@ class MenuItemBlockData extends Component {
 			l("clientId:", client_id);
 			l("attributes:", attributes);
 			l("templateLock:", templateLock);
-			l("Parent clientId:", parent_clientId);
-			l("Root clientId:", root_clientId);
-			l("Children clientIds:", children_clientIds);
-			l("Descendants clientIds:", descendants_clientIds);
+			l(
+				"Parent-clientId:",
+				parent_clientId === "" ? `""` : parent_clientId
+			);
+			l("Root-clientId:", root_clientId);
+			l("Children-clientIds:", children_clientIds);
+			l("Descendants-clientIds:", descendants_clientIds);
 		} else {
 			l(
-				"\n",
-				"index:",
-				index,
-				"\n\n",
-				"name:",
-				name,
-				"\n\n",
-				"title:",
-				title,
-				"\n\n",
-				"clientId:",
-				client_id,
-				"\n\n",
-				"attributes:",
+				`\n`,
+				`index: ${index}\n\n`,
+				`name: ${name}\n\n`,
+				`title: ${title}\n\n`,
+				`clientId: ${client_id}\n\n`,
+				`Parent-clientId: ${
+					parent_clientId === "" ? `""` : parent_clientId
+				}\n\n`,
+				`Root-clientId: ${root_clientId}\n\n`,
+				`templateLock: ${templateLock}\n\n`,
+				`attributes:`,
 				attributes,
-				"\n\n",
-				"templateLock:",
-				templateLock,
-				"\n\n",
-				"Parent clientId:",
-				parent_clientId === "" ? `""` : parent_clientId,
-				"\n\n",
-				"Root clientId:",
-				root_clientId,
-				"\n\n",
-				"Children clientIds:",
+				`\n\n`,
+				`Children-clientIds:`,
 				children_clientIds,
-				"\n\n",
-				"Descendants clientIds:",
+				`\n\n`,
+				`Descendants-clientIds:`,
 				descendants_clientIds,
-				"\n\n"
+				`\n\n`
 			);
 		}
 		console.groupEnd();

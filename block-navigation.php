@@ -51,6 +51,7 @@ function enqueue() {
 			'wp-edit-post',
 			'wp-plugins',
 			'wp-data',
+			'wp-rich-text',
 		),
 		BLOCKNAVIGATION_PLUGIN_VERSION,
 		true // Enqueue in the footer.

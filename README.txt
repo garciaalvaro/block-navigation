@@ -1,6 +1,6 @@
 === Block Navigation ===
 Contributors: melonpan
-Tags: gutenberg, blocks, navigation, editor
+Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 4.9.8
 Tested up to: 4.9.8
 Stable tag: 1.1.0

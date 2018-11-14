@@ -1,9 +1,9 @@
 === Block Navigation ===
 Contributors: melonpan
-Tags: gutenberg, blocks, navigation, editor
+Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 4.9.8
-Tested up to: 4.9.8
-Stable tag: 1.1.0
+Tested up to: 5
+Stable tag: 1.1.1
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -12,9 +12,9 @@ Block Navigation panel with useful features.
 
 == Description ==
 
-Block Navigation provides panel with the current post/page's blocks and some tools to facilitate the editing process.
-Inside the navigation panel several utilities are included to provide a better UX, such as dragging blocks to a different location, moving them by click, selecting them, display a small snippet of the block content, etc.
-These functionalities are especially useful for nested blocks - blocks that are inside parent blocks which are difficult to select or move inside the editor.
+Block Navigation provides a panel with the current post/page's blocks and some tools to facilitate the editing process.
+Inside the panel several utilities are included to enhance the UX, such as dragging blocks to a different location, moving them by click, selecting them, display a small snippet of the block's content, etc.
+These functionalities are especially useful for nested blocks - blocks that are inside parent blocks which are difficult to select or move in the editor.
 The plugin also provides some features for Plugin and Theme developers such as: click and Copy the block's clientId and click to console.log helpful block's data.
 
 Until WordPress 5 is released this plugin depends on the latest version of [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/).
@@ -24,7 +24,7 @@ Until WordPress 5 is released this plugin depends on the latest version of [Gute
 1. Main view, dark scheme.
 2. Dragging a block to a different position.
 3. Opened block menu.
-4. Parent block selected, dark scheme.
+4. Development Tool, console log block data.
 5. List of available color schemes, light and dark.
 
 == Usage ==
@@ -54,6 +54,10 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Sander Wehkamp](https://unsplash.com/@sanderwehkamp).
 
 == Changelog ==
+
+= 1.1.1 =
+* Make use of Rich Text WordPress package.
+* Small typo and bug fixes.
 
 = 1.1.0 =
 * Added Development Mode. Currently it adds two extra actions inside each Block's menu: Copy the Block clientId to the Clipboard and Log to the browser's console some helpful Block related data.

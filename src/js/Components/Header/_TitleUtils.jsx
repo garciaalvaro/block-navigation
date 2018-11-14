@@ -3,23 +3,18 @@ import l, { blocks_info } from "../../utils/#";
 const { withState } = wp.compose;
 const { Component } = wp.element;
 const { get, isString, isArray, isEqual } = lodash;
-
-// Modified from https://stackoverflow.com/a/11230103 | CC BY-SA 3.0
-const cleanText = html_string =>
-	html_string
-		.replace(/<[^>]*>/g, " ")
-		.replace(/\s+/g, " ")
-		.replace("&nbsp;", " ")
-		.trim();
+const { create, getTextContent } = wp.richText;
 
 const getText = (attributes, path) => {
-	let text;
-
-	// Get text from the path provided
-	text = get(attributes, path);
-
-	// Clean the text of html tags
-	text = cleanText(text);
+	// Get the html string from the path provided
+	const html_string = get(attributes, path);
+	// Create a richText instance
+	const rich_text = create({ html: html_string });
+	// Get the text from the richText instance
+	let text = getTextContent(rich_text);
+	// If there is no text Rich Text returns the "Object replacement character",
+	// which looks as if there is an empty string.
+	text = text.replace("￼", "");
 
 	return text;
 };
@@ -45,7 +40,7 @@ const getBlockContent = (name, attributes) => {
 	}
 
 	const { type, path } = block;
-	let content = "";
+	let content;
 
 	if (type === "text") {
 		content = getText(attributes, path);

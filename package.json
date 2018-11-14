@@ -1,7 +1,7 @@
 {
 	"name": "block-navigation",
 	"name_title": "Block Navigation",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Block Navigation",
 	"homepage": "https://wordpress.org/plugins/block-navigation/",
 	"main": "index.js",

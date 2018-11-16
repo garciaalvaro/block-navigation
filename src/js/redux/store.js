@@ -2,10 +2,7 @@ import l, { plugin_namespace } from "../utils/#";
 import initial_state from "./initial_state";
 
 const { union, difference } = lodash;
-const { registerStore, use, plugins } = wp.data;
-
-// Make use of Persistence Plugin
-use(plugins.persistence);
+const { registerStore } = wp.data;
 
 const reducer = function() {
 	return function(state = initial_state, action) {

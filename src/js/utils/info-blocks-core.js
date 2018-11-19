@@ -1,7 +1,8 @@
 const blocks_info = {
 	"core/gallery": { type: "image", path: ["images"] },
+	"core/media-text": { type: "image", path: ["mediaUrl"] },
 	"core/image": { type: "image", path: ["url"] },
-	"core/cover-image": { type: "text", path: ["title"] },
+	"core/cover": { type: "text", path: ["title"] },
 	"core/preformatted": { type: "text", path: ["content"] },
 	"core/audio": { type: "text", path: ["caption"] },
 	"core/button": { type: "text", path: ["text"] },

@@ -3,7 +3,7 @@ Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 4.9.8
 Tested up to: 5
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 5.6
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -54,6 +54,12 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Sander Wehkamp](https://unsplash.com/@sanderwehkamp).
 
 == Changelog ==
+
+= 1.1.2 =
+* Cleaned console log output and added "attributes-available".
+* Fixed castaña scheme dark color.
+* Updated cover block and added media-text block.
+* Small typo and bug fixes.
 
 = 1.1.1 =
 * Make use of Rich Text WordPress package.

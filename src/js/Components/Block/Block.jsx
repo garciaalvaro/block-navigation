@@ -4,7 +4,7 @@ import DropArea from "./DropArea";
 import Header from "../Header/Header";
 import Menu from "../Menu/Menu";
 import ListNested from "../List/ListNested";
-import Html from "../Utils/_Html";
+import Div from "../Utils/_Html";
 
 const { withSelect } = wp.data;
 
@@ -30,7 +30,7 @@ const Block = props => {
 			is_end_of_list={false}
 		>
 			{className => (
-				<Html
+				<Div
 					id={`bn-${client_id}`}
 					className={className}
 					style={style_virtual}
@@ -62,7 +62,7 @@ const Block = props => {
 							level={level}
 						/>
 					)}
-				</Html>
+				</Div>
 			)}
 		</BlockClassName>
 	);

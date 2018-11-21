@@ -1,6 +1,6 @@
 import l from "../../utils/#";
 import BlockClassName from "./_BlockClassName";
-import Html from "../Utils/_Html";
+import Div from "../Utils/_Html";
 import DropArea from "./DropArea";
 
 const { Component } = wp.element;
@@ -27,14 +27,14 @@ class EndOfList extends Component {
 				is_end_of_list={true}
 			>
 				{className => (
-					<Html className={className} style={style}>
+					<Div className={className} style={style}>
 						<DropArea
 							parent_client_id={parent_client_id}
 							client_id={client_id}
 							is_end_of_list={true}
 						/>
-						<Html className="block-header" />
-					</Html>
+						<Div className="block-header" />
+					</Div>
 				)}
 			</BlockClassName>
 		);

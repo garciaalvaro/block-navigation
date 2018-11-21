@@ -1,6 +1,6 @@
 import l, { plugin_namespace } from "../../utils/#";
 import Block from "../Block/Block";
-import Html from "../Utils/_Html";
+import Div, { Span } from "../Utils/_Html";
 import EndOfList from "../Block/EndOfList";
 
 const { pullAll, last } = lodash;
@@ -97,16 +97,14 @@ class VirtualListUtils extends Component {
 
 		if (client_ids.length === 0) {
 			return (
-				<Html
+				<Div
 					key={index}
 					id="blocks-empty"
 					className="block"
 					style={style}
 				>
-					<Html html_element="span" className="block-header">
-						{__("No blocks.")}
-					</Html>
-				</Html>
+					<Span className="block-header">{__("No blocks.")}</Span>
+				</Div>
 			);
 		}
 
@@ -123,7 +121,7 @@ class VirtualListUtils extends Component {
 						can_move={can_move}
 						level={0}
 					/>
-					<Html
+					<Div
 						id="bottom_spacer"
 						className="list-item"
 						style={style}

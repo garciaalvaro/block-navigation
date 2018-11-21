@@ -1,5 +1,5 @@
 import l, { plugin_namespace } from "../../utils/#";
-import DivForwardRef from "../Utils/_DivForwardRef";
+import DivForwardRef from "../Utils/_HtmlForwardRef";
 
 const { debounce } = lodash;
 const { compose, withGlobalEvents, withState } = wp.compose;

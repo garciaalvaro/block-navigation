@@ -1,5 +1,5 @@
 import l, { icons, plugin_namespace } from "../../utils/#";
-import Html from "../Utils/_Html";
+import { Hr } from "../Utils/_Html";
 import withBeginMove from "../Utils/_withBeginMove";
 import withMoveBlock from "../Utils/_withMoveBlock";
 import MenuItemEdit from "./MenuItemEdit";
@@ -76,7 +76,7 @@ class Menu extends Component {
 							/>
 							{dev_mode_active && (
 								<Fragment>
-									<Html html_element="hr" />
+									<Hr />
 									<MenuItemBlockClientId
 										client_id={client_id}
 									/>

@@ -1,6 +1,6 @@
 import l from "../../utils/#";
 import classNames from "classnames";
-import Html from "../Utils/_Html";
+import Div, { Span } from "../Utils/_Html";
 
 const { __ } = wp.i18n;
 const { Button } = wp.components;
@@ -23,20 +23,20 @@ class TogglePanel extends Component {
 		const { openPanel } = this.props;
 
 		return (
-			<Html id="bn-toggle-panel">
+			<Div id="bn-toggle-panel">
 				<Button
 					className={getButtonClassName("navigation")}
 					onClick={() => openPanel("navigation")}
 				>
-					<Html html_element="span">{__("Navigation")}</Html>
+					<Span>{__("Navigation")}</Span>
 				</Button>
 				<Button
 					className={getButtonClassName("settings")}
 					onClick={() => openPanel("settings")}
 				>
-					<Html html_element="span">{__("Settings")}</Html>
+					<Span>{__("Settings")}</Span>
 				</Button>
-			</Html>
+			</Div>
 		);
 	}
 }

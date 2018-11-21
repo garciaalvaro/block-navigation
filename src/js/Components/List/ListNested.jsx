@@ -1,7 +1,7 @@
 import l, { plugin_namespace } from "../../utils/#";
 import ToggleListNested from "./ToggleListNested";
 import CanReceiveDrop from "./_CanReceiveDrop";
-import Html from "../Utils/_Html";
+import Div from "../Utils/_Html";
 import Block from "../Block/Block";
 import EndOfList from "../Block/EndOfList";
 
@@ -33,7 +33,7 @@ class ListNested extends Component {
 							parent_client_id={parent_client_id}
 						/>
 						{is_expanded && (
-							<Html className="list list-nested">
+							<Div className="list list-nested">
 								{client_ids.map((client_id, index) => {
 									const block = (
 										<Block
@@ -71,7 +71,7 @@ class ListNested extends Component {
 
 									return block;
 								})}
-							</Html>
+							</Div>
 						)}
 					</Fragment>
 				)}

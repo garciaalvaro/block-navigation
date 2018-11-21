@@ -1,7 +1,7 @@
 import l, { plugin_namespace } from "../../utils/#";
 import classNames from "classnames";
 import TogglePanel from "./TogglePanel";
-import Html from "../Utils/_Html";
+import Div from "../Utils/_Html";
 import Navigation from "../Navigation/Navigation";
 import Settings from "../Settings/Settings";
 
@@ -43,13 +43,13 @@ class Sidebar extends Component {
 		const { current_panel } = this.props;
 
 		return (
-			<Html id="bn-container" className={getContainerClassName()}>
+			<Div id="bn-container" className={getContainerClassName()}>
 				<TogglePanel
 					openPanel={openPanel}
 					current_panel={current_panel}
 				/>
 				{current_panel === "navigation" ? <Navigation /> : <Settings />}
-			</Html>
+			</Div>
 		);
 	}
 }

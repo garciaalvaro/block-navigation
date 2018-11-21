@@ -1,5 +1,5 @@
 import l, { plugin_namespace } from "../../utils/#";
-import Html from "../Utils/_Html";
+import Div from "../Utils/_Html";
 import withMoveBlock from "../Utils/_withMoveBlock";
 
 const { Component } = wp.element;
@@ -44,7 +44,7 @@ class DropArea extends Component {
 	render() {
 		const events = this.getEvents();
 
-		return <Html className="drop_area" {...events} />;
+		return <Div className="drop_area" {...events} />;
 	}
 }
 

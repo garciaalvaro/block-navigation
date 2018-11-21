@@ -1,7 +1,7 @@
 import l, { plugin_namespace } from "../../utils/#";
 import withFinishMove from "../Utils/_withFinishMove";
 import Header from "../Header/Header";
-import Html from "../Utils/_Html";
+import Div, { Span } from "../Utils/_Html";
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
@@ -14,12 +14,12 @@ class MoveInfo extends Component {
 		const { moving_block_client_id, finishMove } = this.props;
 
 		return (
-			<Html id="bn-move-info">
+			<Div id="bn-move-info">
 				<Header client_id={moving_block_client_id} use_events={false} />
 				<Button className="cancel-move" onClick={finishMove}>
-					<Html html_element="span">{__("Cancel Move")}</Html>
+					<Span>{__("Cancel Move")}</Span>
 				</Button>
-			</Html>
+			</Div>
 		);
 	}
 }

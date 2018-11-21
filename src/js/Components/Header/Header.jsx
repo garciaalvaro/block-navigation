@@ -1,7 +1,7 @@
 import l, { plugin_namespace } from "../../utils/#";
 import Title from "./Title";
 import BlockData from "./_BlockData";
-import Html from "../Utils/_Html";
+import Div from "../Utils/_Html";
 import withBeginMove from "../Utils/_withBeginMove";
 import withFinishMove from "../Utils/_withFinishMove";
 
@@ -55,16 +55,16 @@ class Header extends Component {
 		return (
 			<BlockData client_id={client_id}>
 				{({ attributes, name, title, icon }) => (
-					<Html className="block-header" {...events}>
-						<Html className="svg-container block-icon">
+					<Div className="block-header" {...events}>
+						<Div className="svg-container block-icon">
 							{isString(icon) ? <Dashicon icon={icon} /> : icon}
-						</Html>
+						</Div>
 						<Title
 							attributes={attributes}
 							name={name}
 							title={title}
 						/>
-					</Html>
+					</Div>
 				)}
 			</BlockData>
 		);

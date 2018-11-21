@@ -24,6 +24,7 @@ class MenuItemBlockData extends Component {
 			parent_clientId,
 			index,
 			title,
+			attributes_available,
 			templateLock,
 			root_clientId,
 			children_clientIds,
@@ -42,6 +43,7 @@ class MenuItemBlockData extends Component {
 			l("title:", title);
 			l("clientId:", client_id);
 			l("attributes:", attributes);
+			l("attributes-available:", attributes_available);
 			l("templateLock:", templateLock);
 			l(
 				"Parent-clientId:",
@@ -65,6 +67,9 @@ class MenuItemBlockData extends Component {
 				`attributes:`,
 				attributes,
 				`\n\n`,
+				`attributes-available:`,
+				attributes_available,
+				`\n\n`,
 				`Children-clientIds:`,
 				children_clientIds,
 				`\n\n`,
@@ -81,7 +86,7 @@ class MenuItemBlockData extends Component {
 		const { name, attributes } = getBlock(client_id);
 		const parent_clientId = getBlockRootClientId(client_id);
 		const index = getBlockIndex(client_id, parent_clientId);
-		const { title } = getBlockType(name);
+		const { title, attributes: attributes_available } = getBlockType(name);
 		const templateLock = getTemplateLock(client_id);
 		const root_clientId = getBlockHierarchyRootClientId(client_id);
 		const children_clientIds = getBlockOrder(client_id);
@@ -94,6 +99,7 @@ class MenuItemBlockData extends Component {
 			parent_clientId,
 			index,
 			title,
+			attributes_available,
 			templateLock,
 			root_clientId,
 			children_clientIds,

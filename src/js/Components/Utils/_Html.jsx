@@ -1,23 +1,9 @@
 import l from "../../utils/#";
 
-const Html = ({ children, html_element, ...rest }) => {
-	let element;
+const Div = ({ children, ...rest }) => <div {...rest}>{children}</div>;
+const Span = ({ children, ...rest }) => <span {...rest}>{children}</span>;
+const H3 = ({ children, ...rest }) => <h3 {...rest}>{children}</h3>;
+const Hr = ({ ...rest }) => <hr {...rest} />;
 
-	switch (html_element) {
-		case "span":
-			element = <span {...rest}>{children}</span>;
-			break;
-		case "h3":
-			element = <h3 {...rest}>{children}</h3>;
-			break;
-		case "hr":
-			element = <hr {...rest} />;
-			break;
-		default:
-			element = <div {...rest}>{children}</div>;
-	}
-
-	return element;
-};
-
-export default Html;
+export default Div;
+export { Span, H3, Hr };

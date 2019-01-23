@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Block Navigation
  * Plugin URI: https://wordpress.org/plugins/block-navigation/
- * Description: Block Navigation panel with useful features.
+ * Description: Block Navigation sidebar panel for the new Gutenberg editor.
  * Author: melonpan
  * Version: 1.1.2
  * License: GPL3+

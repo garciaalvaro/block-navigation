@@ -20,11 +20,11 @@ class MenuItemBlockData extends Component {
 		const {
 			client_id,
 			name,
-			attributes,
+			attributes_value,
 			parent_clientId,
 			index,
 			title,
-			attributes_available,
+			attributes_definition,
 			templateLock,
 			root_clientId,
 			children_clientIds,
@@ -42,8 +42,8 @@ class MenuItemBlockData extends Component {
 			l("name:", name);
 			l("title:", title);
 			l("clientId:", client_id);
-			l("attributes:", attributes);
-			l("attributes-available:", attributes_available);
+			l("attributes-value:", attributes_value);
+			l("attributes-definition:", attributes_definition);
 			l("templateLock:", templateLock);
 			l(
 				"Parent-clientId:",
@@ -64,11 +64,11 @@ class MenuItemBlockData extends Component {
 				}\n\n`,
 				`Root-clientId: ${root_clientId}\n\n`,
 				`templateLock: ${templateLock}\n\n`,
-				`attributes:`,
-				attributes,
+				`attributes-value:`,
+				attributes_value,
 				`\n\n`,
-				`attributes-available:`,
-				attributes_available,
+				`attributes-definition:`,
+				attributes_definition,
 				`\n\n`,
 				`Children-clientIds:`,
 				children_clientIds,
@@ -83,10 +83,10 @@ class MenuItemBlockData extends Component {
 
 	getBlockData = () => {
 		const { client_id } = this.props;
-		const { name, attributes } = getBlock(client_id);
+		const { name, attributes: attributes_value } = getBlock(client_id);
 		const parent_clientId = getBlockRootClientId(client_id);
 		const index = getBlockIndex(client_id, parent_clientId);
-		const { title, attributes: attributes_available } = getBlockType(name);
+		const { title, attributes: attributes_definition } = getBlockType(name);
 		const templateLock = getTemplateLock(client_id);
 		const root_clientId = getBlockHierarchyRootClientId(client_id);
 		const children_clientIds = getBlockOrder(client_id);
@@ -95,11 +95,11 @@ class MenuItemBlockData extends Component {
 		return {
 			client_id,
 			name,
-			attributes,
+			attributes_value,
 			parent_clientId,
 			index,
 			title,
-			attributes_available,
+			attributes_definition,
 			templateLock,
 			root_clientId,
 			children_clientIds,

@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 import Div from "../Utils/_Html";
 import withMoveBlock from "../Utils/_withMoveBlock";
 

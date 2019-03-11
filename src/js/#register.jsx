@@ -1,4 +1,4 @@
-import l, { icons, plugin_namespace_dash, plugin_name } from "./utils/#";
+import l, { icons, plugin_namespace_dash, plugin_name } from "./utils";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import Div from "./Components/Utils/_Html";
 

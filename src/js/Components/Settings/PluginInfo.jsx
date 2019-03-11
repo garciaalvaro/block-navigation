@@ -1,4 +1,4 @@
-import l, { icons, plugin_name } from "../../utils/#";
+import l, { icons, plugin_name } from "../../utils";
 import Div, { H3, Span } from "../Utils/_Html";
 
 const { __ } = wp.i18n;

@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 import Title from "./Title";
 import BlockData from "./_BlockData";
 import Div from "../Utils/_Html";

@@ -1,4 +1,4 @@
-import l from "../../utils/#";
+import l from "../../utils";
 import BlockClassName from "./_BlockClassName";
 import DropArea from "./DropArea";
 import Header from "../Header/Header";

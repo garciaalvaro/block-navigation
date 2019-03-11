@@ -1,4 +1,4 @@
-import l from "../../utils/#";
+import l from "../../utils";
 
 const TitleNone = ({ title }) => {
 	return (

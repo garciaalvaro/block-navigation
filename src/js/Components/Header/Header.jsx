@@ -5,8 +5,7 @@ import Div from "../Utils/_Html";
 import withBeginMove from "../Utils/_withBeginMove";
 import withFinishMove from "../Utils/_withFinishMove";
 
-const { isString } = lodash;
-const { Dashicon } = wp.components;
+const { BlockIcon } = wp.editor;
 const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
 const { Component } = wp.element;
@@ -57,13 +56,9 @@ class Header extends Component {
 				{({ attributes, name, title, icon }) => (
 					<Div className="block-header" {...events}>
 						<Div className="svg-container block-icon">
-							{isString(icon) ? <Dashicon icon={icon} /> : icon}
+							<BlockIcon icon={icon} />
 						</Div>
-						<Title
-							attributes={attributes}
-							name={name}
-							title={title}
-						/>
+						<Title attributes={attributes} name={name} title={title} />
 					</Div>
 				)}
 			</BlockData>

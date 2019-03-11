@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;

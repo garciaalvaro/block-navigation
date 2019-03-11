@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 import classNames from "classnames";
 import TogglePanel from "./TogglePanel";
 import Div from "../Utils/_Html";

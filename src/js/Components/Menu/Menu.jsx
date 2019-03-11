@@ -1,4 +1,4 @@
-import l, { icons, plugin_namespace } from "../../utils/#";
+import l, { icons, plugin_namespace } from "../../utils";
 import { Hr } from "../Utils/_Html";
 import withBeginMove from "../Utils/_withBeginMove";
 import withMoveBlock from "../Utils/_withMoveBlock";

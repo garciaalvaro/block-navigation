@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 import Block from "../Block/Block";
 import Div, { Span } from "../Utils/_Html";
 import EndOfList from "../Block/EndOfList";

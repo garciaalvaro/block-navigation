@@ -1,4 +1,4 @@
-import l from "../../utils/#";
+import l from "../../utils";
 
 const { compose, withState } = wp.compose;
 const { Component } = wp.element;

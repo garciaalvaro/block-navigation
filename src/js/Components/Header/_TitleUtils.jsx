@@ -1,4 +1,4 @@
-import l, { blocks_info } from "../../utils/#";
+import l, { blocks_info } from "../../utils";
 
 const { withState } = wp.compose;
 const { Component } = wp.element;

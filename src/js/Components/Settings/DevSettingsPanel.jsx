@@ -1,4 +1,4 @@
-import l from "../../utils/#";
+import l from "../../utils";
 import DevModeControl from "./DevModeControl";
 
 const { __ } = wp.i18n;

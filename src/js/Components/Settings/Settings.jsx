@@ -1,4 +1,4 @@
-import l from "../../utils/#";
+import l from "../../utils";
 import Div from "../Utils/_Html";
 import PluginInfo from "./PluginInfo";
 import ColorSchemeControl from "./ColorSchemeControl";

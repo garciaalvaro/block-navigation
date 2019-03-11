@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 
 const { compose } = wp.compose;
 const { Component } = wp.element;

@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 import VirtualList from "react-tiny-virtual-list";
 import FixedSize from "./_FixedSize";
 import CanReceiveDrop from "./_CanReceiveDrop";

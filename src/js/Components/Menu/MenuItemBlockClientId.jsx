@@ -1,4 +1,4 @@
-import l from "../../utils/#";
+import l from "../../utils";
 
 const { __ } = wp.i18n;
 const { ClipboardButton } = wp.components;

@@ -1,4 +1,4 @@
-import l from "../../utils/#";
+import l from "../../utils";
 
 const Div = ({ children, ...rest }) => <div {...rest}>{children}</div>;
 const Span = ({ children, ...rest }) => <span {...rest}>{children}</span>;

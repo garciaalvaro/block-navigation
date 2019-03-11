@@ -1,4 +1,4 @@
-import l, { icons, plugin_namespace } from "../../utils/#";
+import l, { icons, plugin_namespace } from "../../utils";
 
 const { Button } = wp.components;
 const { withDispatch } = wp.data;

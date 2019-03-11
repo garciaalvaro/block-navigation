@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 import withFinishMove from "../Utils/_withFinishMove";
 import Header from "../Header/Header";
 import Div, { Span } from "../Utils/_Html";

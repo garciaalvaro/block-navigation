@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../utils/#";
+import l, { plugin_namespace } from "../utils";
 import initial_state from "./initial_state";
 
 const { union, difference } = lodash;

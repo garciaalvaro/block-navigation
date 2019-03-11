@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils/#";
+import l, { plugin_namespace } from "../../utils";
 import withFinishMove from "./_withFinishMove";
 
 const { compose } = wp.compose;

@@ -13,7 +13,7 @@
 		"release": "gulp release"
 	},
 	"devDependencies": {
-		"autoprefixer": "^9.1.0",
+		"autoprefixer": "^9.4.10",
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.3",
 		"babel-plugin-transform-async-generator-functions": "^6.24.1",
@@ -25,18 +25,21 @@
 		"babel-preset-es2017": "^6.24.1",
 		"babel-preset-react": "^6.24.1",
 		"babel-register": "^6.26.0",
-		"cssnano": "^4.1.0",
-		"gulp": "github:gulpjs/gulp#4.0",
-		"gulp-header": "^2.0.5",
+		"cssnano": "^4.1.10",
+		"gulp": "^4.0.0",
+		"gulp-header": "^2.0.7",
 		"gulp-rename": "^1.4.0",
 		"gulp-replace": "^1.0.0",
 		"gulp-run-command": "0.0.9",
-		"gulp-wp-pot": "^2.3.2",
+		"gulp-wp-pot": "^2.3.4",
 		"gulp-zip": "^4.2.0",
-		"merge2": "^1.2.2",
+		"merge2": "^1.2.3",
 		"stylus": "^0.54.5"
 	},
 	"dependencies": {
-		"classnames": "^2.2.6"
+		"classnames": "^2.2.6",
+		"npm-check-updates": "^3.0.3",
+		"react": "^16.8.4",
+		"react-tiny-virtual-list": "^2.2.0"
 	}
 }

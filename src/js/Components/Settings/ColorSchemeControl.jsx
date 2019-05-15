@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
@@ -65,14 +65,14 @@ const ColorSchemeControl = ({ updateColorScheme, color_scheme }) => {
 
 export default compose([
 	withSelect(select => {
-		const { getColorScheme } = select(plugin_namespace);
+		const { getColorScheme } = select(pr_store);
 
 		return {
 			color_scheme: getColorScheme()
 		};
 	}),
 	withDispatch(dispatch => {
-		const { updateColorScheme } = dispatch(plugin_namespace);
+		const { updateColorScheme } = dispatch(pr_store);
 
 		return {
 			updateColorScheme

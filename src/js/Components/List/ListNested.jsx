@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import ToggleListNested from "./ToggleListNested";
 import CanReceiveDrop from "./_CanReceiveDrop";
 import Div from "../Utils/_Html";
@@ -46,21 +46,14 @@ class ListNested extends Component {
 										/>
 									);
 
-									if (
-										index + 1 === client_ids.length &&
-										can_move
-									) {
+									if (index + 1 === client_ids.length && can_move) {
 										return (
 											<Fragment key={index}>
 												{block}
 												<EndOfList
 													client_id={client_id}
-													parent_client_id={
-														parent_client_id
-													}
-													can_receive_drop={
-														can_receive_drop
-													}
+													parent_client_id={parent_client_id}
+													can_receive_drop={can_receive_drop}
 													can_move={can_move}
 													level={level + 1}
 													style_virtual={false}
@@ -81,7 +74,7 @@ class ListNested extends Component {
 }
 
 export default withSelect((select, { parent_client_id }) => {
-	const { getMovingBlock, getMoving, isExpanded } = select(plugin_namespace);
+	const { getMovingBlock, getMoving, isExpanded } = select(pr_store);
 	const { getTemplateLock } = select("core/editor");
 
 	return {

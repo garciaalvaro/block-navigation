@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import Div from "../Utils/_Html";
 import ListRoot from "../List/ListRoot";
 import MoveInfo from "./MoveInfo";
@@ -18,7 +18,7 @@ class Navigation extends Component {
 }
 
 export default withSelect(select => {
-	const { getMoveType } = select(plugin_namespace);
+	const { getMoveType } = select(pr_store);
 
 	return {
 		move_type: getMoveType()

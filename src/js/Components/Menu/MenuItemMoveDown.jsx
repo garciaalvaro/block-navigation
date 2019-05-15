@@ -1,4 +1,4 @@
-import l, { icons } from "../../utils";
+import l, { icons } from "utils";
 
 const { __ } = wp.i18n;
 const { MenuItem } = wp.components;

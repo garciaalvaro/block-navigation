@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 
 const { __ } = wp.i18n;
 const { CheckboxControl } = wp.components;
@@ -23,14 +23,14 @@ const DevModeControl = ({ toggleDevMode, dev_mode_active }) => {
 
 export default compose([
 	withSelect(select => {
-		const { isDevModeActive } = select(plugin_namespace);
+		const { isDevModeActive } = select(pr_store);
 
 		return {
 			dev_mode_active: isDevModeActive()
 		};
 	}),
 	withDispatch(dispatch => {
-		const { toggleDevMode } = dispatch(plugin_namespace);
+		const { toggleDevMode } = dispatch(pr_store);
 
 		return {
 			toggleDevMode

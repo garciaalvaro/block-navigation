@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "..";
 
 const { isNil } = lodash;
 const { compose } = wp.compose;
@@ -74,11 +74,9 @@ export default compose([
 		};
 	}),
 	withDispatch(dispatch => {
-		const {
-			updateMovingBlock,
-			updateMouseOverBlock,
-			collapseBlock
-		} = dispatch(plugin_namespace);
+		const { updateMovingBlock, updateMouseOverBlock, collapseBlock } = dispatch(
+			pr_store
+		);
 		const { moveBlockToPosition } = dispatch("core/editor");
 
 		return {

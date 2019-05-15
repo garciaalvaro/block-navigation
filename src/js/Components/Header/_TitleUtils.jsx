@@ -1,4 +1,4 @@
-import l, { blocks_info } from "../../utils";
+import l, { blocks_info } from "utils";
 
 const { withState } = wp.compose;
 const { Component } = wp.element;
@@ -59,10 +59,7 @@ class TitleUtils extends Component {
 	componentDidUpdate = prevProps => {
 		const { name, attributes } = this.props;
 
-		if (
-			name !== prevProps.name ||
-			!isEqual(attributes, prevProps.attributes)
-		) {
+		if (name !== prevProps.name || !isEqual(attributes, prevProps.attributes)) {
 			this.updateBlockContent();
 		}
 	};

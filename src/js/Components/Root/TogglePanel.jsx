@@ -1,4 +1,4 @@
-import l from "../../utils";
+import l from "utils";
 import classNames from "classnames";
 import Div, { Span } from "../Utils/_Html";
 

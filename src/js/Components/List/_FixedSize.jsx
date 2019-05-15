@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import DivForwardRef from "../Utils/_HtmlForwardRef";
 
 const { debounce } = lodash;
@@ -65,7 +65,7 @@ class FixedSize extends Component {
 
 export default compose([
 	withSelect(select => {
-		const { getMoveType } = select(plugin_namespace);
+		const { getMoveType } = select(pr_store);
 
 		return {
 			move_type: getMoveType()

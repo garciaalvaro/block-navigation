@@ -1,4 +1,4 @@
-import l from "../../utils";
+import l from "utils";
 
 const TitleImage = ({ title, content }) => {
 	const images = content.map((url, index) => (

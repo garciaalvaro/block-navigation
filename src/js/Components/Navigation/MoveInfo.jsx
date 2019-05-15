@@ -1,5 +1,5 @@
-import l, { plugin_namespace } from "../../utils";
-import withFinishMove from "../Utils/_withFinishMove";
+import l, { pr_store } from "utils";
+import withFinishMove from "../../utils/HOC/_withFinishMove";
 import Header from "../Header/Header";
 import Div, { Span } from "../Utils/_Html";
 
@@ -27,7 +27,7 @@ class MoveInfo extends Component {
 export default compose([
 	withFinishMove,
 	withSelect(select => {
-		const { getMovingBlockClientId } = select(plugin_namespace);
+		const { getMovingBlockClientId } = select(pr_store);
 
 		return {
 			moving_block_client_id: getMovingBlockClientId()

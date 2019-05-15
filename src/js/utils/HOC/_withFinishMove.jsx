@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "..";
 
 const { compose } = wp.compose;
 const { Component } = wp.element;
@@ -42,7 +42,7 @@ const withFinishMove = WrappedComponent => {
 
 export default compose([
 	withSelect(select => {
-		const { getMovingBlock } = select(plugin_namespace);
+		const { getMovingBlock } = select(pr_store);
 
 		return {
 			moving_block: getMovingBlock()
@@ -54,7 +54,7 @@ export default compose([
 			expandBlock,
 			updateMouseOverBlock,
 			triggerSelectBlock
-		} = dispatch(plugin_namespace);
+		} = dispatch(pr_store);
 		const { selectBlock } = dispatch("core/editor");
 
 		return {

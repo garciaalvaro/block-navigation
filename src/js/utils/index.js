@@ -1,19 +1,18 @@
 import l from "./log";
-import core from "./info-blocks-core";
 import icons from "./icons";
-import {
-	plugin_name,
-	plugin_namespace,
-	plugin_namespace_dash
-} from "./info-plugin";
-
-const blocks_info = core;
+import { plugin_title, pr, pr_store, plugin_namespace } from "./data-plugin";
+import { DivForwardRef, Div, Span, H3, Hr } from "./Components";
 
 export default l;
 export {
-	blocks_info,
 	icons,
-	plugin_name,
+	plugin_title,
+	pr,
+	pr_store,
 	plugin_namespace,
-	plugin_namespace_dash
+	DivForwardRef,
+	Div,
+	Span,
+	H3,
+	Hr
 };

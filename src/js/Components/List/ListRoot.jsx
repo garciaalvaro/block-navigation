@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import VirtualList from "react-tiny-virtual-list";
 import FixedSize from "./_FixedSize";
 import CanReceiveDrop from "./_CanReceiveDrop";
@@ -95,9 +95,7 @@ class ListRoot extends Component {
 		}
 
 		// If inside the plugin a block has been collapsed
-		if (
-			!isEqual(collapsed_parent_blocks, prevProps.collapsed_parent_blocks)
-		) {
+		if (!isEqual(collapsed_parent_blocks, prevProps.collapsed_parent_blocks)) {
 			const index = getJustCollapsedIndex(
 				collapsed_parent_blocks,
 				prevProps.collapsed_parent_blocks
@@ -109,10 +107,7 @@ class ListRoot extends Component {
 
 		// If inside the plugin moving action has started or finished
 		if (moving !== prevProps.moving) {
-			if (
-				move_type === "by_click" ||
-				prevProps.move_type === "by_click"
-			) {
+			if (move_type === "by_click" || prevProps.move_type === "by_click") {
 				let scroll_top = vlist.current.rootNode.scrollTop;
 
 				if (move_type === "by_click") {
@@ -278,7 +273,7 @@ class ListRoot extends Component {
 export default compose([
 	withState({ updated: 0, scroll_alignment: "start", selected_index: 0 }),
 	withDispatch(dispatch => {
-		const { triggerSelectBlock, expandBlock } = dispatch(plugin_namespace);
+		const { triggerSelectBlock, expandBlock } = dispatch(pr_store);
 
 		return {
 			triggerSelectBlock,
@@ -298,7 +293,7 @@ export default compose([
 			getMoving,
 			getCollapsedParentBlocks,
 			didSelectBlockTrigger
-		} = select(plugin_namespace);
+		} = select(pr_store);
 		const client_ids = getBlockOrder();
 
 		return {

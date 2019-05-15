@@ -1,3 +1,4 @@
-import "./css/**/*.css";
-import "./css/**/*.styl";
-import "./js/**/*.js*";
+import "./css/*.css";
+import "./css/*.styl";
+
+import "./js";

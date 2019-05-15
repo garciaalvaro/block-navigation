@@ -1,4 +1,4 @@
-import l from "../utils";
+import l from "utils";
 
 const initial_state = {
 	dev_mode_active: false,

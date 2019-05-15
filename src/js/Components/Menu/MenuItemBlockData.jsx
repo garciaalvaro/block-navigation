@@ -1,4 +1,4 @@
-import l from "../../utils";
+import l from "utils";
 
 const { __ } = wp.i18n;
 const { Component } = wp.element;
@@ -45,10 +45,7 @@ class MenuItemBlockData extends Component {
 			l("attributes-value:", attributes_value);
 			l("attributes-definition:", attributes_definition);
 			l("templateLock:", templateLock);
-			l(
-				"Parent-clientId:",
-				parent_clientId === "" ? `""` : parent_clientId
-			);
+			l("Parent-clientId:", parent_clientId === "" ? `""` : parent_clientId);
 			l("Root-clientId:", root_clientId);
 			l("Children-clientIds:", children_clientIds);
 			l("Descendants-clientIds:", descendants_clientIds);

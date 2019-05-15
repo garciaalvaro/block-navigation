@@ -1,6 +1,6 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import Div from "../Utils/_Html";
-import withMoveBlock from "../Utils/_withMoveBlock";
+import withMoveBlock from "../../utils/HOC/_withMoveBlock";
 
 const { Component } = wp.element;
 const { compose } = wp.compose;
@@ -15,7 +15,7 @@ class DropArea extends Component {
 			updateMouseOverBlock,
 			moveBlock
 		} = this.props;
-		const { isMouseOver } = select(plugin_namespace);
+		const { isMouseOver } = select(pr_store);
 		const events = {};
 
 		if (move_type === "by_click") {
@@ -50,14 +50,14 @@ class DropArea extends Component {
 
 export default compose([
 	withSelect(select => {
-		const { getMoveType } = select(plugin_namespace);
+		const { getMoveType } = select(pr_store);
 
 		return {
 			move_type: getMoveType()
 		};
 	}),
 	withDispatch(dispatch => {
-		const { updateMouseOverBlock } = dispatch(plugin_namespace);
+		const { updateMouseOverBlock } = dispatch(pr_store);
 
 		return {
 			updateMouseOverBlock

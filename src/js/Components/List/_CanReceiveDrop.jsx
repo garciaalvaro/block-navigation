@@ -1,4 +1,4 @@
-import l from "../../utils";
+import l from "utils";
 
 const { compose, withState } = wp.compose;
 const { Component } = wp.element;
@@ -11,8 +11,7 @@ class CanReceiveDrop extends Component {
 			moving_block,
 			block_type_can_be_inserted
 		} = this.props;
-		const is_same_parent =
-			parent_client_id === moving_block.parent_client_id;
+		const is_same_parent = parent_client_id === moving_block.parent_client_id;
 
 		if (moving_block.template_lock === "insert") {
 			if (is_same_parent) {

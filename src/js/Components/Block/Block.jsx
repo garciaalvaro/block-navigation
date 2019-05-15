@@ -1,4 +1,4 @@
-import l from "../../utils";
+import l from "utils";
 import BlockClassName from "./_BlockClassName";
 import DropArea from "./DropArea";
 import Header from "../Header/Header";
@@ -30,11 +30,7 @@ const Block = props => {
 			is_end_of_list={false}
 		>
 			{className => (
-				<Div
-					id={`bn-${client_id}`}
-					className={className}
-					style={style_virtual}
-				>
+				<Div id={`bn-${client_id}`} className={className} style={style_virtual}>
 					{can_move && (
 						<DropArea
 							parent_client_id={parent_client_id}

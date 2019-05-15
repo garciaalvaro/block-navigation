@@ -1,7 +1,7 @@
-import l, { icons, plugin_namespace } from "../../utils";
+import l, { icons, pr_store } from "utils";
 import { Hr } from "../Utils/_Html";
-import withBeginMove from "../Utils/_withBeginMove";
-import withMoveBlock from "../Utils/_withMoveBlock";
+import withBeginMove from "../../utils/HOC/_withBeginMove";
+import withMoveBlock from "../../utils/HOC/_withMoveBlock";
 import MenuItemEdit from "./MenuItemEdit";
 import MenuItemMoveTo from "./MenuItemMoveTo";
 import MenuItemMoveUp from "./MenuItemMoveUp";
@@ -59,10 +59,7 @@ class Menu extends Component {
 					>
 						<MenuGroup>
 							<MenuItemEdit client_id={client_id} />
-							<MenuItemMoveTo
-								can_move={can_move}
-								beginMove={beginMove}
-							/>
+							<MenuItemMoveTo can_move={can_move} beginMove={beginMove} />
 							<MenuItemMoveUp
 								can_move={can_move}
 								moveBlock={moveBlock}
@@ -77,9 +74,7 @@ class Menu extends Component {
 							{dev_mode_active && (
 								<Fragment>
 									<Hr />
-									<MenuItemBlockClientId
-										client_id={client_id}
-									/>
+									<MenuItemBlockClientId client_id={client_id} />
 									<MenuItemBlockData client_id={client_id} />
 								</Fragment>
 							)}
@@ -95,7 +90,7 @@ class Menu extends Component {
 export default compose([
 	withSelect((select, { client_id, parent_client_id }) => {
 		const { getBlockIndex, getBlockCount } = select("core/editor");
-		const { isMenuOpen, isDevModeActive } = select(plugin_namespace);
+		const { isMenuOpen, isDevModeActive } = select(pr_store);
 
 		return {
 			is_menu_open: isMenuOpen(client_id),
@@ -105,7 +100,7 @@ export default compose([
 		};
 	}),
 	withDispatch(dispatch => {
-		const { toggleMenu } = dispatch(plugin_namespace);
+		const { toggleMenu } = dispatch(pr_store);
 
 		return {
 			toggleMenu

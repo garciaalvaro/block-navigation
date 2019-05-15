@@ -1,9 +1,9 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import Title from "./Title";
 import BlockData from "./_BlockData";
 import Div from "../Utils/_Html";
-import withBeginMove from "../Utils/_withBeginMove";
-import withFinishMove from "../Utils/_withFinishMove";
+import withBeginMove from "../../utils/HOC/_withBeginMove";
+import withFinishMove from "../../utils/HOC/_withFinishMove";
 
 const { BlockIcon } = wp.editor;
 const { withSelect, withDispatch } = wp.data;
@@ -68,7 +68,7 @@ class Header extends Component {
 
 export default compose([
 	withSelect((select, { client_id }) => {
-		const { getMoveType, getMovingBlock } = select(plugin_namespace);
+		const { getMoveType, getMovingBlock } = select(pr_store);
 		const { isBlockSelected } = select("core/editor");
 
 		return {
@@ -79,7 +79,7 @@ export default compose([
 	}),
 	withDispatch(dispatch => {
 		const { selectBlock } = dispatch("core/editor");
-		const { triggerSelectBlock } = dispatch(plugin_namespace);
+		const { triggerSelectBlock } = dispatch(pr_store);
 
 		return {
 			selectBlock,

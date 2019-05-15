@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "..";
 import withFinishMove from "./_withFinishMove";
 
 const { compose } = wp.compose;
@@ -58,8 +58,7 @@ const withMoveBlock = WrappedComponent => {
 				return;
 			}
 
-			const is_same_level =
-				origin.parent_client_id === dest.parent_client_id;
+			const is_same_level = origin.parent_client_id === dest.parent_client_id;
 
 			dest.index =
 				dest.index && origin.index < dest.index && is_same_level
@@ -91,10 +90,8 @@ const withMoveBlock = WrappedComponent => {
 
 export default compose([
 	withSelect((select, { client_id, parent_client_id }) => {
-		const { getBlockIndex, getAdjacentBlockClientId } = select(
-			"core/editor"
-		);
-		const { getMovingBlock } = select(plugin_namespace);
+		const { getBlockIndex, getAdjacentBlockClientId } = select("core/editor");
+		const { getMovingBlock } = select(pr_store);
 
 		return {
 			index: getBlockIndex(client_id, parent_client_id),

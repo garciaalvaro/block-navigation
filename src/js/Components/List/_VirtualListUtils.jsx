@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import Block from "../Block/Block";
 import Div, { Span } from "../Utils/_Html";
 import EndOfList from "../Block/EndOfList";
@@ -15,7 +15,7 @@ class VirtualListUtils extends Component {
 			(descendants, client_id) => {
 				const this_descendants = getClientIdsOfDescendants([client_id]);
 
-				if (select(plugin_namespace).isCollapsed(client_id)) {
+				if (select(pr_store).isCollapsed(client_id)) {
 					pullAll(descendants.visible, this_descendants);
 
 					return descendants;
@@ -86,7 +86,7 @@ class VirtualListUtils extends Component {
 		}
 
 		const client_id = client_ids[index];
-		const is_expanded = select(plugin_namespace).isExpanded(client_id);
+		const is_expanded = select(pr_store).isExpanded(client_id);
 		const block_height = getBlockHeight(client_id, is_expanded);
 
 		return block_height;
@@ -97,12 +97,7 @@ class VirtualListUtils extends Component {
 
 		if (client_ids.length === 0) {
 			return (
-				<Div
-					key={index}
-					id="blocks-empty"
-					className="block"
-					style={style}
-				>
+				<Div key={index} id="blocks-empty" className="block" style={style}>
 					<Span className="block-header">{__("No blocks.")}</Span>
 				</Div>
 			);
@@ -121,11 +116,7 @@ class VirtualListUtils extends Component {
 						can_move={can_move}
 						level={0}
 					/>
-					<Div
-						id="bottom_spacer"
-						className="list-item"
-						style={style}
-					/>
+					<Div id="bottom_spacer" className="list-item" style={style} />
 				</Fragment>
 			);
 		}

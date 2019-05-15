@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 
 const { __ } = wp.i18n;
 const { CheckboxControl } = wp.components;
@@ -21,14 +21,14 @@ const DropGuidesControl = ({ toggleDropGuides, drop_guides }) => {
 
 export default compose([
 	withSelect(select => {
-		const { getDropGuides } = select(plugin_namespace);
+		const { getDropGuides } = select(pr_store);
 
 		return {
 			drop_guides: getDropGuides()
 		};
 	}),
 	withDispatch(dispatch => {
-		const { toggleDropGuides } = dispatch(plugin_namespace);
+		const { toggleDropGuides } = dispatch(pr_store);
 
 		return {
 			toggleDropGuides

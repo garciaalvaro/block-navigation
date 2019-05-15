@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import classNames from "classnames";
 import TogglePanel from "./TogglePanel";
 import Div from "../Utils/_Html";
@@ -10,7 +10,7 @@ const { compose, withState } = wp.compose;
 const { withSelect } = wp.data;
 const { Component } = wp.element;
 
-class Sidebar extends Component {
+class Root extends Component {
 	openPanel = panel => {
 		this.props.setState({ current_panel: panel });
 	};
@@ -44,10 +44,7 @@ class Sidebar extends Component {
 
 		return (
 			<Div id="bn-container" className={getContainerClassName()}>
-				<TogglePanel
-					openPanel={openPanel}
-					current_panel={current_panel}
-				/>
+				<TogglePanel openPanel={openPanel} current_panel={current_panel} />
 				{current_panel === "navigation" ? <Navigation /> : <Settings />}
 			</Div>
 		);
@@ -57,12 +54,9 @@ class Sidebar extends Component {
 export default compose([
 	withState({ current_panel: "navigation" }),
 	withSelect(select => {
-		const {
-			getDropGuides,
-			getColorScheme,
-			getMoveType,
-			getMoving
-		} = select(plugin_namespace);
+		const { getDropGuides, getColorScheme, getMoveType, getMoving } = select(
+			pr_store
+		);
 
 		return {
 			drop_guides: getDropGuides(),
@@ -71,4 +65,4 @@ export default compose([
 			moving: getMoving()
 		};
 	})
-])(Sidebar);
+])(Root);

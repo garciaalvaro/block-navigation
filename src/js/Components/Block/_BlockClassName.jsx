@@ -1,4 +1,4 @@
-import l, { plugin_namespace } from "../../utils";
+import l, { pr_store } from "utils";
 import classNames from "classnames";
 
 const { Component } = wp.element;
@@ -37,17 +37,13 @@ class BlockClassName extends Component {
 				is_end_of_list: is_end_of_list,
 				is_parent: is_parent,
 				is_mouse_over_descendant:
-					is_parent &&
-					descendants_client_ids.includes(mouse_over_client_id),
+					is_parent && descendants_client_ids.includes(mouse_over_client_id),
 				"no-is_mouse_over_descendant":
-					is_parent &&
-					!descendants_client_ids.includes(mouse_over_client_id),
+					is_parent && !descendants_client_ids.includes(mouse_over_client_id),
 				is_moving_descendant:
-					is_parent &&
-					descendants_client_ids.includes(moving_client_id),
+					is_parent && descendants_client_ids.includes(moving_client_id),
 				"no-is_moving_descendant":
-					is_parent &&
-					!descendants_client_ids.includes(moving_client_id)
+					is_parent && !descendants_client_ids.includes(moving_client_id)
 			},
 			"block",
 			`level-${level}`
@@ -65,9 +61,7 @@ class BlockClassName extends Component {
 }
 
 export default withSelect((select, { client_id, is_end_of_list }) => {
-	const { getClientIdsOfDescendants, isBlockSelected } = select(
-		"core/editor"
-	);
+	const { getClientIdsOfDescendants, isBlockSelected } = select("core/editor");
 	const {
 		getMoving,
 		getMovingBlockClientId,
@@ -75,7 +69,7 @@ export default withSelect((select, { client_id, is_end_of_list }) => {
 		isMouseOver,
 		isMoving,
 		isMenuOpen
-	} = select(plugin_namespace);
+	} = select(pr_store);
 
 	return {
 		moving: getMoving(),

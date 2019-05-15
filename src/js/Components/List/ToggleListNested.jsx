@@ -1,4 +1,4 @@
-import l, { icons, plugin_namespace } from "../../utils";
+import l, { icons, pr_store } from "utils";
 
 const { Button } = wp.components;
 const { withDispatch } = wp.data;
@@ -25,7 +25,7 @@ const ToggleListNested = ({
 };
 
 export default withDispatch(dispatch => {
-	const { collapseBlock, expandBlock } = dispatch(plugin_namespace);
+	const { collapseBlock, expandBlock } = dispatch(pr_store);
 
 	return {
 		collapseBlock,

@@ -1,17 +1,19 @@
-import l, { pr_store } from "utils";
+import l, { pr_store, addPrefix } from "utils";
 
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
 const { compose } = wp.compose;
-const { withSelect, withDispatch } = wp.data;
+const { withDispatch } = wp.data;
 
-const ColorSchemeControl = ({ updateColorScheme, color_scheme }) => {
+const ColorSchemeControl = props => {
+	const { updateColorScheme, color_scheme } = props;
+
 	return (
 		<SelectControl
-			className="bn-control bn-control-select color_scheme"
+			className={addPrefix(["control", "control-select", "color_scheme"])}
 			label={__("Color scheme:")}
 			value={color_scheme}
-			onChange={value => updateColorScheme(value)}
+			onChange={updateColorScheme}
 			options={[
 				{
 					value: "light-banana",
@@ -63,19 +65,10 @@ const ColorSchemeControl = ({ updateColorScheme, color_scheme }) => {
 	);
 };
 
-export default compose([
-	withSelect(select => {
-		const { getColorScheme } = select(pr_store);
+export default withDispatch(dispatch => {
+	const { updateColorScheme } = dispatch(pr_store);
 
-		return {
-			color_scheme: getColorScheme()
-		};
-	}),
-	withDispatch(dispatch => {
-		const { updateColorScheme } = dispatch(pr_store);
-
-		return {
-			updateColorScheme
-		};
-	})
-])(ColorSchemeControl);
+	return {
+		updateColorScheme
+	};
+})(ColorSchemeControl);

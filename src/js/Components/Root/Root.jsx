@@ -1,68 +1,48 @@
-import l, { pr_store } from "utils";
-import classNames from "classnames";
-import TogglePanel from "./TogglePanel";
-import Div from "../Utils/_Html";
+import l, { Div, pr_store } from "utils";
+import Tabs from "./Tabs";
 import Navigation from "../Navigation/Navigation";
 import Settings from "../Settings/Settings";
 
-const { split } = lodash;
 const { compose, withState } = wp.compose;
 const { withSelect } = wp.data;
-const { Component } = wp.element;
 
-class Root extends Component {
-	openPanel = panel => {
-		this.props.setState({ current_panel: panel });
-	};
+const Root = props => {
+	const {
+		setState,
+		color_scheme,
+		show_dd_guides,
+		tab_open,
+		is_moving,
+		moving_type
+	} = props;
+	const [color_type, color_name] = color_scheme.split("-");
+	const openTab = tab => setState({ tab_open: tab });
+	const classes = [
+		`color_scheme-type-${color_type}`,
+		`color_scheme-name-${color_name}`,
+		`moving_type-${moving_type}`,
+		`tab_open-${tab_open}`,
+		show_dd_guides ? "show_dd_guides" : null,
+		is_moving ? "is_moving" : "no-is_moving"
+	];
 
-	getContainerClassName = () => {
-		const {
-			color_scheme,
-			moving,
-			move_type,
-			drop_guides,
-			current_panel
-		} = this.props;
-		const color_scheme_array = split(color_scheme, "-");
-
-		return classNames(
-			{
-				drop_guides: drop_guides,
-				moving: moving,
-				"no-moving": !moving
-			},
-			`color_scheme-type-${color_scheme_array[0]}`,
-			`color_scheme-name-${color_scheme_array[1]}`,
-			`move_type-${move_type}`,
-			`current_panel-${current_panel}`
-		);
-	};
-
-	render() {
-		const { openPanel, getContainerClassName } = this;
-		const { current_panel } = this.props;
-
-		return (
-			<Div id="bn-container" className={getContainerClassName()}>
-				<TogglePanel openPanel={openPanel} current_panel={current_panel} />
-				{current_panel === "navigation" ? <Navigation /> : <Settings />}
-			</Div>
-		);
-	}
-}
+	return (
+		<Div id="container" classes={classes}>
+			<Tabs openTab={openTab} tab_open={tab_open} />
+			{tab_open === "navigation" ? <Navigation /> : <Settings />}
+		</Div>
+	);
+};
 
 export default compose([
-	withState({ current_panel: "navigation" }),
+	withState({ tab_open: "navigation" }),
 	withSelect(select => {
-		const { getDropGuides, getColorScheme, getMoveType, getMoving } = select(
-			pr_store
-		);
+		const { getSettings, getIsMoving, getMovingType } = select(pr_store);
 
 		return {
-			drop_guides: getDropGuides(),
-			color_scheme: getColorScheme(),
-			move_type: getMoveType(),
-			moving: getMoving()
+			...getSettings(),
+			is_moving: getIsMoving(),
+			moving_type: getMovingType()
 		};
 	})
 ])(Root);

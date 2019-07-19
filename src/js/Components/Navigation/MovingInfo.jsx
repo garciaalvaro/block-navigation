@@ -9,7 +9,7 @@ const { Component } = wp.element;
 const { Button } = wp.components;
 const { withSelect } = wp.data;
 
-class MoveInfo extends Component {
+class MovingInfo extends Component {
 	render() {
 		const { moving_block_client_id, finishMove } = this.props;
 
@@ -33,4 +33,4 @@ export default compose([
 			moving_block_client_id: getMovingBlockClientId()
 		};
 	})
-])(MoveInfo);
+])(MovingInfo);

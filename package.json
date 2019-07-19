@@ -33,6 +33,9 @@
 	},
 	"dependencies": {
 		"react": "^16.8.6",
-		"react-tiny-virtual-list": "^2.2.0"
+		"react-beautiful-dnd": "^11.0.3",
+		"react-dom": "^16.8.6",
+		"react-tiny-virtual-list": "^2.2.0",
+		"react-window": "^1.8.1"
 	}
 }

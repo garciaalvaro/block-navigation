@@ -1,0 +1,49 @@
+/*
+ * Tabs
+ */
+
+$e_deceleration = cubic-bezier(0.0, 0.0, 0.2, 1)
+
++prefix-classes('bn-')
+	#bn-tabs
+		display flex
+		height 50px
+		background-color var(--background_color)
+
+		button.tab
+			padding 3px 15px
+			height 100%
+			box-shadow none
+			width 50%
+			color var(--text_color)
+			background transparent
+			transition background-color .15s $e_deceleration
+			display flex
+			align-items center
+			justify-content center
+
+			&.is-active
+				margin-bottom -1px
+				height calc(100% + 1px)
+				font-weight 600
+				padding-bottom 0
+				border-bottom 3px solid var(--color_primary)
+
+	#bn-container
+		&.color_scheme-type-light
+
+			button.tab
+				&:hover
+					background-color rgba(0,0,0,0.03)
+
+			#bn-tabs
+				border-bottom 1px solid rgba(0,0,0,0.1)
+
+		&.color_scheme-type-dark
+
+			button.tab
+				&:hover
+					background-color rgba(255,255,255,0.05)
+
+			#bn-tabs
+				border-bottom 1px solid rgba(255,255,255,0.1)

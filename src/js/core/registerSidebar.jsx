@@ -1,5 +1,8 @@
-import l, { Div, plugin_namespace, icons } from "utils";
+import l, { Div, plugin_namespace, plugin_title, icons } from "utils";
 import Root from "../Components/Root/Root";
+
+const { Fragment } = wp.element;
+const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 
 const registerSidebar = () => {
 	wp.plugins.registerPlugin(plugin_namespace, {

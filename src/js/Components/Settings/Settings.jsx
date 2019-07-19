@@ -1,19 +1,24 @@
-import l from "utils";
-import Div from "../Utils/_Html";
-import PluginInfo from "./PluginInfo";
-import ColorSchemeControl from "./ColorSchemeControl";
-import DropGuidesControl from "./DropGuidesControl";
-import DevSettingsPanel from "./DevSettingsPanel";
+import l, { Div } from "utils";
+import PluginInfo from "./Info";
+import ColorScheme from "./ColorScheme";
+import DdGuides from "./DdGuides";
 
-const Settings = () => {
+const { withSelect } = wp.data;
+
+const Settings = props => {
 	return (
-		<Div id="bn-panel-settings">
-			<PluginInfo />
-			<ColorSchemeControl />
-			<DropGuidesControl />
-			<DevSettingsPanel />
+		<Div id="settings">
+			<PluginInfo {...props} />
+			<ColorScheme {...props} />
+			<DdGuides {...props} />
 		</Div>
 	);
 };
 
-export default Settings;
+export default withSelect(select => {
+	const { getSettings } = select(pr_store);
+
+	return {
+		...getSettings()
+	};
+})(Settings);

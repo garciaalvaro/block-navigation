@@ -1,4 +1,6 @@
-import "./css/*.css";
-import "./css/*.styl";
+import registerStore from "./js/store";
+import registerSidebar from "./js/core/registerSidebar";
+import "./js/core/register-core";
 
-import "./js";
+registerStore();
+registerSidebar();

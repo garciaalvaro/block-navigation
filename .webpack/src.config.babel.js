@@ -11,7 +11,7 @@ const { name, version, plugin_name, plugin_uri } = pkg;
 
 module.exports = [
 	{
-		entry: ["./src/index.js", "./src/index.styl"],
+		entry: ["./src/index.ts", "./src/index.styl"],
 		output: {
 			path: `${_rootdir}/build`,
 			filename: `${name}.js`

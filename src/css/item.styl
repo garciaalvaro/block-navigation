@@ -1,0 +1,144 @@
+/*
+ * Block Header
+ */
+
+
++prefix-classes('bn-')
+
+	.moving_is_over
+		background red!important
+
+	.list-is_closed > .block-list
+		display none
+
+	.block
+		// display flex
+		position relative
+
+	// #bn-container
+	// 	padding 20px
+
+	.no-is_drop_above
+		z-index 1
+
+	.is_drop_above
+		z-index -1
+		// &.depth-0 .block:before
+		// 	left 18px
+
+		.block
+			// z-index 0
+
+			&:before
+				content ""
+				background pink
+				position absolute
+				bottom 100%
+				left 0
+				width 100%
+				height 100%
+				z-index -1
+				opacity .9
+
+	.can_receive_drop.no-is_moving
+		border-top 1px dashed var(--color_secondary_2)
+		margin-top -1px
+
+	// .is_drop_above.no-can_receive_drop
+	// .is_drop_above.no-can_receive_drop ~ .item.no-is_moving
+	// .has_item_over.no-can_receive_drop
+	// .has_item_over.no-can_receive_drop ~ .item.no-is_moving
+	// 	transform none!important
+
+	// q.has_item_over.no-can_receive_drop
+	// q.has_item_over.no-can_receive_drop ~ .item
+	// 	transform none!important
+
+	.no-can_move
+		pointer-events none
+
+	.block-list
+		margin-left 20px
+
+		#bn-navigation > &
+			margin-left 0
+
+	.block-header
+		background-color var(--background_color)
+		position relative
+		display flex
+		align-items center
+		padding-left 18px
+		// margin-left -20px
+		padding-right 30px
+		//
+		line-height 4
+		display: flex;
+		align-items: center;
+		overflow hidden
+		border-left 1px solid var(--color_secondary_2)
+
+		::selection
+			background transparent
+
+		.level-0 > &
+			border-left none
+
+	.block-image-container
+		width 2em
+		height 2em
+		object-fit cover
+		position relative
+		border-radius 50%
+		overflow hidden
+		border 1px dotted
+
+	.block-image
+		position absolute
+		top 0
+		left 0
+		width 100%
+		height 100%
+
+	// .depth-0 &
+	// 	border-left none
+
+	// .block-header
+	// 	line-height 4
+	// 	display: flex;
+	// 	align-items: center;
+	// 	overflow hidden
+
+	.content_type-image
+		display: flex;
+		align-items: center;
+
+	.content_type-text
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		&:before
+			content "|"
+			margin 0 10px
+
+	.block-icon
+		margin-right 10px
+		display flex
+
+		svg
+			width 22px
+			height 22px
+
+	// .item
+	// 	padding 1em
+	// 	// pointer-events none
+
+	// .is_moving
+	// 	height 0
+	// 	padding 0
+
+	.is_over_item
+		background red
+	.has_item_over
+		background green

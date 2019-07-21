@@ -1,2 +1,3 @@
-src/plugins/*
-*.min.*
+_extras/*
+build/*
+node_modules/*

@@ -2,15 +2,14 @@
  * Tabs
  */
 
-$e_deceleration = cubic-bezier(0.0, 0.0, 0.2, 1)
-
 +prefix-classes('bn-')
+
 	#bn-tabs
 		display flex
 		height 50px
 		background-color var(--background_color)
 
-		button.tab
+		button.button-tab
 			padding 3px 15px
 			height 100%
 			box-shadow none
@@ -32,7 +31,7 @@ $e_deceleration = cubic-bezier(0.0, 0.0, 0.2, 1)
 	#bn-container
 		&.color_scheme-type-light
 
-			button.tab
+			button.button-tab
 				&:hover
 					background-color rgba(0,0,0,0.03)
 
@@ -41,7 +40,7 @@ $e_deceleration = cubic-bezier(0.0, 0.0, 0.2, 1)
 
 		&.color_scheme-type-dark
 
-			button.tab
+			button.button-tab
 				&:hover
 					background-color rgba(255,255,255,0.05)
 

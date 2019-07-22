@@ -4,51 +4,49 @@
 
 +prefix-classes('bn-')
 
-	.menu button.button-menu
-		width: 100%;
-		padding: 0 14px 0 7px
-		display: flex;
-		align-items: center;
-		line-height: 3em;
 
-	#bn-container
+	button.button-menu
+		.menu &
+			width: 100%;
+			padding: 0 14px 0 7px
+			display: flex;
+			align-items: center;
+			line-height: 3em;
+			transition background-color .2s $e_standard
 
-		.button-toggle_menu
-			width 24px
-			display flex
-			justify-content center
-
-		.button-text
-			font-size .85em
-			line-height 3.2
-			padding 0 10px
-			text-transform uppercase
-			font-weight 500
-			cursor pointer
-
-			&
-			&:focus
 			&:hover
-				background none
-				box-shadow none
-				outline none
-				border none
+				background-color var(--primary_color)
 
-		.button-icon
-			padding 0
-			display flex
-			align-items center
-			cursor pointer
+		&.is_disabled
+			pointer-events none
+			opacity .3
 
-			&
-			&:focus
-			&:hover
-				background none
-				box-shadow none
-				outline none
-				border none
+	.button-toggle_menu
+		width 24px
+		display flex
+		justify-content center
 
-		// .button-toggle
-		// 	position absolute
-		// 	top 0
-		// 	right 0
+	.button
+	.button-text
+	.button-icon
+		&
+		&:focus
+		&:hover
+			background none
+			box-shadow none
+			outline none
+			border none
+
+	.button-text
+		font-size .85em
+		line-height 3.2
+		padding 0 10px
+		text-transform uppercase
+		font-weight 500
+		cursor pointer
+
+	.button-icon
+		padding 0
+		display flex
+		align-items center
+		cursor pointer

@@ -33,12 +33,13 @@ export const ButtonMoveTo = withDispatch<withDispatchProps, ParentProps>(
 		can_move,
 		setMovingBlock,
 		setMovingType,
-		close
+		close,
+		index
 	} = props;
 
 	return (
 		<Button
-			classes={["button-text", "button-menu"]}
+			classes={["button", "button-menu"]}
 			disabled={!can_move}
 			onClick={() => {
 				close();
@@ -46,7 +47,8 @@ export const ButtonMoveTo = withDispatch<withDispatchProps, ParentProps>(
 					id,
 					parent_id,
 					template_lock,
-					block_name: block.name
+					block_name: block.name,
+					index
 				});
 				setMovingType("by_click");
 			}}

@@ -1,4 +1,5 @@
 declare type State = {
+	// selected_id: string;
 	view: "navigation" | "settings";
 	moving_type: "by_click" | "by_drag";
 	moving_block: {
@@ -8,7 +9,7 @@ declare type State = {
 		block_name: string;
 		index: number;
 	};
-	color_scheme: import("utils/data/color_schemes").ColorScheme;
+	color_scheme: string;
 
 	// drop_above: string;
 	// //

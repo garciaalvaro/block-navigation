@@ -91,9 +91,10 @@ export const Container = compose([
 
 		render() {
 			const { children, height, is_moving, color_scheme } = this.props;
+			const [type, value] = color_scheme.split("-");
 			const classes = [
-				`color_scheme-type-${color_scheme.type}`,
-				`color_scheme-name-${color_scheme.value}`,
+				`color_scheme-type-${type}`,
+				`color_scheme-name-${value}`,
 				is_moving ? "is_moving" : "no-is_moving"
 			];
 

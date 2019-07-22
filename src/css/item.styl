@@ -59,9 +59,17 @@
 		height 4em
 
 	.block-content_area
-		padding-right 10px
+		padding-right 7px
 		display flex
 		background-color var(--background_color)
+		position absolute
+		top 0
+		left 0
+		right 0
+		bottom 0
+
+		.is_selected &
+			background-color var(--primary_color)
 
 		&:before
 			border-top 1px dashed var(--secondary_color_2)
@@ -82,7 +90,7 @@
 	.drop_area_end_of_list:after
 	.block:before
 	.block-drop_area
-	.block-content_area
+	// .block-content_area
 		position absolute
 		top 0
 		left 0
@@ -137,7 +145,7 @@
 
 	.block-header
 		flex 1
-		background-color var(--background_color)
+		// background-color var(--background_color)
 		position relative
 		display flex
 		align-items center

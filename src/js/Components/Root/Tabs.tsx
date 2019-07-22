@@ -35,7 +35,11 @@ export const Tabs = compose([
 			{tabs.map(({ value, label }) => (
 				<Button
 					key={value}
-					classes={["button-tab", view === value ? "is-active" : null]}
+					classes={[
+						"button",
+						"button-tab",
+						view === value ? "is-active" : null
+					]}
 					onClick={() => setView(value)}
 				>
 					{label}

@@ -1,16 +1,16 @@
 import { color_schemes } from "utils/data/color_schemes";
 
 const { union, difference } = lodash;
-const initial_state = {
-	tab_open: "navigation",
+const initial_state: State = {
+	view: "navigation",
 	color_scheme: color_schemes[0],
 	moving_type: "by_drag",
-	is_moving: false,
 	moving_block: {
 		id: "",
 		parent_id: "",
 		template_lock: "",
-		block_name: ""
+		block_name: "",
+		index: 0
 	}
 };
 
@@ -25,26 +25,31 @@ export const reducer = (state = initial_state, action) => {
 		case "FINISH_MOVING": {
 			return {
 				...state,
-				is_moving: false,
 				moving_block: {
 					id: "",
 					parent_id: "",
 					template_lock: "",
-					block_name: ""
+					block_name: "",
+					index: 0
 				}
+			};
+		}
+		case "SET_MOVING_TYPE": {
+			return {
+				...state,
+				moving_type: action.payload
 			};
 		}
 		case "SET_MOVING_BLOCK": {
 			return {
 				...state,
-				is_moving: true,
 				moving_block: action.payload
 			};
 		}
-		case "OPEN_TAB": {
+		case "SET_VIEW": {
 			return {
 				...state,
-				tab_open: action.payload
+				view: action.payload
 			};
 		}
 		////

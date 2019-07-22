@@ -1,12 +1,12 @@
 declare type State = {
-	tab_open: "navigation" | "settings";
-	is_moving: boolean;
+	view: "navigation" | "settings";
 	moving_type: "by_click" | "by_drag";
 	moving_block: {
 		id: string;
 		parent_id: string;
-		template_lock: string;
+		template_lock: string | undefined;
 		block_name: string;
+		index: number;
 	};
 	color_scheme: import("utils/data/color_schemes").ColorScheme;
 

@@ -3,7 +3,6 @@ import { pr_store } from "utils/data/plugin";
 import { BlockContent } from "./BlockContent";
 
 type withSelectProps = {
-	block_type: any;
 	moving_block: State["moving_block"];
 };
 type withDispatchProps = {
@@ -13,12 +12,12 @@ type withDispatchProps = {
 };
 type withStateProps = {
 	was_open: boolean;
-	setState: Function;
+	setState(obj: any): void;
 };
 type ParentProps = {
 	index: number;
-	block: any;
-	block_type: any;
+	block: import("wordpress__blocks").BlockInstance;
+	block_type: import("wordpress__blocks").Block;
 	close: Function;
 	open: Function;
 	toggleMovingsIsOver: Function;
@@ -35,19 +34,20 @@ const { Icon } = wp.components;
 
 export const BlockHeader = compose([
 	withSelect<withSelectProps, ParentProps>((select, { block }) => ({
-		block_type: select("core/blocks").getBlockType(block.name),
 		moving_block: select(pr_store).getMovingBlock()
 	})),
 	withDispatch(dispatch => ({
 		setMovingBlock: dispatch(pr_store).setMovingBlock,
 		finishMoving: dispatch(pr_store).finishMoving,
-		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
+		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
+		selectBlock: dispatch("core/editor").selectBlock
 	})),
 	withState({
 		was_open: true
 	})
 ])((props => {
 	const {
+		selectBlock,
 		toggleMovingsIsOver,
 		moving_block,
 		index,
@@ -70,28 +70,22 @@ export const BlockHeader = compose([
 	return (
 		<Div
 			classes="block-header"
+			onClick={() => selectBlock(block.clientId)}
 			draggable={can_move}
-			onDragEnter={toggleMovingsIsOver}
-			onDragLeave={toggleMovingsIsOver}
-			onDrop={
-				!can_receive_drop
-					? null
-					: () => {
-							l(
-								"onDragLeave",
-								moving_block.id,
-								moving_block.parent_id,
-								parent_id,
-								index
-							);
-							moveBlockToPosition(
-								moving_block.id,
-								moving_block.parent_id,
-								parent_id,
-								index
-							);
-					  }
-			}
+			// onDragEnter={toggleMovingsIsOver}
+			// onDragLeave={toggleMovingsIsOver}
+			// onDrop={() => {
+			// 	toggleMovingsIsOver();
+
+			// 	if (can_receive_drop) {
+			// 		moveBlockToPosition(
+			// 			moving_block.id,
+			// 			moving_block.parent_id,
+			// 			parent_id,
+			// 			index
+			// 		);
+			// 	}
+			// }}
 			onDragEnd={
 				!can_move
 					? null
@@ -99,7 +93,7 @@ export const BlockHeader = compose([
 							if (was_open) {
 								open();
 							}
-
+							l(123);
 							finishMoving();
 					  }
 			}
@@ -121,7 +115,8 @@ export const BlockHeader = compose([
 								id: block.clientId,
 								parent_id,
 								template_lock,
-								block_name: block.name
+								block_name: block.name,
+								index
 							});
 
 							close();

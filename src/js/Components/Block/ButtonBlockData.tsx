@@ -1,9 +1,9 @@
 import { Div, Icon, Button, Span } from "utils/components";
-import { pr_store } from "utils/data/plugin";
 
 type withSelectProps = {
-	setMovingBlock: ActionCreators["setMovingBlock"];
-	setMovingType: ActionCreators["setMovingType"];
+	descendants_clientIds: string[];
+	children_clientIds: string[];
+	root_clientId: string;
 };
 
 type ParentProps = {
@@ -25,17 +25,34 @@ const is_safari = (window as any).safari !== undefined;
 const multiple_log = is_safari;
 
 export const ButtonBlockData = withSelect<withSelectProps, ParentProps>(
-	select => ({
-		setMovingBlock: select(pr_store).setMovingBlock,
-		setMovingType: select(pr_store).setMovingType
+	(select, { id }) => ({
+		descendants_clientIds: select(
+			"core/block-editor"
+		).getClientIdsOfDescendants([id]),
+		children_clientIds: select("core/block-editor").getBlockOrder(id),
+		root_clientId: select("core/block-editor").getBlockHierarchyRootClientId(id)
 	})
 )(props => {
-	const { block, close, index } = props;
-	const { title } = block;
+	const {
+		id,
+		parent_id,
+		block,
+		block_type,
+		close,
+		index,
+		template_lock,
+		descendants_clientIds,
+		children_clientIds,
+		root_clientId
+	} = props;
+	const { name, attributes: attributes_value } = block;
+	const { title, attributes: attributes_definition } = block_type;
 
+	// l("block", block);
+	// l("block_type", block_type);
 	return (
 		<Button
-			classes={["button-text", "button-menu"]}
+			classes={["button", "button-menu"]}
 			onClick={() => {
 				close();
 
@@ -44,14 +61,11 @@ export const ButtonBlockData = withSelect<withSelectProps, ParentProps>(
 					l("index:", index);
 					l("name:", name);
 					l("title:", title);
-					l("clientId:", client_id);
+					l("clientId:", id);
 					l("attributes-value:", attributes_value);
 					l("attributes-definition:", attributes_definition);
-					l("templateLock:", templateLock);
-					l(
-						"Parent-clientId:",
-						parent_clientId === "" ? `""` : parent_clientId
-					);
+					l("templateLock:", template_lock);
+					l("Parent-clientId:", parent_id);
 					l("Root-clientId:", root_clientId);
 					l("Children-clientIds:", children_clientIds);
 					l("Descendants-clientIds:", descendants_clientIds);
@@ -61,12 +75,10 @@ export const ButtonBlockData = withSelect<withSelectProps, ParentProps>(
 						`index: ${index}\n\n`,
 						`name: ${name}\n\n`,
 						`title: ${title}\n\n`,
-						`clientId: ${client_id}\n\n`,
-						`Parent-clientId: ${
-							parent_clientId === "" ? `""` : parent_clientId
-						}\n\n`,
+						`clientId: ${id}\n\n`,
+						`Parent-clientId: ${parent_id === "" ? `""` : parent_id}\n\n`,
 						`Root-clientId: ${root_clientId}\n\n`,
-						`templateLock: ${templateLock}\n\n`,
+						`templateLock: ${template_lock}\n\n`,
 						`attributes-value:`,
 						attributes_value,
 						`\n\n`,

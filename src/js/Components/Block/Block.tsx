@@ -16,6 +16,7 @@ type withSelectProps = {
 	template_lock: string | undefined;
 	moving_block: State["moving_block"];
 	moving_can_be_sibling: boolean;
+	is_selected: ReturnType<Selectors["isSelected"]>;
 };
 
 type ParentProps = {
@@ -36,9 +37,12 @@ const { Fragment } = wp.element;
 export const Block = compose([
 	withState<withStateProps>({ is_open: true, moving_is_over: false }),
 	withSelect<withSelectProps, ParentProps>((select, { id, parent_id }) => {
-		const { getBlock, getTemplateLock, canInsertBlockType } = select(
-			"core/block-editor"
-		);
+		const {
+			getBlock,
+			getTemplateLock,
+			canInsertBlockType,
+			getSelectedBlockClientIds
+		} = select("core/block-editor");
 		const moving_block: State["moving_block"] = select(
 			pr_store
 		).getMovingBlock();
@@ -49,6 +53,7 @@ export const Block = compose([
 			block_type: select("core/blocks").getBlockType(
 				block.name
 			) as import("wordpress__blocks").Block,
+			is_selected: (getSelectedBlockClientIds() as string[]).includes(id),
 			is_moving: select(pr_store).isMoving(),
 			template_lock: getTemplateLock(parent_id),
 			moving_block,
@@ -60,6 +65,7 @@ export const Block = compose([
 	})
 ])((props: Props) => {
 	const {
+		is_selected,
 		is_moving,
 		ancestor_is_closed,
 		moving_is_over,
@@ -92,7 +98,8 @@ export const Block = compose([
 					moving_block.id === id ? "is_moving" : "no-is_moving",
 					can_receive_drop ? "can_receive_drop" : "no-can_receive_drop",
 					moving_is_over ? "moving_is_over" : "no-moving_is_over",
-					can_move ? "can_move" : "no-can_move"
+					can_move ? "can_move" : "no-can_move",
+					is_selected ? "is_selected" : "no-is_selected"
 				]}
 			>
 				<Div classes="block-content_area">

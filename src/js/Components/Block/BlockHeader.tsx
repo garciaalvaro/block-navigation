@@ -9,6 +9,8 @@ type withDispatchProps = {
 	setMovingBlock: Function;
 	finishMoving: Function;
 	moveBlockToPosition: Function;
+	selectBlock: Function;
+	// setSelectedId: ActionCreators["setSelectedId"];
 };
 type withStateProps = {
 	was_open: boolean;
@@ -39,8 +41,9 @@ export const BlockHeader = compose([
 	withDispatch(dispatch => ({
 		setMovingBlock: dispatch(pr_store).setMovingBlock,
 		finishMoving: dispatch(pr_store).finishMoving,
-		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
-		selectBlock: dispatch("core/editor").selectBlock
+		// setSelectedId: dispatch(pr_store).setSelectedId,
+		selectBlock: dispatch("core/block-editor").selectBlock,
+		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
 	})),
 	withState({
 		was_open: true
@@ -48,6 +51,7 @@ export const BlockHeader = compose([
 ])((props => {
 	const {
 		selectBlock,
+		// setSelectedId,
 		toggleMovingsIsOver,
 		moving_block,
 		index,
@@ -70,7 +74,10 @@ export const BlockHeader = compose([
 	return (
 		<Div
 			classes="block-header"
-			onClick={() => selectBlock(block.clientId)}
+			onClick={() => {
+				selectBlock(block.clientId);
+				// setSelectedId(block.clientId);
+			}}
 			draggable={can_move}
 			// onDragEnter={toggleMovingsIsOver}
 			// onDragLeave={toggleMovingsIsOver}

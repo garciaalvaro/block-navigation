@@ -44,13 +44,22 @@ export const ButtonsMove = compose([
 	} = props;
 	const moveTo = (index: number) =>
 		moveBlockToPosition(id, parent_id, parent_id, index);
+	const up_is_disabled = !can_move || index === 0;
+	const down_is_disabled = !can_move || index + 1 === sibling_ids.length;
 
 	return (
 		<Fragment>
 			<Button
-				classes={["button-text", "button-menu"]}
-				disabled={!can_move || index === 0}
+				classes={[
+					"button",
+					"button-menu",
+					up_is_disabled ? "is_disabled" : null
+				]}
 				onClick={() => {
+					if (up_is_disabled) {
+						return;
+					}
+
 					close();
 					moveTo(index - 1);
 				}}
@@ -61,9 +70,16 @@ export const ButtonsMove = compose([
 				<Span>{__("Move Block Up")}</Span>
 			</Button>
 			<Button
-				classes={["button-text", "button-menu"]}
-				disabled={!can_move || index + 1 === sibling_ids.length}
+				classes={[
+					"button",
+					"button-menu",
+					down_is_disabled ? "is_disabled" : null
+				]}
 				onClick={() => {
+					if (down_is_disabled) {
+						return;
+					}
+
 					close();
 					moveTo(index + 1);
 				}}

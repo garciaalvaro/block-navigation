@@ -28,7 +28,7 @@ export const ButtonEdit = withDispatch<withDispatchProps, ParentProps>(
 
 	return (
 		<Button
-			classes={["button-text", "button-menu"]}
+			classes={["button", "button-menu"]}
 			onClick={() => {
 				close();
 				selectBlock(id);

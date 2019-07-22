@@ -1,9 +1,10 @@
 const { __ } = wp.i18n;
 
 export type ColorScheme = {
+	value: string;
 	label: string;
 	type: "light" | "dark";
-	value:
+	name:
 		| "banana"
 		| "melon"
 		| "melocoton"
@@ -18,64 +19,77 @@ export type ColorScheme = {
 		| "ciruela";
 };
 
+// For backwards compatibility we use type-name as value
 export const color_schemes: ColorScheme[] = [
 	{
-		value: "banana",
+		value: "light-banana",
+		name: "banana",
 		label: __("Banana (light)"),
 		type: "light"
 	},
 	{
-		value: "melon",
+		value: "light-melon",
+		name: "melon",
 		label: __("Melón (light)"),
 		type: "light"
 	},
 	{
-		value: "melocoton",
+		value: "light-melocoton",
+		name: "melocoton",
 		label: __("Melocotón (light)"),
 		type: "light"
 	},
 	{
-		value: "coco",
+		value: "light-coco",
+		name: "coco",
 		label: __("Coco (light)"),
 		type: "light"
 	},
 	{
-		value: "mandarina",
+		value: "light-mandarina",
+		name: "mandarina",
 		label: __("Mandarina (light)"),
 		type: "light"
 	},
 	{
-		value: "pistacho",
+		value: "light-pistacho",
+		name: "pistacho",
 		label: __("Pistacho (light)"),
 		type: "light"
 	},
 	{
-		value: "higo",
+		value: "dark-higo",
+		name: "higo",
 		label: __("Higo (dark)"),
 		type: "dark"
 	},
 	{
-		value: "mango",
+		value: "dark-mango",
+		name: "mango",
 		label: __("Mango (dark)"),
 		type: "dark"
 	},
 	{
-		value: "endrina",
+		value: "dark-endrina",
+		name: "endrina",
 		label: __("Endrina (dark)"),
 		type: "dark"
 	},
 	{
-		value: "castana",
+		value: "dark-castana",
+		name: "castana",
 		label: __("Castaña (dark)"),
 		type: "dark"
 	},
 	{
-		value: "naranja",
+		value: "dark-naranja",
+		name: "naranja",
 		label: __("Naranja (dark)"),
 		type: "dark"
 	},
 	{
-		value: "ciruela",
+		value: "dark-ciruela",
+		name: "ciruela",
 		label: __("Ciruela (dark)"),
 		type: "dark"
 	}

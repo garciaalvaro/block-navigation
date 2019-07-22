@@ -2,7 +2,7 @@ import { pr_store } from "utils/data/plugin";
 import { Tabs } from "./Tabs";
 import { Container } from "./Container";
 import { ContentNavigation } from "Components/ContentNavigation/ContentNavigation";
-// import { ContentSettings } from "Components/ContentSettings/ContentSettings";
+import { ContentSettings } from "Components/ContentSettings/ContentSettings";
 
 type withSelectProps = {
 	view: ReturnType<Selectors["getView"]>;
@@ -20,8 +20,7 @@ export const Root = withSelect<withSelectProps>(select => ({
 	return (
 		<Container>
 			<Tabs />
-			<ContentNavigation />
-			{/* {tab_open === "navigation" ? <ContentNavigation /> : <ContentSettings />} */}
+			{view === "navigation" ? <ContentNavigation /> : <ContentSettings />}
 		</Container>
 	);
 });

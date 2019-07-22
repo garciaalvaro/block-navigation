@@ -6,14 +6,14 @@ export const icons: Record<
 > = {
 	copy: (
 		/* https://material.io/tools/icons/?icon=file_copy */
-		<svg width="18" height="18" viewBox="0 0 24 24">
+		<svg width="17" height="17" viewBox="0 0 24 24">
 			<path fill="none" d="M0 0h24v24H0z" />
 			<path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm-1 4l6 6v10c0 1.1-.9 2-2 2H7.99C6.89 23 6 22.1 6 21l.01-14c0-1.1.89-2 1.99-2h7zm-1 7h5.5L14 6.5V12z" />
 		</svg>
 	),
 	log: (
 		/* https://material.io/tools/icons/?icon=subtitles */
-		<svg width="18" height="18" viewBox="0 0 24 24">
+		<svg width="17" height="17" viewBox="0 0 24 24">
 			<path d="M0 0h24v24H0z" fill="none" />
 			<path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H10v-2h10v2z" />
 		</svg>

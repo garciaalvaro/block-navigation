@@ -18,7 +18,7 @@ export const ButtonCopyId: React.ComponentType<Props> = props => {
 
 	return (
 		<Button
-			classes={["button-text", "button-menu", "button-copy_clientId"]}
+			classes={["button", "button-menu", "button-copy_clientId"]}
 			onClick={() => {
 				close();
 				copy(id);

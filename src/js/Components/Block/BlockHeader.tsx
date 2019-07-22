@@ -93,7 +93,7 @@ export const BlockHeader = compose([
 							if (was_open) {
 								open();
 							}
-							l(123);
+
 							finishMoving();
 					  }
 			}

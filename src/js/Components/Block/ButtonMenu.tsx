@@ -15,7 +15,6 @@ type ParentProps = {
 	block_type: import("wordpress__blocks").Block;
 	can_move: boolean;
 	index: number;
-	close: Function;
 };
 
 type Props = ParentProps & withStateProps;
@@ -27,6 +26,7 @@ export const ButtonMenu = withState<withStateProps>({
 })((props: Props) => {
 	const { setState, is_open } = props;
 	const toggle = () => setState({ is_open: !is_open });
+	const close = () => setState({ is_open: false });
 
 	return (
 		<Popover
@@ -42,7 +42,7 @@ export const ButtonMenu = withState<withStateProps>({
 					arrowColor={"#111"}
 					arrowSize={6}
 				>
-					<Menu {...props} />
+					<Menu {...props} close={close} />
 				</ArrowContainer>
 			)}
 		>

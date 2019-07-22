@@ -27,7 +27,7 @@ export const ButtonCopyId: React.ComponentType<Props> = props => {
 			<Div classes="menu-icon">
 				<Icon icon="copy" />
 			</Div>
-			<Span>{__("Block clientId - Copy to the Clipboard")}</Span>
+			<Span>{__("Copy Block clientId")}</Span>
 		</Button>
 	);
 };

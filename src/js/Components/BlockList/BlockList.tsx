@@ -1,20 +1,19 @@
-import { Div } from "utils/components";
 import { Block } from "Components/Block/Block";
 
-type withSelect = {
+type Props = {
 	ids: string[];
 	level: number;
+	ancestor_is_closed: boolean;
 	id?: string;
 };
-type Props = withSelect;
 
-const { withSelect } = wp.data;
+const { Fragment } = wp.element;
 
 export const BlockList: React.ComponentType<Props> = props => {
-	const { id: parent_id, ids, level } = props;
+	const { id: parent_id, ids, level, ancestor_is_closed } = props;
 
 	return (
-		<Div classes={["block-list"]}>
+		<Fragment>
 			{ids.map((id, index) => (
 				<Block
 					key={id}
@@ -22,8 +21,9 @@ export const BlockList: React.ComponentType<Props> = props => {
 					parent_id={parent_id || ""}
 					level={level}
 					index={index}
+					ancestor_is_closed={ancestor_is_closed}
 				/>
 			))}
-		</Div>
+		</Fragment>
 	);
 };

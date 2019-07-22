@@ -1,10 +1,9 @@
 export type Selectors = {
-	isDropAbove: Selector<boolean, string>;
-	getTabOpen: Selector<State["tab_open"]>;
+	getView: Selector<State["view"]>;
 	getMovingBlock: Selector<State["moving_block"]>;
 	getMovingType: Selector<State["moving_type"]>;
 	getColorScheme: Selector<State["color_scheme"]>;
-	isMoving: Selector<State["is_moving"]>;
+	isMoving: Selector<boolean>;
 	//
 	// getSettings: Selector<State["settings"]>;
 	// isDevModeActive: Selector<State["dev_mode_active"]>;
@@ -25,12 +24,11 @@ export type Selectors = {
 };
 
 export const selectors = <Selectors>{
-	isDropAbove: (state, id) => state.drop_above === id,
-	getTabOpen: state => state.tab_open,
+	getView: state => state.view,
 	getMovingType: state => state.moving_type,
 	getMovingBlock: state => state.moving_block,
 	getColorScheme: state => state.color_scheme,
-	isMoving: state => state.is_moving
+	isMoving: state => state.moving_block.id !== ""
 	//
 	// getIsMoving: state => state.moving_type !== null,
 	// getSettings: state => state.settings,

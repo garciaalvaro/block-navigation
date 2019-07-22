@@ -1,7 +1,8 @@
 export type ActionCreators = {
 	finishMoving: ActionCreator<"FINISH_MOVING">;
 	setMovingBlock: ActionCreator<"SET_MOVING_BLOCK", State["moving_block"]>;
-	openTab: ActionCreator<"OPEN_TAB", State["tab_open"]>;
+	setMovingType: ActionCreator<"SET_MOVING_TYPE", State["moving_type"]>;
+	setView: ActionCreator<"SET_VIEW", State["view"]>;
 };
 
 export const actions = <ActionCreators>{
@@ -12,8 +13,12 @@ export const actions = <ActionCreators>{
 		type: "SET_MOVING_BLOCK",
 		payload
 	}),
-	openTab: payload => ({
-		type: "OPEN_TAB",
+	setMovingType: payload => ({
+		type: "SET_MOVING_TYPE",
+		payload
+	}),
+	setView: payload => ({
+		type: "SET_VIEW",
 		payload
 	})
 };

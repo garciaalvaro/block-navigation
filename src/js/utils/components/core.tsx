@@ -11,7 +11,7 @@ export type HTMLProps = ComponentProps & {
 	html_tag: string;
 };
 
-type IconProps = { icon: string };
+type IconProps = { icon: keyof typeof icons };
 
 export const Icon: React.ComponentType<IconProps> = props =>
 	icons[props.icon] ? icons[props.icon] : null;

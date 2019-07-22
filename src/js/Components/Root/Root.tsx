@@ -1,39 +1,27 @@
 import { pr_store } from "utils/data/plugin";
-import { Div } from "utils/components";
 import { Tabs } from "./Tabs";
+import { Container } from "./Container";
 import { ContentNavigation } from "Components/ContentNavigation/ContentNavigation";
 // import { ContentSettings } from "Components/ContentSettings/ContentSettings";
 
-type withSelect = {
-	tab_open: ReturnType<Selectors["getTabOpen"]>;
-	is_moving: ReturnType<Selectors["isMoving"]>;
-	color_scheme: ReturnType<Selectors["getColorScheme"]>;
+type withSelectProps = {
+	view: ReturnType<Selectors["getView"]>;
 };
-type Props = withSelect;
+
+type Props = withSelectProps;
 
 const { withSelect } = wp.data;
 
-export const Root = withSelect<withSelect>(select => {
-	const { getTabOpen, isMoving, getColorScheme } = select(pr_store);
-
-	return {
-		tab_open: getTabOpen(),
-		is_moving: isMoving(),
-		color_scheme: getColorScheme()
-	};
-})((props => {
-	const { color_scheme, tab_open, is_moving } = props;
-	const classes = [
-		`color_scheme-type-${color_scheme.type}`,
-		`color_scheme-name-${color_scheme.value}`,
-		is_moving ? "is_moving" : "no-is_moving"
-	];
+export const Root = withSelect<withSelectProps>(select => ({
+	view: select(pr_store).getView()
+}))((props: Props) => {
+	const { view } = props;
 
 	return (
-		<Div id="container" classes={classes}>
+		<Container>
 			<Tabs />
 			<ContentNavigation />
 			{/* {tab_open === "navigation" ? <ContentNavigation /> : <ContentSettings />} */}
-		</Div>
+		</Container>
 	);
-}) as React.ComponentType<Props>);
+});

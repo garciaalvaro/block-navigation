@@ -87,7 +87,7 @@ export const ButtonBlockData = withSelect<withSelectProps, ParentProps>(
 			<Div classes="menu-icon">
 				<Icon icon="log" />
 			</Div>
-			<Span>{__("Block Data - Log to the Console")}</Span>
+			<Span>{__("Console log Block Data")}</Span>
 		</Button>
 	);
 });

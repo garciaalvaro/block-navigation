@@ -1,4 +1,5 @@
 import { Block } from "Components/Block/Block";
+import { DropAreaEndOfList } from "Components/Block/DropAreaEndOfList";
 
 type Props = {
 	ids: string[];
@@ -24,6 +25,11 @@ export const BlockList: React.ComponentType<Props> = props => {
 					ancestor_is_closed={ancestor_is_closed}
 				/>
 			))}
+			<DropAreaEndOfList
+				parent_id={parent_id}
+				index={ids.length}
+				level={level}
+			/>
 		</Fragment>
 	);
 };

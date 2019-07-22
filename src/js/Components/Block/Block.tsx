@@ -3,6 +3,7 @@ import { BlockHeader } from "./BlockHeader";
 import { ButtonMenu } from "./ButtonMenu";
 import { BlockList } from "Components/BlockList/BlockList";
 import { pr_store } from "utils/data/plugin";
+import { DropArea } from "./DropArea";
 
 type withStateProps = {
 	is_open: boolean;
@@ -17,11 +18,6 @@ type withSelectProps = {
 	moving_can_be_sibling: boolean;
 };
 
-type withDispatchProps = {
-	moveBlockToPosition: Function;
-	finishMoving: Function;
-};
-
 type ParentProps = {
 	id: string;
 	parent_id: string;
@@ -31,10 +27,9 @@ type ParentProps = {
 
 type Props = withStateProps &
 	withSelectProps &
-	withDispatchProps &
 	ParentProps & { setState(obj: any): void };
 
-const { withSelect, withDispatch } = wp.data;
+const { withSelect } = wp.data;
 const { compose, withState } = wp.compose;
 const { Fragment } = wp.element;
 
@@ -62,17 +57,11 @@ export const Block = compose([
 				parent_id
 			)
 		};
-	}),
-	withDispatch<withDispatchProps>(dispatch => ({
-		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
-		finishMoving: dispatch(pr_store).finishMoving
-	}))
+	})
 ])((props: Props) => {
 	const {
-		finishMoving,
 		is_moving,
 		ancestor_is_closed,
-		moveBlockToPosition,
 		moving_is_over,
 		index,
 		moving_block,
@@ -100,69 +89,55 @@ export const Block = compose([
 					"block",
 					`level-${level}`,
 					ancestor_is_closed ? "ancestor_is_closed" : null,
-					// has_children ? (is_open ? "list-is_open" : "list-is_closed") : null,
 					moving_block.id === id ? "is_moving" : "no-is_moving",
 					can_receive_drop ? "can_receive_drop" : "no-can_receive_drop",
 					moving_is_over ? "moving_is_over" : "no-moving_is_over",
 					can_move ? "can_move" : "no-can_move"
 				]}
 			>
-				<BlockHeader
-					block={block}
-					block_type={block_type}
-					close={() => setState({ is_open: false })}
-					open={() => setState({ is_open: true })}
-					can_move={can_move}
-					can_receive_drop={can_receive_drop}
-					template_lock={template_lock}
-					parent_id={parent_id}
-					index={index}
-					toggleMovingsIsOver={() =>
-						setState({ moving_is_over: !moving_is_over })
-					}
-				/>
-
-				{is_moving && moving_block.id !== id && (
-					<Div
-						classes="drop"
-						onDragEnter={() => setState({ moving_is_over: !moving_is_over })}
-						onDragLeave={() => setState({ moving_is_over: !moving_is_over })}
-						onDrop={() => {
-							setState({ moving_is_over: false });
-							finishMoving();
-
-							if (can_receive_drop) {
-								moveBlockToPosition(
-									moving_block.id,
-									moving_block.parent_id,
-									parent_id,
-									moving_block.parent_id === parent_id &&
-										moving_block.index < index
-										? index - 1
-										: index
-								);
-							}
-						}}
+				<Div classes="block-content_area">
+					<BlockHeader
+						block={block}
+						block_type={block_type}
+						close={() => setState({ is_open: false })}
+						open={() => setState({ is_open: true })}
+						can_move={can_move}
+						can_receive_drop={can_receive_drop}
+						template_lock={template_lock}
+						parent_id={parent_id}
+						index={index}
+						toggleMovingsIsOver={() =>
+							setState({ moving_is_over: !moving_is_over })
+						}
+					/>
+					{has_children && (
+						<Button
+							classes={["button-icon", "button-toggle_list"]}
+							onClick={() => setState({ is_open: !is_open })}
+						>
+							<Icon icon={is_open ? "collapse" : "expand"} />
+						</Button>
+					)}
+					<ButtonMenu
+						id={id}
+						parent_id={parent_id}
+						template_lock={template_lock}
+						block={block}
+						block_type={block_type}
+						can_move={can_move}
+						index={index}
+					/>
+				</Div>
+				{is_moving && moving_block.id !== id && can_receive_drop && (
+					<DropArea
+						cancelMovingIsOver={() => setState({ moving_is_over: false })}
+						toggleMovingIsOver={() =>
+							setState({ moving_is_over: !moving_is_over })
+						}
+						index={index}
+						parent_id={parent_id}
 					/>
 				)}
-				{has_children && (
-					<Button
-						classes={["button-icon", "button-toggle_list"]}
-						onClick={() => setState({ is_open: !is_open })}
-					>
-						<Icon icon={is_open ? "collapse" : "expand"} />
-					</Button>
-				)}
-				<ButtonMenu
-					id={id}
-					parent_id={parent_id}
-					template_lock={template_lock}
-					block={block}
-					block_type={block_type}
-					can_move={can_move}
-					index={index}
-					close={close}
-				/>
 			</Div>
 			{has_children && (
 				<BlockList

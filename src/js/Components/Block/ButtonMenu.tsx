@@ -1,20 +1,13 @@
 import { Icon, Button } from "utils/components";
 import Popover, { ArrowContainer } from "react-tiny-popover";
-import { Menu } from "./Menu";
+import { Menu, MenuProps } from "./Menu";
 
 type withStateProps = {
 	is_open: boolean;
 };
 
-type ParentProps = {
+type ParentProps = MenuProps & {
 	setState(obj: any): void;
-	id: string;
-	parent_id: string;
-	template_lock: string | undefined;
-	block: import("wordpress__blocks").BlockInstance;
-	block_type: import("wordpress__blocks").Block;
-	can_move: boolean;
-	index: number;
 };
 
 type Props = ParentProps & withStateProps;
@@ -46,7 +39,13 @@ export const ButtonMenu = withState<withStateProps>({
 				</ArrowContainer>
 			)}
 		>
-			<Button onClick={toggle} classes={["button-toggle_menu", "button-icon"]}>
+			<Button
+				onClick={(e: any) => {
+					e.stopPropagation();
+					toggle();
+				}}
+				classes={["button-toggle_menu", "button-icon"]}
+			>
 				<Icon icon="menu" />
 			</Button>
 		</Popover>

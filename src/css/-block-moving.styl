@@ -5,36 +5,32 @@
 
 +prefix-classes('bn-')
 
-	for num in (0..10)
-		.level-{num}:after
-		.level-{num} .block-header
-			left (num*20)px
-
+	.moving_type-by_click .can_receive_drop.no-is_moving:hover
 	.moving_is_over.can_receive_drop.no-is_moving
-		&:before
-		.block-header
-		~ .block:before
-		~ .block .block-header
+		.block-header-container
+		~ .block .block-header-container
 			transform translate3d(0, 4em, 0)
 
 	.moving
-		.block:before
-		.block-header
-			transition transform .3s $e_standard
+		.no-is_moving.no-moving_is_over.can_receive_drop .block-header
+			margin-top -1px
+			border-top 1px dashed var(--secondary_color_2)
 
-		// .is_moving ~ .block
-		// 	animation qqq .3s
+		.block-header-container
+			transition transform .3s $e_deceleration
+
+		.moving_is_over .block-header-container
+		&.moving_type-by_click .can_receive_drop:hover .block-header-container
+			transition transform .3s .15s $e_deceleration
+
+	#bn-container
+		.is_moving + .block
+			.block-header
+				border-top-color var(--secondary_color_1)
+			&:before
+				background-color var(--secondary_color_1)
 
 	.block.is_moving
 		height 0
 		visibility hidden
 		transition height 0s .001s, visibility 0s .001s
-
-// @keyframes qqq {
-// 	0% {
-// 		transform translate3d(0, 4em, 0)
-// 	}
-// 	100% {
-// 		transform translate3d(0, 4em, 0)
-// 	}
-// }

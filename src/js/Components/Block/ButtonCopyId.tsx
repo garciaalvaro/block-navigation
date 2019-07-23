@@ -1,19 +1,10 @@
 import { Button, Div, Icon, Span } from "utils/components";
+import { MenuProps } from "./Menu";
 import copy from "copy-text-to-clipboard";
-
-type Props = {
-	id: string;
-	parent_id: string;
-	template_lock: string | undefined;
-	block: import("wordpress__blocks").BlockInstance;
-	can_move: boolean;
-	index: number;
-	close: Function;
-};
 
 const { __ } = wp.i18n;
 
-export const ButtonCopyId: React.ComponentType<Props> = props => {
+export const ButtonCopyId: React.ComponentType<MenuProps> = props => {
 	const { id, close } = props;
 
 	return (

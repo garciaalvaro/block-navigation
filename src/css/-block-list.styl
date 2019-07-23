@@ -1,0 +1,16 @@
+/*
+ * Block Header
+ */
+
+
++prefix-classes('bn-')
+
+	for num in (1..3)
+		.level-{num}:before
+		.level-{num} .block-header
+			margin-left (num*20)px
+
+	for num in (4..30)
+		.level-{num}:before
+		.level-{num} .block-header
+			margin-left (60 - 30 + num*10)px

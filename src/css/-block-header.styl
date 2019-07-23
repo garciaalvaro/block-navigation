@@ -5,57 +5,41 @@
 
 +prefix-classes('bn-')
 
+	.block-header-container
 	.block-header
-		z-index 10
 		position absolute
 		top 0
 		left 0
 		right 0
 		bottom 0
-		flex 1
-		display flex
-		align-items center
-		padding-left 18px
-		padding-right 7px
-		line-height 4
-		// overflow hidden
-		border-left 1px solid var(--secondary_color_2)
+
+	.block-header-container
 		background-color var(--background_color)
 
-		&:before
-			// content ""
+	.block-header
+		line-height 4
+		padding-left 18px
+		padding-right 7px
+		display flex
+		align-items center
+		border-left 1px solid var(--secondary_color_2)
+		transition background-color .2s $e_standard
+		// transition border-top-width 0s .001s, margin-top 0s .001s, background-color .2s $e_standard
+
+		&:after
+			content ""
 			position absolute
 			top 0
-			left -1111%
+			left 0
 			right 0
 			bottom 0
-			background #111
-			z-index -1
 
-		.is_selected &
+		.no-moving .is_selected &
 			background-color var(--primary_color)
+			color var(--color_1)
 
 		.level-0 &
 			border-left none
-
-		.is_moving &:before
-			content normal
-
-		// &:before
-		// 	background: red;
-		// 	z-index: -2;
-		// &:after
-		// 	z-index: -1;
-		// 	background: #111;
-		// 	left -222%
-		// &:before
-		// &:after
-		// 	content ""
-		// 	position absolute
-		// 	top -100%
-		// 	left 0
-		// 	width 100%
-		// 	height 100%
 
 	.block-image-container
 		width 2em
@@ -65,6 +49,7 @@
 		border-radius 50%
 		overflow hidden
 		border 1px solid
+		margin-right 10px
 
 	.block-image
 		position absolute
@@ -87,8 +72,13 @@
 			content "|"
 			margin 0 10px
 
-	.block-title + button
-	.block-content + button
+	.block-text
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display flex
+
+	.block-text + button
 		margin-left auto
 
 	.block-icon

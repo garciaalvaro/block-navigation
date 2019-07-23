@@ -1,24 +1,15 @@
 import { Div, Button, Icon, Span } from "utils/components";
+import { MenuProps } from "./Menu";
 
 type withDispatchProps = {
 	openGeneralSidebar: Function;
 	selectBlock: Function;
 };
 
-type ParentProps = {
-	id: string;
-	parent_id: string;
-	template_lock: string | undefined;
-	block: import("wordpress__blocks").BlockInstance;
-	can_move: boolean;
-	index: number;
-	close: Function;
-};
-
 const { __ } = wp.i18n;
 const { withDispatch } = wp.data;
 
-export const ButtonEdit = withDispatch<withDispatchProps, ParentProps>(
+export const ButtonEdit = withDispatch<withDispatchProps, MenuProps>(
 	dispatch => ({
 		openGeneralSidebar: dispatch("core/edit-post").openGeneralSidebar,
 		selectBlock: dispatch("core/editor").selectBlock

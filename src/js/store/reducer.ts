@@ -13,9 +13,12 @@ const initial_state: State = {
 	}
 };
 
-export const reducer = (state = initial_state, action) => {
+export const reducer = (
+	state = initial_state,
+	action: ReturnType<ValueOf<ActionCreators>>
+) => {
 	switch (action.type) {
-		case "FINISH_MOVING": {
+		case "RESET_MOVING": {
 			return {
 				...state,
 				moving_block: {

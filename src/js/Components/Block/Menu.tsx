@@ -15,10 +15,14 @@ type ParentProps = {
 	parent_id: string;
 	template_lock: string | undefined;
 	block: import("wordpress__blocks").BlockInstance;
+	block_type: import("wordpress__blocks").Block;
 	can_move: boolean;
 	index: number;
 	close: Function;
+	close_children: Function;
 };
+
+export type MenuProps = withSelectProps & ParentProps;
 
 const { withSelect } = wp.data;
 

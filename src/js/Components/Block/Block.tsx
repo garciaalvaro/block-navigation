@@ -3,11 +3,10 @@ import { BlockHeader } from "./BlockHeader";
 import { ButtonMenu } from "./ButtonMenu";
 import { BlockList } from "Components/BlockList/BlockList";
 import { pr_store } from "utils/data/plugin";
-import { DropArea } from "./DropArea";
+import { withDragDrop, withDragDropProps } from "./withDragDrop";
 
 type withStateProps = {
 	is_open: boolean;
-	moving_is_over: boolean;
 };
 
 type withSelectProps = {
@@ -15,8 +14,8 @@ type withSelectProps = {
 	block_type: import("wordpress__blocks").Block;
 	template_lock: string | undefined;
 	moving_block: State["moving_block"];
-	moving_can_be_sibling: boolean;
-	is_selected: ReturnType<Selectors["isSelected"]>;
+	can_receive_drop: boolean;
+	is_selected: boolean;
 };
 
 type ParentProps = {
@@ -24,9 +23,11 @@ type ParentProps = {
 	parent_id: string;
 	level: number;
 	index: number;
+	ancestor_is_closed: boolean;
 };
 
-type Props = withStateProps &
+type Props = withDragDropProps &
+	withStateProps &
 	withSelectProps &
 	ParentProps & { setState(obj: any): void };
 
@@ -35,7 +36,7 @@ const { compose, withState } = wp.compose;
 const { Fragment } = wp.element;
 
 export const Block = compose([
-	withState<withStateProps>({ is_open: true, moving_is_over: false }),
+	withState<withStateProps>({ is_open: true }),
 	withSelect<withSelectProps, ParentProps>((select, { id, parent_id }) => {
 		const {
 			getBlock,
@@ -47,6 +48,10 @@ export const Block = compose([
 			pr_store
 		).getMovingBlock();
 		const block: import("wordpress__blocks").BlockInstance = getBlock(id);
+		const moving_block_can_be_sibling = canInsertBlockType(
+			moving_block.block_name,
+			parent_id
+		);
 
 		return {
 			block,
@@ -54,24 +59,27 @@ export const Block = compose([
 				block.name
 			) as import("wordpress__blocks").Block,
 			is_selected: (getSelectedBlockClientIds() as string[]).includes(id),
-			is_moving: select(pr_store).isMoving(),
+			moving: select(pr_store).isMoving(),
 			template_lock: getTemplateLock(parent_id),
 			moving_block,
-			moving_can_be_sibling: canInsertBlockType(
-				moving_block.block_name,
-				parent_id
-			)
+			can_receive_drop:
+				moving_block.template_lock === "insert"
+					? moving_block.parent_id === parent_id
+					: moving_block_can_be_sibling
 		};
-	})
+	}),
+	withDragDrop
 ])((props: Props) => {
 	const {
+		onDragEnterHandler,
+		onDragLeaveHandler,
+		onDropHandler,
 		is_selected,
-		is_moving,
+		can_receive_drop,
 		ancestor_is_closed,
 		moving_is_over,
 		index,
 		moving_block,
-		moving_can_be_sibling,
 		parent_id,
 		id,
 		block,
@@ -83,14 +91,13 @@ export const Block = compose([
 	} = props;
 	const has_children = !!block.innerBlocks.length;
 	const can_move = template_lock !== "all";
-	const can_receive_drop =
-		moving_block.template_lock === "insert"
-			? moving_block.parent_id === parent_id
-			: moving_can_be_sibling;
 
 	return (
 		<Fragment>
 			<Div
+				onDragEnter={onDragEnterHandler}
+				onDragLeave={onDragLeaveHandler}
+				onDrop={onDropHandler}
 				classes={[
 					"block",
 					`level-${level}`,
@@ -102,40 +109,25 @@ export const Block = compose([
 					is_selected ? "is_selected" : "no-is_selected"
 				]}
 			>
-				<Div classes="block-content_area">
-					<BlockHeader
-						block={block}
-						block_type={block_type}
-						close={() => setState({ is_open: false })}
-						open={() => setState({ is_open: true })}
-						can_move={can_move}
-						can_receive_drop={can_receive_drop}
-						template_lock={template_lock}
-						parent_id={parent_id}
-						index={index}
-						toggleMovingsIsOver={() =>
-							setState({ moving_is_over: !moving_is_over })
-						}
-					/>
-					{has_children && (
-						<Button
-							classes={["button-icon", "button-toggle_list"]}
-							onClick={() => setState({ is_open: !is_open })}
-						>
-							<Icon icon={is_open ? "collapse" : "expand"} />
-						</Button>
-					)}
-					<ButtonMenu
-						id={id}
-						parent_id={parent_id}
-						template_lock={template_lock}
-						block={block}
-						block_type={block_type}
-						can_move={can_move}
-						index={index}
-					/>
-				</Div>
-				{is_moving && moving_block.id !== id && can_receive_drop && (
+				<BlockHeader
+					block={block}
+					block_type={block_type}
+					close={() => setState({ is_open: false })}
+					open={() => setState({ is_open: true })}
+					can_move={can_move}
+					can_receive_drop={can_receive_drop}
+					template_lock={template_lock}
+					parent_id={parent_id}
+					index={index}
+					id={id}
+					has_children={has_children}
+					is_open={is_open}
+					// toggleMovingsIsOver={() =>
+					// 	setState({ moving_is_over: !moving_is_over })
+					// }
+				/>
+
+				{/* {is_moving && moving_block.id !== id && can_receive_drop && (
 					<DropArea
 						cancelMovingIsOver={() => setState({ moving_is_over: false })}
 						toggleMovingIsOver={() =>
@@ -144,7 +136,7 @@ export const Block = compose([
 						index={index}
 						parent_id={parent_id}
 					/>
-				)}
+				)} */}
 			</Div>
 			{has_children && (
 				<BlockList

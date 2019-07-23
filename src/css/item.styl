@@ -1,209 +1,157 @@
-/*
- * Block Header
- */
+// /*
+//  * Block Header
+//  */
 
 
-#bn-container
-	overflow-y auto
-	padding-bottom 150px
+// #bn-container
+// 	overflow-y auto
+// 	padding-bottom 150px
 
-#bn-navigation
-	padding-top 10px
+// #bn-navigation
+// 	padding-top 10px
+// 	z-index 1
 
-+prefix-classes('bn-')
+// +prefix-classes('bn-')
 
-	.no-can_move
-		cursor default
-	.can_move .block-header
-		// https://stackoverflow.com/a/18294634 | CC BY-SA 3.0
-		cursor move // fallback if grab cursor is unsupported
-		cursor grab
-		cursor -moz-grab
-		cursor -webkit-grab
+// 	.no-can_move
+// 		cursor default
+// 	.can_move .block-header
+// 		// https://stackoverflow.com/a/18294634 | CC BY-SA 3.0
+// 		cursor move // fallback if grab cursor is unsupported
+// 		cursor grab
+// 		cursor -moz-grab
+// 		cursor -webkit-grab
 
-	.is_moving
-		.block-content_area
-			transition transform .3s $e_standard
+// 	.moving
+// 		.block-header-container
+// 			transition transform .3s $e_standard
 
-	.block.is_moving
-		transition height 0s .001s
-		height 0
+// 	.is_moving
+// 		transition height 0s .001s
+// 		height 0
 
-		.button-toggle_menu
-		.button-toggle_list
-			display none
+// 		.button-toggle_menu
+// 		.button-toggle_list
+// 			display none
 
-	div.drop_area_end_of_list
-		height 4em
-		margin-bottom -4em
+// 	.block
+// 		height 4em
 
-		.block-drop_area
-			z-index 2
+// 		&:before
+// 			z-index -1
 
-		&:before
-			background-color var(--secondary_color_1)
-		&:after
-			background-color rgba(0,0,0,0.2)
-		&:before
-		&:after
-			z-index 1
-			transform scaleY(0)
-			transform-origin bottom
+// 	.block-header-container
+// 		padding-right 7px
+// 		display flex
+// 		background-color var(--background_color)
 
-		&.moving_is_over:before
-		&.moving_is_over:after
-			transition transform .3s $e_standard
-			transform scaleY(1)
+// 		.can_receive_drop.no-is_moving.no-moving_is_over
+// 			border-top 1px dashed var(--secondary_color_2)
 
-	.block
-		height 4em
+// 	.block:before
+// 		content ""
+// 		background-color var(--secondary_color_1)
 
-	.block-content_area
-		padding-right 7px
-		display flex
-		background-color var(--background_color)
-		position absolute
-		top 0
-		left 0
-		right 0
-		bottom 0
+// 	.block-header-container
+// 	.block:before
+// 		position absolute
+// 		top 0
+// 		left 0
+// 		right 0
+// 		bottom 0
 
-		.is_selected &
-			background-color var(--primary_color)
+// 	for num in (1..10)
+// 		.level-{num}.block:before
+// 		.level-{num}.drop_area_end_of_list
+// 		.level-{num} .block-header
+// 			left (num*20)px
 
-		&:before
-			border-top 1px dashed var(--secondary_color_2)
-			z-index 1
+// 	.moving_is_over.can_receive_drop
+// 		.block-header-container
+// 		~ .block .block-header-container
+// 			transform translate3d(0, 4em, 0)
 
-		.can_receive_drop.no-is_moving.no-moving_is_over &:before
-			content ""
+// 	.drop_area_end_of_list.moving_is_over
+// 		~ .block .block-header-container
+// 			transform translate3d(0, 4em, 0)
 
-	.drop_area_end_of_list:before
-	.drop_area_end_of_list:after
-	.can_receive_drop:before
-		content ""
-	.block:before
-		background-color var(--secondary_color_1)
+// 	.ancestor_is_closed
+// 		display none
 
-	.block-content_area:before
-	.drop_area_end_of_list:before
-	.drop_area_end_of_list:after
-	.block:before
-	.block-drop_area
-	// .block-content_area
-		position absolute
-		top 0
-		left 0
-		width 100%
-		height 100%
+// 	.drop_area_end_of_list
+// 	.block
+// 		position relative
 
-	.block-drop_area
-	.block-content_area
-		z-index 1
+// 	.block-list
+// 		margin-left 20px
 
-	.menu-icon
-		display flex
-		margin-right: 5px;
-		width: 24px;
-		justify-content: center;
+// 		#bn-navigation > &
+// 			margin-left 0
 
-	.menu
-		background-color var(--background_color)
-		border 1px solid var(--color_02)
-		padding 5px 0
-		max-width 300px
+// 	.block-header
+// 		flex 1
+// 		// background-color var(--background_color)
+// 		position relative
+// 		display flex
+// 		align-items center
+// 		padding-left 18px
+// 		// margin-left -20px
+// 		padding-right 5px
+// 		//
+// 		line-height 4
+// 		display: flex;
+// 		align-items: center;
+// 		overflow hidden
+// 		border-left 1px solid var(--secondary_color_2)
 
-	for num in (1..10)
-		.level-{num} .block-content_area
-			padding-left (num*20)px
-		.level-{num}.block:before
-		.level-{num}.drop_area_end_of_list
-		.level-{num} .block-content_area:before
-			left (num*20)px
+// 		.is_selected &
+// 			background-color var(--primary_color)
 
-	.moving_is_over.can_receive_drop
-		.block-content_area
-		~ .block .block-content_area
-			transform translate3d(0, 4em, 0)
+// 		::selection
+// 			background transparent
 
-	.drop_area_end_of_list.moving_is_over
-		~ .block .block-content_area
-			transform translate3d(0, 4em, 0)
+// 		.level-0 &
+// 			border-left none
 
-	.ancestor_is_closed
-		display none
+// 	.block-image-container
+// 		width 2em
+// 		height 2em
+// 		object-fit cover
+// 		position relative
+// 		border-radius 50%
+// 		overflow hidden
+// 		border 1px solid
 
-	.drop_area_end_of_list
-	.block
-		position relative
+// 	.block-image
+// 		position absolute
+// 		top 0
+// 		left 0
+// 		width 100%
+// 		height 100%
 
-	.block-list
-		margin-left 20px
+// 	.content_type-image
+// 		display: flex;
+// 		align-items: center;
+// 		margin-left 10px
 
-		#bn-navigation > &
-			margin-left 0
+// 	.content_type-text
+// 		overflow: hidden;
+// 		text-overflow: ellipsis;
+// 		white-space: nowrap;
 
-	.block-header
-		flex 1
-		// background-color var(--background_color)
-		position relative
-		display flex
-		align-items center
-		padding-left 18px
-		// margin-left -20px
-		padding-right 5px
-		//
-		line-height 4
-		display: flex;
-		align-items: center;
-		overflow hidden
-		border-left 1px solid var(--secondary_color_2)
+// 		&:before
+// 			content "|"
+// 			margin 0 10px
 
-		::selection
-			background transparent
+// 	.block-icon
+// 		margin-right 10px
+// 		display flex
 
-		.level-0 &
-			border-left none
+// 		svg
+// 			width 22px
+// 			height 22px
 
-	.block-image-container
-		width 2em
-		height 2em
-		object-fit cover
-		position relative
-		border-radius 50%
-		overflow hidden
-		border 1px solid
-
-	.block-image
-		position absolute
-		top 0
-		left 0
-		width 100%
-		height 100%
-
-	.content_type-image
-		display: flex;
-		align-items: center;
-		margin-left 10px
-
-	.content_type-text
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-
-		&:before
-			content "|"
-			margin 0 10px
-
-	.block-icon
-		margin-right 10px
-		display flex
-
-		svg
-			width 22px
-			height 22px
-
-	.is_over_item
-		background red
-	.has_item_over
-		background green
+// 	.is_over_item
+// 		background red
+// 	.has_item_over
+// 		background green

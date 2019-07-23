@@ -1,0 +1,40 @@
+/*
+ * Block Header
+ */
+
+
++prefix-classes('bn-')
+
+	for num in (0..10)
+		.level-{num}:after
+		.level-{num} .block-header
+			left (num*20)px
+
+	.moving_is_over.can_receive_drop.no-is_moving
+		&:before
+		.block-header
+		~ .block:before
+		~ .block .block-header
+			transform translate3d(0, 4em, 0)
+
+	.moving
+		.block:before
+		.block-header
+			transition transform .3s $e_standard
+
+		// .is_moving ~ .block
+		// 	animation qqq .3s
+
+	.block.is_moving
+		height 0
+		visibility hidden
+		transition height 0s .001s, visibility 0s .001s
+
+// @keyframes qqq {
+// 	0% {
+// 		transform translate3d(0, 4em, 0)
+// 	}
+// 	100% {
+// 		transform translate3d(0, 4em, 0)
+// 	}
+// }

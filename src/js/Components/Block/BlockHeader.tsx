@@ -1,6 +1,7 @@
-import { Div, Span } from "utils/components";
+import { Div, Span, Button, Icon } from "utils/components";
 import { pr_store } from "utils/data/plugin";
 import { BlockContent } from "./BlockContent";
+import { ButtonMenu } from "./ButtonMenu";
 
 type withSelectProps = {
 	moving_block: State["moving_block"];
@@ -22,7 +23,7 @@ type ParentProps = {
 	block_type: import("wordpress__blocks").Block;
 	close: Function;
 	open: Function;
-	toggleMovingsIsOver: Function;
+	// toggleMovingsIsOver: Function;
 	can_move: boolean;
 	can_receive_drop: boolean;
 	template_lock: string | undefined;
@@ -32,7 +33,7 @@ type Props = withSelectProps & withDispatchProps & withStateProps & ParentProps;
 
 const { compose, withState } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
-const { Icon } = wp.components;
+const WpIcon = wp.components.Icon;
 
 export const BlockHeader = compose([
 	withSelect<withSelectProps, ParentProps>((select, { block }) => ({
@@ -50,6 +51,9 @@ export const BlockHeader = compose([
 	})
 ])((props => {
 	const {
+		id,
+		has_children,
+		is_open,
 		selectBlock,
 		// setSelectedId,
 		toggleMovingsIsOver,
@@ -76,23 +80,8 @@ export const BlockHeader = compose([
 			classes="block-header"
 			onClick={() => {
 				selectBlock(block.clientId);
-				// setSelectedId(block.clientId);
 			}}
 			draggable={can_move}
-			// onDragEnter={toggleMovingsIsOver}
-			// onDragLeave={toggleMovingsIsOver}
-			// onDrop={() => {
-			// 	toggleMovingsIsOver();
-
-			// 	if (can_receive_drop) {
-			// 		moveBlockToPosition(
-			// 			moving_block.id,
-			// 			moving_block.parent_id,
-			// 			parent_id,
-			// 			index
-			// 		);
-			// 	}
-			// }}
 			onDragEnd={
 				!can_move
 					? null
@@ -132,11 +121,28 @@ export const BlockHeader = compose([
 		>
 			{icon.src && (
 				<Div classes="block-icon">
-					<Icon icon={icon.src} />
+					<WpIcon icon={icon.src} />
 				</Div>
 			)}
 			<Span classes="block-title">{title}</Span>
 			<BlockContent block={block} />
+			{has_children && (
+				<Button
+					classes={["button-icon", "button-toggle_list"]}
+					onClick={() => setState({ is_open: !is_open })}
+				>
+					<Icon icon={is_open ? "collapse" : "expand"} />
+				</Button>
+			)}
+			<ButtonMenu
+				id={id}
+				parent_id={parent_id}
+				template_lock={template_lock}
+				block={block}
+				block_type={block_type}
+				can_move={can_move}
+				index={index}
+			/>
 		</Div>
 	);
 }) as React.ComponentType<Props>);

@@ -1,4 +1,5 @@
 import { Div, Icon, Button, Span } from "utils/components";
+import { MenuProps } from "./Menu";
 
 type withSelectProps = {
 	sibling_ids: string[];
@@ -8,17 +9,7 @@ type withDispatchProps = {
 	moveBlockToPosition: Function;
 };
 
-type ParentProps = {
-	id: string;
-	parent_id: string;
-	template_lock: string | undefined;
-	block: import("wordpress__blocks").BlockInstance;
-	can_move: boolean;
-	index: number;
-	close: Function;
-};
-
-type Props = withSelectProps & withDispatchProps & ParentProps;
+type Props = withSelectProps & withDispatchProps & MenuProps;
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
@@ -26,13 +17,13 @@ const { compose } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
 
 export const ButtonsMove = compose([
-	withSelect<withSelectProps, ParentProps>((select, { parent_id }) => ({
+	withSelect<withSelectProps, MenuProps>((select, { parent_id }) => ({
 		sibling_ids: select("core/block-editor").getBlockOrder(parent_id)
 	})),
-	withDispatch(dispatch => ({
+	withDispatch<withDispatchProps>(dispatch => ({
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
 	}))
-])((props => {
+])((props: Props) => {
 	const {
 		can_move,
 		id,
@@ -91,4 +82,4 @@ export const ButtonsMove = compose([
 			</Button>
 		</Fragment>
 	);
-}) as React.ComponentType<Props>);
+});

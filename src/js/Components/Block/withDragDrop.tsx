@@ -2,9 +2,8 @@ import { pr_store } from "utils/data/plugin";
 
 export type withDragDropProps = {
 	moving_is_over: boolean;
-	onDragEnterHandler: Function;
-	onDragLeaveHandler: Function;
-	onDropHandler: Function;
+	toggleMovingIsOver: Function;
+	moveBlock: Function;
 };
 
 type withStateProps = {
@@ -13,7 +12,7 @@ type withStateProps = {
 
 type withDispatchProps = {
 	moveBlockToPosition: Function;
-	finishMoving: Function;
+	resetMoving: Function;
 };
 
 type ParentProps = {
@@ -34,7 +33,7 @@ const withDragDropHOC = (
 	WrappedComponent: React.ComponentType<withDragDropProps>
 ) => (props: Props & any) => {
 	const {
-		finishMoving,
+		resetMoving,
 		moveBlockToPosition,
 		moving_block,
 		moving_is_over,
@@ -43,19 +42,15 @@ const withDragDropHOC = (
 		parent_id,
 		index
 	} = props;
-	const cancelMovingIsOver = () => setState({ moving_is_over: false });
-	const toggleMovingIsOver = () =>
-		setState({ moving_is_over: !moving_is_over });
 
 	return (
 		<WrappedComponent
 			{...props}
 			moving_is_over={moving_is_over}
-			onDragEnterHandler={toggleMovingIsOver}
-			onDragLeaveHandler={toggleMovingIsOver}
-			onDropHandler={() => {
-				cancelMovingIsOver();
-				finishMoving();
+			toggleMovingIsOver={() => setState({ moving_is_over: !moving_is_over })}
+			moveBlock={() => {
+				setState({ moving_is_over: false });
+				resetMoving();
 
 				if (can_receive_drop) {
 					moveBlockToPosition(
@@ -76,7 +71,7 @@ export const withDragDrop = compose([
 	withState<withStateProps>({ moving_is_over: false }),
 	withDispatch<withDispatchProps>(dispatch => ({
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
-		finishMoving: dispatch(pr_store).finishMoving
+		resetMoving: dispatch(pr_store).resetMoving
 	})),
 	withDragDropHOC
 ]);

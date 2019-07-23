@@ -4,6 +4,8 @@
 
 +prefix-classes('bn-')
 
+	.button-cancel_move
+		white-space nowrap
 
 	button.button-menu
 		.menu &
@@ -21,8 +23,11 @@
 			pointer-events none
 			opacity .3
 
+	.button-toggle_list
 	.button-toggle_menu
-		width 24px
+		z-index 1
+	.button-toggle_menu
+		min-width 24px
 		display flex
 		justify-content center
 
@@ -36,9 +41,10 @@
 			box-shadow none
 			outline none
 			border none
+			color inherit
 
 	.button-text
-		font-size .85em
+		font-size 1em
 		line-height 3.2
 		padding 0 10px
 		text-transform uppercase

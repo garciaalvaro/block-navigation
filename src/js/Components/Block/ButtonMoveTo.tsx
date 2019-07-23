@@ -1,25 +1,16 @@
 import { Div, Icon, Button, Span } from "utils/components";
 import { pr_store } from "utils/data/plugin";
+import { MenuProps } from "./Menu";
 
 type withDispatchProps = {
 	setMovingBlock: ActionCreators["setMovingBlock"];
 	setMovingType: ActionCreators["setMovingType"];
 };
 
-type ParentProps = {
-	id: string;
-	parent_id: string;
-	template_lock: string | undefined;
-	block: import("wordpress__blocks").BlockInstance;
-	can_move: boolean;
-	index: number;
-	close: Function;
-};
-
 const { __ } = wp.i18n;
 const { withDispatch } = wp.data;
 
-export const ButtonMoveTo = withDispatch<withDispatchProps, ParentProps>(
+export const ButtonMoveTo = withDispatch<withDispatchProps, MenuProps>(
 	dispatch => ({
 		setMovingBlock: dispatch(pr_store).setMovingBlock,
 		setMovingType: dispatch(pr_store).setMovingType
@@ -34,15 +25,17 @@ export const ButtonMoveTo = withDispatch<withDispatchProps, ParentProps>(
 		setMovingBlock,
 		setMovingType,
 		close,
+		close_children,
 		index
 	} = props;
 
 	return (
 		<Button
-			classes={["button", "button-menu"]}
-			disabled={!can_move}
+			classes={["button", "button-menu", !can_move ? "is_disabled" : null]}
 			onClick={() => {
 				close();
+				close_children();
+				setMovingType("by_click");
 				setMovingBlock({
 					id,
 					parent_id,
@@ -50,7 +43,6 @@ export const ButtonMoveTo = withDispatch<withDispatchProps, ParentProps>(
 					block_name: block.name,
 					index
 				});
-				setMovingType("by_click");
 			}}
 		>
 			<Div classes="menu-icon">

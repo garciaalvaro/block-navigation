@@ -3,25 +3,30 @@ import { pr_store } from "utils/data/plugin";
 // import ListRoot from "../List/ListRoot";
 import { MovingByClickToolbar } from "./MovingByClickToolbar";
 import { BlockList } from "Components/BlockList/BlockList";
+import { Fragment } from "react";
 
-type withSelect = {
-	moving_type: State["moving_type"];
+type withSelectProps = {
+	moving: ReturnType<Selectors["isMoving"]>;
+	moving_type: ReturnType<Selectors["getMovingType"]>;
 	root_ids: string[];
 };
-type Props = withSelect;
+type Props = withSelectProps;
 
 const { withSelect } = wp.data;
 
-export const ContentNavigation = withSelect<withSelect>(select => ({
+export const ContentNavigation = withSelect<withSelectProps>(select => ({
+	moving: select(pr_store).isMoving(),
 	moving_type: select(pr_store).getMovingType(),
 	root_ids: select("core/block-editor").getBlockOrder()
-}))((props => {
-	const { moving_type, root_ids } = props;
+}))((props: Props) => {
+	const { moving, moving_type, root_ids } = props;
 
 	return (
-		<Div id="navigation">
-			{moving_type === "by_click" && <MovingByClickToolbar />}
-			<BlockList ids={root_ids} level={0} />
-		</Div>
+		<Fragment>
+			{moving && moving_type === "by_click" && <MovingByClickToolbar />}
+			<Div id="navigation">
+				<BlockList ids={root_ids} level={0} />
+			</Div>
+		</Fragment>
 	);
-}) as React.ComponentType<Props>);
+});

@@ -1,5 +1,5 @@
 export type ActionCreators = {
-	finishMoving: ActionCreator<"FINISH_MOVING">;
+	resetMoving: ActionCreator<"RESET_MOVING">;
 	setMovingBlock: ActionCreator<"SET_MOVING_BLOCK", State["moving_block"]>;
 	setMovingType: ActionCreator<"SET_MOVING_TYPE", State["moving_type"]>;
 	setView: ActionCreator<"SET_VIEW", State["view"]>;
@@ -7,8 +7,8 @@ export type ActionCreators = {
 };
 
 export const actions = <ActionCreators>{
-	finishMoving: () => ({
-		type: "FINISH_MOVING"
+	resetMoving: () => ({
+		type: "RESET_MOVING"
 	}),
 	setMovingBlock: payload => ({
 		type: "SET_MOVING_BLOCK",

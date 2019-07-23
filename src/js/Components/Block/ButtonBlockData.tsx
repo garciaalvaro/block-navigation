@@ -1,19 +1,10 @@
 import { Div, Icon, Button, Span } from "utils/components";
+import { MenuProps } from "./Menu";
 
 type withSelectProps = {
 	descendants_clientIds: string[];
 	children_clientIds: string[];
 	root_clientId: string;
-};
-
-type ParentProps = {
-	id: string;
-	parent_id: string;
-	template_lock: string | undefined;
-	block: import("wordpress__blocks").BlockInstance;
-	can_move: boolean;
-	index: number;
-	close: Function;
 };
 
 const { __ } = wp.i18n;
@@ -24,7 +15,7 @@ const { withSelect } = wp.data;
 const is_safari = (window as any).safari !== undefined;
 const multiple_log = is_safari;
 
-export const ButtonBlockData = withSelect<withSelectProps, ParentProps>(
+export const ButtonBlockData = withSelect<withSelectProps, MenuProps>(
 	(select, { id }) => ({
 		descendants_clientIds: select(
 			"core/block-editor"
@@ -58,9 +49,9 @@ export const ButtonBlockData = withSelect<withSelectProps, ParentProps>(
 
 				console.group(`Block: ${title}`);
 				if (multiple_log) {
-					l("index:", index);
 					l("name:", name);
 					l("title:", title);
+					l("index:", index);
 					l("clientId:", id);
 					l("attributes-value:", attributes_value);
 					l("attributes-definition:", attributes_definition);
@@ -72,19 +63,19 @@ export const ButtonBlockData = withSelect<withSelectProps, ParentProps>(
 				} else {
 					l(
 						`\n`,
-						`index: ${index}\n\n`,
 						`name: ${name}\n\n`,
 						`title: ${title}\n\n`,
+						`index: ${index}\n\n`,
 						`clientId: ${id}\n\n`,
-						`Parent-clientId: ${parent_id === "" ? `""` : parent_id}\n\n`,
-						`Root-clientId: ${root_clientId}\n\n`,
-						`templateLock: ${template_lock}\n\n`,
 						`attributes-value:`,
 						attributes_value,
 						`\n\n`,
 						`attributes-definition:`,
 						attributes_definition,
 						`\n\n`,
+						`templateLock: ${template_lock}\n\n`,
+						`Parent-clientId: ${parent_id === "" ? `""` : parent_id}\n\n`,
+						`Root-clientId: ${root_clientId}\n\n`,
 						`Children-clientIds:`,
 						children_clientIds,
 						`\n\n`,

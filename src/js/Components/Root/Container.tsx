@@ -9,6 +9,7 @@ type withSelectProps = {
 	view: ReturnType<Selectors["getView"]>;
 	color_scheme: ReturnType<Selectors["getColorScheme"]>;
 	moving: ReturnType<Selectors["isMoving"]>;
+	moving_type: ReturnType<Selectors["getMovingType"]>;
 };
 
 type ParentProps = {
@@ -29,7 +30,8 @@ export const Container = compose([
 	withSelect<withSelectProps>(select => ({
 		view: select(pr_store).getView(),
 		color_scheme: select(pr_store).getColorScheme(),
-		moving: select(pr_store).isMoving()
+		moving: select(pr_store).isMoving(),
+		moving_type: select(pr_store).getMovingType()
 	}))
 ])(
 	class extends Component<Props> {
@@ -90,11 +92,18 @@ export const Container = compose([
 		}
 
 		render() {
-			const { children, height, moving, color_scheme } = this.props;
+			const {
+				children,
+				height,
+				moving,
+				moving_type,
+				color_scheme
+			} = this.props;
 			const [type, value] = color_scheme.split("-");
 			const classes = [
 				`color_scheme-type-${type}`,
 				`color_scheme-name-${value}`,
+				`moving_type-${moving_type}`,
 				moving ? "moving" : "no-moving"
 			];
 

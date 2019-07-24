@@ -2,22 +2,22 @@ import { addPrefix } from "utils/tools/addPrefix";
 import { pr_store } from "utils/data/plugin";
 import { color_schemes } from "utils/data/color_schemes";
 
-type withSelectProps = {
+interface WithSelectProps {
 	color_scheme: ReturnType<Selectors["getColorScheme"]>;
-};
+}
 
-type withDispatchProps = {
+interface WithDispatchProps {
 	setColorScheme: ActionCreators["setColorScheme"];
-};
+}
 
-type Props = withSelectProps & withDispatchProps;
+type Props = WithSelectProps & WithDispatchProps;
 
 const { __ } = wp.i18n;
 const { SelectControl } = wp.components;
 const { compose } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
 
-export const ColorSchemeControl = compose([
+export const ColorSchemeControl: React.ComponentType = compose([
 	withSelect(select => ({
 		color_scheme: select(pr_store).getColorScheme()
 	})),

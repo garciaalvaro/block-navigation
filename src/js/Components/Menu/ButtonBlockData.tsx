@@ -1,21 +1,21 @@
 import { Div, Icon, Button, Span } from "utils/components";
-import { MenuProps } from "./Menu";
 
-type withSelectProps = {
+interface WithSelectProps {
 	descendants_clientIds: string[];
 	children_clientIds: string[];
 	root_clientId: string;
-};
+}
 
 const { __ } = wp.i18n;
 const { withSelect } = wp.data;
+
 // Safari doesn't log the one line version of the log
 // as desired so we log each property in a different line.
 // https://stackoverflow.com/a/42189492 | CC BY-SA 3.0
 const is_safari = (window as any).safari !== undefined;
 const multiple_log = is_safari;
 
-export const ButtonBlockData = withSelect<withSelectProps, MenuProps>(
+export const ButtonBlockData = withSelect<WithSelectProps, MenuProps>(
 	(select, { id }) => ({
 		descendants_clientIds: select(
 			"core/block-editor"
@@ -37,15 +37,18 @@ export const ButtonBlockData = withSelect<withSelectProps, MenuProps>(
 		root_clientId
 	} = props;
 	const { name, attributes: attributes_value } = block;
-	const { title, attributes: attributes_definition } = block_type;
 
-	// l("block", block);
-	// l("block_type", block_type);
 	return (
 		<Button
 			classes={["button", "button-menu"]}
 			onClick={() => {
 				close();
+
+				if (!block_type) {
+					return;
+				}
+
+				const { title, attributes: attributes_definition } = block_type;
 
 				console.group(`Block: ${title}`);
 				if (multiple_log) {

@@ -1,16 +1,15 @@
 import { Div, Icon, Button, Span } from "utils/components";
 import { pr_store } from "utils/data/plugin";
-import { MenuProps } from "./Menu";
 
-type withDispatchProps = {
+interface WithDispatchProps {
 	setMovingBlock: ActionCreators["setMovingBlock"];
 	setMovingType: ActionCreators["setMovingType"];
-};
+}
 
 const { __ } = wp.i18n;
 const { withDispatch } = wp.data;
 
-export const ButtonMoveTo = withDispatch<withDispatchProps, MenuProps>(
+export const ButtonMoveTo = withDispatch<WithDispatchProps, MenuProps>(
 	dispatch => ({
 		setMovingBlock: dispatch(pr_store).setMovingBlock,
 		setMovingType: dispatch(pr_store).setMovingType

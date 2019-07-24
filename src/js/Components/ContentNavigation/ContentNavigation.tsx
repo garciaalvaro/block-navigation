@@ -1,20 +1,19 @@
 import { Div } from "utils/components";
 import { pr_store } from "utils/data/plugin";
-// import ListRoot from "../List/ListRoot";
-import { MovingByClickToolbar } from "./MovingByClickToolbar";
 import { BlockList } from "Components/BlockList/BlockList";
-import { Fragment } from "react";
+import { MovingByClickToolbar } from "./MovingByClickToolbar";
 
-type withSelectProps = {
+interface WithSelectProps {
 	moving: ReturnType<Selectors["isMoving"]>;
 	moving_type: ReturnType<Selectors["getMovingType"]>;
 	root_ids: string[];
-};
-type Props = withSelectProps;
+}
+type Props = WithSelectProps;
 
 const { withSelect } = wp.data;
+const { Fragment } = wp.element;
 
-export const ContentNavigation = withSelect<withSelectProps>(select => ({
+export const ContentNavigation = withSelect<WithSelectProps>(select => ({
 	moving: select(pr_store).isMoving(),
 	moving_type: select(pr_store).getMovingType(),
 	root_ids: select("core/block-editor").getBlockOrder()

@@ -6,27 +6,13 @@ import { ButtonsMove } from "./ButtonsMove";
 import { ButtonCopyId } from "./ButtonCopyId";
 import { ButtonBlockData } from "./ButtonBlockData";
 
-type withSelectProps = {
+interface WithSelectProps {
 	color_scheme: ReturnType<Selectors["getColorScheme"]>;
-};
-
-type ParentProps = {
-	id: string;
-	parent_id: string;
-	template_lock: string | undefined;
-	block: import("wordpress__blocks").BlockInstance;
-	block_type: import("wordpress__blocks").Block;
-	can_move: boolean;
-	index: number;
-	close: Function;
-	close_children: Function;
-};
-
-export type MenuProps = withSelectProps & ParentProps;
+}
 
 const { withSelect } = wp.data;
 
-export const Menu = withSelect<withSelectProps, ParentProps>(select => ({
+export const Menu = withSelect<WithSelectProps, MenuProps>(select => ({
 	color_scheme: select(pr_store).getColorScheme()
 }))(props => {
 	const { color_scheme } = props;

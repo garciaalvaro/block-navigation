@@ -4,15 +4,15 @@ import { Container } from "./Container";
 import { ContentNavigation } from "Components/ContentNavigation/ContentNavigation";
 import { ContentSettings } from "Components/ContentSettings/ContentSettings";
 
-type withSelectProps = {
+interface WithSelectProps {
 	view: ReturnType<Selectors["getView"]>;
-};
+}
 
-type Props = withSelectProps;
+type Props = WithSelectProps;
 
 const { withSelect } = wp.data;
 
-export const Root = withSelect<withSelectProps>(select => ({
+export const Root = withSelect<WithSelectProps>(select => ({
 	view: select(pr_store).getView()
 }))((props: Props) => {
 	const { view } = props;

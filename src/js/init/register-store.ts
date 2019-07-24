@@ -4,9 +4,9 @@ import { actions } from "store/actions";
 import { selectors } from "store/selectors";
 
 wp.data.registerStore(pr_store, {
+	// @ts-ignore
 	reducer,
 	actions,
 	selectors,
-	// @ts-ignore
 	persist: ["color_scheme"]
 });

@@ -1,17 +1,15 @@
 import { Block } from "Components/Block/Block";
-import { DropAreaEndOfList } from "Components/Block/DropAreaEndOfList";
 
 type Props = {
 	ids: string[];
 	level: number;
-	ancestor_is_closed: boolean;
-	id?: string;
+	parent_id?: string;
 };
 
 const { Fragment } = wp.element;
 
 export const BlockList: React.ComponentType<Props> = props => {
-	const { id: parent_id, ids, level, ancestor_is_closed } = props;
+	const { parent_id, ids, level } = props;
 
 	return (
 		<Fragment>
@@ -22,14 +20,9 @@ export const BlockList: React.ComponentType<Props> = props => {
 					parent_id={parent_id || ""}
 					level={level}
 					index={index}
-					ancestor_is_closed={ancestor_is_closed}
+					is_last_children={index + 1 === ids.length}
 				/>
 			))}
-			{/* <DropAreaEndOfList
-				parent_id={parent_id}
-				index={ids.length}
-				level={level}
-			/> */}
 		</Fragment>
 	);
 };

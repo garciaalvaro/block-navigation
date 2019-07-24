@@ -1,20 +1,18 @@
 import { Icon, Button } from "utils/components";
+import { Menu } from "Components/Menu/Menu";
 import Popover, { ArrowContainer } from "react-tiny-popover";
-import { Menu, MenuProps } from "./Menu";
 
-type withStateProps = {
+interface WithStateProps {
 	is_open: boolean;
-};
+}
 
-type ParentProps = MenuProps & {
-	setState(obj: any): void;
-};
+type OwnProps = Omit<MenuProps, "close">;
 
-type Props = ParentProps & withStateProps;
+type Props = OwnProps & WithStateProps & SetStateProp;
 
 const { withState } = wp.compose;
 
-export const ButtonMenu = withState<withStateProps>({
+export const ButtonMenu = withState<WithStateProps>({
 	is_open: false
 })((props: Props) => {
 	const { setState, is_open } = props;
@@ -25,7 +23,7 @@ export const ButtonMenu = withState<withStateProps>({
 		<Popover
 			isOpen={is_open}
 			position={"top"}
-			onClickOutside={() => setState({ is_open: false })}
+			onClickOutside={close}
 			transitionDuration={0.1}
 			content={({ position, targetRect, popoverRect }) => (
 				<ArrowContainer
@@ -39,13 +37,7 @@ export const ButtonMenu = withState<withStateProps>({
 				</ArrowContainer>
 			)}
 		>
-			<Button
-				onClick={(e: any) => {
-					e.stopPropagation();
-					toggle();
-				}}
-				classes={["button-toggle_menu", "button-icon"]}
-			>
+			<Button onClick={toggle} classes={["button-toggle_menu", "button-icon"]}>
 				<Icon icon="menu" />
 			</Button>
 		</Popover>

@@ -16,7 +16,7 @@ const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { withSelect, withDispatch } = wp.data;
 
-export const MovingByClickToolbar: React.ComponentType = compose([
+export const Toolbar: React.ComponentType = compose([
 	withSelect<WithSelectProps>(select => ({
 		moving_block: select(pr_store).getMovingBlock()
 	})),

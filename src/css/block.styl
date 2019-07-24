@@ -2,50 +2,37 @@
  * Block
  */
 
-$block_height = 60px
-$block_height_end = 15px
++prefix-classes('bn-')
 
-#bn-container
+	.no-moving
+		.no-can_move
+			cursor default
 
-	#blocks-empty
-		max-height $block_height
+		.can_move .block-header
+			// https://stackoverflow.com/a/18294634 | CC BY-SA 3.0
+			cursor move // fallback if grab cursor is unsupported
+			cursor grab
+			cursor -moz-grab
+			cursor -webkit-grab
+
+	.moving
+		&.moving_type-by_click .can_receive_drop
+			cursor pointer
 
 	.block
+		height 4em
+		width 100%
 		position relative
-		margin 0
-		min-height $block_height
 
-	.is_selected
-		color var(--color_1)
-		fill var(--color_1)
+		::selection
+			background transparent
 
-		.list-nested
-		.list-nested .block-header
-			background-color var(--primary_color)
-
-	&.color_scheme-type-dark
-		#bn-move-info span
-		.is_selected span
-			text-shadow 0 0 1px rgba(0,0,0,.15)
-
-	#bn-navigation .is_end_of_list
-		z-index 1
-		height $block_height_end
-		max-height $block_height
-		min-height 0
-		width calc(100% - 22px)
-		position absolute
-
-		.block-header
-			margin-top 0
-			background-color transparent
-			height 100%
-
-		.drop_area
-			height 100%
 		&:before
+			content ""
+			position absolute
+			top 0
+			left 0
 			width 100%
 			height 100%
-			display block
-		&.is_mouse_over
-			height 60px
+			background var(--secondary_color_2)
+			z-index -1

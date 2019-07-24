@@ -1,25 +1,30 @@
 /*
- * Block Header
+ * Block List
  */
-
 
 +prefix-classes('bn-')
 
 	for num in (1..3)
+
 		.level-{num}
+
 			&.block_list_drop_area
 			&.block:before
 			.block-header
 				margin-left (num*20)px
+
 			&.block_list_drop_area
 				z-index (num*10)
 
-	for num in (4..30)
+	for num in (4..20)
+
 		.level-{num}
+
 			&.block_list_drop_area
 			&.block:before
 			.block-header
 				margin-left (60 - 30 + num*10)px
+
 			&.block_list_drop_area
 				z-index (num*10)
 
@@ -28,15 +33,6 @@
 		height 4em
 		margin-bottom -4em
 		z-index 1
-
-		&:hover
-			&:before
-			&:after
-				transition .1s .2s $e_standard
-			&:before
-				background-color var(--secondary_color_2)
-			&:after
-				background-color var(--color_02)
 
 		&:before
 		&:after

@@ -1,7 +1,7 @@
 import { Div } from "utils/components";
 import { pr_store } from "utils/data/plugin";
 import { BlockList } from "Components/BlockList/BlockList";
-import { MovingByClickToolbar } from "./MovingByClickToolbar";
+import { Toolbar } from "./Toolbar";
 
 interface WithSelectProps {
 	moving: ReturnType<Selectors["isMoving"]>;
@@ -22,7 +22,7 @@ export const ContentNavigation = withSelect<WithSelectProps>(select => ({
 
 	return (
 		<Fragment>
-			{moving && moving_type === "by_click" && <MovingByClickToolbar />}
+			{moving && moving_type === "by_click" && <Toolbar />}
 			<Div id="navigation">
 				<BlockList ids={root_ids} level={0} />
 			</Div>

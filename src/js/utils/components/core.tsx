@@ -32,10 +32,6 @@ export const H3: React.ComponentType<ComponentProps> = props => (
 	<HTML {...props} html_tag="h3" />
 );
 
-export const Hr: React.ComponentType<ComponentProps> = props => (
-	<HTML {...props} html_tag="hr" />
-);
-
 export const Img: React.ComponentType<ComponentProps> = props => (
 	<HTML {...props} html_tag="img" />
 );
@@ -64,10 +60,6 @@ const HTML: React.ComponentType<HTMLProps> = props_raw => {
 
 		case "h3":
 			return <h3 {...props}>{children}</h3>;
-			break;
-
-		case "hr":
-			return <hr {...props} />;
 			break;
 
 		case "img":

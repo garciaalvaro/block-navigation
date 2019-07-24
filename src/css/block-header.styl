@@ -16,6 +16,7 @@
 		background-color var(--background_color)
 
 	.block-header
+		white-space nowrap
 		line-height 4
 		padding-left 18px
 		padding-right 7px
@@ -41,6 +42,7 @@
 
 	.block-image-container
 		width 2em
+		min-width 2em
 		height 2em
 		object-fit cover
 		position relative
@@ -56,6 +58,16 @@
 		width 100%
 		height 100%
 
+	.block-title
+	.block-content
+		white-space nowrap
+		overflow hidden
+		text-overflow ellipsis
+		min-width 50px
+
+		+ button
+			margin-left auto
+
 	.content_type-image
 		display flex
 		align-items center
@@ -69,15 +81,6 @@
 		&:before
 			content "|"
 			margin 0 10px
-
-	.block-text
-		white-space nowrap
-		overflow hidden
-		text-overflow ellipsis
-		display flex
-
-	.block-text + button
-		margin-left auto
 
 	.block-icon
 		margin-right 10px

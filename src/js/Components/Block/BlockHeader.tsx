@@ -3,63 +3,57 @@ import { pr_store } from "utils/data/plugin";
 import { BlockContent } from "./BlockContent";
 import { ButtonMenu } from "./ButtonMenu";
 
-type withSelectProps = {
-	moving_block: State["moving_block"];
-};
-type withDispatchProps = {
-	setMovingType: Function;
-	setMovingBlock: Function;
-	resetMoving: Function;
-	moveBlockToPosition: Function;
+interface WithDispatchProps {
+	setMovingType: ActionCreators["setMovingType"];
+	setMovingBlock: ActionCreators["setMovingBlock"];
+	resetMoving: ActionCreators["resetMoving"];
 	selectBlock: Function;
-	// setSelectedId: ActionCreators["setSelectedId"];
-};
-type withStateProps = {
+	moveBlockToPosition: Function;
+}
+
+interface WithStateProps {
 	was_open: boolean;
-	setState(obj: any): void;
-};
-type ParentProps = {
+}
+
+type OwnProps = {
 	index: number;
-	block: import("wordpress__blocks").BlockInstance;
-	block_type: import("wordpress__blocks").Block;
+	block: Block;
+	block_type: BlockType | null | undefined;
+	toggle: Function;
 	close: Function;
 	open: Function;
-	// toggleMovingsIsOver: Function;
+	is_open: boolean;
 	can_move: boolean;
-	can_receive_drop: boolean;
-	template_lock: string | undefined;
+	has_children: boolean;
+	template_lock: string;
+	id: string;
 	parent_id: string;
 };
-type Props = withSelectProps & withDispatchProps & withStateProps & ParentProps;
+
+type Props = WithDispatchProps & WithStateProps & SetStateProp & OwnProps;
 
 const { compose, withState } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
 const WpIcon = wp.components.Icon;
 
-export const BlockHeader = compose([
-	withSelect<withSelectProps, ParentProps>((select, { block }) => ({
-		moving_block: select(pr_store).getMovingBlock()
-	})),
+export const BlockHeader: React.ComponentType<OwnProps> = compose([
 	withDispatch(dispatch => ({
 		setMovingType: dispatch(pr_store).setMovingType,
 		setMovingBlock: dispatch(pr_store).setMovingBlock,
 		resetMoving: dispatch(pr_store).resetMoving,
-		// setSelectedId: dispatch(pr_store).setSelectedId,
 		selectBlock: dispatch("core/block-editor").selectBlock,
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
 	})),
-	withState({
+	withState<WithStateProps>({
 		was_open: true
 	})
-])((props => {
+])((props: Props) => {
 	const {
 		id,
 		has_children,
 		is_open,
 		selectBlock,
-		// setSelectedId,
 		toggle,
-		moving_block,
 		index,
 		block,
 		block_type,
@@ -68,27 +62,27 @@ export const BlockHeader = compose([
 		was_open,
 		setState,
 		can_move,
-		can_receive_drop,
 		parent_id,
 		template_lock,
 		setMovingBlock,
 		resetMoving,
 		setMovingType
 	} = props;
-	const { title, icon } = block_type;
+	const title = block_type ? block_type.title : block.name;
+	const icon: BlockType["icon"] = block_type
+		? block_type.icon
+		: { src: () => null };
 
 	return (
 		<Div classes="block-header-container">
 			<Div
 				classes="block-header"
-				onClick={() => {
-					selectBlock(block.clientId);
-				}}
+				onClick={() => selectBlock(block.clientId)}
 				draggable={can_move}
 				onDragEnd={
 					!can_move
 						? null
-						: e => {
+						: (e: React.DragEvent) => {
 								if (was_open) {
 									open();
 								}
@@ -99,14 +93,12 @@ export const BlockHeader = compose([
 				onDragStart={
 					!can_move
 						? null
-						: e => {
-								// if (!lodash.isNil(e.dataTransfer)) {
-								// 	// move_type = "by_drag";
-
-								// 	// Needed for Firefox to work.
-								// 	// https://stackoverflow.com/a/33465176 | CC BY-SA 3.0
-								// 	e.dataTransfer.setData("text", "");
-								// }
+						: (e: React.DragEvent) => {
+								if (e.dataTransfer && e.dataTransfer.setData) {
+									// Needed for Firefox to work.
+									// https://stackoverflow.com/a/33465176 | CC BY-SA 3.0
+									e.dataTransfer.setData("text", "");
+								}
 
 								setState({ was_open });
 
@@ -158,4 +150,4 @@ export const BlockHeader = compose([
 			</Div>
 		</Div>
 	);
-}) as React.ComponentType<Props>);
+});

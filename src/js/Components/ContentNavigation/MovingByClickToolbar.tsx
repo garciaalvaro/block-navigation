@@ -2,25 +2,25 @@ import { pr_store } from "utils/data/plugin";
 import { Div, Button } from "utils/components";
 import { MovingBlock } from "./MovingBlock";
 
-type withSelectProps = {
+interface WithSelectProps {
 	moving_block: ReturnType<Selectors["getMovingBlock"]>;
-};
+}
 
-type withDispatchProps = {
+interface WithDispatchProps {
 	resetMoving: ActionCreators["resetMoving"];
-};
+}
 
-type Props = withSelectProps & withDispatchProps;
+type Props = WithSelectProps & WithDispatchProps;
 
 const { __ } = wp.i18n;
 const { compose } = wp.compose;
 const { withSelect, withDispatch } = wp.data;
 
-export const MovingByClickToolbar = compose([
-	withSelect<withSelectProps>(select => ({
+export const MovingByClickToolbar: React.ComponentType = compose([
+	withSelect<WithSelectProps>(select => ({
 		moving_block: select(pr_store).getMovingBlock()
 	})),
-	withDispatch<withDispatchProps>(dispatch => ({
+	withDispatch<WithDispatchProps>(dispatch => ({
 		resetMoving: dispatch(pr_store).resetMoving
 	}))
 ])((props: Props) => {

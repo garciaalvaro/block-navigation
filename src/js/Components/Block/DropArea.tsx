@@ -1,16 +1,16 @@
 // import { Div } from "utils/components";
 // import { pr_store } from "utils/data/plugin";
 
-// type withSelectProps = {
+// interface WithSelectProps {
 // 	moving_block: State["moving_block"];
 // };
 
-// type withDispatchProps = {
+// interface WithDispatchProps {
 // 	moveBlockToPosition: Function;
 // 	finishMoving: Function;
 // };
 
-// type ParentProps = {
+// type OwnProps = {
 // 	// can_receive_drop: boolean;
 // 	parent_id: string;
 // 	index: number;
@@ -18,18 +18,18 @@
 // 	cancelMovingIsOver: Function;
 // };
 
-// type Props = withSelectProps &
-// 	withDispatchProps &
-// 	ParentProps & { setState(obj: any): void };
+// type Props = WithSelectProps &
+// 	WithDispatchProps &
+// 	OwnProps & { setState(obj: any): void };
 
 // const { withSelect, withDispatch } = wp.data;
 // const { compose } = wp.compose;
 
 // export const DropArea = compose([
-// 	withSelect<withSelectProps>(select => ({
+// 	withSelect<WithSelectProps>(select => ({
 // 		moving_block: select(pr_store).getMovingBlock()
 // 	})),
-// 	withDispatch<withDispatchProps>(dispatch => ({
+// 	withDispatch<WithDispatchProps>(dispatch => ({
 // 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
 // 		finishMoving: dispatch(pr_store).finishMoving
 // 	}))

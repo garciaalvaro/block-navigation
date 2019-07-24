@@ -1,15 +1,15 @@
 import { Div, Button } from "utils/components";
 import { pr_store } from "utils/data/plugin";
 
-type withDispatchProps = {
+interface WithDispatchProps {
 	setView: ActionCreators["setView"];
-};
+}
 
-type withSelectProps = {
+interface WithSelectProps {
 	view: ReturnType<Selectors["getView"]>;
-};
+}
 
-type Props = withDispatchProps & withSelectProps;
+type Props = WithDispatchProps & WithSelectProps;
 
 const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data;
@@ -20,11 +20,11 @@ const tabs: { value: State["view"]; label: string }[] = [
 	{ value: "settings", label: __("Settings") }
 ];
 
-export const Tabs = compose([
-	withDispatch<withDispatchProps>(dispatch => ({
+export const Tabs: React.ComponentType = compose([
+	withDispatch<WithDispatchProps>(dispatch => ({
 		setView: dispatch(pr_store).setView
 	})),
-	withSelect<withSelectProps>(select => ({
+	withSelect<WithSelectProps>(select => ({
 		view: select(pr_store).getView()
 	}))
 ])((props: Props) => {

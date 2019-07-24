@@ -1,15 +1,14 @@
 import { Div, Button, Icon, Span } from "utils/components";
-import { MenuProps } from "./Menu";
 
-type withDispatchProps = {
+interface WithDispatchProps {
 	openGeneralSidebar: Function;
 	selectBlock: Function;
-};
+}
 
 const { __ } = wp.i18n;
 const { withDispatch } = wp.data;
 
-export const ButtonEdit = withDispatch<withDispatchProps, MenuProps>(
+export const ButtonEdit = withDispatch<WithDispatchProps, MenuProps>(
 	dispatch => ({
 		openGeneralSidebar: dispatch("core/edit-post").openGeneralSidebar,
 		selectBlock: dispatch("core/editor").selectBlock

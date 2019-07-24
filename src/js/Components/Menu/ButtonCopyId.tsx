@@ -1,5 +1,4 @@
 import { Button, Div, Icon, Span } from "utils/components";
-import { MenuProps } from "./Menu";
 import copy from "copy-text-to-clipboard";
 
 const { __ } = wp.i18n;

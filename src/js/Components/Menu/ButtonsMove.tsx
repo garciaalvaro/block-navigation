@@ -1,26 +1,25 @@
 import { Div, Icon, Button, Span } from "utils/components";
-import { MenuProps } from "./Menu";
 
-type withSelectProps = {
+interface WithSelectProps {
 	sibling_ids: string[];
-};
+}
 
-type withDispatchProps = {
+interface WithDispatchProps {
 	moveBlockToPosition: Function;
-};
+}
 
-type Props = withSelectProps & withDispatchProps & MenuProps;
+type Props = WithSelectProps & WithDispatchProps & MenuProps;
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 const { compose } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
 
-export const ButtonsMove = compose([
-	withSelect<withSelectProps, MenuProps>((select, { parent_id }) => ({
+export const ButtonsMove: React.ComponentType = compose([
+	withSelect<WithSelectProps, MenuProps>((select, { parent_id }) => ({
 		sibling_ids: select("core/block-editor").getBlockOrder(parent_id)
 	})),
-	withDispatch<withDispatchProps>(dispatch => ({
+	withDispatch<WithDispatchProps>(dispatch => ({
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
 	}))
 ])((props: Props) => {

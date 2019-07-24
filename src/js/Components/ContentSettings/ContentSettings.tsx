@@ -5,8 +5,8 @@ import { ColorSchemeControl } from "./ColorSchemeControl";
 export const ContentSettings: React.ComponentType = props => {
 	return (
 		<Div id="settings">
-			<PluginInfo {...props} />
-			<ColorSchemeControl {...props} />
+			<PluginInfo />
+			<ColorSchemeControl />
 		</Div>
 	);
 };

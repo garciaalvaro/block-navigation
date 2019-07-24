@@ -1,51 +1,56 @@
 import { pr_store } from "utils/data/plugin";
 
-export type withDragDropProps = {
+export type WithMoveProps = {
 	moving_is_over: boolean;
 	toggleMovingIsOver: Function;
 	moveBlock: Function;
 };
 
-type withStateProps = {
+interface WithStateProps {
 	moving_is_over: boolean;
-};
+}
 
-type withDispatchProps = {
+interface WithDispatchProps {
 	moveBlockToPosition: Function;
 	resetMoving: Function;
-};
+}
 
-type ParentProps = {
+interface WithSelectProps {
+	moving_block: ReturnType<Selectors["getMovingBlock"]>;
+}
+
+type OwnProps = {
 	can_receive_drop: boolean;
 	parent_id: string;
-	index: boolean;
-	moving_block: State["moving_block"];
+	index: number;
 };
 
-type Props = ParentProps &
-	withStateProps &
-	withDispatchProps & { setState(obj: any): void };
+type Props = OwnProps &
+	WithStateProps &
+	SetStateProp &
+	WithDispatchProps &
+	WithSelectProps &
+	SetStateProp;
 
-const { withDispatch } = wp.data;
+const { withDispatch, withSelect } = wp.data;
 const { compose, withState } = wp.compose;
 
-const withDragDropHOC = (
-	WrappedComponent: React.ComponentType<withDragDropProps>
-) => (props: Props & any) => {
+const withMoveHOC = (WrappedComponent: React.ComponentType<WithMoveProps>) => (
+	props: Props
+) => {
+	const { resetMoving, moveBlockToPosition, ...rest } = props;
 	const {
-		resetMoving,
-		moveBlockToPosition,
 		moving_block,
 		moving_is_over,
 		setState,
 		can_receive_drop,
 		parent_id,
 		index
-	} = props;
+	} = rest;
 
 	return (
 		<WrappedComponent
-			{...props}
+			{...rest}
 			moving_is_over={moving_is_over}
 			toggleMovingIsOver={() => setState({ moving_is_over: !moving_is_over })}
 			moveBlock={() => {
@@ -67,11 +72,14 @@ const withDragDropHOC = (
 	);
 };
 
-export const withDragDrop = compose([
-	withState<withStateProps>({ moving_is_over: false }),
-	withDispatch<withDispatchProps>(dispatch => ({
+export const withMove: () => React.ComponentType<WithMoveProps> = compose([
+	withState<WithStateProps>({ moving_is_over: false }),
+	withDispatch<WithDispatchProps>(dispatch => ({
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
 		resetMoving: dispatch(pr_store).resetMoving
 	})),
-	withDragDropHOC
+	withSelect<WithSelectProps>(select => ({
+		moving_block: select(pr_store).getMovingBlock()
+	})),
+	withMoveHOC
 ]);

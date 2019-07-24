@@ -9,7 +9,9 @@ declare const wp: {
 	blockEditor: Object;
 	blocks: typeof import("wordpress__blocks");
 	components: typeof import("wordpress__components");
-	compose: typeof import("wordpress__compose");
+	compose: typeof import("wordpress__compose") & {
+		compose: typeof lodash.flowRight;
+	};
 	data: typeof import("wordpress__data");
 	domReady: Function;
 	editPost: Object;
@@ -18,4 +20,5 @@ declare const wp: {
 	htmlEntities: typeof import("wordpress__html-entities");
 	i18n: typeof import("wordpress__i18n");
 	plugins: typeof import("wordpress__plugins");
+	richText: typeof import("wordpress__rich-text");
 };

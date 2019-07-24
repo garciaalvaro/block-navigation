@@ -1,33 +1,39 @@
 import { DivRef } from "utils/components";
 import { pr_store } from "utils/data/plugin";
 
-type withStateProps = {
+interface WithStateProps {
 	height: number;
+}
+
+type withGlobalEventsProps = {
+	resize: Function;
 };
 
-type withSelectProps = {
+interface WithSelectProps {
 	view: ReturnType<Selectors["getView"]>;
 	color_scheme: ReturnType<Selectors["getColorScheme"]>;
 	moving: ReturnType<Selectors["isMoving"]>;
 	moving_type: ReturnType<Selectors["getMovingType"]>;
-};
+}
 
-type ParentProps = {
+type OwnProps = {
 	children: React.ReactNode;
 };
 
-type Props = withStateProps &
-	withSelectProps &
-	ParentProps & { setState(obj: any): void; resize: Function };
+type Props = WithStateProps &
+	SetStateProp &
+	WithSelectProps &
+	OwnProps &
+	withGlobalEventsProps;
 
 const { createRef, Component } = wp.element;
 const { compose, withState, withGlobalEvents } = wp.compose;
 const { withSelect } = wp.data;
 
-export const Container = compose([
+export const Container: React.ComponentType<OwnProps> = compose([
 	withGlobalEvents({ resize: "resize" }),
 	withState({ height: 555 }),
-	withSelect<withSelectProps>(select => ({
+	withSelect<WithSelectProps>(select => ({
 		view: select(pr_store).getView(),
 		color_scheme: select(pr_store).getColorScheme(),
 		moving: select(pr_store).isMoving(),

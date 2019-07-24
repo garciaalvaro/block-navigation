@@ -43,7 +43,7 @@ export const BlockListDropArea: React.ComponentType<OwnProps> = compose([
 				`level-${level}`,
 				"no-is_moving",
 				"can_receive_drop",
-				`${!moving_is_over && "no-"}moving_is_over`
+				`${moving_is_over ? "" : "no-"}moving_is_over`
 			]}
 		/>
 	);

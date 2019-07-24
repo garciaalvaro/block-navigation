@@ -121,10 +121,8 @@ export const BlockHeader: React.ComponentType<OwnProps> = compose([
 						<WpIcon icon={icon.src} />
 					</Div>
 				)}
-				<Div classes="block-text">
-					<Span classes="block-title">{title}</Span>
-					<BlockContent block={block} />
-				</Div>
+				<Span classes="block-title">{title}</Span>
+				<BlockContent block={block} />
 				{has_children && (
 					<Button
 						classes={["button-icon", "button-toggle_list"]}

@@ -1,0 +1,26 @@
+/*
+ * Toolbar
+ */
+
++prefix-classes('bn-')
+
+	#bn-moving_by_click_toolbar
+		padding-left 18px
+		display flex
+		align-items center
+		position sticky
+		top 50px
+		z-index 2
+		background var(--primary_color)
+		border-top 1px solid var(--background_color)
+		line-height 4em
+		color var(--color_1)
+		overflow hidden
+
+		.block-text
+			white-space nowrap
+			overflow hidden
+			text-overflow ellipsis
+
+	.button-cancel_move
+		white-space nowrap

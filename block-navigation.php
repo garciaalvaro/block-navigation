@@ -16,11 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! defined( 'BLOCKNAVIGATION_PLUGIN_VERSION' ) ) {
-	define( 'BLOCKNAVIGATION_PLUGIN_VERSION', '1.1.2' );
+if ( ! defined( __NAMESPACE__ . '\PLUGIN_VERSION' ) ) {
+	define( __NAMESPACE__ . '\PLUGIN_VERSION', '1.1.2' );
 }
-if ( ! defined( 'BLOCKNAVIGATION_BUILD_DIR' ) ) {
-	define( 'BLOCKNAVIGATION_BUILD_DIR', plugins_url( 'build/', __FILE__ ) );
+if ( ! defined( __NAMESPACE__ . '\PLUGIN_NAME' ) ) {
+	define( __NAMESPACE__ . '\PLUGIN_NAME', 'block-navigation' );
+}
+if ( ! defined( __NAMESPACE__ . '\BUILD_DIR' ) ) {
+	define( __NAMESPACE__ . '\BUILD_DIR', plugins_url( 'build/', __FILE__ ) );
 }
 
 /**
@@ -28,34 +31,33 @@ if ( ! defined( 'BLOCKNAVIGATION_BUILD_DIR' ) ) {
  *
  * @since 1.0.0
  */
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue' );
 function enqueue() {
 
 	wp_enqueue_style(
-		'block-navigation-css',
-		BLOCKNAVIGATION_BUILD_DIR . 'block-navigation.css',
+		PLUGIN_NAME . '-css',
+		BUILD_DIR . PLUGIN_NAME . '.css',
 		array(),
-		BLOCKNAVIGATION_PLUGIN_VERSION
+		PLUGIN_VERSION
 	);
 
 	wp_enqueue_script(
-		'block-navigation-js',
-		BLOCKNAVIGATION_BUILD_DIR . 'block-navigation.js',
+		PLUGIN_NAME . '-js',
+		BUILD_DIR . PLUGIN_NAME . '.js',
 		array(
 			'jquery',
 			'lodash',
-			'wp-i18n',
-			'wp-compose',
-			'wp-element',
 			'wp-components',
-			'wp-editor',
-			'wp-edit-post',
-			'wp-plugins',
+			'wp-compose',
 			'wp-data',
+			'wp-edit-post',
+			'wp-editor',
+			'wp-element',
+			'wp-i18n',
+			'wp-plugins',
 			'wp-rich-text',
 		),
-		BLOCKNAVIGATION_PLUGIN_VERSION,
+		PLUGIN_VERSION,
 		true // Enqueue in the footer.
 	);
-
 }
-add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue' );

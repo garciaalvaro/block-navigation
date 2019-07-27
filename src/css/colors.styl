@@ -2,84 +2,94 @@
  * Colors
  */
 
-#bn-container
++prefix-classes('bn-')
 
-	// Light
+	#bn-container
+	.menu
+		background-color var(--background_color)
+		color var(--color_09)
+		fill var(--color_08)
 
-	&.color_scheme-type-light
-		--text_color rgba(0,0,0,0.87)
-		--text_color_strong rgba(0,0,0,1)
-		--fill_color rgba(0,0,0,0.87)
+	.color_scheme-type-light
+		--color_005 rgba(0,0,0,0.05)
+		--color_01 rgba(0,0,0,0.1)
+		--color_02 rgba(0,0,0,0.2)
+		--color_08 rgba(0,0,0,0.8)
+		--color_09 rgba(0,0,0,0.9)
+		--color_1 rgba(0,0,0,1)
 		--background_color #fff
 
-	&.color_scheme-name-banana
-		--color_primary #FFDEAD
-		--color_secondary_1 #7F6F56
-		--color_secondary_2 #E5C89C
-
-	&.color_scheme-name-melon
-		--color_primary #aae6bd
-		--color_secondary_1 #4C6654
-		--color_secondary_2 #97CCA8
-
-	&.color_scheme-name-melocoton
-		--color_primary #ffc5b4
-		--color_secondary_1 #7F625A
-		--color_secondary_2 #ffc5b4
-
-	&.color_scheme-name-coco
-		--text_color #544c3f
-		--text_color_strong #544c3f
-		--fill_color #544c3f
-		--background_color #f5f5f5
-		--color_primary #fff
-		--color_secondary_1 #3A352C
-		--color_secondary_2 #A09178
-
-	&.color_scheme-name-mandarina
-		--color_primary #FFA07A
-		--color_secondary_1 #754938
-		--color_secondary_2 #FFA07A
-
-	&.color_scheme-name-pistacho
-		--color_primary #bdb76b
-		--color_secondary_1 #3D3C23
-		--color_secondary_2 #bdb76b
-
-	// Dark
-
-	&.color_scheme-type-dark
-		--text_color rgba(255,255,255,.9)
-		--text_color_strong rgba(255,255,255,1)
-		--fill_color rgba(255,255,255,.75)
+	.color_scheme-type-dark
+		--color_005 rgba(255,255,255,0.05)
+		--color_01 rgba(255,255,255,0.1)
+		--color_02 rgba(255,255,255,0.2)
+		--color_08 rgba(255,255,255,0.8)
+		--color_09 rgba(255,255,255,0.9)
+		--color_1 rgba(255,255,255,1)
 		--background_color #23282c
 
-	&.color_scheme-name-higo
-		--color_primary #827c7a
-		--color_secondary_1 #CEC5C2
-		--color_secondary_2 #686462
+	// Light
+	.color_scheme-name-banana
+		--primary_color #FFDEAD
+		--secondary_color_1 #7F6F56
+		--secondary_color_2 #E5C89C
 
-	&.color_scheme-name-mango
-		--color_primary #E9967A
-		--color_secondary_1 #F69E81
-		--color_secondary_2 #A96D59
+	.color_scheme-name-melon
+		--primary_color #aae6bd
+		--secondary_color_1 #4C6654
+		--secondary_color_2 #97CCA8
 
-	&.color_scheme-name-endrina
-		--color_primary #708090
-		--color_secondary_1 #ABC4DC
-		--color_secondary_2 #5C6976
+	.color_scheme-name-melocoton
+		--primary_color #ffc5b4
+		--secondary_color_1 #7F625A
+		--secondary_color_2 #ffc5b4
 
-	&.color_scheme-name-castana
-		--color_primary #c27c49
-		--color_secondary_1 #CF844E
-		--color_secondary_2 #825331
+	.color_scheme-name-coco
+		--color_08 #544c3f
+		--color_1 #544c3f
+		--color_07 #544c3f
+		--background_color #f5f5f5
+		--primary_color #fff
+		--secondary_color_1 #3A352C
+		--secondary_color_2 #A09178
 
-	&.color_scheme-name-naranja
-		--color_primary #ff7f50
-		--color_secondary_1 #ff7f50
-		--color_secondary_2 #B05837
+	.color_scheme-name-mandarina
+		--primary_color #FFA07A
+		--secondary_color_1 #754938
+		--secondary_color_2 #FFA07A
 
-	&.color_scheme-name-ciruela
-		--color_primary #bd8f8f
-		--color_secondary_1 #FFC1C1
-		--color_secondary_2 #7D5F5F
+	.color_scheme-name-pistacho
+		--primary_color #bdb76b
+		--secondary_color_1 #3D3C23
+		--secondary_color_2 #bdb76b
+
+	// Dark
+	.color_scheme-name-higo
+		--primary_color #827c7a
+		--secondary_color_1 #CEC5C2
+		--secondary_color_2 #686462
+
+	.color_scheme-name-mango
+		--primary_color #E9967A
+		--secondary_color_1 #F69E81
+		--secondary_color_2 #A96D59
+
+	.color_scheme-name-endrina
+		--primary_color #708090
+		--secondary_color_1 #ABC4DC
+		--secondary_color_2 #5C6976
+
+	.color_scheme-name-castana
+		--primary_color #c27c49
+		--secondary_color_1 #CF844E
+		--secondary_color_2 #825331
+
+	.color_scheme-name-naranja
+		--primary_color #ff7f50
+		--secondary_color_1 #ff7f50
+		--secondary_color_2 #B05837
+
+	.color_scheme-name-ciruela
+		--primary_color #bd8f8f
+		--secondary_color_1 #FFC1C1
+		--secondary_color_2 #7D5F5F

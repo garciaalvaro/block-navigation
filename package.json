@@ -1,7 +1,7 @@
 {
 	"name": "block-navigation",
 	"version": "1.1.2",
-	"description": "Block Navigation sidebar panel for the new Block editor.",
+	"description": "Block Navigation WordPress Plugin",
 	"homepage": "https://wordpress.org/plugins/block-navigation/",
 	"scripts": {
 		"dev": "webpack --mode development --watch --config ./.webpack/dev.config.babel.js",

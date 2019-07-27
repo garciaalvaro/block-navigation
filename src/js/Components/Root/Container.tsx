@@ -5,41 +5,40 @@ interface WithStateProps {
 	height: number;
 }
 
-type withGlobalEventsProps = {
+interface WithGlobalEventsProps {
 	resize: Function;
-};
-
-interface WithSelectProps {
-	view: ReturnType<Selectors["getView"]>;
-	color_scheme: ReturnType<Selectors["getColorScheme"]>;
-	moving: ReturnType<Selectors["isMoving"]>;
-	moving_type: ReturnType<Selectors["getMovingType"]>;
 }
 
-type OwnProps = {
-	children: React.ReactNode;
-};
+interface WithSelectProps
+	extends Pick<State, "view" | "moving_type" | "color_scheme"> {
+	moving: boolean;
+}
 
-type Props = WithStateProps &
-	SetStateProp &
-	WithSelectProps &
-	OwnProps &
-	withGlobalEventsProps;
+interface OwnProps {
+	children: React.ReactNode;
+}
+
+interface Props
+	extends WithStateProps,
+		SetStateProp,
+		WithSelectProps,
+		OwnProps,
+		WithGlobalEventsProps {}
 
 const { createRef, Component } = wp.element;
 const { compose, withState, withGlobalEvents } = wp.compose;
 const { withSelect } = wp.data;
 
-export const Container: React.ComponentType<OwnProps> = compose([
-	withGlobalEvents({ resize: "resize" }),
-	withState({ height: 555 }),
+export const Container: React.ComponentType<OwnProps> = compose(
+	withGlobalEvents<WithGlobalEventsProps>({ resize: "resize" }),
+	withState<WithStateProps>({ height: 555 }),
 	withSelect<WithSelectProps>(select => ({
 		view: select(pr_store).getView(),
 		color_scheme: select(pr_store).getColorScheme(),
 		moving: select(pr_store).isMoving(),
 		moving_type: select(pr_store).getMovingType()
 	}))
-])(
+)(
 	class extends Component<Props> {
 		private div: React.RefObject<HTMLElement | null>;
 		private container: HTMLElement | null;

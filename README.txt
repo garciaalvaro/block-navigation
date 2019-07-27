@@ -8,7 +8,7 @@ Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Block Navigation sidebar panel for the new Gutenberg editor.
+Block Navigation sidebar panel for the new Block editor.
 
 == Description ==
 

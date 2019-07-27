@@ -1,17 +1,19 @@
-import { icons } from "utils/data/icons";
+import { icons, Icons } from "utils/data/icons";
 import { addPrefix } from "utils/tools/addPrefix";
 
-type ComponentProps = Object & {
+interface ComponentProps extends Object {
 	children?: React.ReactNode;
 	id?: string | null;
 	classes?: string | (string | null)[];
-};
+}
 
-export type HTMLProps = ComponentProps & {
+export interface HTMLProps extends ComponentProps {
 	html_tag: string;
-};
+}
 
-type IconProps = { icon: keyof typeof icons };
+interface IconProps {
+	icon: keyof Icons;
+}
 
 export const Icon: React.ComponentType<IconProps> = props =>
 	icons[props.icon] ? icons[props.icon] : null;

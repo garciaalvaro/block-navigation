@@ -1,26 +1,26 @@
 import { pr_store } from "utils/data/plugin";
 import { Tabs } from "./Tabs";
 import { Container } from "./Container";
-import { ContentNavigation } from "Components/ContentNavigation/ContentNavigation";
-import { ContentSettings } from "Components/ContentSettings/ContentSettings";
+import { ViewNavigation } from "Components/ViewNavigation/ViewNavigation";
+import { ViewSettings } from "Components/ViewSettings/ViewSettings";
 
-interface WithSelectProps {
-	view: ReturnType<Selectors["getView"]>;
-}
+interface WithSelectProps extends Pick<State, "view"> {}
 
-type Props = WithSelectProps;
+interface Props extends WithSelectProps {}
 
 const { withSelect } = wp.data;
 
-export const Root = withSelect<WithSelectProps>(select => ({
-	view: select(pr_store).getView()
-}))((props: Props) => {
+export const Root: React.ComponentType = withSelect<WithSelectProps>(
+	select => ({
+		view: select(pr_store).getView()
+	})
+)((props: Props) => {
 	const { view } = props;
 
 	return (
 		<Container>
 			<Tabs />
-			{view === "navigation" ? <ContentNavigation /> : <ContentSettings />}
+			{view === "navigation" ? <ViewNavigation /> : <ViewSettings />}
 		</Container>
 	);
 });

@@ -6,7 +6,9 @@ import { selectors } from "store/selectors";
 wp.data.registerStore(pr_store, {
 	// @ts-ignore
 	reducer,
+	// @ts-ignore
 	actions,
+	// @ts-ignore
 	selectors,
 	persist: ["color_scheme"]
 });

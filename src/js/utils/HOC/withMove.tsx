@@ -1,42 +1,35 @@
 import { pr_store } from "utils/data/plugin";
 
-export type WithMoveProps = {
+export interface WithMoveProps {
 	moving_is_over: boolean;
 	toggleMovingIsOver: Function;
 	moveBlock: Function;
-};
+}
 
 interface WithStateProps {
 	moving_is_over: boolean;
 }
 
-interface WithDispatchProps {
-	moveBlockToPosition: Function;
-	resetMoving: Function;
+interface WithDispatchProps extends Pick<ActionCreators, "resetMoving"> {
+	moveBlockToPosition: typeof import("wordpress__block-editor/store/actions").moveBlockToPosition;
 }
 
-interface WithSelectProps {
-	moving_block: ReturnType<Selectors["getMovingBlock"]>;
-}
+interface WithSelectProps extends Pick<State, "moving_block"> {}
 
-type OwnProps = {
-	can_receive_drop: boolean;
-	parent_id: string;
-	index: number;
-};
-
-type Props = OwnProps &
-	WithStateProps &
-	SetStateProp &
-	WithDispatchProps &
-	WithSelectProps &
-	SetStateProp;
+interface OwnProps
+	extends Pick<BlockProps, "can_receive_drop" | "parent_id" | "index"> {}
 
 const { withDispatch, withSelect } = wp.data;
 const { compose, withState } = wp.compose;
 
-const withMoveHOC = (WrappedComponent: React.ComponentType<WithMoveProps>) => (
-	props: Props
+const withMoveHOC = (
+	Component: React.ComponentType<OwnProps & WithMoveProps>
+) => (
+	props: OwnProps &
+		WithSelectProps &
+		WithDispatchProps &
+		WithStateProps &
+		SetStateProp
 ) => {
 	const { resetMoving, moveBlockToPosition, ...rest } = props;
 	const {
@@ -49,7 +42,7 @@ const withMoveHOC = (WrappedComponent: React.ComponentType<WithMoveProps>) => (
 	} = rest;
 
 	return (
-		<WrappedComponent
+		<Component
 			{...rest}
 			moving_is_over={moving_is_over}
 			toggleMovingIsOver={() => setState({ moving_is_over: !moving_is_over })}
@@ -72,7 +65,7 @@ const withMoveHOC = (WrappedComponent: React.ComponentType<WithMoveProps>) => (
 	);
 };
 
-export const withMove: () => React.ComponentType<WithMoveProps> = compose([
+export const withMove = compose(
 	withState<WithStateProps>({ moving_is_over: false }),
 	withDispatch<WithDispatchProps>(dispatch => ({
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
@@ -82,4 +75,4 @@ export const withMove: () => React.ComponentType<WithMoveProps> = compose([
 		moving_block: select(pr_store).getMovingBlock()
 	})),
 	withMoveHOC
-]);
+);

@@ -1,15 +1,11 @@
 import { Div, Button } from "utils/components";
 import { pr_store } from "utils/data/plugin";
 
-interface WithDispatchProps {
-	setView: ActionCreators["setView"];
-}
+interface WithSelectProps extends Pick<State, "view"> {}
 
-interface WithSelectProps {
-	view: ReturnType<Selectors["getView"]>;
-}
+interface WithDispatchProps extends Pick<ActionCreators, "setView"> {}
 
-type Props = WithDispatchProps & WithSelectProps;
+interface Props extends WithSelectProps, WithDispatchProps {}
 
 const { __ } = wp.i18n;
 const { withSelect, withDispatch } = wp.data;
@@ -20,14 +16,14 @@ const tabs: { value: State["view"]; label: string }[] = [
 	{ value: "settings", label: __("Settings") }
 ];
 
-export const Tabs: React.ComponentType = compose([
-	withDispatch<WithDispatchProps>(dispatch => ({
-		setView: dispatch(pr_store).setView
-	})),
+export const Tabs: React.ComponentType = compose(
 	withSelect<WithSelectProps>(select => ({
 		view: select(pr_store).getView()
+	})),
+	withDispatch<WithDispatchProps>(dispatch => ({
+		setView: dispatch(pr_store).setView
 	}))
-])((props: Props) => {
+)((props: Props) => {
 	const { view, setView } = props;
 
 	return (
@@ -38,7 +34,7 @@ export const Tabs: React.ComponentType = compose([
 					classes={[
 						"button",
 						"button-tab",
-						view === value ? "is-active" : null
+						view === value ? "is_active" : null
 					]}
 					onClick={() => setView(value)}
 				>

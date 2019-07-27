@@ -19,7 +19,7 @@ export type ColorScheme = {
 		| "ciruela";
 };
 
-// For backwards compatibility we use type-name as value
+// For backward compatibility we use type-name as value
 export const color_schemes: ColorScheme[] = [
 	{
 		value: "light-banana",

@@ -11,9 +11,9 @@ const getReplace = (search, replace) => ({
 
 module.exports = [
 	{
-		entry: __dirname + "/replace.entry.js",
+		entry: __dirname + "/version.entry.js",
 		output: {
-			path: __dirname + "/../_extras/release",
+			path: __dirname + "/..",
 			filename: "_temp.js"
 		},
 		module: {

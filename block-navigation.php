@@ -2,9 +2,9 @@
 /**
  * Plugin Name: Block Navigation
  * Plugin URI: https://wordpress.org/plugins/block-navigation/
- * Description: Block Navigation sidebar panel for the new Gutenberg editor.
+ * Description: Block Navigation sidebar panel for the new Block editor.
  * Author: melonpan
- * Version: 1.1.2
+ * Version: 1.2.0
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( __NAMESPACE__ . '\PLUGIN_VERSION' ) ) {
-	define( __NAMESPACE__ . '\PLUGIN_VERSION', '1.1.2' );
+	define( __NAMESPACE__ . '\PLUGIN_VERSION', '1.2.0' );
 }
 if ( ! defined( __NAMESPACE__ . '\PLUGIN_NAME' ) ) {
 	define( __NAMESPACE__ . '\PLUGIN_NAME', 'block-navigation' );
@@ -35,24 +35,24 @@ add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue' );
 function enqueue() {
 
 	wp_enqueue_style(
-		PLUGIN_NAME . '-css',
+		PLUGIN_NAME,
 		BUILD_DIR . PLUGIN_NAME . '.css',
 		array(),
 		PLUGIN_VERSION
 	);
 
 	wp_enqueue_script(
-		PLUGIN_NAME . '-js',
+		PLUGIN_NAME,
 		BUILD_DIR . PLUGIN_NAME . '.js',
 		array(
-			'jquery',
 			'lodash',
+			'wp-block-editor',
 			'wp-components',
 			'wp-compose',
 			'wp-data',
 			'wp-edit-post',
-			'wp-editor',
 			'wp-element',
+			'wp-hooks',
 			'wp-i18n',
 			'wp-plugins',
 			'wp-rich-text',

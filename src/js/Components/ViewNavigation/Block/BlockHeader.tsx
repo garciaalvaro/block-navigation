@@ -107,13 +107,15 @@ export const BlockHeader: React.ComponentType<OwnProps> = compose([
 
 								setMovingType("by_drag");
 
-								setMovingBlock({
-									id: block.clientId,
-									parent_id,
-									template_lock,
-									block_name: block.name,
-									index
-								});
+								setTimeout(() => {
+									setMovingBlock({
+										id: block.clientId,
+										parent_id,
+										template_lock,
+										block_name: block.name,
+										index
+									});
+								}, 0);
 
 								close();
 						  }

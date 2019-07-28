@@ -27,7 +27,11 @@ module.exports = [
 								name: "[name].[ext]"
 							}
 						},
-						getReplace(/^( \* Version: )\d+\.\d+\.\d+/.source, `$1${version}`)
+						getReplace(/^( \* Version: )\d+\.\d+\.\d+/.source, `$1${version}`),
+						getReplace(
+							/(define.*?PLUGIN_VERSION.*?)\d+\.\d+\.\d+/.source,
+							`$1${version}`
+						)
 					]
 				},
 				{

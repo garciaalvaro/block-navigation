@@ -1,9 +1,9 @@
 === Block Navigation ===
 Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
-Requires at least: 5.1
+Requires at least: 5.2
 Tested up to: 5.2
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -63,6 +63,13 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Sander Wehkamp](https://unsplash.com/@sanderwehkamp).
 
 == Changelog ==
+
+= 1.2.0 =
+* Improved moving blocks UX (both by drag and by click).
+* Added the filter "blockNavigation.addBlockContentAttributePath" for developers to include their own block type content.
+* Updated the UI.
+* Rebuilt code, migrated JavaScript to TypeScript.
+* Raised minimum WordPress version to 5.2.
 
 = 1.1.2 =
 * Cleaned console log output and added "attributes-available".

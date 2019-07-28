@@ -8,7 +8,7 @@
 
 		.moving &:before
 		.moving &:after
-			transition background-color .1s $e_deceleration
+			transition none
 
 		&:before
 		&:after
@@ -74,7 +74,7 @@
 		.is_moving
 			height 0
 			visibility hidden
-			transition height 0s .001s, visibility 0s .001s
+			transition height 0s .1s, visibility 0s .1s
 
 @keyframes slide_down {
 	0% {

@@ -23,8 +23,8 @@ export const ButtonMenu: React.ComponentType<OwnProps> = withState<
 
 	return (
 		<Popover
+			containerStyle={{ minWidth: "200px", marginLeft: "-10px" }}
 			isOpen={is_open}
-			position={"top"}
 			onClickOutside={close}
 			transitionDuration={0.1}
 			content={({ position, targetRect, popoverRect }) => (

@@ -42,7 +42,9 @@ export const Block: React.ComponentType<OwnProps> = compose(
 			getBlock,
 			getTemplateLock,
 			canInsertBlockType,
-			getSelectedBlockClientIds
+			getSelectedBlockClientId,
+			getSelectedBlockClientIds,
+			getMultiSelectedBlockClientIds
 		} = select("core/block-editor");
 		const moving_block: State["moving_block"] = select(
 			pr_store
@@ -52,13 +54,18 @@ export const Block: React.ComponentType<OwnProps> = compose(
 			moving_block.block_name,
 			parent_id
 		);
+		const is_selected_in_multi = getSelectedBlockClientIds
+			? getSelectedBlockClientIds().includes(id)
+			: getMultiSelectedBlockClientIds().includes(id);
+		const is_selected =
+			is_selected_in_multi || getSelectedBlockClientId() === id;
 
 		return {
 			block,
 			block_type: block
 				? select("core/blocks").getBlockType(block.name)
 				: undefined,
-			is_selected: (getSelectedBlockClientIds() as string[]).includes(id),
+			is_selected,
 			moving: select(pr_store).isMoving(),
 			moving_type: select(pr_store).getMovingType(),
 			template_lock: getTemplateLock(parent_id) || "",
@@ -73,6 +80,14 @@ export const Block: React.ComponentType<OwnProps> = compose(
 	withMove
 )(
 	class extends Component<Props> {
+		shouldComponentUpdate(next_props: Props) {
+			if (!next_props.block) {
+				return false;
+			}
+
+			return true;
+		}
+
 		componentDidUpdate(prev_props: Props) {
 			const { moving, is_open, setState, id } = this.props;
 

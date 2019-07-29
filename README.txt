@@ -69,7 +69,7 @@ Images from the readme banner and screenshots belong to [Sander Wehkamp](https:/
 * Added the filter "blockNavigation.addBlockContentAttributePath" for developers to include their own block type content.
 * Updated the UI.
 * Rebuilt code, migrated JavaScript to TypeScript.
-* Raised minimum WordPress version to 5.2.
+* Raised minimum WordPress version to 5.2 to make use of block-editor package.
 
 = 1.1.2 =
 * Cleaned console log output and added "attributes-available".

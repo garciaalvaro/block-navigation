@@ -30,7 +30,7 @@ export const ButtonMenu: React.ComponentType<OwnProps> = withState<
 			}}
 			isOpen={is_open}
 			onClickOutside={close}
-			transitionDuration={0.1}
+			transitionDuration={0.01}
 			content={({ position, targetRect, popoverRect }) => (
 				<ArrowContainer
 					position={position}

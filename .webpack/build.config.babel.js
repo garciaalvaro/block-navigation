@@ -1,4 +1,4 @@
-const pkg = require("../package.json");
+const { name, description, version, homepage } = require("../package.json");
 const webpack = require("webpack");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
@@ -6,8 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BannerPlugin = webpack.BannerPlugin;
 const nib = require("nib");
 const DefinePlugin = webpack.DefinePlugin;
-
-const { name, description, version, homepage } = pkg;
 
 export default {
 	entry: ["./src/index.ts", "./src/index.styl"],
@@ -17,9 +15,9 @@ export default {
 	},
 	resolve: {
 		alias: {
-			Components: __dirname + "/../src/js/Components",
-			utils: __dirname + "/../src/js/utils",
-			store: __dirname + "/../src/js/store"
+			Components: __dirname + "/../src/Components",
+			utils: __dirname + "/../src/utils",
+			store: __dirname + "/../src/store"
 		}
 	},
 	externals: {

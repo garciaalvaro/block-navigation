@@ -1,2 +1,2 @@
-import "./js/init/register-store";
-import "./js/init/register-sidebar";
+import "./init/register-store";
+import "./init/register-sidebar";

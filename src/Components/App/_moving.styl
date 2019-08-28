@@ -1,0 +1,87 @@
+/**
+ * App - Moving
+ */
+
++prefix-classes('bn-')
+
+	.block_list_drop_area
+
+		.moving &:before
+		.moving &:after
+			transition none
+
+		&:before
+		&:after
+			background-color transparent
+
+		.moving_type-by_click &:hover:before
+		&.moving_is_over:before
+			background-color var(--secondary_color_2)
+			transition background-color .1s .4s $e_standard
+
+		.moving_type-by_click &:hover:after
+		&.moving_is_over:after
+			background-color var(--color_02)
+			transition background-color .1s .4s $e_standard
+
+	.moving_type-by_click .can_receive_drop.no-is_moving:hover
+	.moving_is_over.can_receive_drop.no-is_moving
+
+		.block-header-container
+		~ .block .block-header-container
+			transform translate3d(0, 4em, 0)
+
+	.moving
+
+		&.moving_type-by_click
+
+			#bn-navigation
+				animation slide_down .4s $e_standard
+
+			.can_receive_drop
+				cursor pointer
+
+		#bn-navigation
+			padding-bottom 4em
+
+		.no-can_receive_drop:before
+			content normal
+
+		.no-is_moving.no-moving_is_over.can_receive_drop .block-header
+			margin-top -1px
+			border-top 1px dashed var(--secondary_color_2)
+
+		.block-header-container
+			transition transform .3s $e_deceleration
+
+		.moving_is_over
+		&.moving_type-by_click .can_receive_drop:hover
+
+			& .block-header-container
+			& ~ div .block-header-container
+				transition transform .3s .15s $e_deceleration
+
+	#bn-container
+
+		.is_moving + .block
+
+			.block-header
+				border-top-color var(--secondary_color_1)
+
+			&:before
+				background-color var(--secondary_color_1)
+
+		.is_moving
+			height 0
+			visibility hidden
+
+@keyframes slide_down {
+	0% {
+		z-index 3
+		transform translate3d(0, -4em, 0)
+	}
+	100% {
+		z-index 3
+		transform translate3d(0, 0, 0)
+	}
+}

@@ -17,14 +17,14 @@
 		"jsx": "react",
 		"baseUrl": ".",
 		"paths": {
-			"utils/*": ["src/js/utils/*"],
-			"store/*": ["src/js/store/*"],
-			"Components/*": ["src/js/Components/*"]
+			"utils/*": ["src/utils/*"],
+			"store/*": ["src/store/*"],
+			"Components/*": ["src/Components/*"]
 		},
 		// https://stackoverflow.com/a/52404148 | CC BY-SA 3.0
 		"skipLibCheck": true
 	},
-	"include": ["src", "types.d.ts"],
+	"include": ["src", "types/*"],
 	"exclude": ["node_modules", ".webpack/*"],
 	"compileOnSave": false
 }

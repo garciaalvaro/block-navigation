@@ -46,7 +46,6 @@ function enqueue() {
 		BUILD_DIR . PLUGIN_NAME . '.js',
 		array(
 			'lodash',
-			'wp-block-editor',
 			'wp-components',
 			'wp-compose',
 			'wp-data',

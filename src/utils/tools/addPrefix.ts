@@ -1,4 +1,4 @@
-import { pr } from "../data";
+import { pr } from "utils/data/plugin";
 
 const { compact, flow, isString } = lodash;
 

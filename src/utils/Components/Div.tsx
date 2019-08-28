@@ -1,4 +1,4 @@
-import { prepareProps } from "utils/tools";
+import { prepareProps } from "utils/tools/prepareProps";
 
 export const Div: React.ComponentType<ComponentProps> = props => {
 	const { children, ...rest } = props;

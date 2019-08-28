@@ -1,4 +1,4 @@
-import { prepareProps } from "utils/tools";
+import { prepareProps } from "utils/tools/prepareProps";
 
 export const DivRef = wp.element.forwardRef<HTMLDivElement, ComponentProps>(
 	(props, ref) => {

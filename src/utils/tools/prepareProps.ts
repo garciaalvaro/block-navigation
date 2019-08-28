@@ -1,4 +1,4 @@
-import { addPrefix } from "./addPrefix";
+import { addPrefix } from "utils/tools/addPrefix";
 
 export const prepareProps = (props: ComponentProps) => {
 	const { id, className, ...rest } = props;

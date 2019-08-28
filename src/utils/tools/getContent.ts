@@ -1,4 +1,4 @@
-import { block_types } from "utils/data";
+import { block_types } from "utils/data/block_types";
 
 const { get, isArray } = lodash;
 const { create, getTextContent } = wp.richText;

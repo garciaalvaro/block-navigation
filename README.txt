@@ -1,23 +1,32 @@
 === Block Navigation ===
 Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
-Requires at least: 4.9.8
-Tested up to: 5
-Stable tag: 1.1.2
-Requires PHP: 5.6
+Requires at least: 5.2
+Tested up to: 5.2
+Stable tag: 1.2.0
+Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Block Navigation panel with useful features.
+Block Navigation sidebar panel for the new Block editor.
 
 == Description ==
 
-Block Navigation provides a panel with the current post/page's blocks and some tools to facilitate the editing process.
-Inside the panel several utilities are included to enhance the UX, such as dragging blocks to a different location, moving them by click, selecting them, display a small snippet of the block's content, etc.
-These functionalities are especially useful for nested blocks - blocks that are inside parent blocks which are difficult to select or move in the editor.
-The plugin also provides some features for Plugin and Theme developers such as: click and Copy the block's clientId and click to console.log helpful block's data.
+Block Navigation provides a sidebar with the current post/page's blocks and some tools to facilitate the editing process in the new Gutenberg editor.
+Inside the panel several utilities are included to enhance the UX, such as:
 
-Until WordPress 5 is released this plugin depends on the latest version of [Gutenberg plugin](https://wordpress.org/plugins/gutenberg/).
+* Dragging blocks to a different location
+* Moving blocks by click
+* Selecting blocks
+* Easily recognising the block from a small snippet of the block’s content
+
+These functionalities are especially useful for nested blocks - blocks that are inside parent blocks which are difficult to select or move in the editor.
+The plugin also provides some features for **Plugin and Theme developers** such as:
+
+* Click and Copy the block’s clientId
+* Click to console.log helpful data from the block
+
+The Plugin also lets the user select a color scheme from multiple dark and light schemes.
 
 == Screenshots ==
 
@@ -46,7 +55,7 @@ Installation from the WordPress admin.
 
 = I do not see the plugin icon in the post editor =
 
-Alternatively the Plugin can be opened from the More button (the 3 dots on the right side of the top Block's Toolbar).
+Alternatively the Plugin can be opened from the Show More button (the 3 dots on the right side of the Editor Top Bar).
 Click the More button and inside the menu list click on the plugin name "Block Navigation".
 
 == Credits ==
@@ -54,6 +63,13 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Sander Wehkamp](https://unsplash.com/@sanderwehkamp).
 
 == Changelog ==
+
+= 1.2.0 =
+* Improved moving blocks UX (both by drag and by click).
+* Added the filter "blockNavigation.addBlockContentAttributePath" for developers to include their own block type content.
+* Updated the UI.
+* Rebuilt code, migrated JavaScript to TypeScript.
+* Raised minimum WordPress version to 5.2 to make use of block-editor package.
 
 = 1.1.2 =
 * Cleaned console log output and added "attributes-available".

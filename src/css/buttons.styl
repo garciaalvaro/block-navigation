@@ -1,0 +1,31 @@
+/*
+ * Buttons
+ */
+
++prefix-classes('bn-')
+
+	.button
+	.button-text
+	.button-icon
+		&
+		&:focus
+		&:hover
+			background none
+			box-shadow none
+			outline none
+			border none
+			color inherit
+
+	.button-text
+		font-size 1em
+		line-height 3.2
+		padding 0 10px
+		text-transform uppercase
+		font-weight 500
+		cursor pointer
+
+	.button-icon
+		padding 0
+		display flex
+		align-items center
+		cursor pointer

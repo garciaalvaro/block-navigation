@@ -1,13 +1,5 @@
-_extras/backups
-_extras/releases
-_extras/wp_svn
-_extras/_old
-_extras/_tests
-_extras/_assets
+.DS_Store
+.todo
+_extras
 build
 node_modules
-.vscode
-.todo
-.cache
-yarn.lock
-yarn-error.log

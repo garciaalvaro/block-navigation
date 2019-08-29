@@ -1,5 +1,5 @@
 import { Div, Span, Button, Icon } from "utils/Components";
-import { pr_store } from "utils/data";
+import { store_prefix } from "utils/data";
 import { BlockHeaderContent } from "./BlockHeaderContent";
 import { ButtonMenu } from "./ButtonMenu";
 
@@ -33,9 +33,9 @@ const WpIcon = wp.components.Icon;
 
 export const BlockHeader: React.ComponentType<OwnProps> = compose([
 	withDispatch<WithDispatchProps>(dispatch => ({
-		setMovingType: dispatch(pr_store).setMovingType,
-		setMovingBlock: dispatch(pr_store).setMovingBlock,
-		resetMoving: dispatch(pr_store).resetMoving,
+		setMovingType: dispatch(store_prefix).setMovingType,
+		setMovingBlock: dispatch(store_prefix).setMovingBlock,
+		resetMoving: dispatch(store_prefix).resetMoving,
 		selectBlock: dispatch("core/block-editor").selectBlock,
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
 	}))

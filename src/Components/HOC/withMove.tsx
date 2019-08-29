@@ -1,4 +1,4 @@
-import { pr_store } from "utils/data";
+import { store_prefix } from "utils/data";
 
 export interface WithMoveProps {
 	moving_is_over: boolean;
@@ -22,10 +22,10 @@ const { compose } = wp.compose;
 export const withMove = compose(
 	withDispatch<WithDispatchProps>(dispatch => ({
 		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition,
-		resetMoving: dispatch(pr_store).resetMoving
+		resetMoving: dispatch(store_prefix).resetMoving
 	})),
 	withSelect<WithSelectProps>(select => ({
-		moving_block: select(pr_store).getMovingBlock()
+		moving_block: select(store_prefix).getMovingBlock()
 	})),
 	(Component: React.ComponentType<OwnProps & WithMoveProps>) => (
 		props: OwnProps &

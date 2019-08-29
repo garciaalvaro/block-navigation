@@ -1,4 +1,4 @@
-import { pr_store } from "utils/data";
+import { store_prefix } from "utils/data";
 import { Div } from "utils/Components";
 import { withMove, WithMoveProps } from "../HOC/withMove";
 
@@ -17,7 +17,7 @@ const { compose } = wp.compose;
 
 export const BlockListDropArea: React.ComponentType<OwnProps> = compose([
 	withSelect<WithSelectProps>(select => ({
-		moving_type: select(pr_store).getMovingType()
+		moving_type: select(store_prefix).getMovingType()
 	})),
 	withMove
 ])((props: Props) => {

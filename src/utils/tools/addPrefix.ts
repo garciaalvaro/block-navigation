@@ -1,4 +1,4 @@
-import { pr } from "utils/data/plugin";
+import { plugin_prefix } from "utils/data/plugin";
 
 const { compact, flow, isString } = lodash;
 
@@ -17,7 +17,7 @@ const resolvePrefix = (
 export const addPrefix = (
 	elements: string | null | (string | null)[] | undefined,
 	separator: string = "-",
-	prefix = pr
+	prefix = plugin_prefix
 ): string => {
 	if (!elements) {
 		return "";

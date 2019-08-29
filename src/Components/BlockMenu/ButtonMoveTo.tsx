@@ -1,5 +1,5 @@
 import { Div, Icon, Button, Span } from "utils/Components";
-import { pr_store } from "utils/data";
+import { store_prefix } from "utils/data";
 
 interface WithDispatchProps {
 	setMovingBlock: ActionCreators["setMovingBlock"];
@@ -18,8 +18,8 @@ export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
 	WithDispatchProps,
 	OwnProps
 >(dispatch => ({
-	setMovingBlock: dispatch(pr_store).setMovingBlock,
-	setMovingType: dispatch(pr_store).setMovingType
+	setMovingBlock: dispatch(store_prefix).setMovingBlock,
+	setMovingType: dispatch(store_prefix).setMovingType
 }))((props: Props) => {
 	const {
 		id,

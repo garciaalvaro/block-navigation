@@ -1,9 +1,9 @@
-import { pr_store } from "utils/data";
+import { store_prefix } from "utils/data";
 import { reducer } from "store/reducer";
 import { actions } from "store/actions";
 import { selectors } from "store/selectors";
 
-wp.data.registerStore(pr_store, {
+wp.data.registerStore(store_prefix, {
 	// @ts-ignore
 	reducer,
 	// @ts-ignore

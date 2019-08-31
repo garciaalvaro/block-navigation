@@ -20,9 +20,7 @@
 			"utils/*": ["src/utils/*"],
 			"store/*": ["src/store/*"],
 			"Components/*": ["src/Components/*"]
-		},
-		// https://stackoverflow.com/a/52404148 | CC BY-SA 3.0
-		"skipLibCheck": true
+		}
 	},
 	"include": ["src", "types/*"],
 	"exclude": ["node_modules", ".webpack/*"],

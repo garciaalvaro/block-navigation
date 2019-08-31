@@ -28,6 +28,9 @@ The plugin also provides some features for **Plugin and Theme developers** such 
 
 The Plugin also lets the user select a color scheme from multiple dark and light schemes.
 
+[GitHub repository](https://github.com/garciaalvaro/block-navigation)
+
+
 == Screenshots ==
 
 1. Main view, dark scheme.

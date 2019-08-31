@@ -22,6 +22,7 @@ module.exports = [
 						"node_modules/**",
 						"package.json",
 						"package-lock.json",
+						"README.md",
 						"src/**",
 						"tsconfig.json"
 					]

@@ -1,5 +1,6 @@
 .DS_Store
 .todo
 _extras
+_release
 build
 node_modules

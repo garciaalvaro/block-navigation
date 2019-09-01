@@ -1,3 +1,5 @@
+![Banner Image](assets-repo/banner-1544x500.png)
+
 # Block Navigation
 
 Block Navigation provides a sidebar with the current post/page's blocks and some tools to facilitate the editing process in the new Gutenberg editor.
@@ -21,6 +23,11 @@ The plugin also provides some features for **Plugin and Theme developers** such 
 - Click to console.log helpful data from the block
 
 The Plugin also lets the user select a color scheme from multiple dark and light schemes.
+
+<img src="assets-repo/screenshot-1.png" width="700px" alt="Main view, dark scheme" />
+<img src="assets-repo/screenshot-2.png" width="700px" alt="Dragging a block to a different position" />
+<img src="assets-repo/screenshot-3.png" width="700px" alt="Block menu" />
+<img src="assets-repo/screenshot-4.png" width="700px" alt="List of available color schemes, light and dark" />
 
 <br />
 

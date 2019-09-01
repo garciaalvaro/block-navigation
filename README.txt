@@ -35,9 +35,8 @@ The Plugin also lets the user select a color scheme from multiple dark and light
 
 1. Main view, dark scheme.
 2. Dragging a block to a different position.
-3. Opened block menu.
-4. Development Tool, console log block data.
-5. List of available color schemes, light and dark.
+3. Block menu.
+4. List of available color schemes, light and dark.
 
 == Usage ==
 
@@ -63,7 +62,7 @@ Click the More button and inside the menu list click on the plugin name "Block N
 
 == Credits ==
 
-Images from the readme banner and screenshots belong to [Sander Wehkamp](https://unsplash.com/@sanderwehkamp).
+Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
 

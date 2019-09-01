@@ -28,11 +28,7 @@ export const withMove = compose(
 		moving_block: select(store_prefix).getMovingBlock()
 	})),
 	(Component: React.ComponentType<OwnProps & WithMoveProps>) => (
-		props: OwnProps &
-			WithSelectProps &
-			WithDispatchProps &
-			SetStateProp &
-			WithMoveProps
+		props: OwnProps & WithSelectProps & WithDispatchProps & WithMoveProps
 	) => {
 		const { resetMoving, moveBlockToPosition, ...rest } = props;
 		const { moving_block, can_receive_drop, parent_id, index } = rest;

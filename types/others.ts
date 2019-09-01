@@ -20,10 +20,6 @@ interface MenuProps {
 	close_children: Function;
 }
 
-interface SetStateProp {
-	setState(obj: any): void;
-}
-
 interface BlockProps {
 	id: string;
 	parent_id: string;

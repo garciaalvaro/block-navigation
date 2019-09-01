@@ -13,7 +13,7 @@ interface OwnProps extends MenuProps {}
 interface Props extends WithSelectProps, WithDispatchProps, OwnProps {}
 
 const { __ } = wp.i18n;
-const { Fragment, useCallback, useMemo } = wp.element;
+const { Fragment, useMemo } = wp.element;
 const { compose } = wp.compose;
 const { withDispatch, withSelect } = wp.data;
 
@@ -42,22 +42,22 @@ export const ButtonsMove: React.ComponentType<OwnProps> = compose([
 		() => !can_move || index + 1 === sibling_ids.length,
 		[can_move, index, sibling_ids]
 	);
-	const onClickUp = useCallback(() => {
+	const onClickUp = () => {
 		if (move_up_is_disabled) {
 			return;
 		}
 
 		close();
 		moveBlockToPosition(id, parent_id, parent_id, index - 1);
-	}, [move_up_is_disabled]);
-	const onClickDown = useCallback(() => {
+	};
+	const onClickDown = () => {
 		if (move_down_is_disabled) {
 			return;
 		}
 
 		close();
 		moveBlockToPosition(id, parent_id, parent_id, index + 1);
-	}, [move_down_is_disabled]);
+	};
 
 	return (
 		<Fragment>

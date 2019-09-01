@@ -11,7 +11,6 @@ interface OwnProps extends MenuProps {}
 interface Props extends OwnProps, WithDispatchProps {}
 
 const { __ } = wp.i18n;
-const { useCallback } = wp.element;
 const { withDispatch } = wp.data;
 
 export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
@@ -33,7 +32,7 @@ export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
 		close_children,
 		index
 	} = props;
-	const onClick = useCallback(() => {
+	const onClick = () => {
 		close();
 		close_children();
 		setMovingType("by_click");
@@ -44,7 +43,7 @@ export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
 			block_name: block.name,
 			index
 		});
-	}, [parent_id, template_lock, block.name, index]);
+	};
 
 	return (
 		<Button

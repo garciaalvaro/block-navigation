@@ -15,7 +15,6 @@ interface WithSelectProps {
 interface OwnProps extends MenuProps {}
 
 const { __ } = wp.i18n;
-const { useCallback } = wp.element;
 const { withSelect } = wp.data;
 const l = (...args: any[]) => console.log(...args);
 
@@ -48,7 +47,7 @@ export const ButtonBlockData: React.ComponentType<OwnProps> = withSelect<
 		root_clientId
 	} = props;
 	const { name, attributes: attributes_value } = block;
-	const onClick = useCallback(() => {
+	const onClick = () => {
 		close();
 
 		if (!block_type) {
@@ -97,16 +96,7 @@ export const ButtonBlockData: React.ComponentType<OwnProps> = withSelect<
 		}
 
 		console.groupEnd();
-	}, [
-		parent_id,
-		block,
-		block_type,
-		index,
-		template_lock,
-		descendants_clientIds,
-		children_clientIds,
-		root_clientId
-	]);
+	};
 
 	return (
 		<Button className={["button", "button-menu"]} onClick={onClick}>

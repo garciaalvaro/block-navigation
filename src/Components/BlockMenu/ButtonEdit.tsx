@@ -10,7 +10,6 @@ interface OwnProps extends MenuProps {}
 interface Props extends OwnProps, WithDispatchProps {}
 
 const { __ } = wp.i18n;
-const { useCallback } = wp.element;
 const { withDispatch } = wp.data;
 
 export const ButtonEdit: React.ComponentType<OwnProps> = withDispatch<
@@ -21,11 +20,11 @@ export const ButtonEdit: React.ComponentType<OwnProps> = withDispatch<
 	selectBlock: dispatch("core/block-editor").selectBlock
 }))((props: Props) => {
 	const { id, close, selectBlock, openGeneralSidebar } = props;
-	const onClick = useCallback(() => {
+	const onClick = () => {
 		close();
 		selectBlock(id);
 		openGeneralSidebar("edit-post/block");
-	}, []);
+	};
 
 	return (
 		<Button className={["button", "button-menu"]} onClick={onClick}>

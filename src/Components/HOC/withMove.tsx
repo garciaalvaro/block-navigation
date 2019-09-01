@@ -15,7 +15,7 @@ interface WithSelectProps extends Pick<State, "moving_block"> {}
 interface OwnProps
 	extends Pick<BlockProps, "can_receive_drop" | "parent_id" | "index"> {}
 
-const { useCallback, useState } = wp.element;
+const { useState } = wp.element;
 const { withDispatch, withSelect } = wp.data;
 const { compose } = wp.compose;
 
@@ -37,11 +37,8 @@ export const withMove = compose(
 		const { resetMoving, moveBlockToPosition, ...rest } = props;
 		const { moving_block, can_receive_drop, parent_id, index } = rest;
 		const [moving_is_over, setMovingIsOver] = useState(false);
-		const toggleMovingIsOver = useCallback(
-			() => setMovingIsOver(is_over => !is_over),
-			[]
-		);
-		const moveBlock = useCallback(() => {
+		const toggleMovingIsOver = () => setMovingIsOver(is_over => !is_over);
+		const moveBlock = () => {
 			setMovingIsOver(false);
 			resetMoving();
 
@@ -55,7 +52,7 @@ export const withMove = compose(
 						: index
 				);
 			}
-		}, [can_receive_drop, moving_block]);
+		};
 
 		return (
 			<Component

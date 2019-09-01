@@ -12,7 +12,6 @@ interface OwnProps {
 
 interface Props extends WithSelectProps, WithDispatchProps, OwnProps {}
 
-const { useCallback } = wp.element;
 const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
 
@@ -25,7 +24,7 @@ export const Tab: React.ComponentType<OwnProps> = compose(
 	}))
 )((props: Props) => {
 	const { view, setView, tab_value, tab_label } = props;
-	const onClick = useCallback(() => setView(tab_value), []);
+	const onClick = () => setView(tab_value);
 
 	return (
 		<Button

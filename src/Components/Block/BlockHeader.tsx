@@ -24,22 +24,19 @@ interface OwnProps
 	close: Function;
 }
 
-interface Props extends WithDispatchProps, OwnProps {}
-
-const { useCallback } = wp.element;
-const { compose } = wp.compose;
 const { withDispatch } = wp.data;
 const WpIcon = wp.components.Icon;
 
-export const BlockHeader: React.ComponentType<OwnProps> = compose([
-	withDispatch<WithDispatchProps>(dispatch => ({
-		setMovingType: dispatch(store_prefix).setMovingType,
-		setMovingBlock: dispatch(store_prefix).setMovingBlock,
-		resetMoving: dispatch(store_prefix).resetMoving,
-		selectBlock: dispatch("core/block-editor").selectBlock,
-		moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
-	}))
-])((props: Props) => {
+export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
+	WithDispatchProps,
+	OwnProps
+>(dispatch => ({
+	setMovingType: dispatch(store_prefix).setMovingType,
+	setMovingBlock: dispatch(store_prefix).setMovingBlock,
+	resetMoving: dispatch(store_prefix).resetMoving,
+	selectBlock: dispatch("core/block-editor").selectBlock,
+	moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
+}))(props => {
 	const {
 		id,
 		has_children,
@@ -61,33 +58,30 @@ export const BlockHeader: React.ComponentType<OwnProps> = compose([
 	const icon: BlockType["icon"] = block_type
 		? block_type.icon
 		: { src: () => null };
-	const buttonOnClick = useCallback((e: any) => {
+	const buttonOnClick = (e: any) => {
 		e.stopPropagation();
 
 		toggle();
-	}, []);
-	const onDragStart = useCallback(
-		(e: React.DragEvent) => {
-			if (e.dataTransfer && e.dataTransfer.setData) {
-				// Needed for Firefox to work.
-				// https://stackoverflow.com/a/33465176 | CC BY-SA 3.0
-				e.dataTransfer.setData("text", "");
-			}
+	};
+	const onDragStart = (e: React.DragEvent) => {
+		if (e.dataTransfer && e.dataTransfer.setData) {
+			// Needed for Firefox to work.
+			// https://stackoverflow.com/a/33465176 | CC BY-SA 3.0
+			e.dataTransfer.setData("text", "");
+		}
 
-			setMovingType("by_drag");
+		setMovingType("by_drag");
 
-			setTimeout(() => {
-				setMovingBlock({
-					id: block.clientId,
-					parent_id,
-					template_lock,
-					block_name: block.name,
-					index
-				});
-			}, 0);
-		},
-		[index, parent_id, template_lock]
-	);
+		setTimeout(() => {
+			setMovingBlock({
+				id: block.clientId,
+				parent_id,
+				template_lock,
+				block_name: block.name,
+				index
+			});
+		}, 0);
+	};
 
 	return (
 		<Div className="block-header-container">

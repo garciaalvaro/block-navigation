@@ -15,6 +15,7 @@ module.exports = [
 						".*",
 						".*/**",
 						"_extras/**",
+						"assets-repo/**",
 						"types/**",
 						"_release",
 						"_temp.js",

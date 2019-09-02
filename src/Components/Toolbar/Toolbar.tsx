@@ -1,4 +1,4 @@
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 import { Div, Button } from "utils/Components";
 import { ToolbarMovingBlock } from "./ToolbarMovingBlock";
 
@@ -14,10 +14,10 @@ const { withSelect, withDispatch } = wp.data;
 
 export const Toolbar: React.ComponentType = compose([
 	withSelect<WithSelectProps>(select => ({
-		moving_block: select(store_prefix).getMovingBlock()
+		moving_block: select(store_slug).getMovingBlock()
 	})),
 	withDispatch<WithDispatchProps>(dispatch => ({
-		resetMoving: dispatch(store_prefix).resetMoving
+		resetMoving: dispatch(store_slug).resetMoving
 	}))
 ])((props: Props) => {
 	const { moving_block, resetMoving } = props;

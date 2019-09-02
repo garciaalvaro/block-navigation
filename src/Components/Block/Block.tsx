@@ -1,5 +1,5 @@
 import { Div } from "utils/Components";
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 import { useToggle } from "utils/hooks";
 import { BlockHeader } from "./BlockHeader";
 import { BlockList } from "../BlockList/BlockList";
@@ -41,7 +41,7 @@ export const Block: React.ComponentType<OwnProps> = compose(
 			getMultiSelectedBlockClientIds
 		} = select("core/block-editor");
 		const moving_block: State["moving_block"] = select(
-			store_prefix
+			store_slug
 		).getMovingBlock();
 		const block = getBlock(id);
 		const moving_block_can_be_sibling = canInsertBlockType(
@@ -60,8 +60,8 @@ export const Block: React.ComponentType<OwnProps> = compose(
 				? select("core/blocks").getBlockType(block.name)
 				: undefined,
 			is_selected,
-			moving: select(store_prefix).isMoving(),
-			moving_type: select(store_prefix).getMovingType(),
+			moving: select(store_slug).isMoving(),
+			moving_type: select(store_slug).getMovingType(),
 			template_lock: getTemplateLock(parent_id) || "",
 			moving_block,
 			can_receive_drop:

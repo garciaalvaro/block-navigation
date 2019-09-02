@@ -1,5 +1,5 @@
 import { Div, Span, Button, Icon } from "utils/Components";
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 import { BlockHeaderContent } from "./BlockHeaderContent";
 import { ButtonMenu } from "./ButtonMenu";
 
@@ -31,9 +31,9 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 	WithDispatchProps,
 	OwnProps
 >(dispatch => ({
-	setMovingType: dispatch(store_prefix).setMovingType,
-	setMovingBlock: dispatch(store_prefix).setMovingBlock,
-	resetMoving: dispatch(store_prefix).resetMoving,
+	setMovingType: dispatch(store_slug).setMovingType,
+	setMovingBlock: dispatch(store_slug).setMovingBlock,
+	resetMoving: dispatch(store_slug).resetMoving,
 	selectBlock: dispatch("core/block-editor").selectBlock,
 	moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
 }))(props => {

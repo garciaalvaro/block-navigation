@@ -1,5 +1,5 @@
 import { Div } from "utils/Components";
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 import { BlockList } from "../BlockList/BlockList";
 import { Toolbar } from "../Toolbar/Toolbar";
 
@@ -14,8 +14,8 @@ const { withSelect } = wp.data;
 const { Fragment } = wp.element;
 
 export const ViewNavigation = withSelect<WithSelectProps>(select => ({
-	moving: select(store_prefix).isMoving(),
-	moving_type: select(store_prefix).getMovingType(),
+	moving: select(store_slug).isMoving(),
+	moving_type: select(store_slug).getMovingType(),
 	root_ids: select("core/block-editor").getBlockOrder()
 }))(props => {
 	const { moving, moving_type, root_ids } = props;

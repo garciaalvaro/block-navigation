@@ -1,5 +1,5 @@
 import { DivRef } from "utils/Components";
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 import { useWindowSize } from "utils/hooks";
 
 interface WithSelectProps
@@ -18,10 +18,10 @@ export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 	WithSelectProps,
 	OwnProps
 >(select => ({
-	view: select(store_prefix).getView(),
-	color_scheme: select(store_prefix).getColorScheme(),
-	moving: select(store_prefix).isMoving(),
-	moving_type: select(store_prefix).getMovingType()
+	view: select(store_slug).getView(),
+	color_scheme: select(store_slug).getColorScheme(),
+	moving: select(store_slug).isMoving(),
+	moving_type: select(store_slug).getMovingType()
 }))(props => {
 	const { children, moving, moving_type, color_scheme, view } = props;
 	const [type, value] = color_scheme.split("-");

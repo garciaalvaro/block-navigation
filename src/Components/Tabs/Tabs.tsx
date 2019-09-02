@@ -1,5 +1,5 @@
 import { Div } from "utils/Components";
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 import { Tab } from "./Tab";
 
 interface WithSelectProps extends Pick<State, "view"> {}
@@ -14,7 +14,7 @@ const tabs: { value: State["view"]; label: string }[] = [
 
 export const Tabs: React.ComponentType = withSelect<WithSelectProps>(
 	select => ({
-		view: select(store_prefix).getView()
+		view: select(store_slug).getView()
 	})
 )(props => {
 	return (

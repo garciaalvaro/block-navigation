@@ -1,5 +1,5 @@
 import { Button } from "utils/Components";
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 
 interface WithSelectProps extends Pick<State, "view"> {}
 
@@ -17,10 +17,10 @@ const { compose } = wp.compose;
 
 export const Tab: React.ComponentType<OwnProps> = compose(
 	withSelect<WithSelectProps>(select => ({
-		view: select(store_prefix).getView()
+		view: select(store_slug).getView()
 	})),
 	withDispatch<WithDispatchProps>(dispatch => ({
-		setView: dispatch(store_prefix).setView
+		setView: dispatch(store_slug).setView
 	}))
 )((props: Props) => {
 	const { view, setView, tab_value, tab_label } = props;

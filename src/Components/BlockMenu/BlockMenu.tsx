@@ -1,5 +1,5 @@
 import { Div } from "utils/Components";
-import { store_prefix } from "utils/data";
+import { store_slug } from "utils/data";
 import { ButtonEdit } from "./ButtonEdit";
 import { ButtonMoveTo } from "./ButtonMoveTo";
 import { ButtonsMove } from "./ButtonsMove";
@@ -16,7 +16,7 @@ export const BlockMenu: React.ComponentType<OwnProps> = withSelect<
 	WithSelectProps,
 	OwnProps
 >(select => ({
-	color_scheme: select(store_prefix).getColorScheme()
+	color_scheme: select(store_slug).getColorScheme()
 }))(props => {
 	const { color_scheme } = props;
 	const [type, value] = color_scheme.split("-");

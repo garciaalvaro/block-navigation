@@ -1,8 +1,6 @@
-import { color_schemes } from "utils/data";
-
 const initial_state: State = {
 	view: "navigation",
-	color_scheme: color_schemes[0].value,
+	color_scheme: "dark-endrina",
 	moving_type: "by_drag",
 	moving_block: {
 		id: "",

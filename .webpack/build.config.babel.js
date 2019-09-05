@@ -23,7 +23,16 @@ export default {
 	externals: {
 		lodash: "lodash",
 		react: "React",
-		"react-dom": "ReactDOM"
+		"react-dom": "ReactDOM",
+		"@wordpress/components": "wp.components",
+		"@wordpress/compose": "wp.compose",
+		"@wordpress/data": "wp.data",
+		"@wordpress/edit-post": "wp.editPost",
+		"@wordpress/element": "wp.element",
+		"@wordpress/hooks": "wp.hooks",
+		"@wordpress/i18n": "wp.i18n",
+		"@wordpress/plugins": "wp.plugins",
+		"@wordpress/rich-text": "wp.richText"
 	},
 	module: {
 		rules: [

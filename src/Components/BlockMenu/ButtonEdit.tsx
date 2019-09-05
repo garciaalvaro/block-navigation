@@ -1,3 +1,6 @@
+import { __ } from "@wordpress/i18n";
+import { withDispatch } from "@wordpress/data";
+
 import { Div, Button, Icon, Span } from "utils/Components";
 
 interface WithDispatchProps {
@@ -8,9 +11,6 @@ interface WithDispatchProps {
 interface OwnProps extends MenuProps {}
 
 interface Props extends OwnProps, WithDispatchProps {}
-
-const { __ } = wp.i18n;
-const { withDispatch } = wp.data;
 
 export const ButtonEdit: React.ComponentType<OwnProps> = withDispatch<
 	WithDispatchProps,

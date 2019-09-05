@@ -1,3 +1,5 @@
+import { withSelect } from "@wordpress/data";
+
 import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
 import { ButtonEdit } from "./ButtonEdit";
@@ -9,8 +11,6 @@ import { ButtonBlockData } from "./ButtonBlockData";
 interface WithSelectProps extends Pick<State, "color_scheme"> {}
 
 interface OwnProps extends MenuProps {}
-
-const { withSelect } = wp.data;
 
 export const BlockMenu: React.ComponentType<OwnProps> = withSelect<
 	WithSelectProps,

@@ -1,4 +1,4 @@
-const { useState } = wp.element;
+import { useState } from "@wordpress/element";
 
 export const useToggle = (initial_open = false) => {
 	const [is_open, setOpen] = useState(initial_open);

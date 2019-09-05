@@ -1,3 +1,8 @@
+import { __ } from "@wordpress/i18n";
+import { withDispatch, withSelect } from "@wordpress/data";
+import { compose } from "@wordpress/compose";
+import { Fragment, useMemo } from "@wordpress/element";
+
 import { Div, Icon, Button, Span } from "utils/Components";
 
 interface WithSelectProps {
@@ -11,11 +16,6 @@ interface WithDispatchProps {
 interface OwnProps extends MenuProps {}
 
 interface Props extends WithSelectProps, WithDispatchProps, OwnProps {}
-
-const { __ } = wp.i18n;
-const { Fragment, useMemo } = wp.element;
-const { compose } = wp.compose;
-const { withDispatch, withSelect } = wp.data;
 
 export const ButtonsMove: React.ComponentType<OwnProps> = compose([
 	withSelect<WithSelectProps, MenuProps>((select, { parent_id }) => ({

@@ -1,10 +1,10 @@
+import { Fragment } from "@wordpress/element";
+
 import { Block } from "../Block/Block";
 
 interface Props extends Pick<BlockProps, "parent_id" | "level"> {
 	ids: string[];
 }
-
-const { Fragment } = wp.element;
 
 export const BlockList: React.ComponentType<Props> = props => {
 	const { parent_id, ids, level } = props;

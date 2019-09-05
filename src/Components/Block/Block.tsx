@@ -1,3 +1,7 @@
+import { withSelect } from "@wordpress/data";
+import { compose } from "@wordpress/compose";
+import { Fragment, useState, useEffect } from "@wordpress/element";
+
 import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
 import { useToggle } from "utils/hooks";
@@ -25,10 +29,6 @@ interface OwnProps
 	> {}
 
 interface Props extends OwnProps, WithMoveProps, WithSelectProps {}
-
-const { withSelect } = wp.data;
-const { compose } = wp.compose;
-const { Fragment, useState, useEffect } = wp.element;
 
 export const Block: React.ComponentType<OwnProps> = compose(
 	withSelect<WithSelectProps, OwnProps>((select, { id, parent_id }) => {

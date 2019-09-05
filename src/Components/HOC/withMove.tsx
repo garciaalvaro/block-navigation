@@ -1,3 +1,7 @@
+import { withSelect, withDispatch } from "@wordpress/data";
+import { compose } from "@wordpress/compose";
+import { useState } from "@wordpress/element";
+
 import { store_slug } from "utils/data";
 
 export interface WithMoveProps {
@@ -14,10 +18,6 @@ interface WithSelectProps extends Pick<State, "moving_block"> {}
 
 interface OwnProps
 	extends Pick<BlockProps, "can_receive_drop" | "parent_id" | "index"> {}
-
-const { useState } = wp.element;
-const { withDispatch, withSelect } = wp.data;
-const { compose } = wp.compose;
 
 export const withMove = compose(
 	withDispatch<WithDispatchProps>(dispatch => ({

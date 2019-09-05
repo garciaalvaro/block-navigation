@@ -1,7 +1,9 @@
+import { applyFilters } from "@wordpress/hooks";
+
 export type BlockTypeData = Record<string, { type: string; path: string[] }>;
 
 export const block_types: BlockTypeData = {
-	...wp.hooks.applyFilters("blockNavigation.addBlockContentAttributePath", {}),
+	...applyFilters("blockNavigation.addBlockContentAttributePath", {}),
 	"melonpan-block/images": { type: "image", path: ["images"] },
 	"core/gallery": { type: "image", path: ["images"] },
 	"core/media-text": { type: "image", path: ["mediaUrl"] },

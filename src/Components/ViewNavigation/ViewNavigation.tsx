@@ -1,3 +1,6 @@
+import { withSelect } from "@wordpress/data";
+import { Fragment } from "@wordpress/element";
+
 import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
 import { BlockList } from "../BlockList/BlockList";
@@ -9,9 +12,6 @@ interface WithSelectProps extends Pick<State, "moving_type"> {
 		typeof import("wordpress__block-editor/store/selectors").getBlockOrder
 	>;
 }
-
-const { withSelect } = wp.data;
-const { Fragment } = wp.element;
 
 export const ViewNavigation = withSelect<WithSelectProps>(select => ({
 	moving: select(store_slug).isMoving(),

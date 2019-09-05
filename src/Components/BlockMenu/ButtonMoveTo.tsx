@@ -1,3 +1,6 @@
+import { __ } from "@wordpress/i18n";
+import { withDispatch } from "@wordpress/data";
+
 import { Div, Icon, Button, Span } from "utils/Components";
 import { store_slug } from "utils/data";
 
@@ -9,9 +12,6 @@ interface WithDispatchProps {
 interface OwnProps extends MenuProps {}
 
 interface Props extends OwnProps, WithDispatchProps {}
-
-const { __ } = wp.i18n;
-const { withDispatch } = wp.data;
 
 export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
 	WithDispatchProps,

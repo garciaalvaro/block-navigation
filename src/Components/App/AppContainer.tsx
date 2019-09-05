@@ -1,3 +1,6 @@
+import { withSelect } from "@wordpress/data";
+import { useRef, useState, useEffect } from "@wordpress/element";
+
 import { DivRef } from "utils/Components";
 import { store_slug } from "utils/data";
 import { useWindowSize } from "utils/hooks";
@@ -10,9 +13,6 @@ interface WithSelectProps
 interface OwnProps {
 	children: React.ReactNode;
 }
-
-const { useRef, useState, useEffect } = wp.element;
-const { withSelect } = wp.data;
 
 export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 	WithSelectProps,

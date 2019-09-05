@@ -1,3 +1,6 @@
+import { withDispatch } from "@wordpress/data";
+import { Icon as WpIcon } from "@wordpress/components";
+
 import { Div, Span, Button, Icon } from "utils/Components";
 import { store_slug } from "utils/data";
 import { BlockHeaderContent } from "./BlockHeaderContent";
@@ -23,9 +26,6 @@ interface OwnProps
 	toggle: Function;
 	close: Function;
 }
-
-const { withDispatch } = wp.data;
-const WpIcon = wp.components.Icon;
 
 export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 	WithDispatchProps,

@@ -1,7 +1,7 @@
-import { block_types } from "utils/data/block_types";
+import { get, isArray } from "lodash";
+import { create, getTextContent } from "@wordpress/rich-text";
 
-const { get, isArray } = lodash;
-const { create, getTextContent } = wp.richText;
+import { block_types } from "utils/data/block_types";
 
 const getImageUrl = (block: Block): string[] => {
 	const { attributes, name } = block;

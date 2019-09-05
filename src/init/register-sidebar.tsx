@@ -1,11 +1,12 @@
+import { registerPlugin } from "@wordpress/plugins";
+import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
+import { Fragment } from "@wordpress/element";
+
 import { plugin_namespace, plugin_title } from "utils/data";
 import { Icon } from "utils/Components";
 import { App } from "Components/App/App";
 
-const { Fragment } = wp.element;
-const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
-
-wp.plugins.registerPlugin(plugin_namespace, {
+registerPlugin(plugin_namespace, {
 	// @ts-ignore
 	icon: <Icon icon="logo" />,
 	render: () => (

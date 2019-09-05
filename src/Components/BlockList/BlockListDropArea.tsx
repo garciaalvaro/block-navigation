@@ -1,3 +1,6 @@
+import { withSelect } from "@wordpress/data";
+import { compose } from "@wordpress/compose";
+
 import { store_slug } from "utils/data";
 import { Div } from "utils/Components";
 import { withMove, WithMoveProps } from "../HOC/withMove";
@@ -11,9 +14,6 @@ interface OwnProps
 	> {}
 
 interface Props extends WithMoveProps, WithSelectProps, OwnProps {}
-
-const { withSelect } = wp.data;
-const { compose } = wp.compose;
 
 export const BlockListDropArea: React.ComponentType<OwnProps> = compose([
 	withSelect<WithSelectProps>(select => ({

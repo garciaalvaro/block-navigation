@@ -1,3 +1,7 @@
+import { __ } from "@wordpress/i18n";
+import { withSelect, withDispatch } from "@wordpress/data";
+import { compose } from "@wordpress/compose";
+
 import { store_slug } from "utils/data";
 import { Div, Button } from "utils/Components";
 import { ToolbarMovingBlock } from "./ToolbarMovingBlock";
@@ -7,10 +11,6 @@ interface WithSelectProps extends Pick<State, "moving_block"> {}
 interface WithDispatchProps extends Pick<ActionCreators, "resetMoving"> {}
 
 interface Props extends WithSelectProps, WithDispatchProps {}
-
-const { __ } = wp.i18n;
-const { compose } = wp.compose;
-const { withSelect, withDispatch } = wp.data;
 
 export const Toolbar: React.ComponentType = compose([
 	withSelect<WithSelectProps>(select => ({

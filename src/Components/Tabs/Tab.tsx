@@ -1,3 +1,6 @@
+import { withSelect, withDispatch } from "@wordpress/data";
+import { compose } from "@wordpress/compose";
+
 import { Button } from "utils/Components";
 import { store_slug } from "utils/data";
 
@@ -11,9 +14,6 @@ interface OwnProps {
 }
 
 interface Props extends WithSelectProps, WithDispatchProps, OwnProps {}
-
-const { withSelect, withDispatch } = wp.data;
-const { compose } = wp.compose;
 
 export const Tab: React.ComponentType<OwnProps> = compose(
 	withSelect<WithSelectProps>(select => ({

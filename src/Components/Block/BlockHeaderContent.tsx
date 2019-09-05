@@ -1,3 +1,6 @@
+import { isArray } from "lodash";
+import { useMemo } from "@wordpress/element";
+
 import { Div, Span, Img } from "utils/Components";
 import { block_types } from "utils/data";
 import { getContent } from "utils/tools";
@@ -5,9 +8,6 @@ import { getContent } from "utils/tools";
 interface Props {
 	block: Block;
 }
-
-const { useMemo } = wp.element;
-const { isArray } = lodash;
 
 export const BlockHeaderContent: React.ComponentType<Props> = (
 	props: Props

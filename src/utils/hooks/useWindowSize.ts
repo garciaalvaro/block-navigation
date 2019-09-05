@@ -1,5 +1,5 @@
-const { throttle } = lodash;
-const { useState, useEffect } = wp.element;
+import { throttle } from "lodash";
+import { useState, useEffect } from "@wordpress/element";
 
 // https://stackoverflow.com/a/28241682 | CC BY-SA 3.0
 export const useWindowSize = (time = 300) => {

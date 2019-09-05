@@ -1,3 +1,6 @@
+import { __ } from "@wordpress/i18n";
+import { withSelect } from "@wordpress/data";
+
 import { Div, Icon, Button, Span } from "utils/Components";
 
 interface WithSelectProps {
@@ -14,8 +17,6 @@ interface WithSelectProps {
 
 interface OwnProps extends MenuProps {}
 
-const { __ } = wp.i18n;
-const { withSelect } = wp.data;
 const l = (...args: any[]) => console.log(...args);
 
 // Safari doesn't log the one-line version of the log

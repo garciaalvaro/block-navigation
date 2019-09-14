@@ -18,15 +18,15 @@
 		"react-tiny-popover": "^3.4.5"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.5.5",
+		"@babel/core": "^7.6.0",
 		"@babel/plugin-proposal-class-properties": "^7.5.5",
 		"@babel/plugin-proposal-object-rest-spread": "^7.5.5",
-		"@babel/preset-env": "^7.5.5",
+		"@babel/preset-env": "^7.6.0",
 		"@babel/preset-react": "^7.0.0",
-		"@babel/preset-typescript": "^7.3.3",
-		"@babel/register": "^7.5.5",
+		"@babel/preset-typescript": "^7.6.0",
+		"@babel/register": "^7.6.0",
 		"@types/lodash": "^4.14.138",
-		"@types/node": "^12.7.4",
+		"@types/node": "^12.7.5",
 		"@types/wordpress__block-editor": "^2.2.2",
 		"@types/wordpress__blocks": "^6.4.3",
 		"@types/wordpress__components": "^7.4.4",
@@ -51,8 +51,8 @@
 		"style-loader": "^1.0.0",
 		"stylus": "^0.54.7",
 		"stylus-loader": "^3.0.2",
-		"typescript": "^3.6.2",
-		"webpack": "^4.39.3",
-		"webpack-cli": "^3.3.7"
+		"typescript": "^3.6.3",
+		"webpack": "^4.40.2",
+		"webpack-cli": "^3.3.8"
 	}
 }

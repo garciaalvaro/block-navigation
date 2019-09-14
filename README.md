@@ -10,19 +10,19 @@ The features are especially useful for nested blocks - blocks that are inside pa
 
 ## Features
 
-Inside the panel several utilities are included to enhance the UX, such as:
+Inside the panel several utilities are included to enhance the UX such as:
 
 - Dragging blocks to a different location
 - Moving blocks by click
 - Selecting blocks
 - Easily recognising the block from a small snippet of the block’s content
 
-The plugin also provides some features for **Plugin and Theme developers** such as:
+The plugin provides some features for **Plugin and Theme developers**:
 
 - Click and Copy the block’s clientId
 - Click to console.log helpful data from the block
 
-The Plugin also lets the user select a color scheme from multiple dark and light schemes.
+It also lets the user select a color scheme from multiple dark and light schemes.
 
 <img src="assets-repo/screenshot-1.png" width="700px" alt="Main view, dark scheme" />
 <img src="assets-repo/screenshot-2.png" width="700px" alt="Dragging a block to a different position" />

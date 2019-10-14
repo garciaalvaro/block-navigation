@@ -10,9 +10,18 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Block Navigation sidebar panel for the new Block editor.
 
+
 == Description ==
 
-Block Navigation provides a sidebar with the current post/page's blocks and some tools to facilitate the editing process in the new Gutenberg editor.
+[Demo](https://gutenberg-showcase.melonpan.io/block-navigation) - [Documentation](https://melonpan.io/wordpress-plugins/block-navigation) - [GitHub](https://github.com/garciaalvaro/block-navigation)
+
+Block Navigation provides a sidebar with the current post/page’s blocks and some tools to facilitate the editing process in the new Gutenberg editor.
+
+
+== Features ==
+
+The features are especially useful for nested blocks – blocks that are inside parent blocks which are difficult to select or move in the editor.
+
 Inside the panel several utilities are included to enhance the UX, such as:
 
 * Dragging blocks to a different location
@@ -20,15 +29,15 @@ Inside the panel several utilities are included to enhance the UX, such as:
 * Selecting blocks
 * Easily recognising the block from a small snippet of the block’s content
 
-These functionalities are especially useful for nested blocks - blocks that are inside parent blocks which are difficult to select or move in the editor.
-The plugin also provides some features for **Plugin and Theme developers** such as:
+The Plugin also lets the user select a color scheme from multiple dark and light schemes.
+
+
+== Plugin and Theme developers ==
+
+The plugin also provides some features for Plugin and Theme developers such as:
 
 * Click and Copy the block’s clientId
 * Click to console.log helpful data from the block
-
-The Plugin also lets the user select a color scheme from multiple dark and light schemes.
-
-[GitHub repository](https://github.com/garciaalvaro/block-navigation)
 
 
 == Screenshots ==

@@ -36,7 +36,7 @@ The plugin also provides some features for Plugin and Theme developers such as:
 
 ## Screenshots
 
-<img src="assets-repo/screenshot-1.jpg" width="700px" alt="Main view, dark scheme" style="border:1px solid rgba(0,0,0,0.15)" />
-<img src="assets-repo/screenshot-2.jpg" width="700px" alt="Dragging a block to a different position" style="border:1px solid rgba(0,0,0,0.15)" />
-<img src="assets-repo/screenshot-3.jpg" width="700px" alt="Block menu" style="border:1px solid rgba(0,0,0,0.15)" />
-<img src="assets-repo/screenshot-4.jpg" width="700px" alt="List of available color schemes, light and dark" style="border:1px solid rgba(0,0,0,0.15)" />
+<img src="assets-repo/screenshot-1.jpg" width="700px" alt="Main view, dark scheme" />
+<img src="assets-repo/screenshot-2.jpg" width="700px" alt="Dragging a block to a different position" />
+<img src="assets-repo/screenshot-3.jpg" width="700px" alt="Block menu" />
+<img src="assets-repo/screenshot-4.jpg" width="700px" alt="List of available color schemes, light and dark" />

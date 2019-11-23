@@ -29,12 +29,12 @@ Inside the panel several utilities are included to enhance the UX, such as:
 * Selecting blocks
 * Easily recognising the block from a small snippet of the block’s content
 
-The Plugin also lets the user select a color scheme from multiple dark and light schemes.
+The user can select a dark or light color scheme, from the multiple included.
 
 
 == Plugin and Theme developers ==
 
-The plugin also provides some features for Plugin and Theme developers such as:
+The plugin also provides some features for Plugin and Theme developers, such as:
 
 * Click and Copy the block’s clientId
 * Click to console.log helpful data from the block

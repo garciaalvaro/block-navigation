@@ -4,18 +4,22 @@ import TerserJSPlugin from "terser-webpack-plugin";
 import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import nib from "nib";
+import path from "path";
 
 export default {
-	entry: ["./src/index.ts", "./src/index.styl"],
+	entry: [
+		path.join(__dirname, "../src/index.ts"),
+		path.join(__dirname, "../src/index.styl")
+	],
 	output: {
-		path: __dirname + "/../build",
+		path: path.join(__dirname, "../build"),
 		filename: `${name}.js`
 	},
 	resolve: {
 		alias: {
-			Components: __dirname + "/../src/Components",
-			utils: __dirname + "/../src/utils",
-			store: __dirname + "/../src/store"
+			Components: path.join(__dirname, "../src/Components"),
+			utils: path.join(__dirname, "../src/utils"),
+			store: path.join(__dirname, "../src/store")
 		}
 	},
 	externals: {

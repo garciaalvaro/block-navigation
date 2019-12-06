@@ -1,4 +1,5 @@
 import { name, version } from "../package.json";
+import path from "path";
 
 const getReplace = (search, replace) => ({
 	loader: "string-replace-loader",
@@ -10,9 +11,9 @@ const getReplace = (search, replace) => ({
 });
 
 export default {
-	entry: __dirname + "/version.entry.js",
+	entry: path.join(__dirname, "version.entry.js"),
 	output: {
-		path: __dirname + "/..",
+		path: path.join(__dirname, ".."),
 		filename: "_temp.js"
 	},
 	module: {

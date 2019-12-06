@@ -1,11 +1,9 @@
-const { name, description, version, homepage } = require("../package.json");
-const webpack = require("webpack");
-const TerserJSPlugin = require("terser-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const BannerPlugin = webpack.BannerPlugin;
-const nib = require("nib");
-const DefinePlugin = webpack.DefinePlugin;
+import { name, description, version, homepage } from "../package.json";
+import { BannerPlugin, DefinePlugin } from "webpack";
+import TerserJSPlugin from "terser-webpack-plugin";
+import OptimizeCSSAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import nib from "nib";
 
 export default {
 	entry: ["./src/index.ts", "./src/index.styl"],

@@ -6,10 +6,10 @@
 	"author": "Alvaro Garcia",
 	"private": true,
 	"scripts": {
-		"dev": "webpack --mode development --watch --config ./.webpack/build.config.babel.js",
-		"prod": "webpack --mode production --config ./.webpack/build.config.babel.js",
-		"copy": "webpack --mode production --config ./.webpack/copy.config.babel.js && rm _release/_temp.js",
-		"version": "webpack --mode production --config ./.webpack/version.config.babel.js && rm _temp.js",
+		"dev": "webpack --mode development --watch --config ./webpack/build.config.babel.js",
+		"prod": "webpack --mode production --config ./webpack/build.config.babel.js",
+		"copy": "webpack --mode production --config ./webpack/copy.config.babel.js && rm _release/_temp.js",
+		"version": "webpack --mode production --config ./webpack/version.config.babel.js && rm _temp.js",
 		"release": "rm -rf build _release && npm run type && npm run version && npm run prod && npm run copy",
 		"type": "tsc"
 	},

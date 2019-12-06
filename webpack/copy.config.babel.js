@@ -25,7 +25,8 @@ module.exports = [
 						"package-lock.json",
 						"README.md",
 						"src/**",
-						"tsconfig.json"
+						"tsconfig.json",
+						"webpack/**"
 					]
 				}
 			])

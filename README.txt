@@ -75,6 +75,9 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 1.2.1 =
+* Minor bugfixes.
+
 = 1.2.0 =
 * Improved moving blocks UX (both by drag and by click).
 * Added the filter "blockNavigation.addBlockContentAttributePath" for developers to include their own block type content.

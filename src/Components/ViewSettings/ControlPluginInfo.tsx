@@ -1,5 +1,6 @@
 import { __ } from "@wordpress/i18n";
 
+import "./ControlPluginInfo.styl";
 import { Icon, Div, H3, Span } from "utils/Components";
 import { plugin_title } from "utils/data";
 

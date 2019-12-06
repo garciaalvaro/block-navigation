@@ -23,6 +23,6 @@
 		}
 	},
 	"include": ["src", "types/*"],
-	"exclude": ["node_modules", ".webpack/*"],
+	"exclude": ["node_modules"],
 	"compileOnSave": false
 }

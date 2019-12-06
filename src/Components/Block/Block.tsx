@@ -2,6 +2,7 @@ import { withSelect } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 import { Fragment, useState, useEffect } from "@wordpress/element";
 
+import "./Block.styl";
 import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
 import { useToggle } from "utils/hooks";

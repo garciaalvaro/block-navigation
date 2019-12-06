@@ -2,8 +2,8 @@
 Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 5.2
-Tested up to: 5.2
-Stable tag: 1.2.0
+Tested up to: 5.3
+Stable tag: 1.2.1
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -29,12 +29,12 @@ Inside the panel several utilities are included to enhance the UX, such as:
 * Selecting blocks
 * Easily recognising the block from a small snippet of the block’s content
 
-The Plugin also lets the user select a color scheme from multiple dark and light schemes.
+The user can select a dark or light color scheme, from the multiple included.
 
 
 == Plugin and Theme developers ==
 
-The plugin also provides some features for Plugin and Theme developers such as:
+The plugin also provides some features for Plugin and Theme developers, such as:
 
 * Click and Copy the block’s clientId
 * Click to console.log helpful data from the block
@@ -74,6 +74,9 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 1.2.1 =
+* Minor bugfixes.
 
 = 1.2.0 =
 * Improved moving blocks UX (both by drag and by click).

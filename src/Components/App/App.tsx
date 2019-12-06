@@ -1,5 +1,6 @@
 import { withSelect } from "@wordpress/data";
 
+import "./App.styl";
 import { store_slug } from "utils/data";
 import { Tabs } from "../Tabs/Tabs";
 import { AppContainer } from "./AppContainer";

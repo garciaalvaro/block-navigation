@@ -2,6 +2,7 @@ import { __ } from "@wordpress/i18n";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 
+import "./Toolbar.styl";
 import { store_slug } from "utils/data";
 import { Div, Button } from "utils/Components";
 import { ToolbarMovingBlock } from "./ToolbarMovingBlock";

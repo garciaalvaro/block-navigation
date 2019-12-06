@@ -1,5 +1,6 @@
 import { Fragment } from "@wordpress/element";
 
+import "./BlockList.styl";
 import { Block } from "../Block/Block";
 
 interface Props extends Pick<BlockProps, "parent_id" | "level"> {

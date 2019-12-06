@@ -7,10 +7,7 @@ import nib from "nib";
 import path from "path";
 
 export default {
-	entry: [
-		path.join(__dirname, "../src/index.ts"),
-		path.join(__dirname, "../src/index.styl")
-	],
+	entry: path.join(__dirname, "../src/index.ts"),
 	output: {
 		path: path.join(__dirname, "../build"),
 		filename: `${name}.js`
@@ -55,7 +52,10 @@ export default {
 						loader: "stylus-loader",
 						options: {
 							use: [nib()],
-							import: ["~nib/index.styl"]
+							import: [
+								"~nib/index.styl",
+								path.join(__dirname, "../src/utils/data/stylus_variables.styl")
+							]
 						}
 					}
 				]

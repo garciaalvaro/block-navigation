@@ -1,6 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { withSelect } from "@wordpress/data";
 
+import "./Tabs.styl";
 import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
 import { Tab } from "./Tab";

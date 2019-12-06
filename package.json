@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"copy-text-to-clipboard": "^2.1.1",
-		"react-tiny-popover": "^4.0.0"
+		"react-tiny-popover": "^3.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.4",

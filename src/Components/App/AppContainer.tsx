@@ -42,9 +42,9 @@ export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 			return;
 		}
 
-		container_ref.current = div_ref.current.closest(
-			".edit-post-sidebar"
-		) as HTMLElement | null;
+		container_ref.current = (div_ref.current.closest(
+			".edit-post-editor-regions__sidebar"
+		) || div_ref.current.closest(".edit-post-sidebar")) as HTMLElement | null;
 
 		if (container_ref.current) {
 			header_ref.current = container_ref.current.querySelector(

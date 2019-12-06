@@ -1,5 +1,6 @@
 import { withSelect } from "@wordpress/data";
 
+import "./BlockMenu.styl";
 import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
 import { ButtonEdit } from "./ButtonEdit";

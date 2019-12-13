@@ -17,5 +17,6 @@ export const block_types: BlockTypeData = {
 	"core/paragraph": { type: "text", path: ["content"] },
 	"core/list": { type: "text", path: ["values"] },
 	"core/verse": { type: "text", path: ["content"] },
-	"core/heading": { type: "text", path: ["content"] }
+	"core/heading": { type: "text", path: ["content"] },
+	"core/block": { type: "text", path: ["title"] }
 };

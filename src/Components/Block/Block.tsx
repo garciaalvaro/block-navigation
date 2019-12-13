@@ -41,25 +41,50 @@ export const Block: React.ComponentType<OwnProps> = compose(
 			getSelectedBlockClientIds,
 			getMultiSelectedBlockClientIds
 		} = select("core/block-editor");
+
 		const moving_block: State["moving_block"] = select(
 			store_slug
 		).getMovingBlock();
+
 		const block = getBlock(id);
+
+		const block_type = block
+			? select("core/blocks").getBlockType(block.name)
+			: undefined;
+
 		const moving_block_can_be_sibling = canInsertBlockType(
 			moving_block.block_name,
 			parent_id
 		);
+
 		const is_selected_in_multi = getSelectedBlockClientIds
 			? getSelectedBlockClientIds().includes(id)
 			: getMultiSelectedBlockClientIds().includes(id);
+
 		const is_selected =
 			is_selected_in_multi || getSelectedBlockClientId() === id;
 
+		const reusable_block =
+			block && block_type && block_type.name === "core/block"
+				? select("core").getEntityRecord<any>(
+						"postType",
+						"wp_block",
+						block.attributes.ref
+				  )
+				: undefined;
+
 		return {
-			block,
-			block_type: block
-				? select("core/blocks").getBlockType(block.name)
-				: undefined,
+			block:
+				reusable_block && block
+					? {
+							...block,
+							attributes: {
+								...block.attributes,
+								title: reusable_block.title.raw
+							}
+					  }
+					: block,
+			block_type,
 			is_selected,
 			moving: select(store_slug).isMoving(),
 			moving_type: select(store_slug).getMovingType(),
@@ -149,6 +174,7 @@ export const Block: React.ComponentType<OwnProps> = compose(
 					is_open={is_open}
 				/>
 			</Div>
+
 			{has_children && is_open && (
 				<BlockList
 					ids={block.innerBlocks.map(({ clientId }) => clientId)}
@@ -156,6 +182,7 @@ export const Block: React.ComponentType<OwnProps> = compose(
 					parent_id={id}
 				/>
 			)}
+
 			{is_last_children && moving && can_receive_drop && (
 				<BlockListDropArea
 					parent_id={parent_id}

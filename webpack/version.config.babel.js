@@ -27,9 +27,13 @@ export default {
 							name: "[name].[ext]"
 						}
 					},
-					getReplace(/^( \* Version: )\d+\.\d+\.\d+/.source, `$1${version}`),
 					getReplace(
-						/(define.*?PLUGIN_VERSION.*?)\d+\.\d+\.\d+/.source,
+						/^( \* Version: )\d+\.\d+\.\d+(-(beta|rc)(\d+)?)?/.source,
+						`$1${version}`
+					),
+					getReplace(
+						/(define.*?PLUGIN_VERSION.*?)\d+\.\d+\.\d+(-(beta|rc)(\d+)?)?/
+							.source,
 						`$1${version}`
 					)
 				]

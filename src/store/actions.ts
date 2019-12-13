@@ -1,4 +1,12 @@
 export const actions: ActionCreators = {
+	collapseBlock: payload => ({
+		type: "COLLAPSE_BLOCK",
+		payload
+	}),
+	expandBlock: payload => ({
+		type: "EXPAND_BLOCK",
+		payload
+	}),
 	resetMoving: () => ({
 		type: "RESET_MOVING"
 	}),

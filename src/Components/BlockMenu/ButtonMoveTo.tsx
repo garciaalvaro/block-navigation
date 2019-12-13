@@ -29,19 +29,21 @@ export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
 		setMovingBlock,
 		setMovingType,
 		close,
-		close_children,
+		is_expanded,
+		collapseBlock,
 		index
 	} = props;
 	const onClick = () => {
 		close();
-		close_children();
+		collapseBlock();
 		setMovingType("by_click");
 		setMovingBlock({
 			id,
 			parent_id,
 			template_lock,
 			block_name: block.name,
-			index
+			index,
+			was_expanded: is_expanded
 		});
 	};
 

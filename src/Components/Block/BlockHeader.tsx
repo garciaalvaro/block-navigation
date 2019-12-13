@@ -19,13 +19,18 @@ interface WithDispatchProps
 interface OwnProps
 	extends Pick<
 		BlockProps,
-		"index" | "template_lock" | "id" | "parent_id" | "block_type" | "is_open"
+		| "index"
+		| "template_lock"
+		| "id"
+		| "parent_id"
+		| "block_type"
+		| "is_expanded"
 	> {
 	block: Block;
 	can_move: boolean;
 	has_children: boolean;
-	toggle: Function;
-	close: Function;
+	toggleBlock: Function;
+	collapseBlock: Function;
 }
 
 export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
@@ -41,13 +46,13 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 	const {
 		id,
 		has_children,
-		is_open,
+		is_expanded,
+		toggleBlock,
+		collapseBlock,
 		selectBlock,
-		toggle,
 		index,
 		block,
 		block_type,
-		close,
 		can_move,
 		parent_id,
 		template_lock,
@@ -62,7 +67,7 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 	const buttonOnClick = (e: any) => {
 		e.stopPropagation();
 
-		toggle();
+		toggleBlock();
 	};
 	const onDragStart = (e: React.DragEvent) => {
 		if (e.dataTransfer && e.dataTransfer.setData) {
@@ -79,7 +84,8 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 				parent_id,
 				template_lock,
 				block_name: block.name,
-				index
+				index,
+				was_expanded: is_expanded
 			});
 		}, 0);
 	};
@@ -105,7 +111,7 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 						className={["button-icon", "button-toggle_list"]}
 						onClick={buttonOnClick}
 					>
-						<Icon icon={is_open ? "collapse" : "expand"} />
+						<Icon icon={is_expanded ? "collapse" : "expand"} />
 					</Button>
 				)}
 				<ButtonMenu
@@ -116,7 +122,8 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 					block_type={block_type}
 					can_move={can_move}
 					index={index}
-					close_children={close}
+					collapseBlock={collapseBlock}
+					is_expanded={is_expanded}
 				/>
 			</Div>
 		</Div>

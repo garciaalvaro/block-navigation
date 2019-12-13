@@ -47,7 +47,10 @@ export default {
 							name: "[name].[ext]"
 						}
 					},
-					getReplace(/^(Stable tag: )\d+\.\d+\.\d+/.source, `$1${version}`)
+					getReplace(
+						/^(Stable tag: )\d+\.\d+\.\d+(-(beta|rc)(\d+)?)?/.source,
+						`$1${version}`
+					)
 				]
 			}
 		]

@@ -7,6 +7,8 @@ interface State {
 		template_lock: string | undefined;
 		block_name: string;
 		index: number;
+		was_expanded: boolean;
 	};
 	color_scheme: string;
+	collapsed_blocks: BlockProps["id"][];
 }

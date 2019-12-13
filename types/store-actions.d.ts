@@ -13,6 +13,11 @@ interface ActionCreatorNoPayload<A extends ActionsNoPayload> {
 	(): A;
 }
 
+type ActionCollapseBlock = ActionWithPayload<
+	"COLLAPSE_BLOCK",
+	BlockProps["id"]
+>;
+type ActionExpandBlock = ActionWithPayload<"EXPAND_BLOCK", BlockProps["id"]>;
 type ActionResetMoving = ActionNoPayload<"RESET_MOVING">;
 type ActionSetMovingBlock = ActionWithPayload<
 	"SET_MOVING_BLOCK",
@@ -29,6 +34,8 @@ type ActionSetColorScheme = ActionWithPayload<
 >;
 
 interface ActionCreators {
+	collapseBlock: ActionCreatorWithPayload<ActionCollapseBlock>;
+	expandBlock: ActionCreatorWithPayload<ActionExpandBlock>;
 	resetMoving: ActionCreatorNoPayload<ActionResetMoving>;
 	setMovingBlock: ActionCreatorWithPayload<ActionSetMovingBlock>;
 	setMovingType: ActionCreatorWithPayload<ActionSetMovingType>;
@@ -39,9 +46,11 @@ interface ActionCreators {
 type ActionsNoPayload = ActionResetMoving;
 
 type ActionsWithPayload =
+	| ActionCollapseBlock
+	| ActionExpandBlock
 	| ActionSetMovingBlock
 	| ActionSetMovingType
 	| ActionSetView
 	| ActionSetColorScheme;
 
-type Actions = ActionsNoPayload & ActionsWithPayload;
+type Actions = ActionsNoPayload | ActionsWithPayload;

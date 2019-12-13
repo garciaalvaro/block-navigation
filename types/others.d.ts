@@ -17,7 +17,8 @@ interface MenuProps {
 	can_move: boolean;
 	index: number;
 	close: Function;
-	close_children: Function;
+	collapseBlock: Function;
+	is_expanded: boolean;
 }
 
 interface BlockProps {
@@ -29,7 +30,7 @@ interface BlockProps {
 	can_receive_drop: boolean;
 	moving: boolean;
 	is_selected: boolean;
-	is_open: boolean;
+	is_expanded: boolean;
 	is_last_children: boolean;
 	block: Block | null;
 	block_type: BlockType | undefined | null;

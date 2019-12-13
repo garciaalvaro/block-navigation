@@ -1,15 +1,19 @@
-import { withSelect } from "@wordpress/data";
+import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 import { Fragment, useState, useEffect } from "@wordpress/element";
 
 import "./Block.styl";
 import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
-import { useToggle } from "utils/hooks";
 import { BlockHeader } from "./BlockHeader";
 import { BlockList } from "../BlockList/BlockList";
 import { BlockListDropArea } from "../BlockList/BlockListDropArea";
 import { withMove, WithMoveProps } from "../HOC/withMove";
+
+interface WithDispatchProps {
+	collapseBlock: Function;
+	expandBlock: Function;
+}
 
 interface WithSelectProps
 	extends Pick<State, "moving_block" | "moving_type">,
@@ -21,6 +25,7 @@ interface WithSelectProps
 			| "block_type"
 			| "is_selected"
 			| "can_receive_drop"
+			| "is_expanded"
 		> {}
 
 interface OwnProps
@@ -29,9 +34,18 @@ interface OwnProps
 		"id" | "parent_id" | "level" | "index" | "is_last_children"
 	> {}
 
-interface Props extends OwnProps, WithMoveProps, WithSelectProps {}
+interface Props
+	extends OwnProps,
+		WithMoveProps,
+		WithSelectProps,
+		WithDispatchProps {}
 
 export const Block: React.ComponentType<OwnProps> = compose(
+	withDispatch<WithDispatchProps, OwnProps>((dispatch, { id }) => ({
+		expandBlock: () => dispatch(store_slug).expandBlock(id),
+		collapseBlock: () => dispatch(store_slug).collapseBlock(id)
+	})),
+
 	withSelect<WithSelectProps, OwnProps>((select, { id, parent_id }) => {
 		const {
 			getBlock,
@@ -42,9 +56,9 @@ export const Block: React.ComponentType<OwnProps> = compose(
 			getMultiSelectedBlockClientIds
 		} = select("core/block-editor");
 
-		const moving_block: State["moving_block"] = select(
-			store_slug
-		).getMovingBlock();
+		const { getMovingBlock, isExpanded } = select(store_slug);
+
+		const moving_block: State["moving_block"] = getMovingBlock();
 
 		const block = getBlock(id);
 
@@ -79,6 +93,7 @@ export const Block: React.ComponentType<OwnProps> = compose(
 				: undefined;
 
 		return {
+			is_expanded: isExpanded(id),
 			block:
 				reusable_block_entity && block
 					? {
@@ -101,9 +116,13 @@ export const Block: React.ComponentType<OwnProps> = compose(
 					: moving_block_can_be_sibling
 		};
 	}),
+
 	withMove
 )((props: Props) => {
 	const {
+		is_expanded,
+		expandBlock,
+		collapseBlock,
 		toggleMovingIsOver,
 		moveBlock,
 		is_selected,
@@ -123,25 +142,12 @@ export const Block: React.ComponentType<OwnProps> = compose(
 	} = props;
 	const has_children = block ? !!block.innerBlocks.length : false;
 	const can_move = template_lock !== "all";
-	const { is_open, toggle, close, open } = useToggle(true);
 	const [is_moving, setIsMoving] = useState(false);
-	const [was_open, setWasOpen] = useState(false);
+	const toggleBlock = is_expanded ? collapseBlock : expandBlock;
 
 	useEffect(() => {
 		setIsMoving(moving_block.id === id);
 	}, [moving_block]);
-
-	useEffect(() => {
-		setWasOpen(is_open);
-	}, [is_moving]);
-
-	useEffect(() => {
-		if (is_moving) {
-			close();
-		} else if (was_open) {
-			open();
-		}
-	}, [is_moving]);
 
 	if (!block) {
 		return null;
@@ -168,19 +174,19 @@ export const Block: React.ComponentType<OwnProps> = compose(
 				<BlockHeader
 					block={block}
 					block_type={block_type}
-					toggle={toggle}
-					close={close}
+					toggleBlock={toggleBlock}
+					collapseBlock={collapseBlock}
 					can_move={can_move}
 					template_lock={template_lock}
 					parent_id={parent_id}
 					index={index}
 					id={id}
 					has_children={has_children}
-					is_open={is_open}
+					is_expanded={is_expanded}
 				/>
 			</Div>
 
-			{has_children && is_open && (
+			{has_children && is_expanded && (
 				<BlockList
 					ids={block.innerBlocks.map(({ clientId }) => clientId)}
 					level={level + 1}

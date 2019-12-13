@@ -64,8 +64,13 @@ export const Block: React.ComponentType<OwnProps> = compose(
 		const is_selected =
 			is_selected_in_multi || getSelectedBlockClientId() === id;
 
-		const reusable_block =
-			block && block_type && block_type.name === "core/block"
+		const reusable_block_entity =
+			block &&
+			block_type &&
+			block_type.name === "core/block" &&
+			// When creating a new reusable block Gutenberg returns
+			// a string for the ref attribute, until it is saved
+			typeof block.attributes.ref === "number"
 				? select("core").getEntityRecord<any>(
 						"postType",
 						"wp_block",
@@ -75,12 +80,12 @@ export const Block: React.ComponentType<OwnProps> = compose(
 
 		return {
 			block:
-				reusable_block && block
+				reusable_block_entity && block
 					? {
 							...block,
 							attributes: {
 								...block.attributes,
-								title: reusable_block.title.raw
+								title: reusable_block_entity.title.raw
 							}
 					  }
 					: block,

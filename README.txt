@@ -75,6 +75,10 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 1.3.0 =
+* Blocks that are nestable (like columns) now retain their collapsed/expanded state, after closing and re-opening the plugin sidebar or after collapsing an ancestor block.
+* Reusable blocks now show their title, so they are more easy to identify.
+
 = 1.2.1 =
 * Minor bugfixes.
 

@@ -1,5 +1,5 @@
 import { withSelect } from "@wordpress/data";
-import { useRef, useState, useEffect } from "@wordpress/element";
+import { useRef, useState, useEffect, createContext } from "@wordpress/element";
 
 import { DivRef } from "utils/Components";
 import { store_slug } from "utils/data";
@@ -13,6 +13,8 @@ interface WithSelectProps
 interface OwnProps {
 	children: React.ReactNode;
 }
+
+export const ContextContainer = createContext<HTMLDivElement | null>(null);
 
 export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 	WithSelectProps,
@@ -73,8 +75,15 @@ export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 	}, [window_height]);
 
 	return (
-		<DivRef ref={div_ref} id="container" className={classes} style={{ height }}>
-			{children}
-		</DivRef>
+		<ContextContainer.Provider value={div_ref.current}>
+			<DivRef
+				ref={div_ref}
+				id="container"
+				className={classes}
+				style={{ height }}
+			>
+				{children}
+			</DivRef>
+		</ContextContainer.Provider>
 	);
 });

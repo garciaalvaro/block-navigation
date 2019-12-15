@@ -1,9 +1,16 @@
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
-import { Fragment, useState, useEffect } from "@wordpress/element";
+import {
+	Fragment,
+	useState,
+	useEffect,
+	useRef,
+	useContext
+} from "@wordpress/element";
 
 import "./Block.styl";
-import { Div } from "utils/Components";
+import { ContextContainer } from "../App/AppContainer";
+import { DivRef } from "utils/Components";
 import { store_slug } from "utils/data";
 import { BlockHeader } from "./BlockHeader";
 import { BlockList } from "../BlockList/BlockList";
@@ -144,6 +151,21 @@ export const Block: React.ComponentType<OwnProps> = compose(
 	const can_move = template_lock !== "all";
 	const [is_moving, setIsMoving] = useState(false);
 	const toggleBlock = is_expanded ? collapseBlock : expandBlock;
+	const ref = useRef<HTMLDivElement | null>(null);
+	const container = useContext(ContextContainer);
+
+	useEffect(() => {
+		if (is_selected && ref.current && container) {
+			const is_above = ref.current.offsetTop - container.scrollTop < 0;
+			const is_below =
+				ref.current.offsetTop - container.scrollTop + 50 >
+				container.offsetHeight - 50;
+
+			if (is_above || is_below) {
+				container.scrollTop = ref.current.offsetTop - 26;
+			}
+		}
+	}, [is_selected]);
 
 	useEffect(() => {
 		setIsMoving(moving_block.id === id);
@@ -155,7 +177,8 @@ export const Block: React.ComponentType<OwnProps> = compose(
 
 	return (
 		<Fragment>
-			<Div
+			<DivRef
+				ref={ref}
 				id={id}
 				onDragEnter={toggleMovingIsOver}
 				onDragLeave={toggleMovingIsOver}
@@ -184,7 +207,7 @@ export const Block: React.ComponentType<OwnProps> = compose(
 					has_children={has_children}
 					is_expanded={is_expanded}
 				/>
-			</Div>
+			</DivRef>
 
 			{has_children && is_expanded && (
 				<BlockList

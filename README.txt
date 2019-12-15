@@ -3,7 +3,7 @@ Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 5.2
 Tested up to: 5.3
-Stable tag: 1.3.0-beta2
+Stable tag: 1.3.0
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -74,6 +74,10 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 1.3.0 =
+* Blocks that are nestable (like columns) now retain their collapsed/expanded state, after closing and re-opening the plugin sidebar or after collapsing an ancestor block.
+* Reusable blocks now show their title, so they are more easy to identify.
 
 = 1.2.1 =
 * Minor bugfixes.

@@ -34,16 +34,35 @@ if ( ! defined( __NAMESPACE__ . '\BUILD_DIR' ) ) {
 add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue' );
 function enqueue() {
 
+	global $wp_version;
+
+	preg_match( '/\d+\.\d+/', $wp_version, $current_wp_version );
+
+	$version_slug = '';
+
+	if ( isset( $current_wp_version[0] ) ) {
+
+		$current_wp_version = explode( '.', $current_wp_version[0] );
+
+		$current_wp_version[1] = strlen( $current_wp_version[1] ) === 1
+			? '0' . $current_wp_version[1]
+			: $current_wp_version[1];
+
+		$current_wp_version = floatval( implode( '.', $current_wp_version ) );
+
+		$version_slug = $current_wp_version < 5.03 ? '-v1' : '';
+	}
+
 	wp_enqueue_style(
 		PLUGIN_NAME,
-		BUILD_DIR . PLUGIN_NAME . '.css',
+		BUILD_DIR . PLUGIN_NAME . $version_slug . '.css',
 		array(),
 		PLUGIN_VERSION
 	);
 
 	wp_enqueue_script(
 		PLUGIN_NAME,
-		BUILD_DIR . PLUGIN_NAME . '.js',
+		BUILD_DIR . PLUGIN_NAME . $version_slug . '.js',
 		array(
 			'lodash',
 			'wp-components',

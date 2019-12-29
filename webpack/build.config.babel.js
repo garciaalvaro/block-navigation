@@ -10,7 +10,7 @@ export default {
 	entry: path.join(__dirname, "../src/index.ts"),
 	output: {
 		path: path.join(__dirname, "../build"),
-		filename: `${name}.js`
+		filename: `${name}-v1.js`
 	},
 	resolve: {
 		alias: {
@@ -67,7 +67,7 @@ export default {
 			l: (...args) => console.log(...args)
 		}),
 		new MiniCssExtractPlugin({
-			filename: `${name}.css`
+			filename: `${name}-v1.css`
 		}),
 		new BannerPlugin({
 			banner: [

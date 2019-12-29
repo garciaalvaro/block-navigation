@@ -7,13 +7,14 @@
 	"private": true,
 	"scripts": {
 		"dev": "webpack --mode development --watch --config ./webpack/build.config.babel.js",
+		"prod": "webpack --mode production --config ./webpack/build.config.babel.js",
 		"precopy": "rm -rf _release",
 		"copy": "webpack --mode production --config ./webpack/copy.config.babel.js",
 		"postcopy": "rm _release/_temp.js",
 		"version": "webpack --mode production --config ./webpack/version.config.babel.js",
 		"postversion": "rm _temp.js",
 		"prebuild": "rm -rf build && tsc && npm run version",
-		"build": "webpack --mode production --config ./webpack/build.config.babel.js",
+		"build": "npm run prod",
 		"postbuild": "npm run copy"
 	},
 	"dependencies": {

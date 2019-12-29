@@ -5,7 +5,7 @@ import "./BlockHeader.styl";
 import { Div, Span, Button, Icon } from "utils/Components";
 import { store_slug } from "utils/data";
 import { BlockHeaderContent } from "./BlockHeaderContent";
-import { ButtonMenu } from "./ButtonMenu";
+import { BlockMenuButton } from "./BlockMenuButton";
 
 interface WithDispatchProps
 	extends Pick<
@@ -114,7 +114,7 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 						<Icon icon={is_expanded ? "collapse" : "expand"} />
 					</Button>
 				)}
-				<ButtonMenu
+				<BlockMenuButton
 					id={id}
 					parent_id={parent_id}
 					template_lock={template_lock}

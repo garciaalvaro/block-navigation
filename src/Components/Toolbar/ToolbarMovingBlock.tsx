@@ -1,22 +1,18 @@
-import { withSelect } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 import { Icon } from "@wordpress/components";
 import { Fragment } from "@wordpress/element";
 
 import { Div, Span } from "utils/Components";
 
-interface WithSelectProps extends Pick<BlockProps, "block_type"> {}
-
-interface OwnProps {
+interface Props {
 	block_name: State["moving_block"]["block_name"];
 }
 
-export const ToolbarMovingBlock: React.ComponentType<OwnProps> = withSelect<
-	WithSelectProps,
-	OwnProps
->((select, { block_name }) => ({
-	block_type: select("core/blocks").getBlockType(block_name)
-}))(props => {
-	const { block_type } = props;
+export const ToolbarMovingBlock: React.ComponentType<Props> = props => {
+	const { block_name } = props;
+	const block_type = useSelect<BlockProps["block_type"]>(select =>
+		select("core/blocks").getBlockType(block_name)
+	);
 
 	if (!block_type) {
 		return null;
@@ -31,7 +27,8 @@ export const ToolbarMovingBlock: React.ComponentType<OwnProps> = withSelect<
 					<Icon icon={icon.src} />
 				</Div>
 			)}
+
 			<Span className="block-title">{title}</Span>
 		</Fragment>
 	);
-});
+};

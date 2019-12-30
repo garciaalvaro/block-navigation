@@ -1,5 +1,4 @@
-import { withSelect, withDispatch } from "@wordpress/data";
-import { compose } from "@wordpress/compose";
+import { useSelect, useDispatch } from "@wordpress/data";
 import {
 	Fragment,
 	useState,
@@ -15,138 +14,97 @@ import { store_slug } from "utils/data";
 import { BlockHeader } from "./BlockHeader";
 import { BlockList } from "../BlockList/BlockList";
 import { BlockListDropArea } from "../BlockList/BlockListDropArea";
-import { withMove, WithMoveProps } from "../HOC/withMove";
+import { useMove } from "../../hooks/useMove";
 
-interface WithDispatchProps {
-	collapseBlock: Function;
-	expandBlock: Function;
-}
-
-interface WithSelectProps
-	extends Pick<State, "moving_block" | "moving_type">,
-		Pick<
-			BlockProps,
-			| "template_lock"
-			| "moving"
-			| "block"
-			| "block_type"
-			| "is_selected"
-			| "can_receive_drop"
-			| "is_expanded"
-		> {}
-
-interface OwnProps
+interface Props
 	extends Pick<
 		BlockProps,
 		"id" | "parent_id" | "level" | "index" | "is_last_children"
 	> {}
 
-interface Props
-	extends OwnProps,
-		WithMoveProps,
-		WithSelectProps,
-		WithDispatchProps {}
+export const Block: React.ComponentType<Props> = props => {
+	const { index, parent_id, id, level, is_last_children } = props;
 
-export const Block: React.ComponentType<OwnProps> = compose(
-	withDispatch<WithDispatchProps, OwnProps>((dispatch, { id }) => ({
-		expandBlock: () => dispatch(store_slug).expandBlock(id),
-		collapseBlock: () => dispatch(store_slug).collapseBlock(id)
-	})),
+	const { expandBlock, collapseBlock } = useDispatch(store_slug);
 
-	withSelect<WithSelectProps, OwnProps>((select, { id, parent_id }) => {
-		const {
-			getBlock,
-			getTemplateLock,
-			canInsertBlockType,
-			getSelectedBlockClientId,
-			getSelectedBlockClientIds,
-			getMultiSelectedBlockClientIds
-		} = select("core/block-editor");
+	const moving_block = useSelect<State["moving_block"]>(select =>
+		select(store_slug).getMovingBlock()
+	);
 
-		const { getMovingBlock, isExpanded } = select(store_slug);
+	let block = useSelect(select => select("core/block-editor").getBlock(id));
 
-		const moving_block: State["moving_block"] = getMovingBlock();
+	const block_type = useSelect(select =>
+		select("core/blocks").getBlockType(block?.name)
+	);
 
-		const block = getBlock(id);
-
-		const block_type = block
-			? select("core/blocks").getBlockType(block.name)
-			: undefined;
-
-		const moving_block_can_be_sibling = canInsertBlockType(
+	const moving_block_can_be_sibling = useSelect(select =>
+		select("core/block-editor").canInsertBlockType(
 			moving_block.block_name,
 			parent_id
-		);
+		)
+	);
 
-		const is_selected_in_multi = getSelectedBlockClientIds
-			? getSelectedBlockClientIds().includes(id)
-			: getMultiSelectedBlockClientIds().includes(id);
+	const is_selected_multiple = useSelect(select =>
+		select("core/block-editor")
+			.getSelectedBlockClientIds()
+			.includes(id)
+	);
 
-		const is_selected =
-			is_selected_in_multi || getSelectedBlockClientId() === id;
+	const is_selected_single = useSelect(
+		select => select("core/block-editor").getSelectedBlockClientId() === id
+	);
 
-		const reusable_block_entity =
-			block &&
-			block_type &&
-			block_type.name === "core/block" &&
-			// When creating a new reusable block Gutenberg returns
-			// a string for the ref attribute, until it is saved
-			typeof block.attributes.ref === "number"
-				? select("core").getEntityRecord<any>(
+	const is_selected = is_selected_multiple || is_selected_single;
+
+	const reusable_block_entity =
+		block_type?.name === "core/block" &&
+		// When creating a new reusable block Gutenberg returns
+		// a string for the ref attribute, until it is saved
+		typeof block?.attributes.ref === "number"
+			? useSelect(select =>
+					select("core").getEntityRecord<any>(
 						"postType",
 						"wp_block",
-						block.attributes.ref
-				  )
-				: undefined;
+						block?.attributes.ref
+					)
+			  )
+			: undefined;
 
-		return {
-			is_expanded: isExpanded(id),
-			block:
-				reusable_block_entity && block
-					? {
-							...block,
-							attributes: {
-								...block.attributes,
-								title: reusable_block_entity.title.raw
-							}
-					  }
-					: block,
-			block_type,
-			is_selected,
-			moving: select(store_slug).isMoving(),
-			moving_type: select(store_slug).getMovingType(),
-			template_lock: getTemplateLock(parent_id) || "",
-			moving_block,
-			can_receive_drop:
-				moving_block.template_lock === "insert"
-					? moving_block.parent_id === parent_id
-					: moving_block_can_be_sibling
+	const is_expanded = useSelect<boolean>(select =>
+		select(store_slug).isExpanded(id)
+	);
+
+	if (reusable_block_entity && block) {
+		block = {
+			...block,
+			attributes: {
+				...block.attributes,
+				title: reusable_block_entity.title.raw
+			}
 		};
-	}),
+	}
 
-	withMove
-)((props: Props) => {
-	const {
-		is_expanded,
-		expandBlock,
-		collapseBlock,
-		toggleMovingIsOver,
-		moveBlock,
-		is_selected,
+	const moving = useSelect<boolean>(select => select(store_slug).isMoving());
+
+	const moving_type = useSelect<State["moving_type"]>(select =>
+		select(store_slug).getMovingType()
+	);
+
+	const template_lock = useSelect(
+		select => select("core/block-editor").getTemplateLock(parent_id) || ""
+	);
+
+	const can_receive_drop =
+		moving_block.template_lock === "insert"
+			? moving_block.parent_id === parent_id
+			: moving_block_can_be_sibling;
+
+	const { moving_is_over, toggleMovingIsOver, moveBlock } = useMove({
 		can_receive_drop,
-		moving_type,
-		moving,
-		moving_is_over,
-		index,
-		moving_block,
 		parent_id,
-		id,
-		block,
-		block_type,
-		level,
-		template_lock,
-		is_last_children
-	} = props;
+		index
+	});
+
 	const has_children = block ? !!block.innerBlocks.length : false;
 	const can_move = template_lock !== "all";
 	const [is_moving, setIsMoving] = useState(false);
@@ -227,4 +185,4 @@ export const Block: React.ComponentType<OwnProps> = compose(
 			)}
 		</Fragment>
 	);
-});
+};

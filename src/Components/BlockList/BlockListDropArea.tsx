@@ -1,33 +1,27 @@
-import { withSelect } from "@wordpress/data";
-import { compose } from "@wordpress/compose";
+import { useSelect } from "@wordpress/data";
 
 import { store_slug } from "utils/data";
 import { Div } from "utils/Components";
-import { withMove, WithMoveProps } from "../HOC/withMove";
+import { useMove } from "../../hooks/useMove";
 
-interface WithSelectProps extends Pick<State, "moving_type"> {}
-
-interface OwnProps
+interface Props
 	extends Pick<
 		BlockProps,
 		"index" | "parent_id" | "level" | "can_receive_drop"
 	> {}
 
-interface Props extends WithMoveProps, WithSelectProps, OwnProps {}
+export const BlockListDropArea: React.ComponentType<Props> = props => {
+	const { level, can_receive_drop, parent_id, index } = props;
 
-export const BlockListDropArea: React.ComponentType<OwnProps> = compose([
-	withSelect<WithSelectProps>(select => ({
-		moving_type: select(store_slug).getMovingType()
-	})),
-	withMove
-])((props: Props) => {
-	const {
-		moving_is_over,
-		toggleMovingIsOver,
-		moveBlock,
-		moving_type,
-		level
-	} = props;
+	const moving_type = useSelect<State["moving_type"]>(select =>
+		select(store_slug).getMovingType()
+	);
+
+	const { moving_is_over, toggleMovingIsOver, moveBlock } = useMove({
+		can_receive_drop,
+		parent_id,
+		index
+	});
 
 	return (
 		<Div
@@ -44,4 +38,4 @@ export const BlockListDropArea: React.ComponentType<OwnProps> = compose([
 			]}
 		/>
 	);
-});
+};

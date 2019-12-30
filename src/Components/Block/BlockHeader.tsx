@@ -1,4 +1,4 @@
-import { withDispatch } from "@wordpress/data";
+import { useDispatch } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
 
 import "./BlockHeader.styl";
@@ -7,16 +7,7 @@ import { store_slug } from "utils/data";
 import { BlockHeaderContent } from "./BlockHeaderContent";
 import { BlockMenuButton } from "./BlockMenuButton";
 
-interface WithDispatchProps
-	extends Pick<
-		ActionCreators,
-		"setMovingType" | "setMovingBlock" | "resetMoving"
-	> {
-	selectBlock: Function;
-	moveBlockToPosition: Function;
-}
-
-interface OwnProps
+interface Props
 	extends Pick<
 		BlockProps,
 		| "index"
@@ -33,42 +24,37 @@ interface OwnProps
 	collapseBlock: Function;
 }
 
-export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
-	WithDispatchProps,
-	OwnProps
->(dispatch => ({
-	setMovingType: dispatch(store_slug).setMovingType,
-	setMovingBlock: dispatch(store_slug).setMovingBlock,
-	resetMoving: dispatch(store_slug).resetMoving,
-	selectBlock: dispatch("core/block-editor").selectBlock,
-	moveBlockToPosition: dispatch("core/block-editor").moveBlockToPosition
-}))(props => {
+export const BlockHeader: React.ComponentType<Props> = props => {
 	const {
 		id,
 		has_children,
 		is_expanded,
 		toggleBlock,
 		collapseBlock,
-		selectBlock,
 		index,
 		block,
 		block_type,
 		can_move,
 		parent_id,
-		template_lock,
-		setMovingBlock,
-		resetMoving,
-		setMovingType
+		template_lock
 	} = props;
+
 	const title = block_type ? block_type.title : block.name;
 	const icon: BlockType["icon"] = block_type
 		? block_type.icon
 		: { src: () => null };
+
+	const { setMovingType, setMovingBlock, resetMoving } = useDispatch(
+		store_slug
+	) as Pick<ActionCreators, "setMovingType" | "setMovingBlock" | "resetMoving">;
+	const { selectBlock } = useDispatch("core/block-editor");
+
 	const buttonOnClick = (e: any) => {
 		e.stopPropagation();
 
 		toggleBlock();
 	};
+
 	const onDragStart = (e: React.DragEvent) => {
 		if (e.dataTransfer && e.dataTransfer.setData) {
 			// Needed for Firefox to work.
@@ -104,8 +90,11 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 						<WpIcon icon={icon.src} />
 					</Div>
 				)}
+
 				<Span className="block-title">{title}</Span>
+
 				<BlockHeaderContent block={block} />
+
 				{has_children && (
 					<Button
 						className={["button-icon", "button-toggle_list"]}
@@ -114,6 +103,7 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 						<Icon icon={is_expanded ? "collapse" : "expand"} />
 					</Button>
 				)}
+
 				<BlockMenuButton
 					id={id}
 					parent_id={parent_id}
@@ -128,4 +118,4 @@ export const BlockHeader: React.ComponentType<OwnProps> = withDispatch<
 			</Div>
 		</Div>
 	);
-});
+};

@@ -7,6 +7,7 @@ export const ViewSettings: React.ComponentType = props => {
 	return (
 		<Div id="settings">
 			<ControlPluginInfo />
+
 			<ControlColorScheme />
 		</Div>
 	);

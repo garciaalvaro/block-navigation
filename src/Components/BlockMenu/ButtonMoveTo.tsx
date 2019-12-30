@@ -1,38 +1,25 @@
 import { __ } from "@wordpress/i18n";
-import { withDispatch } from "@wordpress/data";
+import { useDispatch } from "@wordpress/data";
 
 import { Div, Icon, Button, Span } from "utils/Components";
 import { store_slug } from "utils/data";
 
-interface WithDispatchProps {
-	setMovingBlock: ActionCreators["setMovingBlock"];
-	setMovingType: ActionCreators["setMovingType"];
-}
-
-interface OwnProps extends MenuProps {}
-
-interface Props extends OwnProps, WithDispatchProps {}
-
-export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
-	WithDispatchProps,
-	OwnProps
->(dispatch => ({
-	setMovingBlock: dispatch(store_slug).setMovingBlock,
-	setMovingType: dispatch(store_slug).setMovingType
-}))((props: Props) => {
+export const ButtonMoveTo: React.ComponentType<MenuProps> = props => {
 	const {
 		id,
 		parent_id,
 		template_lock,
 		block,
 		can_move,
-		setMovingBlock,
-		setMovingType,
 		close,
 		is_expanded,
 		collapseBlock,
 		index
 	} = props;
+
+	const { setMovingBlock } = useDispatch(store_slug);
+	const { setMovingType } = useDispatch(store_slug);
+
 	const onClick = () => {
 		close();
 		collapseBlock();
@@ -55,7 +42,8 @@ export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
 			<Div className="menu-icon">
 				<Icon icon="move" />
 			</Div>
+
 			<Span>{__("Move Block To")}</Span>
 		</Button>
 	);
-});
+};

@@ -1,21 +1,7 @@
 import { __ } from "@wordpress/i18n";
-import { withSelect } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 
 import { Div, Icon, Button, Span } from "utils/Components";
-
-interface WithSelectProps {
-	descendants_clientIds: ReturnType<
-		typeof import("wordpress__block-editor/store/selectors").getClientIdsOfDescendants
-	>;
-	children_clientIds: ReturnType<
-		typeof import("wordpress__block-editor/store/selectors").getBlockOrder
-	>;
-	root_clientId: ReturnType<
-		typeof import("wordpress__block-editor/store/selectors").getBlockHierarchyRootClientId
-	>;
-}
-
-interface OwnProps extends MenuProps {}
 
 const l = (...args: any[]) => console.log(...args);
 
@@ -25,29 +11,33 @@ const l = (...args: any[]) => console.log(...args);
 const is_safari = (window as any).safari !== undefined;
 const multiple_log = is_safari;
 
-export const ButtonBlockData: React.ComponentType<OwnProps> = withSelect<
-	WithSelectProps,
-	OwnProps
->((select, { id }) => ({
-	descendants_clientIds: select("core/block-editor").getClientIdsOfDescendants([
-		id
-	]),
-	children_clientIds: select("core/block-editor").getBlockOrder(id),
-	root_clientId: select("core/block-editor").getBlockHierarchyRootClientId(id)
-}))(props => {
+export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
 	const {
 		id,
 		parent_id,
-		block,
+		block: { name, attributes: attributes_value },
 		block_type,
 		close,
 		index,
-		template_lock,
-		descendants_clientIds,
-		children_clientIds,
-		root_clientId
+		template_lock
 	} = props;
-	const { name, attributes: attributes_value } = block;
+
+	const descendants_clientIds = useSelect<
+		ReturnType<
+			typeof import("wordpress__block-editor/store/selectors").getClientIdsOfDescendants
+		>
+	>(select => select("core/block-editor").getClientIdsOfDescendants([id]));
+	const children_clientIds = useSelect<
+		ReturnType<
+			typeof import("wordpress__block-editor/store/selectors").getBlockOrder
+		>
+	>(select => select("core/block-editor").getBlockOrder(id));
+	const root_clientId = useSelect<
+		ReturnType<
+			typeof import("wordpress__block-editor/store/selectors").getBlockHierarchyRootClientId
+		>
+	>(select => select("core/block-editor").getBlockHierarchyRootClientId(id));
+
 	const onClick = () => {
 		close();
 
@@ -104,7 +94,8 @@ export const ButtonBlockData: React.ComponentType<OwnProps> = withSelect<
 			<Div className="menu-icon">
 				<Icon icon="log" />
 			</Div>
+
 			<Span>{__("Console log Block Data")}</Span>
 		</Button>
 	);
-});
+};

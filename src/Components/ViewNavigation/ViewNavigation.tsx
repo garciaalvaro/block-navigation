@@ -14,6 +14,9 @@ export const ViewNavigation: React.ComponentType = props => {
 		select(store_slug).getMovingType()
 	);
 
+	// When the list order changes we rerender the component.
+	// We use getBlockOrder selector instead of getBlocks
+	// to keep parent rerenders to a minimum.
 	const root_ids = useSelect(select =>
 		select("core/block-editor").getBlockOrder()
 	);

@@ -9,14 +9,14 @@ import { Toolbar } from "../Toolbar/Toolbar";
 
 export const ViewNavigation: React.ComponentType = props => {
 	const is_moving = useSelect<boolean>(select => select(store_slug).isMoving());
+
 	const moving_type = useSelect<State["moving_type"]>(select =>
 		select(store_slug).getMovingType()
 	);
-	const root_ids = useSelect<
-		ReturnType<
-			typeof import("wordpress__block-editor/store/selectors").getBlockOrder
-		>
-	>(select => select("core/block-editor").getBlockOrder());
+
+	const root_ids = useSelect(select =>
+		select("core/block-editor").getBlockOrder()
+	);
 
 	return (
 		<Fragment>

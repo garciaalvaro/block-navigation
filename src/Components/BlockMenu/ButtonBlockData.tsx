@@ -22,21 +22,15 @@ export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
 		template_lock
 	} = props;
 
-	const descendants_clientIds = useSelect<
-		ReturnType<
-			typeof import("wordpress__block-editor/store/selectors").getClientIdsOfDescendants
-		>
-	>(select => select("core/block-editor").getClientIdsOfDescendants([id]));
-	const children_clientIds = useSelect<
-		ReturnType<
-			typeof import("wordpress__block-editor/store/selectors").getBlockOrder
-		>
-	>(select => select("core/block-editor").getBlockOrder(id));
-	const root_clientId = useSelect<
-		ReturnType<
-			typeof import("wordpress__block-editor/store/selectors").getBlockHierarchyRootClientId
-		>
-	>(select => select("core/block-editor").getBlockHierarchyRootClientId(id));
+	const descendants_clientIds = useSelect(select =>
+		select("core/block-editor").getClientIdsOfDescendants([id])
+	);
+	const children_clientIds = useSelect(select =>
+		select("core/block-editor").getBlockOrder(id)
+	);
+	const root_clientId = useSelect(select =>
+		select("core/block-editor").getBlockHierarchyRootClientId(id)
+	);
 
 	const onClick = () => {
 		close();

@@ -6,7 +6,7 @@ import { useToggle } from "utils/hooks";
 
 interface Props extends Omit<MenuProps, "close"> {}
 
-export const BlockMenuButton: React.ComponentType<Props> = (props: Props) => {
+export const BlockMenuButton: React.ComponentType<Props> = props => {
 	const { toggle, close, is_open } = useToggle();
 
 	return (

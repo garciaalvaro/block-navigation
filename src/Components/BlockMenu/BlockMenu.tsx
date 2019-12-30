@@ -1,4 +1,4 @@
-import { withSelect } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 
 import "./BlockMenu.styl";
 import { Div } from "utils/Components";
@@ -9,18 +9,10 @@ import { ButtonsMove } from "./ButtonsMove";
 import { ButtonCopyId } from "./ButtonCopyId";
 import { ButtonBlockData } from "./ButtonBlockData";
 
-interface WithSelectProps extends Pick<State, "color_scheme"> {}
-
-interface OwnProps extends MenuProps {}
-
-export const BlockMenu: React.ComponentType<OwnProps> = withSelect<
-	WithSelectProps,
-	OwnProps
->(select => ({
-	color_scheme: select(store_slug).getColorScheme()
-}))(props => {
-	const { color_scheme } = props;
-	const [type, value] = color_scheme.split("-");
+export const BlockMenu: React.ComponentType<MenuProps> = props => {
+	const [type, value] = useSelect<State["color_scheme"]>(select =>
+		select(store_slug).getColorScheme()
+	).split("-");
 
 	return (
 		<Div
@@ -37,4 +29,4 @@ export const BlockMenu: React.ComponentType<OwnProps> = withSelect<
 			<ButtonBlockData {...props} />
 		</Div>
 	);
-});
+};

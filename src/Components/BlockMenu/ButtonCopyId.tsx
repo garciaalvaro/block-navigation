@@ -5,6 +5,7 @@ import { Button, Div, Icon, Span } from "utils/Components";
 
 export const ButtonCopyId: React.ComponentType<MenuProps> = props => {
 	const { id, close } = props;
+
 	const onClick = () => {
 		close();
 		copy(id);
@@ -18,6 +19,7 @@ export const ButtonCopyId: React.ComponentType<MenuProps> = props => {
 			<Div className="menu-icon">
 				<Icon icon="copy" />
 			</Div>
+
 			<Span>{__("Copy Block clientId")}</Span>
 		</Button>
 	);

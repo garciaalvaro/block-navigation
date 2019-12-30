@@ -9,9 +9,7 @@ interface Props {
 	block: Block;
 }
 
-export const BlockHeaderContent: React.ComponentType<Props> = (
-	props: Props
-) => {
+export const BlockHeaderContent: React.ComponentType<Props> = props => {
 	const { block } = props;
 	const content = useMemo(
 		() => (block_types[block.name] ? getContent(block) : null),

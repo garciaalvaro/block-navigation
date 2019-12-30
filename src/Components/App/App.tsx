@@ -1,4 +1,4 @@
-import { withSelect } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 
 import "./App.styl";
 import { store_slug } from "utils/data";
@@ -7,17 +7,14 @@ import { AppContainer } from "./AppContainer";
 import { ViewNavigation } from "../ViewNavigation/ViewNavigation";
 import { ViewSettings } from "../ViewSettings/ViewSettings";
 
-interface WithSelectProps extends Pick<State, "view"> {}
-
-export const App: React.ComponentType = withSelect<WithSelectProps>(select => ({
-	view: select(store_slug).getView()
-}))(props => {
-	const { view } = props;
+export const App: React.ComponentType = props => {
+	const view = useSelect<State["view"]>(select => select(store_slug).getView());
 
 	return (
 		<AppContainer>
 			<Tabs />
+
 			{view === "navigation" ? <ViewNavigation /> : <ViewSettings />}
 		</AppContainer>
 	);
-});
+};

@@ -3,16 +3,13 @@ import { useDispatch } from "@wordpress/data";
 
 import { Div, Button, Icon, Span } from "utils/Components";
 
-interface OwnProps extends MenuProps {}
-
 export const ButtonEdit: React.ComponentType<MenuProps> = props => {
-	const { id, close } = props;
-
+	const { id, closeMenu } = props;
 	const { openGeneralSidebar } = useDispatch("core/edit-post");
 	const { selectBlock } = useDispatch("core/block-editor");
 
 	const onClick = () => {
-		close();
+		closeMenu();
 		selectBlock(id);
 		openGeneralSidebar("edit-post/block");
 	};

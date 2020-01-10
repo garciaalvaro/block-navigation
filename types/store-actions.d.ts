@@ -13,11 +13,8 @@ interface ActionCreatorNoPayload<A extends ActionsNoPayload> {
 	(): A;
 }
 
-type ActionCollapseBlock = ActionWithPayload<
-	"COLLAPSE_BLOCK",
-	BlockProps["id"]
->;
-type ActionExpandBlock = ActionWithPayload<"EXPAND_BLOCK", BlockProps["id"]>;
+type ActionCollapseBlock = ActionWithPayload<"COLLAPSE_BLOCK", BlockId>;
+type ActionExpandBlock = ActionWithPayload<"EXPAND_BLOCK", BlockId>;
 type ActionResetMoving = ActionNoPayload<"RESET_MOVING">;
 type ActionSetMovingBlock = ActionWithPayload<
 	"SET_MOVING_BLOCK",

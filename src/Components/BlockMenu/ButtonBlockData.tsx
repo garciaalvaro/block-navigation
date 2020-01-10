@@ -12,28 +12,42 @@ const is_safari = (window as any).safari !== undefined;
 const multiple_log = is_safari;
 
 export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
-	const {
-		id,
-		parent_id,
-		block: { name, attributes: attributes_value },
-		block_type,
-		close,
-		index,
-		template_lock
-	} = props;
+	const { id, closeMenu } = props;
+
+	const { name, attributes: attributes_value } = useSelect(select =>
+		select("core/block-editor").getBlock(id)
+	) || { name: "", attributes: {} };
+
+	const parent_id =
+		useSelect(select => select("core/block-editor").getBlockRootClientId(id)) ||
+		"";
+
+	const index = useSelect(select =>
+		select("core/block-editor").getBlockIndex(id, parent_id)
+	);
+
+	const template_lock = useSelect(select =>
+		select("core/block-editor").getTemplateLock()
+	);
+
+	const block_type = useSelect(select =>
+		select("core/blocks").getBlockType(name)
+	);
 
 	const descendants_clientIds = useSelect(select =>
 		select("core/block-editor").getClientIdsOfDescendants([id])
 	);
+
 	const children_clientIds = useSelect(select =>
 		select("core/block-editor").getBlockOrder(id)
 	);
+
 	const root_clientId = useSelect(select =>
 		select("core/block-editor").getBlockHierarchyRootClientId(id)
 	);
 
 	const onClick = () => {
-		close();
+		closeMenu();
 
 		if (!block_type) {
 			return;

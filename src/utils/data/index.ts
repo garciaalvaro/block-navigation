@@ -5,5 +5,5 @@ export {
 	store_slug
 } from "./plugin";
 export { icons } from "./icons";
-export { block_types } from "./block_types";
+export { blocks_content_info } from "./blocks_content_info";
 export { color_schemes } from "./color_schemes";

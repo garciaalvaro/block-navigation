@@ -1,3 +1,3 @@
 export { addPrefix } from "./addPrefix";
 export { prepareProps } from "./prepareProps";
-export { getContent } from "./getContent";
+export { getBlockAncestorsId } from "./getBlockAncestorsId";

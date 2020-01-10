@@ -10,9 +10,11 @@ import { ButtonCopyId } from "./ButtonCopyId";
 import { ButtonBlockData } from "./ButtonBlockData";
 
 export const BlockMenu: React.ComponentType<MenuProps> = props => {
-	const [type, value] = useSelect<State["color_scheme"]>(select =>
+	const color_scheme = useSelect<State["color_scheme"]>(select =>
 		select(store_slug).getColorScheme()
-	).split("-");
+	);
+
+	const [type, value] = color_scheme.split("-");
 
 	return (
 		<Div

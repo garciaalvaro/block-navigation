@@ -1,14 +1,13 @@
 interface State {
 	view: "navigation" | "settings";
-	moving_type: "by_click" | "by_drag";
-	moving_block: {
-		id: string;
-		parent_id: string;
-		template_lock: string | undefined;
-		block_name: string;
+	moving_type: null | "by_click" | "by_drag";
+	moving_block: null | {
+		id: BlockId;
+		parent_id: BlockId;
 		index: number;
-		was_expanded: boolean;
+		level: number;
+		name: string;
 	};
 	color_scheme: string;
-	collapsed_blocks: BlockProps["id"][];
+	blocks_collapsed: BlockId[];
 }

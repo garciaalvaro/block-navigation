@@ -9,13 +9,16 @@ export const ContextContainer = createContext<HTMLDivElement | null>(null);
 
 export const AppContainer: React.ComponentType = props => {
 	const view = useSelect<State["view"]>(select => select(store_slug).getView());
+
 	const [type, value] = useSelect<State["color_scheme"]>(select =>
 		select(store_slug).getColorScheme()
 	).split("-");
-	const is_moving = useSelect<boolean>(select => select(store_slug).isMoving());
+
 	const moving_type = useSelect<State["moving_type"]>(select =>
 		select(store_slug).getMovingType()
 	);
+
+	const is_moving = !!moving_type;
 
 	const { window_height } = useWindowSize();
 	const [height, setHeight] = useState(555);

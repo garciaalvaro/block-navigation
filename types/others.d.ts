@@ -10,28 +10,18 @@ interface ComponentProps extends Object {
 
 interface MenuProps {
 	id: string;
-	parent_id: string;
-	template_lock: string;
-	block: Block;
-	block_type: BlockType | null | undefined;
-	can_move: boolean;
-	index: number;
-	close: Function;
-	collapseBlock: Function;
-	is_expanded: boolean;
+	closeMenu: Function;
+	setMovingBlock: Function;
 }
 
-interface BlockProps {
-	id: string;
-	parent_id: string;
+type BlockId = Block["clientId"];
+
+interface DropArea {
+	id: BlockId;
 	level: number;
-	index: number;
-	template_lock: string;
-	can_receive_drop: boolean;
-	moving: boolean;
-	is_selected: boolean;
-	is_expanded: boolean;
-	is_last_children: boolean;
-	block: Block | null;
-	block_type: BlockType | undefined | null;
+}
+
+interface BlockDropArea {
+	id: BlockId;
+	drop_areas: DropArea[];
 }

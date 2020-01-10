@@ -1,10 +1,10 @@
 type Selector<T, P = null> = (state: State, parameter: P) => T;
 
 interface Selectors {
-	isExpanded: Selector<boolean>;
-	getView: Selector<State["view"]>;
+	getBlocksCollapsed: Selector<State["blocks_collapsed"]>;
+	getColorScheme: Selector<State["color_scheme"]>;
 	getMovingBlock: Selector<State["moving_block"]>;
 	getMovingType: Selector<State["moving_type"]>;
-	getColorScheme: Selector<State["color_scheme"]>;
-	isMoving: Selector<boolean>;
+	getView: Selector<State["view"]>;
+	isExpanded: Selector<boolean, BlockId>;
 }

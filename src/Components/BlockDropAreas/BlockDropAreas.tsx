@@ -1,3 +1,4 @@
+import "./BlockDropAreas.styl";
 import { Div } from "utils/Components";
 
 interface Props {

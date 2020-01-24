@@ -20,7 +20,8 @@
 	},
 	"dependencies": {
 		"copy-text-to-clipboard": "^2.1.1",
-		"react-tiny-popover": "^3.0.0"
+		"react-tiny-popover": "^3.0.0",
+		"react-window": "^1.8.5"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.7.7",
@@ -31,6 +32,7 @@
 		"@babel/register": "^7.7.7",
 		"@types/lodash": "^4.14.149",
 		"@types/node": "^13.1.0",
+		"@types/react-window": "^1.8.1",
 		"@types/wordpress__block-editor": "^2.2.5",
 		"@types/wordpress__blocks": "^6.4.4",
 		"@types/wordpress__components": "^8.2.1",

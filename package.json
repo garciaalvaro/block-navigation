@@ -16,7 +16,8 @@
 		"prebuild": "rm -rf build && npm run build_v1_scripts && tsc && npm run version",
 		"build": "npm run prod",
 		"postbuild": "npm run copy",
-		"build_v1_scripts": "git checkout v1.x && npm run prod && git checkout develop"
+		"build_v1_scripts": "git checkout v1.x && npm run prod && git checkout develop",
+		"start":"npm run dev"
 	},
 	"dependencies": {
 		"copy-text-to-clipboard": "^2.1.1",

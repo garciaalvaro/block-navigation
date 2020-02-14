@@ -28,16 +28,18 @@ export const useScrollTo = (props: Props) => {
 
 		if (block_index === -1) return;
 
-		const block_offsetTop = 50 * block_index;
+		const block_height = 52;
+
+		const block_offsetTop = block_height * block_index;
 
 		const is_above = block_offsetTop - list_ref.scrollTop < 0;
 
 		const is_below =
-			block_offsetTop - list_ref.scrollTop + 50 >
-			list_ref.offsetHeight - 50;
+			block_offsetTop + block_height - list_ref.scrollTop >
+			list_ref.offsetHeight;
 
 		if (is_above || is_below) {
-			list_ref.scrollTop = block_offsetTop - 26;
+			list_ref.scrollTop = block_offsetTop - block_height / 2;
 		}
 	}, [...selected_blocks, selected_block]);
 };

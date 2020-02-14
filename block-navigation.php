@@ -38,20 +38,23 @@ function enqueue() {
 
 	preg_match( '/\d+\.\d+/', $wp_version, $current_wp_version );
 
-	$version_slug = '';
-
-	if ( isset( $current_wp_version[0] ) ) {
-
-		$current_wp_version = explode( '.', $current_wp_version[0] );
-
-		$current_wp_version[1] = strlen( $current_wp_version[1] ) === 1
-			? '0' . $current_wp_version[1]
-			: $current_wp_version[1];
-
-		$current_wp_version = floatval( implode( '.', $current_wp_version ) );
-
-		$version_slug = $current_wp_version < 5.03 ? '-v1' : '';
+	if ( ! isset( $current_wp_version[0] ) ) {
+		return;
 	}
+
+	$current_wp_version = explode( '.', $current_wp_version[0] );
+
+	$current_wp_version[1] = strlen( $current_wp_version[1] ) === 1
+		? '0' . $current_wp_version[1]
+		: $current_wp_version[1];
+
+	$current_wp_version = floatval( implode( '.', $current_wp_version ) );
+
+	if ( $current_wp_version < 5.02 ) {
+		return;
+	}
+
+	$version_slug = $current_wp_version < 5.03 ? '-v1' : '';
 
 	wp_enqueue_style(
 		PLUGIN_NAME,

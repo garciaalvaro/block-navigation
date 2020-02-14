@@ -14,14 +14,18 @@ interface Props {
 
 export const BlockContent: React.ComponentType<Props> = props => {
 	const { id, name } = props;
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const [content, setContent] = useState<any>(null);
+
 	const [content_type, setContentType] = useState<null | "text" | "image">(
 		null
 	);
 
 	const attributes =
-		useSelect(select => select("core/block-editor").getBlockAttributes(id)) ||
-		{};
+		useSelect(select =>
+			select("core/block-editor").getBlockAttributes(id)
+		) || {};
 
 	useEffect(() => {
 		if (!blocks_content_info[name]) {

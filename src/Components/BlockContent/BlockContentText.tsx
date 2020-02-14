@@ -7,23 +7,28 @@ interface Props {
 	content_raw: string;
 }
 
+const getText = (content_raw: string) => {
+	// Create a richText instance
+	const rich_text = create({ html: content_raw });
+
+	let text;
+
+	// Get the text from the richText instance
+	text = getTextContent(rich_text);
+
+	// If there is no text Rich Text returns the "Object replacement character",
+	// which looks as if there is an empty string.
+	text = text.replace("￼", "");
+
+	return text;
+};
+
 export const BlockContentText: React.ComponentType<Props> = props => {
 	const { content_raw } = props;
-	const [content, setContent] = useState("");
+	const [content, setContent] = useState(getText(content_raw));
 
 	useEffect(() => {
-		// Create a richText instance
-		const rich_text = create({ html: content_raw });
-
-		// Get the text from the richText instance
-		let text;
-
-		text = getTextContent(rich_text);
-		// If there is no text Rich Text returns the "Object replacement character",
-		// which looks as if there is an empty string.
-		text = text.replace("￼", "");
-
-		setContent(text);
+		setContent(getText(content_raw));
 	}, [content_raw]);
 
 	if (!content) {
@@ -31,6 +36,8 @@ export const BlockContentText: React.ComponentType<Props> = props => {
 	}
 
 	return (
-		<Span className={["block-content", "content_type-text"]}>{content}</Span>
+		<Span className={["block-content", "content_type-text"]}>
+			{content}
+		</Span>
 	);
 };

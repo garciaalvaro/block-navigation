@@ -9,7 +9,7 @@ const tabs: { value: State["view"]; label: string }[] = [
 	{ value: "settings", label: __("Settings") }
 ];
 
-export const Tabs: React.ComponentType = props => {
+export const Tabs: React.ComponentType = () => {
 	return (
 		<Div id="tabs">
 			{tabs.map(({ value, label }) => (

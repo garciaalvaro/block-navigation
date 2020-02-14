@@ -10,8 +10,9 @@ export const ButtonMoveTo: React.ComponentType<MenuProps> = props => {
 	const { setMovingType } = useDispatch(store_slug);
 
 	const parent_id =
-		useSelect(select => select("core/block-editor").getBlockRootClientId(id)) ||
-		"";
+		useSelect(select =>
+			select("core/block-editor").getBlockRootClientId(id)
+		) || "";
 
 	const can_move =
 		useSelect(select =>
@@ -20,7 +21,11 @@ export const ButtonMoveTo: React.ComponentType<MenuProps> = props => {
 
 	return (
 		<Button
-			className={["button", "button-menu", !can_move ? "is_disabled" : null]}
+			className={[
+				"button",
+				"button-menu",
+				!can_move ? "is_disabled" : null
+			]}
 			onClick={() => {
 				closeMenu();
 				setMovingType("by_click");

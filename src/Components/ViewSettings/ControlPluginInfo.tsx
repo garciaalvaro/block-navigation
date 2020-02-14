@@ -4,7 +4,7 @@ import "./ControlPluginInfo.styl";
 import { Icon, Div, H3, Span } from "utils/Components";
 import { plugin_title } from "utils/data";
 
-export const ControlPluginInfo: React.ComponentType = props => {
+export const ControlPluginInfo: React.ComponentType = () => {
 	return (
 		<Div id="info">
 			<Div id="info-logo">

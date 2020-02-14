@@ -56,6 +56,20 @@
 			border-top 1px dashed transparent
 			transition border-color .1s $e_deceleration
 
+	.drop_area
+		z-index -1
+
+	.drop_overlay
+		background-color var(--primary_color)
+		position absolute
+		top 0
+		left 0
+		right 0
+		bottom 0
+
+		~ .drop_overlay
+			background-color rgba(0,0,0,.1)
+
 	for num in (1..20)
 
 		.level-{num}

@@ -6,7 +6,7 @@ import { store_slug } from "utils/data";
 import { Div, Button } from "utils/Components";
 import { BlockHeader } from "../BlockHeader/BlockHeader";
 
-export const Toolbar: React.ComponentType = props => {
+export const Toolbar: React.ComponentType = () => {
 	const { resetMoving } = useDispatch(store_slug);
 
 	const moving_block = useSelect<State["moving_block"]>(select =>

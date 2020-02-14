@@ -68,7 +68,7 @@ export const useDrop = (props: Props) => {
 				moving_block.parent_id,
 				drop_block_parent_id,
 				moving_block.parent_id === drop_block_parent_id &&
-					moving_block.index < drop_block_index
+					moving_block.index_local < drop_block_index
 					? drop_block_index - 1
 					: drop_block_index
 			);

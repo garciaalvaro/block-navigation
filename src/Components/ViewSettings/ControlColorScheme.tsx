@@ -5,10 +5,11 @@ import { SelectControl } from "@wordpress/components";
 import { addPrefix } from "utils/tools";
 import { store_slug, color_schemes } from "utils/data";
 
-export const ControlColorScheme: React.ComponentType = props => {
+export const ControlColorScheme: React.ComponentType = () => {
 	const color_scheme = useSelect<State["color_scheme"]>(select =>
 		select(store_slug).getColorScheme()
 	);
+
 	const { setColorScheme } = useDispatch(store_slug);
 
 	return (

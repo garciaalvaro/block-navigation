@@ -42,23 +42,26 @@ export const useDropAreas = (props: Props) => {
 
 		const moving_block_next_sibling_same_level_id = block_ids
 			.slice(moving_block.index_global + 1)
-			.reduce<BlockId>((acc, id) => {
-				if (acc) {
+			.reduce<{ id: BlockId; level_changed: boolean }>(
+				(acc, id) => {
+					if (acc.id || acc.level_changed) {
+						return acc;
+					}
+
+					const block_level = getBlockAncestorsId(id).length;
+
+					if (block_level < moving_block.level) {
+						return { ...acc, level_changed: true };
+					}
+
+					if (block_level === moving_block.level) {
+						return { ...acc, id };
+					}
+
 					return acc;
-				}
-
-				const block_level = getBlockAncestorsId(id).length;
-
-				if (block_level < moving_block.level) {
-					return acc;
-				}
-
-				if (block_level === moving_block.level) {
-					return id;
-				}
-
-				return acc;
-			}, "");
+				},
+				{ id: "", level_changed: false }
+			).id;
 
 		setDropAreas(() => {
 			const can_receive_drop_sibling = canInsertBlockType(

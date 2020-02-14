@@ -50,9 +50,9 @@ export const ViewNavigation: React.ComponentType = () => {
 				<List
 					outerRef={list_ref}
 					height={container_height - 50}
+					width={container_width}
 					itemCount={block_ids.length}
 					itemSize={52}
-					width={container_width}
 					itemKey={index => block_ids[index]}
 					itemData={{ block_ids }}
 					overscanCount={20}

@@ -1,6 +1,6 @@
 {
 	"name": "block-navigation",
-	"version": "1.3.0",
+	"version": "2.0.0",
 	"description": "Block Navigation WordPress Plugin",
 	"homepage": "https://wordpress.org/plugins/block-navigation/",
 	"author": "Alvaro Garcia",
@@ -13,7 +13,7 @@
 		"postcopy": "rm _release/_temp.js",
 		"version": "webpack --mode production --config ./webpack/version.config.babel.js",
 		"postversion": "rm _temp.js",
-		"prebuild": "rm -rf build && npm run build_v1_scripts && npm run type-check && npm run lint && npm run prettier && npm run version",
+		"prebuild": "npm run type-check && npm run lint && npm run prettier && npm run version",
 		"build": "npm run prod",
 		"postbuild": "npm run copy",
 		"build_v1_scripts": "git checkout v1.x && npm run prod && git checkout develop",

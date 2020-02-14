@@ -1,32 +1,65 @@
-import { withSelect } from "@wordpress/data";
-import { Fragment } from "@wordpress/element";
+import {
+	Fragment,
+	useEffect,
+	useCallback,
+	useContext,
+	useRef
+} from "@wordpress/element";
+import { useDispatch, useSelect } from "@wordpress/data";
+import { FixedSizeList as List } from "react-window";
 
 import "./ViewNavigation.styl";
-import { Div } from "utils/Components";
 import { store_slug } from "utils/data";
-import { BlockList } from "../BlockList/BlockList";
+import { Div } from "utils/Components";
+import { Block } from "../Block/Block";
 import { Toolbar } from "../Toolbar/Toolbar";
+import { ContextContainer } from "../App/AppContainer";
+import { useBlockIds } from "./useBlockIds";
+import { useScrollTo } from "./useScrollTo";
 
-interface WithSelectProps extends Pick<State, "moving_type"> {
-	moving: boolean;
-	root_ids: ReturnType<
-		typeof import("wordpress__block-editor/store/selectors").getBlockOrder
-	>;
-}
+export const ViewNavigation: React.ComponentType = () => {
+	const { container_height, container_width } = useContext(ContextContainer);
 
-export const ViewNavigation = withSelect<WithSelectProps>(select => ({
-	moving: select(store_slug).isMoving(),
-	moving_type: select(store_slug).getMovingType(),
-	root_ids: select("core/block-editor").getBlockOrder()
-}))(props => {
-	const { moving, moving_type, root_ids } = props;
+	const list_ref = useRef(null);
+
+	const block_ids = useBlockIds();
+
+	const moving_block = useSelect<State["moving_block"]>(select =>
+		select(store_slug).getMovingBlock()
+	);
+
+	const { resetMoving } = useDispatch(store_slug);
+
+	const onDrop = useCallback(resetMoving, [resetMoving]);
+
+	useScrollTo({ block_ids, list_ref: list_ref.current });
+
+	useEffect(() => {
+		if (moving_block) {
+			document.addEventListener("drop", onDrop);
+		} else {
+			document.removeEventListener("drop", onDrop);
+		}
+	}, [moving_block]);
 
 	return (
 		<Fragment>
-			{moving && moving_type === "by_click" && <Toolbar />}
+			<Toolbar />
+
 			<Div id="navigation">
-				<BlockList ids={root_ids} level={0} parent_id="" />
+				<List
+					outerRef={list_ref}
+					height={container_height - 50}
+					width={container_width}
+					itemCount={block_ids.length}
+					itemSize={52}
+					itemKey={index => block_ids[index]}
+					itemData={{ block_ids }}
+					overscanCount={20}
+				>
+					{Block}
+				</List>
 			</Div>
 		</Fragment>
 	);
-});
+};

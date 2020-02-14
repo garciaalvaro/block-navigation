@@ -1,41 +1,38 @@
-import { withSelect } from "@wordpress/data";
-import { useRef, useState, useEffect } from "@wordpress/element";
+import { useSelect } from "@wordpress/data";
+import { useRef, useState, useEffect, createContext } from "@wordpress/element";
 
 import { DivRef } from "utils/Components";
 import { store_slug } from "utils/data";
 import { useWindowSize } from "utils/hooks";
 
-interface WithSelectProps
-	extends Pick<State, "view" | "moving_type" | "color_scheme"> {
-	moving: boolean;
-}
+export const ContextContainer = createContext<{
+	container_ref: HTMLDivElement | null;
+	container_height: number;
+	container_width: number;
+}>({ container_ref: null, container_height: 0, container_width: 0 });
 
-interface OwnProps {
-	children: React.ReactNode;
-}
+export const AppContainer: React.ComponentType = props => {
+	const view = useSelect<State["view"]>(select =>
+		select(store_slug).getView()
+	);
 
-export const AppContainer: React.ComponentType<OwnProps> = withSelect<
-	WithSelectProps,
-	OwnProps
->(select => ({
-	view: select(store_slug).getView(),
-	color_scheme: select(store_slug).getColorScheme(),
-	moving: select(store_slug).isMoving(),
-	moving_type: select(store_slug).getMovingType()
-}))(props => {
-	const { children, moving, moving_type, color_scheme, view } = props;
-	const [type, value] = color_scheme.split("-");
-	const classes = [
-		`color_scheme-type-${type}`,
-		`color_scheme-name-${value}`,
-		`moving_type-${moving_type}`,
-		`${moving ? "" : "no-"}moving`
-	];
-	const { window_height } = useWindowSize();
+	const [type, value] = useSelect<State["color_scheme"]>(select =>
+		select(store_slug).getColorScheme()
+	).split("-");
+
+	const moving_type = useSelect<State["moving_type"]>(select =>
+		select(store_slug).getMovingType()
+	);
+
+	const is_moving = !!moving_type;
+
+	const { window_height, window_width } = useWindowSize();
+	const [height, setHeight] = useState(555);
+	const [width, setWidth] = useState(555);
+
 	const div_ref = useRef<HTMLDivElement>(null);
 	const container_ref = useRef<HTMLElement | null>(null);
 	const header_ref = useRef<HTMLElement | null>(null);
-	const [height, setHeight] = useState(555);
 
 	useEffect(() => {
 		if (!div_ref.current) {
@@ -44,7 +41,11 @@ export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 
 		container_ref.current = (div_ref.current.closest(
 			".edit-post-editor-regions__sidebar"
-		) || div_ref.current.closest(".edit-post-sidebar")) as HTMLElement | null;
+		) ||
+			div_ref.current.closest(".block-editor-editor-skeleton__sidebar") ||
+			div_ref.current.closest(
+				".edit-post-sidebar"
+			)) as HTMLElement | null;
 
 		if (container_ref.current) {
 			header_ref.current = container_ref.current.querySelector(
@@ -62,9 +63,7 @@ export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 	}, [view]);
 
 	useEffect(() => {
-		if (!div_ref.current || !container_ref.current) {
-			return;
-		}
+		if (!div_ref.current || !container_ref.current) return;
 
 		setHeight(
 			container_ref.current.offsetHeight -
@@ -72,9 +71,33 @@ export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 		);
 	}, [window_height]);
 
+	useEffect(() => {
+		if (!container_ref.current) return;
+
+		setWidth(container_ref.current?.offsetWidth || 0);
+	}, [window_width]);
+
 	return (
-		<DivRef ref={div_ref} id="container" className={classes} style={{ height }}>
-			{children}
-		</DivRef>
+		<ContextContainer.Provider
+			value={{
+				container_ref: div_ref.current,
+				container_height: height,
+				container_width: width
+			}}
+		>
+			<DivRef
+				ref={div_ref}
+				id="container"
+				className={[
+					`color_scheme-type-${type}`,
+					`color_scheme-name-${value}`,
+					`moving_type-${moving_type}`,
+					`${is_moving ? "" : "no-"}moving`
+				]}
+				style={{ height }}
+			>
+				{props.children}
+			</DivRef>
+		</ContextContainer.Provider>
 	);
-});
+};

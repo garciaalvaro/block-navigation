@@ -1,207 +1,187 @@
-import { withSelect, withDispatch } from "@wordpress/data";
-import { compose } from "@wordpress/compose";
-import { Fragment, useState, useEffect } from "@wordpress/element";
+import { useDispatch, useSelect } from "@wordpress/data";
+import { useRef, Fragment } from "@wordpress/element";
+import { ListChildComponentProps } from "react-window";
 
 import "./Block.styl";
-import { Div } from "utils/Components";
+import { Div, DivRef, Button, Icon } from "utils/Components";
 import { store_slug } from "utils/data";
-import { BlockHeader } from "./BlockHeader";
-import { BlockList } from "../BlockList/BlockList";
-import { BlockListDropArea } from "../BlockList/BlockListDropArea";
-import { withMove, WithMoveProps } from "../HOC/withMove";
+import { BlockHeader } from "../BlockHeader/BlockHeader";
+import { BlockMenuButton } from "../BlockMenu/BlockMenuButton";
+import { useDropAreas } from "./useDropAreas";
+import { useIsSelected } from "./useIsSelected";
+import { useAncestorsId } from "./useAncestorsId";
+import { useDrop } from "./useDrop";
+import { useMovingIsOver } from "./useMovingIsOver";
 
-interface WithDispatchProps {
-	collapseBlock: Function;
-	expandBlock: Function;
+interface Props {
+	data: { block_ids: BlockId[] };
+	index: number;
+	style: ListChildComponentProps["style"];
 }
 
-interface WithSelectProps
-	extends Pick<State, "moving_block" | "moving_type">,
-		Pick<
-			BlockProps,
-			| "template_lock"
-			| "moving"
-			| "block"
-			| "block_type"
-			| "is_selected"
-			| "can_receive_drop"
-			| "is_expanded"
-		> {}
-
-interface OwnProps
-	extends Pick<
-		BlockProps,
-		"id" | "parent_id" | "level" | "index" | "is_last_children"
-	> {}
-
-interface Props
-	extends OwnProps,
-		WithMoveProps,
-		WithSelectProps,
-		WithDispatchProps {}
-
-export const Block: React.ComponentType<OwnProps> = compose(
-	withDispatch<WithDispatchProps, OwnProps>((dispatch, { id }) => ({
-		expandBlock: () => dispatch(store_slug).expandBlock(id),
-		collapseBlock: () => dispatch(store_slug).collapseBlock(id)
-	})),
-
-	withSelect<WithSelectProps, OwnProps>((select, { id, parent_id }) => {
-		const {
-			getBlock,
-			getTemplateLock,
-			canInsertBlockType,
-			getSelectedBlockClientId,
-			getSelectedBlockClientIds,
-			getMultiSelectedBlockClientIds
-		} = select("core/block-editor");
-
-		const { getMovingBlock, isExpanded } = select(store_slug);
-
-		const moving_block: State["moving_block"] = getMovingBlock();
-
-		const block = getBlock(id);
-
-		const block_type = block
-			? select("core/blocks").getBlockType(block.name)
-			: undefined;
-
-		const moving_block_can_be_sibling = canInsertBlockType(
-			moving_block.block_name,
-			parent_id
-		);
-
-		const is_selected_in_multi = getSelectedBlockClientIds
-			? getSelectedBlockClientIds().includes(id)
-			: getMultiSelectedBlockClientIds().includes(id);
-
-		const is_selected =
-			is_selected_in_multi || getSelectedBlockClientId() === id;
-
-		const reusable_block_entity =
-			block &&
-			block_type &&
-			block_type.name === "core/block" &&
-			// When creating a new reusable block Gutenberg returns
-			// a string for the ref attribute, until it is saved
-			typeof block.attributes.ref === "number"
-				? select("core").getEntityRecord<any>(
-						"postType",
-						"wp_block",
-						block.attributes.ref
-				  )
-				: undefined;
-
-		return {
-			is_expanded: isExpanded(id),
-			block:
-				reusable_block_entity && block
-					? {
-							...block,
-							attributes: {
-								...block.attributes,
-								title: reusable_block_entity.title.raw
-							}
-					  }
-					: block,
-			block_type,
-			is_selected,
-			moving: select(store_slug).isMoving(),
-			moving_type: select(store_slug).getMovingType(),
-			template_lock: getTemplateLock(parent_id) || "",
-			moving_block,
-			can_receive_drop:
-				moving_block.template_lock === "insert"
-					? moving_block.parent_id === parent_id
-					: moving_block_can_be_sibling
-		};
-	}),
-
-	withMove
-)((props: Props) => {
+export const Block: React.ComponentType<Props> = props => {
 	const {
-		is_expanded,
+		index: index_global,
+		style,
+		data: { block_ids }
+	} = props;
+
+	const id = block_ids[index_global];
+
+	const block_div = useRef<HTMLDivElement | null>(null);
+
+	const {
+		resetMoving,
 		expandBlock,
 		collapseBlock,
-		toggleMovingIsOver,
-		moveBlock,
-		is_selected,
-		can_receive_drop,
-		moving_type,
-		moving,
-		moving_is_over,
-		index,
-		moving_block,
-		parent_id,
+		setMovingType,
+		setMovingBlock
+	} = useDispatch(store_slug);
+
+	const is_expanded = useSelect<boolean>(select =>
+		select(store_slug).isExpanded(id)
+	);
+
+	const children_length = useSelect(select =>
+		select("core/block-editor").getBlockOrder(id)
+	).length;
+
+	const name = useSelect(select =>
+		select("core/block-editor").getBlockName(id)
+	);
+
+	const moving_type = useSelect<State["moving_type"]>(select =>
+		select(store_slug).getMovingType()
+	);
+
+	const moving_block = useSelect<State["moving_block"]>(select =>
+		select(store_slug).getMovingBlock()
+	);
+
+	const { moving_is_over, setMovingIsOver } = useMovingIsOver();
+
+	const is_selected = useIsSelected(id);
+
+	const ancestors_id = useAncestorsId(id);
+
+	const drop_areas = useDropAreas({
 		id,
-		block,
-		block_type,
-		level,
-		template_lock,
-		is_last_children
-	} = props;
-	const has_children = block ? !!block.innerBlocks.length : false;
-	const can_move = template_lock !== "all";
-	const [is_moving, setIsMoving] = useState(false);
-	const toggleBlock = is_expanded ? collapseBlock : expandBlock;
+		block_ids,
+		index_global,
+		ancestors_id
+	});
 
-	useEffect(() => {
-		setIsMoving(moving_block.id === id);
-	}, [moving_block]);
+	const is_moving = moving_block && moving_block.id === id;
 
-	if (!block) {
-		return null;
-	}
+	const ancestor_is_moving =
+		moving_block && ancestors_id.includes(moving_block.id);
+
+	const level = ancestors_id.length;
+
+	const parent_id = level > 0 ? ancestors_id[ancestors_id.length - 1] : "";
+
+	const index_local = useSelect(select =>
+		select("core/block-editor").getBlockIndex(id, parent_id)
+	);
+
+	const can_move =
+		useSelect(select =>
+			select("core/block-editor").getTemplateLock(parent_id)
+		) !== "all";
+
+	const can_receive_drop = drop_areas.length;
+
+	const onDrop = useDrop({
+		parent_id,
+		block_div: block_div.current,
+		drop_areas
+	});
+
+	const toggleBlock = () =>
+		is_expanded ? collapseBlock(id) : expandBlock(id);
 
 	return (
 		<Fragment>
-			<Div
-				id={id}
-				onDragEnter={toggleMovingIsOver}
-				onDragLeave={toggleMovingIsOver}
-				onDrop={moveBlock}
-				onClick={!moving || moving_type !== "by_click" ? null : moveBlock}
+			<DivRef
+				style={style}
+				ref={block_div}
 				className={[
 					"block",
 					`level-${level}`,
+					ancestor_is_moving ? "ancestor_is_moving" : null,
+					can_receive_drop ? "can_receive_drop" : null,
+					is_selected ? "is_selected" : null,
 					`${is_moving ? "" : "no-"}is_moving`,
-					`${can_receive_drop ? "" : "no-"}can_receive_drop`,
 					`${moving_is_over ? "" : "no-"}moving_is_over`,
-					`${can_move ? "" : "no-"}can_move`,
-					`${is_selected ? "" : "no-"}is_selected`
+					`${can_move ? "" : "no-"}can_move`
 				]}
+				onDragEnter={() => setMovingIsOver(true)}
+				onDragLeave={() => setMovingIsOver(false)}
+				onDrop={onDrop}
+				onClick={(e: React.DragEvent) => {
+					if (moving_type !== "by_click") return;
+
+					onDrop(e);
+					resetMoving();
+				}}
 			>
-				<BlockHeader
-					block={block}
-					block_type={block_type}
-					toggleBlock={toggleBlock}
-					collapseBlock={collapseBlock}
-					can_move={can_move}
-					template_lock={template_lock}
-					parent_id={parent_id}
-					index={index}
-					id={id}
-					has_children={has_children}
-					is_expanded={is_expanded}
-				/>
+				<Div className="block-container">
+					<BlockHeader
+						id={id}
+						onDragStart={(e: React.DragEvent) => {
+							if (e.dataTransfer && e.dataTransfer.setData) {
+								// Needed for Firefox to work.
+								// https://stackoverflow.com/a/33465176 | CC BY-SA 3.0
+								e.dataTransfer.setData("text", "");
+							}
+
+							setTimeout(() => {
+								setMovingBlock({
+									id,
+									parent_id,
+									index_local,
+									index_global,
+									level,
+									name
+								});
+								setMovingType("by_drag");
+							}, 0);
+						}}
+					/>
+
+					{children_length > 0 && (
+						<Button
+							className={["button-icon", "button-toggle_list"]}
+							onClick={toggleBlock}
+						>
+							<Icon icon={is_expanded ? "collapse" : "expand"} />
+						</Button>
+					)}
+
+					<BlockMenuButton
+						id={id}
+						setMovingBlock={() =>
+							setMovingBlock({
+								id,
+								parent_id,
+								index_local,
+								index_global,
+								level,
+								name
+							})
+						}
+					/>
+				</Div>
+			</DivRef>
+
+			<Div className={["block", "drop_area"]} style={{ ...style }}>
+				{drop_areas.map(({ id, level }) => (
+					<Div
+						key={id}
+						className={["drop_overlay", `level-${level}`]}
+					></Div>
+				))}
 			</Div>
-
-			{has_children && is_expanded && (
-				<BlockList
-					ids={block.innerBlocks.map(({ clientId }) => clientId)}
-					level={level + 1}
-					parent_id={id}
-				/>
-			)}
-
-			{is_last_children && moving && can_receive_drop && (
-				<BlockListDropArea
-					parent_id={parent_id}
-					index={index + 1}
-					level={level}
-					can_receive_drop={true}
-				/>
-			)}
 		</Fragment>
 	);
-});
+};

@@ -1,49 +1,57 @@
-interface ActionWithPayload<T, P> {
+// Actions
+type ActionPlain<T> = {
 	type: T;
+};
+
+type ActionWithPayload<T, P> = ActionPlain<T> & {
 	payload: P;
-}
-interface ActionNoPayload<T> {
-	type: T;
-}
+};
 
-interface ActionCreatorWithPayload<A extends ActionsWithPayload> {
-	(payload: A["payload"]): A;
-}
-interface ActionCreatorNoPayload<A extends ActionsNoPayload> {
+// Action Creators
+type ActionCreatorPlain<A extends Actions> = {
 	(): A;
-}
+};
 
-type ActionCollapseBlock = ActionWithPayload<
-	"COLLAPSE_BLOCK",
-	BlockProps["id"]
->;
-type ActionExpandBlock = ActionWithPayload<"EXPAND_BLOCK", BlockProps["id"]>;
-type ActionResetMoving = ActionNoPayload<"RESET_MOVING">;
+type ActionCreatorWithPayload<A extends ActionsWithPayload> = {
+	(payload: A["payload"]): A;
+};
+
+// Defined action creators
+type ActionCollapseBlock = ActionWithPayload<"COLLAPSE_BLOCK", BlockId>;
+
+type ActionExpandBlock = ActionWithPayload<"EXPAND_BLOCK", BlockId>;
+
+type ActionResetMoving = ActionPlain<"RESET_MOVING">;
+
 type ActionSetMovingBlock = ActionWithPayload<
 	"SET_MOVING_BLOCK",
 	State["moving_block"]
 >;
+
 type ActionSetMovingType = ActionWithPayload<
 	"SET_MOVING_TYPE",
 	State["moving_type"]
 >;
+
 type ActionSetView = ActionWithPayload<"SET_VIEW", State["view"]>;
+
 type ActionSetColorScheme = ActionWithPayload<
 	"SET_COLOR_SCHEME",
 	State["color_scheme"]
 >;
 
-interface ActionCreators {
+// Defined actions
+type ActionCreators = {
 	collapseBlock: ActionCreatorWithPayload<ActionCollapseBlock>;
 	expandBlock: ActionCreatorWithPayload<ActionExpandBlock>;
-	resetMoving: ActionCreatorNoPayload<ActionResetMoving>;
+	resetMoving: ActionCreatorPlain<ActionResetMoving>;
 	setMovingBlock: ActionCreatorWithPayload<ActionSetMovingBlock>;
 	setMovingType: ActionCreatorWithPayload<ActionSetMovingType>;
 	setView: ActionCreatorWithPayload<ActionSetView>;
 	setColorScheme: ActionCreatorWithPayload<ActionSetColorScheme>;
-}
+};
 
-type ActionsNoPayload = ActionResetMoving;
+type ActionsPlain = ActionResetMoving;
 
 type ActionsWithPayload =
 	| ActionCollapseBlock
@@ -53,4 +61,4 @@ type ActionsWithPayload =
 	| ActionSetView
 	| ActionSetColorScheme;
 
-type Actions = ActionsNoPayload | ActionsWithPayload;
+type Actions = ActionsPlain | ActionsWithPayload;

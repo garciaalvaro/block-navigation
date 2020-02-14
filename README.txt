@@ -3,7 +3,7 @@ Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 5.2
 Tested up to: 5.3
-Stable tag: 1.3.0
+Stable tag: 2.0.0
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -74,6 +74,13 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 2.0.0 =
+* Major refactor. Use of react hooks, load an old version of the plugin for WP 5.2
+* Use of a virtual list to improve performance (specially when dragging)
+* Blocks can be dropped as a children of an empty nestable block
+* Overall improvement in the UX
+* The scrollTop position will update based on the current selected block
 
 = 1.3.0 =
 * Blocks that are nestable (like columns) now retain their collapsed/expanded state, after closing and re-opening the plugin sidebar or after collapsing an ancestor block.

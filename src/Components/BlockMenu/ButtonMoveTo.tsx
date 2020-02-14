@@ -1,61 +1,42 @@
 import { __ } from "@wordpress/i18n";
-import { withDispatch } from "@wordpress/data";
+import { useDispatch, useSelect } from "@wordpress/data";
 
 import { Div, Icon, Button, Span } from "utils/Components";
 import { store_slug } from "utils/data";
 
-interface WithDispatchProps {
-	setMovingBlock: ActionCreators["setMovingBlock"];
-	setMovingType: ActionCreators["setMovingType"];
-}
+export const ButtonMoveTo: React.ComponentType<MenuProps> = props => {
+	const { id, closeMenu, setMovingBlock } = props;
 
-interface OwnProps extends MenuProps {}
+	const { setMovingType } = useDispatch(store_slug);
 
-interface Props extends OwnProps, WithDispatchProps {}
+	const parent_id =
+		useSelect(select =>
+			select("core/block-editor").getBlockRootClientId(id)
+		) || "";
 
-export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
-	WithDispatchProps,
-	OwnProps
->(dispatch => ({
-	setMovingBlock: dispatch(store_slug).setMovingBlock,
-	setMovingType: dispatch(store_slug).setMovingType
-}))((props: Props) => {
-	const {
-		id,
-		parent_id,
-		template_lock,
-		block,
-		can_move,
-		setMovingBlock,
-		setMovingType,
-		close,
-		is_expanded,
-		collapseBlock,
-		index
-	} = props;
-	const onClick = () => {
-		close();
-		collapseBlock();
-		setMovingType("by_click");
-		setMovingBlock({
-			id,
-			parent_id,
-			template_lock,
-			block_name: block.name,
-			index,
-			was_expanded: is_expanded
-		});
-	};
+	const can_move =
+		useSelect(select =>
+			select("core/block-editor").getTemplateLock(parent_id)
+		) !== "all";
 
 	return (
 		<Button
-			className={["button", "button-menu", !can_move ? "is_disabled" : null]}
-			onClick={onClick}
+			className={[
+				"button",
+				"button-menu",
+				!can_move ? "is_disabled" : null
+			]}
+			onClick={() => {
+				closeMenu();
+				setMovingType("by_click");
+				setMovingBlock();
+			}}
 		>
 			<Div className="menu-icon">
 				<Icon icon="move" />
 			</Div>
+
 			<Span>{__("Move Block To")}</Span>
 		</Button>
 	);
-});
+};

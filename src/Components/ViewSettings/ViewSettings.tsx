@@ -3,10 +3,11 @@ import { Div } from "utils/Components";
 import { ControlPluginInfo } from "./ControlPluginInfo";
 import { ControlColorScheme } from "./ControlColorScheme";
 
-export const ViewSettings: React.ComponentType = props => {
+export const ViewSettings: React.ComponentType = () => {
 	return (
 		<Div id="settings">
 			<ControlPluginInfo />
+
 			<ControlColorScheme />
 		</Div>
 	);

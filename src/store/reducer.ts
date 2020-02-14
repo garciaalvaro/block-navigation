@@ -1,16 +1,9 @@
 const initial_state: State = {
 	view: "navigation",
 	color_scheme: "dark-endrina",
-	moving_type: "by_drag",
-	moving_block: {
-		id: "",
-		parent_id: "",
-		template_lock: "",
-		block_name: "",
-		index: 0,
-		was_expanded: true
-	},
-	collapsed_blocks: []
+	moving_type: null,
+	moving_block: null,
+	blocks_collapsed: []
 };
 
 export const reducer = (state = initial_state, action: Actions) => {
@@ -18,14 +11,14 @@ export const reducer = (state = initial_state, action: Actions) => {
 		case "COLLAPSE_BLOCK": {
 			return {
 				...state,
-				collapsed_blocks: [...state.collapsed_blocks, action.payload]
+				blocks_collapsed: [...state.blocks_collapsed, action.payload]
 			};
 		}
 
 		case "EXPAND_BLOCK": {
 			return {
 				...state,
-				collapsed_blocks: state.collapsed_blocks.filter(
+				blocks_collapsed: state.blocks_collapsed.filter(
 					id => id !== action.payload
 				)
 			};
@@ -39,32 +32,17 @@ export const reducer = (state = initial_state, action: Actions) => {
 		}
 
 		case "RESET_MOVING": {
-			const { moving_block, collapsed_blocks } = state;
-
 			return {
 				...state,
-				moving_block: {
-					id: "",
-					parent_id: "",
-					template_lock: "",
-					block_name: "",
-					index: 0
-				},
-				collapsed_blocks: moving_block.was_expanded
-					? collapsed_blocks.filter(id => id !== moving_block.id)
-					: collapsed_blocks
+				moving_block: null,
+				moving_type: null
 			};
 		}
 
 		case "SET_MOVING_BLOCK": {
-			const { collapsed_blocks } = state;
-
 			return {
 				...state,
-				moving_block: action.payload,
-				collapsed_blocks: action.payload.was_expanded
-					? [...collapsed_blocks, action.payload.id]
-					: collapsed_blocks
+				moving_block: action.payload
 			};
 		}
 

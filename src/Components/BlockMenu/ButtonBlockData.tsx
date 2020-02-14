@@ -1,55 +1,63 @@
 import { __ } from "@wordpress/i18n";
-import { withSelect } from "@wordpress/data";
+import { useSelect } from "@wordpress/data";
 
 import { Div, Icon, Button, Span } from "utils/Components";
 
-interface WithSelectProps {
-	descendants_clientIds: ReturnType<
-		typeof import("wordpress__block-editor/store/selectors").getClientIdsOfDescendants
-	>;
-	children_clientIds: ReturnType<
-		typeof import("wordpress__block-editor/store/selectors").getBlockOrder
-	>;
-	root_clientId: ReturnType<
-		typeof import("wordpress__block-editor/store/selectors").getBlockHierarchyRootClientId
-	>;
+declare global {
+	interface Window {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		safari?: any;
+	}
 }
 
-interface OwnProps extends MenuProps {}
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const l = (...args: any[]) => console.log(...args);
 
 // Safari doesn't log the one-line version of the log
 // as desired so we log each property in a different line.
 // https://stackoverflow.com/a/42189492 | CC BY-SA 3.0
-const is_safari = (window as any).safari !== undefined;
+const is_safari = window.safari !== undefined;
+
 const multiple_log = is_safari;
 
-export const ButtonBlockData: React.ComponentType<OwnProps> = withSelect<
-	WithSelectProps,
-	OwnProps
->((select, { id }) => ({
-	descendants_clientIds: select("core/block-editor").getClientIdsOfDescendants([
-		id
-	]),
-	children_clientIds: select("core/block-editor").getBlockOrder(id),
-	root_clientId: select("core/block-editor").getBlockHierarchyRootClientId(id)
-}))(props => {
-	const {
-		id,
-		parent_id,
-		block,
-		block_type,
-		close,
-		index,
-		template_lock,
-		descendants_clientIds,
-		children_clientIds,
-		root_clientId
-	} = props;
-	const { name, attributes: attributes_value } = block;
+export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
+	const { id, closeMenu } = props;
+
+	const { name, attributes: attributes_value } = useSelect(select =>
+		select("core/block-editor").getBlock(id)
+	) || { name: "", attributes: {} };
+
+	const parent_id =
+		useSelect(select =>
+			select("core/block-editor").getBlockRootClientId(id)
+		) || "";
+
+	const index = useSelect(select =>
+		select("core/block-editor").getBlockIndex(id, parent_id)
+	);
+
+	const template_lock = useSelect(select =>
+		select("core/block-editor").getTemplateLock()
+	);
+
+	const block_type = useSelect(select =>
+		select("core/blocks").getBlockType(name)
+	);
+
+	const descendants_clientIds = useSelect(select =>
+		select("core/block-editor").getClientIdsOfDescendants([id])
+	);
+
+	const children_clientIds = useSelect(select =>
+		select("core/block-editor").getBlockOrder(id)
+	);
+
+	const root_clientId = useSelect(select =>
+		select("core/block-editor").getBlockHierarchyRootClientId(id)
+	);
+
 	const onClick = () => {
-		close();
+		closeMenu();
 
 		if (!block_type) {
 			return;
@@ -104,7 +112,8 @@ export const ButtonBlockData: React.ComponentType<OwnProps> = withSelect<
 			<Div className="menu-icon">
 				<Icon icon="log" />
 			</Div>
+
 			<Span>{__("Console log Block Data")}</Span>
 		</Button>
 	);
-});
+};

@@ -1,12 +1,15 @@
 import Popover, { ArrowContainer } from "react-tiny-popover";
 
 import { Icon, Button } from "utils/Components";
-import { BlockMenu } from "../BlockMenu/BlockMenu";
+import { BlockMenu } from "./BlockMenu";
 import { useToggle } from "utils/hooks";
 
-interface Props extends Omit<MenuProps, "close"> {}
+interface Props {
+	id: BlockId;
+	setMovingBlock: Function;
+}
 
-export const ButtonMenu: React.ComponentType<Props> = (props: Props) => {
+export const BlockMenuButton: React.ComponentType<Props> = props => {
 	const { toggle, close, is_open } = useToggle();
 
 	return (
@@ -27,7 +30,7 @@ export const ButtonMenu: React.ComponentType<Props> = (props: Props) => {
 					arrowColor={"#111"}
 					arrowSize={6}
 				>
-					<BlockMenu {...props} close={close} />
+					<BlockMenu {...props} closeMenu={close} />
 				</ArrowContainer>
 			)}
 		>

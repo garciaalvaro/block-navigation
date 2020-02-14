@@ -24,8 +24,9 @@ export const BlockHeader: React.ComponentType<Props> = props => {
 	);
 
 	const parent_id =
-		useSelect(select => select("core/block-editor").getBlockRootClientId(id)) ||
-		"";
+		useSelect(select =>
+			select("core/block-editor").getBlockRootClientId(id)
+		) || "";
 
 	const can_move =
 		useSelect(select =>

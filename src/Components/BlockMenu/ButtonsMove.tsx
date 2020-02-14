@@ -8,8 +8,9 @@ export const ButtonsMove: React.ComponentType<MenuProps> = props => {
 	const { id, closeMenu } = props;
 
 	const parent_id =
-		useSelect(select => select("core/block-editor").getBlockRootClientId(id)) ||
-		"";
+		useSelect(select =>
+			select("core/block-editor").getBlockRootClientId(id)
+		) || "";
 
 	const index = useSelect(select =>
 		select("core/block-editor").getBlockIndex(id, parent_id)

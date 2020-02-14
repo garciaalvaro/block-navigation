@@ -10,7 +10,11 @@ interface Props {
 
 export const Tab: React.ComponentType<Props> = props => {
 	const { tab_value, tab_label } = props;
-	const view = useSelect<State["view"]>(select => select(store_slug).getView());
+
+	const view = useSelect<State["view"]>(select =>
+		select(store_slug).getView()
+	);
+
 	const { setView } = useDispatch(store_slug);
 
 	const onClick = () => setView(tab_value);

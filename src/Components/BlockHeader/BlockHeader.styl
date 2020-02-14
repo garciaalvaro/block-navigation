@@ -13,6 +13,7 @@
 		margin-left 1px
 		position relative
 		flex-grow 1
+		animation appear .2s $e_standard
 
 		+ button
 			margin-left auto
@@ -58,3 +59,12 @@
 
 		svg
 			display block
+
+@keyframes appear {
+	0%, 30% {
+		opacity 0
+	}
+	100% {
+		opacity 1
+	}
+}

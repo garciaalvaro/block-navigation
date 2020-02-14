@@ -7,8 +7,10 @@ import { AppContainer } from "./AppContainer";
 import { ViewNavigation } from "../ViewNavigation/ViewNavigation";
 import { ViewSettings } from "../ViewSettings/ViewSettings";
 
-export const App: React.ComponentType = props => {
-	const view = useSelect<State["view"]>(select => select(store_slug).getView());
+export const App: React.ComponentType = () => {
+	const view = useSelect<State["view"]>(select =>
+		select(store_slug).getView()
+	);
 
 	return (
 		<AppContainer>

@@ -3,12 +3,21 @@ import { useSelect } from "@wordpress/data";
 
 import { Div, Icon, Button, Span } from "utils/Components";
 
+declare global {
+	interface Window {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		safari?: any;
+	}
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const l = (...args: any[]) => console.log(...args);
 
 // Safari doesn't log the one-line version of the log
 // as desired so we log each property in a different line.
 // https://stackoverflow.com/a/42189492 | CC BY-SA 3.0
-const is_safari = (window as any).safari !== undefined;
+const is_safari = window.safari !== undefined;
+
 const multiple_log = is_safari;
 
 export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
@@ -19,8 +28,9 @@ export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
 	) || { name: "", attributes: {} };
 
 	const parent_id =
-		useSelect(select => select("core/block-editor").getBlockRootClientId(id)) ||
-		"";
+		useSelect(select =>
+			select("core/block-editor").getBlockRootClientId(id)
+		) || "";
 
 	const index = useSelect(select =>
 		select("core/block-editor").getBlockIndex(id, parent_id)

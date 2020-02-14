@@ -75,6 +75,13 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 2.0.0 =
+* Major refactor. Use of react hooks, load an old version of the plugin for WP 5.2
+* Use of a virtual list to improve performance (specially when dragging)
+* Blocks can be dropped as a children of an empty nestable block
+* Overall improvement in the UX
+* The scrollTop position will update based on the current selected block
+
 = 1.3.0 =
 * Blocks that are nestable (like columns) now retain their collapsed/expanded state, after closing and re-opening the plugin sidebar or after collapsing an ancestor block.
 * Reusable blocks now show their title, so they are more easy to identify.

@@ -42,8 +42,9 @@ export const AppContainer: React.ComponentType = props => {
 		container_ref.current = (div_ref.current.closest(
 			".edit-post-editor-regions__sidebar"
 		) ||
+			div_ref.current.closest(".block-editor-editor-skeleton__sidebar") ||
 			div_ref.current.closest(
-				".block-editor-editor-skeleton__sidebar"
+				".edit-post-sidebar"
 			)) as HTMLElement | null;
 
 		if (container_ref.current) {

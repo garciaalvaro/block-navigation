@@ -45,15 +45,17 @@ export const BlockHeader: React.ComponentType<Props> = props => {
 			onDragStart={onDragStart}
 			onDragEnd={onDragEnd}
 		>
-			{icon && (
-				<Div className="block-icon">
-					<WpIcon icon={icon} />
-				</Div>
-			)}
+			<Div className="block-header-content">
+				{icon && (
+					<Div className="block-icon">
+						<WpIcon icon={icon} />
+					</Div>
+				)}
 
-			<Span className="block-title">{title}</Span>
+				<Span className="block-title">{title}</Span>
 
-			<BlockContent id={id} name={name} />
+				<BlockContent id={id} name={name} />
+			</Div>
 		</Div>
 	);
 };

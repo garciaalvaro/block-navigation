@@ -75,6 +75,11 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 2.0.1 =
+* Fixed text being selected on drag
+* Fixed images being able to be dragged
+* Updated dependencies
+
 = 2.0.0 =
 * Major refactor. Use of react hooks, load an old version of the plugin for WP 5.2
 * Use of a virtual list to improve performance (specially when dragging)

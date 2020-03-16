@@ -32,6 +32,17 @@
 			cursor move // fallback if grab cursor is unsupported
 			cursor grab
 
+		// This pseudoelement prevents children from being selected.
+		// pointer-events none on children would still permit
+		// selection on the parent.
+		&:after
+			content ""
+			top 0
+			left 0
+			right 0
+			bottom 0
+			position absolute
+
 	.block-icon
 	.block-title
 	.block-content

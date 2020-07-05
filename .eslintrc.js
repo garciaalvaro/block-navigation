@@ -1,16 +1,21 @@
 module.exports = {
 	parser: "@typescript-eslint/parser",
+
 	extends: [
+		"eslint:recommended",
 		"plugin:react/recommended",
 		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended",
 		"prettier/@typescript-eslint",
-		"plugin:prettier/recommended"
+		"prettier/react",
 	],
-	parserOptions: {
-		ecmaFeatures: {
-			jsx: true
-		}
+
+	env: {
+		es2020: true,
+		browser: true,
+		node: true,
 	},
+
 	rules: {
 		"@typescript-eslint/explicit-function-return-type": "off",
 		"@typescript-eslint/camelcase": "off",
@@ -20,9 +25,10 @@ module.exports = {
 		"react/prop-types": "off",
 		"react/display-name": "off"
 	},
+
 	settings: {
 		react: {
-			version: "detect"
-		}
-	}
+			version: "16.9.0", // Version used in WP 5.4.1
+		},
+	},
 };

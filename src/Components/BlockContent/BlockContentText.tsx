@@ -1,7 +1,7 @@
 import { useState, useEffect } from "@wordpress/element";
 import { create, getTextContent } from "@wordpress/rich-text";
 
-import { Span } from "utils/Components";
+import { Span } from "utils/components";
 
 interface Props {
 	content_raw: string;

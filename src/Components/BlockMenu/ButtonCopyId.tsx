@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import copy from "copy-text-to-clipboard";
 
-import { Button, Div, Icon, Span } from "utils/Components";
+import { Button, Div, Icon, Span } from "utils/components";
 
 export const ButtonCopyId: React.ComponentType<MenuProps> = props => {
 	const { id, closeMenu } = props;

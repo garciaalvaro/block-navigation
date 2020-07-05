@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 
 import "./Tabs.styl";
-import { Div } from "utils/Components";
+import { Div } from "utils/components";
 import { Tab } from "./Tab";
 
 const tabs: { value: State["view"]; label: string }[] = [

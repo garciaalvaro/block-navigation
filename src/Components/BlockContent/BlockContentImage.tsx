@@ -1,6 +1,6 @@
 import { useState, useEffect } from "@wordpress/element";
 
-import { Div, Img } from "utils/Components";
+import { Div, Img } from "utils/components";
 
 interface Props {
 	content_raw: { url: string }[] | string;

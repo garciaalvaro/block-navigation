@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
 
-import { Div, Icon, Button, Span } from "utils/Components";
+import { Div, Icon, Button, Span } from "utils/components";
 
 declare global {
 	interface Window {

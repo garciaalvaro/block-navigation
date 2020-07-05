@@ -1,7 +1,7 @@
 import { useSelect } from "@wordpress/data";
 import { useRef, useState, useEffect, createContext } from "@wordpress/element";
 
-import { DivRef } from "utils/Components";
+import { DivRef } from "utils/components";
 import { store_slug } from "utils/data";
 import { useWindowSize } from "utils/hooks";
 
@@ -67,7 +67,7 @@ export const AppContainer: React.ComponentType = props => {
 
 		setHeight(
 			container_ref.current.offsetHeight -
-				(header_ref.current ? header_ref.current.offsetHeight : 0)
+			(header_ref.current ? header_ref.current.offsetHeight : 0)
 		);
 	}, [window_height]);
 

@@ -1,5 +1,5 @@
 import "./ViewSettings.styl";
-import { Div } from "utils/Components";
+import { Div } from "utils/components";
 import { ControlPluginInfo } from "./ControlPluginInfo";
 import { ControlColorScheme } from "./ControlColorScheme";
 

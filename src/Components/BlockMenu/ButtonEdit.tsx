@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
 
-import { Div, Button, Icon, Span } from "utils/Components";
+import { Div, Button, Icon, Span } from "utils/components";
 
 export const ButtonEdit: React.ComponentType<MenuProps> = props => {
 	const { id, closeMenu } = props;

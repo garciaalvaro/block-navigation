@@ -17,12 +17,23 @@
 		"jsx": "react",
 		"baseUrl": ".",
 		"paths": {
-			"utils/*": ["src/utils/*"],
-			"store/*": ["src/store/*"],
-			"Components/*": ["src/Components/*"]
+			"utils/*": [
+				"src/utils/*"
+			],
+			"store/*": [
+				"src/store/*"
+			],
+			"components/*": [
+				"src/components/*"
+			]
 		}
 	},
-	"include": ["src", "types/*"],
-	"exclude": ["node_modules"],
+	"include": [
+		"src",
+		"types/*"
+	],
+	"exclude": [
+		"node_modules"
+	],
 	"compileOnSave": false
 }

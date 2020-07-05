@@ -2,7 +2,7 @@ import { useDispatch, useSelect } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
 
 import "./BlockHeader.styl";
-import { Div, Span } from "utils/Components";
+import { Div, Span } from "utils/components";
 import { BlockContent } from "../BlockContent/BlockContent";
 
 interface Props {

@@ -1,7 +1,7 @@
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
-import { Div, Icon, Button, Span } from "utils/Components";
+import { Div, Icon, Button, Span } from "utils/components";
 import { store_slug } from "utils/data";
 
 export const ButtonMoveTo: React.ComponentType<MenuProps> = props => {

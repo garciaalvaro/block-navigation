@@ -10,7 +10,7 @@ import { FixedSizeList as List } from "react-window";
 
 import "./ViewNavigation.styl";
 import { store_slug } from "utils/data";
-import { Div } from "utils/Components";
+import { Div } from "utils/components";
 import { Block } from "../Block/Block";
 import { Toolbar } from "../Toolbar/Toolbar";
 import { ContextContainer } from "../App/AppContainer";

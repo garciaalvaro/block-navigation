@@ -3,7 +3,7 @@ import { useRef, Fragment } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
 import "./Block.styl";
-import { Div, DivRef, Button, Icon } from "utils/Components";
+import { Div, DivRef, Button, Icon } from "utils/components";
 import { store_slug } from "utils/data";
 import { BlockHeader } from "../BlockHeader/BlockHeader";
 import { BlockMenuButton } from "../BlockMenu/BlockMenuButton";

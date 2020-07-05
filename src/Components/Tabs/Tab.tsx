@@ -1,6 +1,6 @@
 import { useSelect, useDispatch } from "@wordpress/data";
 
-import { Button } from "utils/Components";
+import { Button } from "utils/components";
 import { store_slug } from "utils/data";
 
 interface Props {

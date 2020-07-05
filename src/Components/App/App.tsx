@@ -2,10 +2,10 @@ import { useSelect } from "@wordpress/data";
 
 import "./App.styl";
 import { store_slug } from "utils/data";
-import { Tabs } from "../Tabs/Tabs";
+import { Tabs } from "../Tabs";
 import { AppContainer } from "./AppContainer";
-import { ViewNavigation } from "../ViewNavigation/ViewNavigation";
-import { ViewSettings } from "../ViewSettings/ViewSettings";
+import { ViewNavigation } from "../ViewNavigation";
+import { ViewSettings } from "../ViewSettings";
 
 export const App: React.ComponentType = () => {
 	const view = useSelect<State["view"]>(select =>

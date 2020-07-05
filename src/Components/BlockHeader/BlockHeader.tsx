@@ -3,7 +3,7 @@ import { Icon as WpIcon } from "@wordpress/components";
 
 import "./BlockHeader.styl";
 import { Div, Span } from "utils/components";
-import { BlockContent } from "../BlockContent/BlockContent";
+import { BlockContent } from "../BlockContent";
 
 interface Props {
 	id: BlockId;

@@ -4,7 +4,7 @@ import { useDispatch, useSelect } from "@wordpress/data";
 import "./Toolbar.styl";
 import { store_slug } from "utils/data";
 import { Div, Button } from "utils/components";
-import { BlockHeader } from "../BlockHeader/BlockHeader";
+import { BlockHeader } from "../BlockHeader";
 
 export const Toolbar: React.ComponentType = () => {
 	const { resetMoving } = useDispatch(store_slug);

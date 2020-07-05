@@ -4,7 +4,7 @@ import { Fragment } from "@wordpress/element";
 
 import { plugin_namespace, plugin_title } from "utils/data";
 import { Icon } from "utils/components";
-import { App } from "components/App/App";
+import { App } from "components/App";
 
 registerPlugin(plugin_namespace, {
 	// @ts-ignore

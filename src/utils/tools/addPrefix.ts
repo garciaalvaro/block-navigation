@@ -31,6 +31,6 @@ export const addPrefix = (
 		compact,
 		(elements: string[]) =>
 			elements.map(el => resolvePrefix(el, separator, prefix)),
-		(elements: string[]) => elements.join(" ")
+		(elements: string[]) => elements.join(" "),
 	])(elements);
 };

@@ -1,3 +1,4 @@
+import React from "react";
 import { addPrefix } from "utils/tools/addPrefix";
 
 export type Icons = Record<
@@ -85,5 +86,5 @@ export const icons: Icons = {
 				strokeWidth="0"
 			/>
 		</svg>
-	)
+	),
 };

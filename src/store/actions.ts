@@ -1,29 +1,29 @@
 export const actions: ActionCreators = {
 	collapseBlock: payload => ({
 		type: "COLLAPSE_BLOCK",
-		payload
+		payload,
 	}),
 	expandBlock: payload => ({
 		type: "EXPAND_BLOCK",
-		payload
+		payload,
 	}),
 	resetMoving: () => ({
-		type: "RESET_MOVING"
+		type: "RESET_MOVING",
 	}),
 	setMovingBlock: payload => ({
 		type: "SET_MOVING_BLOCK",
-		payload
+		payload,
 	}),
 	setMovingType: payload => ({
 		type: "SET_MOVING_TYPE",
-		payload
+		payload,
 	}),
 	setView: payload => ({
 		type: "SET_VIEW",
-		payload
+		payload,
 	}),
 	setColorScheme: payload => ({
 		type: "SET_COLOR_SCHEME",
-		payload
-	})
+		payload,
+	}),
 };

@@ -4,7 +4,8 @@ const getParentId = (id: BlockId) =>
 	select("core/block-editor").getBlockRootClientId(id);
 
 export const getBlockAncestorsId = (id: BlockId): BlockId[] => {
-	// @ts-ignore
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-expect-error
 	const { getBlockParents } = select("core/block-editor");
 
 	if (getBlockParents) {

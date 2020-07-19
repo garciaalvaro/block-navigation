@@ -1,6 +1,6 @@
 import { useSelect } from "@wordpress/data";
 
-export const useIsSelected = (id: BlockId) => {
+export const useIsSelected = (id: BlockId): boolean => {
 	const is_selected_multiple = useSelect(select =>
 		select("core/block-editor").getSelectedBlockClientIds()
 	).includes(id);

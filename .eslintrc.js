@@ -23,7 +23,7 @@ module.exports = {
 		"@typescript-eslint/ban-ts-ignore": "off",
 		"react/react-in-jsx-scope": "off",
 		"react/prop-types": "off",
-		"react/display-name": "off"
+		"react/display-name": "off",
 	},
 
 	settings: {

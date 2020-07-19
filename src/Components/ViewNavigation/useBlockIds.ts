@@ -1,14 +1,13 @@
 import { useSelect, select } from "@wordpress/data";
 import { useEffect, useState } from "@wordpress/element";
 
-import { store_slug } from "utils/data";
 import { getBlockAncestorsId } from "utils/tools";
 
-export const useBlockIds = () => {
+export const useBlockIds = (): BlockId[] => {
 	const [blocks_id, setBlocksId] = useState<BlockId[]>([]);
 
-	const blocks_collapsed = useSelect<State["blocks_collapsed"]>(select =>
-		select(store_slug).getBlocksCollapsed()
+	const blocks_collapsed = useSelect(select =>
+		select("melonpan/block-navigation").getBlocksCollapsed()
 	);
 
 	const blocks_id_raw = useSelect(select =>

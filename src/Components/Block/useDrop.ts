@@ -1,6 +1,5 @@
 import { useSelect, useDispatch, select } from "@wordpress/data";
 
-import { store_slug } from "utils/data";
 import { getBlockAncestorsId } from "utils/tools";
 
 interface Props {
@@ -9,13 +8,13 @@ interface Props {
 	block_div: null | HTMLDivElement;
 }
 
-export const useDrop = (props: Props) => {
+export const useDrop = (props: Props): ((e: React.DragEvent) => void) => {
 	const { parent_id, block_div, drop_areas } = props;
 
 	const { moveBlockToPosition } = useDispatch("core/block-editor");
 
-	const moving_block = useSelect<State["moving_block"]>(select =>
-		select(store_slug).getMovingBlock()
+	const moving_block = useSelect(select =>
+		select("melonpan/block-navigation").getMovingBlock()
 	);
 
 	const onDrop = (e: React.DragEvent) => {

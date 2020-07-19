@@ -1,9 +1,10 @@
+import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import copy from "copy-text-to-clipboard";
 
 import { Button, Div, Icon, Span } from "utils/components";
 
-export const ButtonCopyId: React.ComponentType<MenuProps> = props => {
+export const ButtonCopyId: FunctionComponent<MenuProps> = props => {
 	const { id, closeMenu } = props;
 
 	const onClick = () => {

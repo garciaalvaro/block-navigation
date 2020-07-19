@@ -1,16 +1,17 @@
+import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { SelectControl } from "@wordpress/components";
 
 import { addPrefix } from "utils/tools";
-import { store_slug, color_schemes } from "utils/data";
+import { color_schemes } from "utils/data";
 
-export const ControlColorScheme: React.ComponentType = () => {
-	const color_scheme = useSelect<State["color_scheme"]>(select =>
-		select(store_slug).getColorScheme()
+export const ControlColorScheme: FunctionComponent = () => {
+	const color_scheme = useSelect(select =>
+		select("melonpan/block-navigation").getColorScheme()
 	);
 
-	const { setColorScheme } = useDispatch(store_slug);
+	const { setColorScheme } = useDispatch("melonpan/block-navigation");
 
 	return (
 		<SelectControl

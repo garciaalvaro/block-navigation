@@ -1,3 +1,4 @@
+import React, { FunctionComponent } from "react";
 import { useState, useEffect } from "@wordpress/element";
 
 import { Div, Img } from "utils/components";
@@ -6,7 +7,7 @@ interface Props {
 	content_raw: { url: string }[] | string;
 }
 
-export const BlockContentImage: React.ComponentType<Props> = props => {
+export const BlockContentImage: FunctionComponent<Props> = props => {
 	const { content_raw } = props;
 	const [content, setContent] = useState<null | string[]>(null);
 

@@ -1,15 +1,15 @@
+import React, { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
 
 import "./App.styl";
-import { store_slug } from "utils/data";
 import { Tabs } from "../Tabs";
 import { AppContainer } from "./AppContainer";
 import { ViewNavigation } from "../ViewNavigation";
 import { ViewSettings } from "../ViewSettings";
 
-export const App: React.ComponentType = () => {
-	const view = useSelect<State["view"]>(select =>
-		select(store_slug).getView()
+export const App: FunctionComponent = () => {
+	const view = useSelect(select =>
+		select("melonpan/block-navigation").getView()
 	);
 
 	return (

@@ -1,6 +1,7 @@
+import React, { FunctionComponent } from "react";
 import { prepareProps } from "utils/tools/prepareProps";
 
-export const Button: React.ComponentType<ComponentProps> = props => {
+export const Button: FunctionComponent<ComponentProps> = props => {
 	const { children, ...rest } = props;
 
 	return (

@@ -24,5 +24,5 @@ export const blocks_content_info: BlockContentInfo = {
 	"core/list": { type: "text", path: ["values"] },
 	"core/verse": { type: "text", path: ["content"] },
 	"core/heading": { type: "text", path: ["content"] },
-	"core/block": { type: "text", path: ["title"] }
+	"core/block": { type: "text", path: ["title"] },
 };

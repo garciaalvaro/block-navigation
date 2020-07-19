@@ -1,3 +1,4 @@
+import React, { FunctionComponent } from "react";
 import { get } from "lodash";
 import { useState, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
@@ -12,7 +13,7 @@ interface Props {
 	name: Block["name"];
 }
 
-export const BlockContent: React.ComponentType<Props> = props => {
+export const BlockContent: FunctionComponent<Props> = props => {
 	const { id, name } = props;
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,6 +23,7 @@ export const BlockContent: React.ComponentType<Props> = props => {
 		null
 	);
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const attributes =
 		useSelect(select =>
 			select("core/block-editor").getBlockAttributes(id)

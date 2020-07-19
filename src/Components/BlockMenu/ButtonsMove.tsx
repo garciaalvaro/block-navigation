@@ -1,10 +1,11 @@
+import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { Fragment } from "@wordpress/element";
 
 import { Div, Icon, Button, Span } from "utils/components";
 
-export const ButtonsMove: React.ComponentType<MenuProps> = props => {
+export const ButtonsMove: FunctionComponent<MenuProps> = props => {
 	const { id, closeMenu } = props;
 
 	const parent_id =
@@ -15,13 +16,12 @@ export const ButtonsMove: React.ComponentType<MenuProps> = props => {
 	const index = useSelect(select =>
 		select("core/block-editor").getBlockIndex(id, parent_id)
 	);
-
 	const can_move =
 		useSelect(select =>
 			select("core/block-editor").getTemplateLock(parent_id)
 		) !== "all";
 
-	const sibling_ids = useSelect<string[]>(select =>
+	const sibling_ids = useSelect(select =>
 		select("core/block-editor").getBlockOrder(parent_id)
 	);
 
@@ -55,7 +55,7 @@ export const ButtonsMove: React.ComponentType<MenuProps> = props => {
 				className={[
 					"button",
 					"button-menu",
-					move_up_is_disabled ? "is_disabled" : null
+					move_up_is_disabled ? "is_disabled" : null,
 				]}
 				onClick={onClickUp}
 			>
@@ -70,7 +70,7 @@ export const ButtonsMove: React.ComponentType<MenuProps> = props => {
 				className={[
 					"button",
 					"button-menu",
-					move_down_is_disabled ? "is_disabled" : null
+					move_down_is_disabled ? "is_disabled" : null,
 				]}
 				onClick={onClickDown}
 			>

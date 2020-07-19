@@ -6,7 +6,7 @@ interface Props {
 	list_ref: HTMLDivElement | null;
 }
 
-export const useScrollTo = (props: Props) => {
+export const useScrollTo = (props: Props): void => {
 	const { block_ids, list_ref } = props;
 
 	const selected_blocks = useSelect(select =>

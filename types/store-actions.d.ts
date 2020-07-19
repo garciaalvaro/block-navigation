@@ -1,64 +1,15 @@
-// Actions
-type ActionPlain<T> = {
-	type: T;
-};
+type ActionCreator<T, P = void> = (
+	payload: P
+) => P extends void ? { type: T } : { type: T; payload: P };
 
-type ActionWithPayload<T, P> = ActionPlain<T> & {
-	payload: P;
-};
-
-// Action Creators
-type ActionCreatorPlain<A extends Actions> = {
-	(): A;
-};
-
-type ActionCreatorWithPayload<A extends ActionsWithPayload> = {
-	(payload: A["payload"]): A;
-};
-
-// Defined action creators
-type ActionCollapseBlock = ActionWithPayload<"COLLAPSE_BLOCK", BlockId>;
-
-type ActionExpandBlock = ActionWithPayload<"EXPAND_BLOCK", BlockId>;
-
-type ActionResetMoving = ActionPlain<"RESET_MOVING">;
-
-type ActionSetMovingBlock = ActionWithPayload<
-	"SET_MOVING_BLOCK",
-	State["moving_block"]
->;
-
-type ActionSetMovingType = ActionWithPayload<
-	"SET_MOVING_TYPE",
-	State["moving_type"]
->;
-
-type ActionSetView = ActionWithPayload<"SET_VIEW", State["view"]>;
-
-type ActionSetColorScheme = ActionWithPayload<
-	"SET_COLOR_SCHEME",
-	State["color_scheme"]
->;
-
-// Defined actions
 type ActionCreators = {
-	collapseBlock: ActionCreatorWithPayload<ActionCollapseBlock>;
-	expandBlock: ActionCreatorWithPayload<ActionExpandBlock>;
-	resetMoving: ActionCreatorPlain<ActionResetMoving>;
-	setMovingBlock: ActionCreatorWithPayload<ActionSetMovingBlock>;
-	setMovingType: ActionCreatorWithPayload<ActionSetMovingType>;
-	setView: ActionCreatorWithPayload<ActionSetView>;
-	setColorScheme: ActionCreatorWithPayload<ActionSetColorScheme>;
+	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
+	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;
+	resetMoving: ActionCreator<"RESET_MOVING">;
+	setMovingBlock: ActionCreator<"SET_MOVING_BLOCK", State["moving_block"]>;
+	setMovingType: ActionCreator<"SET_MOVING_TYPE", State["moving_type"]>;
+	setView: ActionCreator<"SET_VIEW", State["view"]>;
+	setColorScheme: ActionCreator<"SET_COLOR_SCHEME", State["color_scheme"]>;
 };
 
-type ActionsPlain = ActionResetMoving;
-
-type ActionsWithPayload =
-	| ActionCollapseBlock
-	| ActionExpandBlock
-	| ActionSetMovingBlock
-	| ActionSetMovingType
-	| ActionSetView
-	| ActionSetColorScheme;
-
-type Actions = ActionsPlain | ActionsWithPayload;
+type Actions = ReturnType<valueof<ActionCreators>>;

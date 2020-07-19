@@ -1,10 +1,10 @@
+import React, { FunctionComponent } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useRef, Fragment } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
 import "./Block.styl";
 import { Div, DivRef, Button, Icon } from "utils/components";
-import { store_slug } from "utils/data";
 import { BlockHeader } from "../BlockHeader";
 import { BlockMenuButton } from "../BlockMenu";
 import { useDropAreas } from "./useDropAreas";
@@ -19,11 +19,11 @@ interface Props {
 	style: ListChildComponentProps["style"];
 }
 
-export const Block: React.ComponentType<Props> = props => {
+export const Block: FunctionComponent<Props> = props => {
 	const {
 		index: index_global,
 		style,
-		data: { block_ids }
+		data: { block_ids },
 	} = props;
 
 	const id = block_ids[index_global];
@@ -35,11 +35,11 @@ export const Block: React.ComponentType<Props> = props => {
 		expandBlock,
 		collapseBlock,
 		setMovingType,
-		setMovingBlock
-	} = useDispatch(store_slug);
+		setMovingBlock,
+	} = useDispatch("melonpan/block-navigation");
 
-	const is_expanded = useSelect<boolean>(select =>
-		select(store_slug).isExpanded(id)
+	const is_expanded = useSelect(select =>
+		select("melonpan/block-navigation").isExpanded(id)
 	);
 
 	const children_length = useSelect(select =>
@@ -50,12 +50,12 @@ export const Block: React.ComponentType<Props> = props => {
 		select("core/block-editor").getBlockName(id)
 	);
 
-	const moving_type = useSelect<State["moving_type"]>(select =>
-		select(store_slug).getMovingType()
+	const moving_type = useSelect(select =>
+		select("melonpan/block-navigation").getMovingType()
 	);
 
-	const moving_block = useSelect<State["moving_block"]>(select =>
-		select(store_slug).getMovingBlock()
+	const moving_block = useSelect(select =>
+		select("melonpan/block-navigation").getMovingBlock()
 	);
 
 	const { moving_is_over, setMovingIsOver } = useMovingIsOver();
@@ -68,7 +68,7 @@ export const Block: React.ComponentType<Props> = props => {
 		id,
 		block_ids,
 		index_global,
-		ancestors_id
+		ancestors_id,
 	});
 
 	const is_moving = moving_block && moving_block.id === id;
@@ -94,7 +94,7 @@ export const Block: React.ComponentType<Props> = props => {
 	const onDrop = useDrop({
 		parent_id,
 		block_div: block_div.current,
-		drop_areas
+		drop_areas,
 	});
 
 	const toggleBlock = () =>
@@ -113,7 +113,7 @@ export const Block: React.ComponentType<Props> = props => {
 					is_selected ? "is_selected" : null,
 					`${is_moving ? "" : "no-"}is_moving`,
 					`${moving_is_over ? "" : "no-"}moving_is_over`,
-					`${can_move ? "" : "no-"}can_move`
+					`${can_move ? "" : "no-"}can_move`,
 				]}
 				onDragEnter={() => setMovingIsOver(true)}
 				onDragLeave={() => setMovingIsOver(false)}
@@ -142,8 +142,9 @@ export const Block: React.ComponentType<Props> = props => {
 									index_local,
 									index_global,
 									level,
-									name
+									name: name || "",
 								});
+
 								setMovingType("by_drag");
 							}, 0);
 						}}
@@ -167,14 +168,14 @@ export const Block: React.ComponentType<Props> = props => {
 								index_local,
 								index_global,
 								level,
-								name
+								name: name || "",
 							})
 						}
 					/>
 				</Div>
 			</DivRef>
 
-			<Div className={["block", "drop_area"]} style={{ ...style }}>
+			<Div className={["block", "drop_area"]} style={style}>
 				{drop_areas.map(({ id, level }) => (
 					<Div
 						key={id}

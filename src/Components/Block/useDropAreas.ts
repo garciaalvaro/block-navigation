@@ -1,7 +1,6 @@
 import { useSelect, select } from "@wordpress/data";
 import { useEffect, useState } from "@wordpress/element";
 
-import { store_slug } from "utils/data";
 import { getBlockAncestorsId } from "utils/tools";
 
 interface Props {
@@ -11,17 +10,17 @@ interface Props {
 	ancestors_id: BlockId[];
 }
 
-export const useDropAreas = (props: Props) => {
+export const useDropAreas = (props: Props): DropArea[] => {
 	const { id, block_ids, index_global, ancestors_id } = props;
 
 	const [drop_areas, setDropAreas] = useState<DropArea[]>([]);
 
-	const blocks_collapsed = useSelect<State["blocks_collapsed"]>(select =>
-		select(store_slug).getBlocksCollapsed()
+	const blocks_collapsed = useSelect(select =>
+		select("melonpan/block-navigation").getBlocksCollapsed()
 	);
 
-	const moving_block = useSelect<State["moving_block"]>(select =>
-		select(store_slug).getMovingBlock()
+	const moving_block = useSelect(select =>
+		select("melonpan/block-navigation").getMovingBlock()
 	);
 
 	const ancestor_is_moving =
@@ -96,9 +95,9 @@ export const useDropAreas = (props: Props) => {
 			const block_prev_level = block_prev_ancestors_id.length;
 
 			if (block_prev && block_prev_level >= level) {
-				const drop_areas_prev_id: BlockId[] = [
+				const drop_areas_prev_id = [
 					...block_prev_ancestors_id.slice(level),
-					block_prev
+					block_prev,
 				];
 
 				const drop_areas_prev = drop_areas_prev_id.reduce<DropArea[]>(

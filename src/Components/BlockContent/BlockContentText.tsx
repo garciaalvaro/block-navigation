@@ -1,3 +1,4 @@
+import React, { FunctionComponent } from "react";
 import { useState, useEffect } from "@wordpress/element";
 import { create, getTextContent } from "@wordpress/rich-text";
 
@@ -11,7 +12,7 @@ const getText = (content_raw: string) => {
 	// Create a richText instance
 	const rich_text = create({ html: content_raw });
 
-	let text;
+	let text: string;
 
 	// Get the text from the richText instance
 	text = getTextContent(rich_text);
@@ -23,7 +24,7 @@ const getText = (content_raw: string) => {
 	return text;
 };
 
-export const BlockContentText: React.ComponentType<Props> = props => {
+export const BlockContentText: FunctionComponent<Props> = props => {
 	const { content_raw } = props;
 	const [content, setContent] = useState(getText(content_raw));
 

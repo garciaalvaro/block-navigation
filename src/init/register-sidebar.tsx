@@ -1,3 +1,4 @@
+import React from "react";
 import { registerPlugin } from "@wordpress/plugins";
 import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
 import { Fragment } from "@wordpress/element";
@@ -7,8 +8,7 @@ import { Icon } from "utils/components";
 import { App } from "components/App";
 
 registerPlugin(plugin_namespace, {
-	// @ts-ignore
-	icon: <Icon icon="logo" />,
+	icon: () => <Icon icon="logo" />,
 
 	render: () => (
 		<Fragment>
@@ -20,5 +20,5 @@ registerPlugin(plugin_namespace, {
 				{plugin_title}
 			</PluginSidebarMoreMenuItem>
 		</Fragment>
-	)
+	),
 });

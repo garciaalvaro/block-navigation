@@ -1,21 +1,21 @@
+import React, { FunctionComponent } from "react";
 import { useSelect, useDispatch } from "@wordpress/data";
 
 import { Button } from "utils/components";
-import { store_slug } from "utils/data";
 
 interface Props {
 	tab_value: State["view"];
 	tab_label: string;
 }
 
-export const Tab: React.ComponentType<Props> = props => {
+export const Tab: FunctionComponent<Props> = props => {
 	const { tab_value, tab_label } = props;
 
-	const view = useSelect<State["view"]>(select =>
-		select(store_slug).getView()
+	const view = useSelect(select =>
+		select("melonpan/block-navigation").getView()
 	);
 
-	const { setView } = useDispatch(store_slug);
+	const { setView } = useDispatch("melonpan/block-navigation");
 
 	const onClick = () => setView(tab_value);
 
@@ -24,7 +24,7 @@ export const Tab: React.ComponentType<Props> = props => {
 			className={[
 				"button",
 				"button-tab",
-				tab_value === view ? "is_active" : null
+				tab_value === view ? "is_active" : null,
 			]}
 			onClick={onClick}
 		>

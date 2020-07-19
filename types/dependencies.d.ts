@@ -1,2 +1,6 @@
-// Console log shortcut
-declare const l: Function;
+import { dispatch, select } from "@wordpress/data";
+
+declare module "@wordpress/data" {
+	function dispatch(key: "melonpan/block-navigation"): ActionCreators;
+	function select(key: "melonpan/block-navigation"): Selectors;
+}

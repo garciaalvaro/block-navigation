@@ -11,15 +11,15 @@ module.exports = (env, argv) => {
 
 		output: {
 			path: path.resolve(__dirname, "build"),
-			filename: `${name}.js`
+			filename: `${name}.js`,
 		},
 
 		resolve: {
 			alias: {
 				components: path.resolve(__dirname, "src/components"),
 				utils: path.resolve(__dirname, "src/utils"),
-				store: path.resolve(__dirname, "src/store")
-			}
+				store: path.resolve(__dirname, "src/store"),
+			},
 		},
 
 		externals: {
@@ -34,12 +34,12 @@ module.exports = (env, argv) => {
 			"@wordpress/hooks": "wp.hooks",
 			"@wordpress/i18n": "wp.i18n",
 			"@wordpress/plugins": "wp.plugins",
-			"@wordpress/rich-text": "wp.richText"
+			"@wordpress/rich-text": "wp.richText",
 		},
 
 		module: { rules: [] },
 
-		plugins: []
+		plugins: [],
 	};
 
 	config.module.rules.push({
@@ -47,8 +47,8 @@ module.exports = (env, argv) => {
 		exclude: /node_modules/,
 		loader: "babel-loader",
 		resolve: {
-			extensions: [".ts", ".tsx", ".js", ".jsx"]
-		}
+			extensions: [".ts", ".tsx", ".js", ".jsx"],
+		},
 	});
 
 	config.module.rules.push({
@@ -67,24 +67,24 @@ module.exports = (env, argv) => {
 						path.resolve(
 							__dirname,
 							"src/utils/data/stylus_variables.styl"
-						)
-					]
-				}
-			}
-		]
+						),
+					],
+				},
+			},
+		],
 	});
+
+	config.plugins.push(
+		new MiniCssExtractPlugin({
+			filename: `${name}.css`,
+		})
+	);
 
 	if (argv.mode === "production") {
 		config.plugins.push(
-			new MiniCssExtractPlugin({
-				filename: `${name}.css`
-			})
-		);
-
-		config.plugins.push(
 			new BannerPlugin({
 				banner: `${description} | ${version} | ${homepage}`,
-				include: new RegExp(/.*?\.css/)
+				include: new RegExp(/.*?\.css/),
 			})
 		);
 
@@ -93,15 +93,15 @@ module.exports = (env, argv) => {
 				banner: [
 					`/*! ${description} | ${version} | ${homepage} */`,
 					`/*! react-tiny-popover | https://github.com/alexkatz/react-tiny-popover | Alex Katz | MIT License */`,
-					`/*! copy-text-to-clipboard | https://github.com/sindresorhus/copy-text-to-clipboard | Sindre Sorhus | MIT License */`
+					`/*! copy-text-to-clipboard | https://github.com/sindresorhus/copy-text-to-clipboard | Sindre Sorhus | MIT License */`,
 				].join(""),
 				raw: true,
-				include: new RegExp(/.*?\.js/)
+				include: new RegExp(/.*?\.js/),
 			})
 		);
 
 		config.optimization = {
-			minimizer: [new OptimizeCSSAssetsPlugin()]
+			minimizer: [new OptimizeCSSAssetsPlugin()],
 		};
 	}
 

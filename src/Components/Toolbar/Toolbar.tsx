@@ -1,20 +1,20 @@
+import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import "./Toolbar.styl";
-import { store_slug } from "utils/data";
 import { Div, Button } from "utils/components";
 import { BlockHeader } from "../BlockHeader";
 
-export const Toolbar: React.ComponentType = () => {
-	const { resetMoving } = useDispatch(store_slug);
+export const Toolbar: FunctionComponent = () => {
+	const { resetMoving } = useDispatch("melonpan/block-navigation");
 
-	const moving_block = useSelect<State["moving_block"]>(select =>
-		select(store_slug).getMovingBlock()
+	const moving_block = useSelect(select =>
+		select("melonpan/block-navigation").getMovingBlock()
 	);
 
-	const moving_type = useSelect<State["moving_type"]>(select =>
-		select(store_slug).getMovingType()
+	const moving_type = useSelect(select =>
+		select("melonpan/block-navigation").getMovingType()
 	);
 
 	if (moving_type !== "by_click" || !moving_block) {

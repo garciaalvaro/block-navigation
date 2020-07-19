@@ -1,10 +1,11 @@
+import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 
 import "./ControlPluginInfo.styl";
 import { Icon, Div, H3, Span } from "utils/components";
 import { plugin_title } from "utils/data";
 
-export const ControlPluginInfo: React.ComponentType = () => {
+export const ControlPluginInfo: FunctionComponent = () => {
 	return (
 		<Div id="info">
 			<Div id="info-logo">

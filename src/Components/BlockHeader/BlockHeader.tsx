@@ -1,3 +1,4 @@
+import React, { FunctionComponent, DragEventHandler } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
 
@@ -7,11 +8,11 @@ import { BlockContent } from "../BlockContent";
 
 interface Props {
 	id: BlockId;
-	onDragStart?: Function;
-	onDragEnd?: Function;
+	onDragStart?: DragEventHandler;
+	onDragEnd?: DragEventHandler;
 }
 
-export const BlockHeader: React.ComponentType<Props> = props => {
+export const BlockHeader: FunctionComponent<Props> = props => {
 	const { id, onDragStart, onDragEnd } = props;
 
 	const { selectBlock } = useDispatch("core/block-editor");

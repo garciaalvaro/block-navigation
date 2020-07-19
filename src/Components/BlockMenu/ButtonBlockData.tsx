@@ -1,3 +1,4 @@
+import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
 
@@ -10,9 +11,6 @@ declare global {
 	}
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const l = (...args: any[]) => console.log(...args);
-
 // Safari doesn't log the one-line version of the log
 // as desired so we log each property in a different line.
 // https://stackoverflow.com/a/42189492 | CC BY-SA 3.0
@@ -20,7 +18,7 @@ const is_safari = window.safari !== undefined;
 
 const multiple_log = is_safari;
 
-export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
+export const ButtonBlockData: FunctionComponent<MenuProps> = props => {
 	const { id, closeMenu } = props;
 
 	const { name, attributes: attributes_value } = useSelect(select =>
@@ -63,24 +61,25 @@ export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
 			return;
 		}
 
+		const { log, group, groupEnd } = console;
 		const { title, attributes: attributes_definition } = block_type;
 
-		console.group(`Block: ${title}`);
+		group(`Block: ${title}`);
 
 		if (multiple_log) {
-			l("name:", name);
-			l("title:", title);
-			l("index:", index);
-			l("clientId:", id);
-			l("attributes-value:", attributes_value);
-			l("attributes-definition:", attributes_definition);
-			l("templateLock:", template_lock);
-			l("Parent-clientId:", parent_id);
-			l("Root-clientId:", root_clientId);
-			l("Children-clientIds:", children_clientIds);
-			l("Descendants-clientIds:", descendants_clientIds);
+			log("name:", name);
+			log("title:", title);
+			log("index:", index);
+			log("clientId:", id);
+			log("attributes-value:", attributes_value);
+			log("attributes-definition:", attributes_definition);
+			log("templateLock:", template_lock);
+			log("Parent-clientId:", parent_id);
+			log("Root-clientId:", root_clientId);
+			log("Children-clientIds:", children_clientIds);
+			log("Descendants-clientIds:", descendants_clientIds);
 		} else {
-			l(
+			log(
 				`\n`,
 				`name: ${name}\n\n`,
 				`title: ${title}\n\n`,
@@ -104,7 +103,7 @@ export const ButtonBlockData: React.ComponentType<MenuProps> = props => {
 			);
 		}
 
-		console.groupEnd();
+		groupEnd();
 	};
 
 	return (

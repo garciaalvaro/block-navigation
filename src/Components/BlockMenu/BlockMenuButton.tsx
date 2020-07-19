@@ -1,3 +1,4 @@
+import React, { FunctionComponent } from "react";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 
 import { Icon, Button } from "utils/components";
@@ -6,10 +7,10 @@ import { useToggle } from "utils/hooks";
 
 interface Props {
 	id: BlockId;
-	setMovingBlock: Function;
+	setMovingBlock: () => void;
 }
 
-export const BlockMenuButton: React.ComponentType<Props> = props => {
+export const BlockMenuButton: FunctionComponent<Props> = props => {
 	const { toggle, close, is_open } = useToggle();
 
 	return (
@@ -17,7 +18,7 @@ export const BlockMenuButton: React.ComponentType<Props> = props => {
 			containerStyle={{
 				minWidth: "200px",
 				marginLeft: "-10px",
-				zIndex: "999999"
+				zIndex: "999999",
 			}}
 			isOpen={is_open}
 			onClickOutside={close}

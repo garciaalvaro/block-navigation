@@ -1,8 +1,8 @@
+import React, { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
 import { useRef, useState, useEffect, createContext } from "@wordpress/element";
 
 import { DivRef } from "utils/components";
-import { store_slug } from "utils/data";
 import { useWindowSize } from "utils/hooks";
 
 export const ContextContainer = createContext<{
@@ -11,17 +11,17 @@ export const ContextContainer = createContext<{
 	container_width: number;
 }>({ container_ref: null, container_height: 0, container_width: 0 });
 
-export const AppContainer: React.ComponentType = props => {
-	const view = useSelect<State["view"]>(select =>
-		select(store_slug).getView()
+export const AppContainer: FunctionComponent = props => {
+	const view = useSelect(select =>
+		select("melonpan/block-navigation").getView()
 	);
 
-	const [type, value] = useSelect<State["color_scheme"]>(select =>
-		select(store_slug).getColorScheme()
+	const [type, value] = useSelect(select =>
+		select("melonpan/block-navigation").getColorScheme()
 	).split("-");
 
-	const moving_type = useSelect<State["moving_type"]>(select =>
-		select(store_slug).getMovingType()
+	const moving_type = useSelect(select =>
+		select("melonpan/block-navigation").getMovingType()
 	);
 
 	const is_moving = !!moving_type;
@@ -30,34 +30,27 @@ export const AppContainer: React.ComponentType = props => {
 	const [height, setHeight] = useState(555);
 	const [width, setWidth] = useState(555);
 
-	const div_ref = useRef<HTMLDivElement>(null);
+	const div_ref = useRef<HTMLDivElement | null>(null);
 	const container_ref = useRef<HTMLElement | null>(null);
 	const header_ref = useRef<HTMLElement | null>(null);
 
 	useEffect(() => {
-		if (!div_ref.current) {
-			return;
-		}
+		if (!div_ref.current) return;
 
-		container_ref.current = (div_ref.current.closest(
-			".edit-post-editor-regions__sidebar"
-		) ||
+		container_ref.current =
+			div_ref.current.closest(".edit-post-editor-regions__sidebar") ||
 			div_ref.current.closest(".block-editor-editor-skeleton__sidebar") ||
-			div_ref.current.closest(
-				".edit-post-sidebar"
-			)) as HTMLElement | null;
+			div_ref.current.closest(".edit-post-sidebar");
 
-		if (container_ref.current) {
-			header_ref.current = container_ref.current.querySelector(
-				".edit-post-sidebar-header"
-			);
-		}
+		if (!container_ref.current) return;
+
+		header_ref.current = container_ref.current.querySelector(
+			".edit-post-sidebar-header"
+		);
 	}, []);
 
 	useEffect(() => {
-		if (!container_ref.current) {
-			return;
-		}
+		if (!container_ref.current) return;
 
 		container_ref.current.scrollTop = 0;
 	}, [view]);
@@ -65,10 +58,11 @@ export const AppContainer: React.ComponentType = props => {
 	useEffect(() => {
 		if (!div_ref.current || !container_ref.current) return;
 
-		setHeight(
+		const height =
 			container_ref.current.offsetHeight -
-			(header_ref.current ? header_ref.current.offsetHeight : 0)
-		);
+			(header_ref.current?.offsetHeight || 0);
+
+		setHeight(height);
 	}, [window_height]);
 
 	useEffect(() => {
@@ -82,7 +76,7 @@ export const AppContainer: React.ComponentType = props => {
 			value={{
 				container_ref: div_ref.current,
 				container_height: height,
-				container_width: width
+				container_width: width,
 			}}
 		>
 			<DivRef
@@ -92,7 +86,7 @@ export const AppContainer: React.ComponentType = props => {
 					`color_scheme-type-${type}`,
 					`color_scheme-name-${value}`,
 					`moving_type-${moving_type}`,
-					`${is_moving ? "" : "no-"}moving`
+					`${is_moving ? "" : "no-"}moving`,
 				]}
 				style={{ height }}
 			>

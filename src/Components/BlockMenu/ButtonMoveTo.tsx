@@ -1,13 +1,13 @@
+import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import { Div, Icon, Button, Span } from "utils/components";
-import { store_slug } from "utils/data";
 
-export const ButtonMoveTo: React.ComponentType<MenuProps> = props => {
+export const ButtonMoveTo: FunctionComponent<MenuProps> = props => {
 	const { id, closeMenu, setMovingBlock } = props;
 
-	const { setMovingType } = useDispatch(store_slug);
+	const { setMovingType } = useDispatch("melonpan/block-navigation");
 
 	const parent_id =
 		useSelect(select =>
@@ -24,7 +24,7 @@ export const ButtonMoveTo: React.ComponentType<MenuProps> = props => {
 			className={[
 				"button",
 				"button-menu",
-				!can_move ? "is_disabled" : null
+				!can_move ? "is_disabled" : null,
 			]}
 			onClick={() => {
 				closeMenu();

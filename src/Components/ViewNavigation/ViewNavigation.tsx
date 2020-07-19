@@ -1,15 +1,15 @@
+import React, { FunctionComponent } from "react";
 import {
 	Fragment,
 	useEffect,
 	useCallback,
 	useContext,
-	useRef
+	useRef,
 } from "@wordpress/element";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { FixedSizeList as List } from "react-window";
 
 import "./ViewNavigation.styl";
-import { store_slug } from "utils/data";
 import { Div } from "utils/components";
 import { Block } from "../Block";
 import { Toolbar } from "../Toolbar";
@@ -17,28 +17,30 @@ import { ContextContainer } from "../App/AppContainer";
 import { useBlockIds } from "./useBlockIds";
 import { useScrollTo } from "./useScrollTo";
 
-export const ViewNavigation: React.ComponentType = () => {
+export const ViewNavigation: FunctionComponent = () => {
 	const { container_height, container_width } = useContext(ContextContainer);
 
 	const list_ref = useRef(null);
 
 	const block_ids = useBlockIds();
 
-	const moving_block = useSelect<State["moving_block"]>(select =>
-		select(store_slug).getMovingBlock()
+	const moving_block = useSelect(select =>
+		select("melonpan/block-navigation").getMovingBlock()
 	);
 
-	const { resetMoving } = useDispatch(store_slug);
+	const { resetMoving } = useDispatch("melonpan/block-navigation");
 
 	const onDrop = useCallback(resetMoving, [resetMoving]);
 
 	useScrollTo({ block_ids, list_ref: list_ref.current });
 
 	useEffect(() => {
+		const onDropHandler = () => onDrop();
+
 		if (moving_block) {
-			document.addEventListener("drop", onDrop);
+			document.addEventListener("drop", onDropHandler);
 		} else {
-			document.removeEventListener("drop", onDrop);
+			document.removeEventListener("drop", onDropHandler);
 		}
 	}, [moving_block]);
 

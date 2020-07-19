@@ -13,7 +13,8 @@
 		"postbuild": "npm run build_v1_scripts && node build-replace-version.js && node build-copy-files.js",
 		"build_v1_scripts": "git checkout v1.x && npm run prod && git checkout develop",
 		"type-check": "tsc",
-		"lint": "eslint 'src/**/*.{ts,tsx}'"
+		"lint": "eslint 'src/**/*.{ts,tsx}'",
+		"prettier": "prettier --check 'src/**/*.{ts,tsx}'"
 	},
 	"dependencies": {
 		"copy-text-to-clipboard": "^2.2.0",

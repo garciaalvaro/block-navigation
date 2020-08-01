@@ -1,4 +1,4 @@
-import { addPrefix } from "utils/tools/addPrefix";
+import { addPrefix } from "@/utils/tools/addPrefix";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const prepareProps = (props: ComponentProps): Record<string, any> => {

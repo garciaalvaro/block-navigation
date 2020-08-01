@@ -1,6 +1,6 @@
 import { useSelect, useDispatch, select } from "@wordpress/data";
 
-import { getBlockAncestorsId } from "utils/tools";
+import { getBlockAncestorsId } from "@/utils/tools";
 
 interface Props {
 	parent_id: BlockId;

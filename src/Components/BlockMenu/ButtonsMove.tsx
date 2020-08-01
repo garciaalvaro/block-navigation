@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { Fragment } from "@wordpress/element";
 
-import { Div, Icon, Button, Span } from "utils/components";
+import { Div, Icon, Button, Span } from "@/utils/components";
 
 export const ButtonsMove: FunctionComponent<MenuProps> = props => {
 	const { id, closeMenu } = props;

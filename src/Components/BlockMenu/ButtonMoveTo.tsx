@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
-import { Div, Icon, Button, Span } from "utils/components";
+import { Div, Icon, Button, Span } from "@/utils/components";
 
 export const ButtonMoveTo: FunctionComponent<MenuProps> = props => {
 	const { id, closeMenu, setMovingBlock } = props;

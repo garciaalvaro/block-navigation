@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useState, useEffect } from "@wordpress/element";
 
-import { Div, Img } from "utils/components";
+import { Div, Img } from "@/utils/components";
 
 interface Props {
 	content_raw: { url: string }[] | string;

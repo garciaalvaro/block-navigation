@@ -1,6 +1,6 @@
 import { compact, flow, isString } from "lodash";
 
-import { plugin_prefix } from "utils/data/plugin";
+import { plugin_prefix } from "@/utils/data/plugin";
 
 const resolvePrefix = (
 	element: string,

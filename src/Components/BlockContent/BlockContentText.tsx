@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useState, useEffect } from "@wordpress/element";
 import { create, getTextContent } from "@wordpress/rich-text";
 
-import { Span } from "utils/components";
+import { Span } from "@/utils/components";
 
 interface Props {
 	content_raw: string;

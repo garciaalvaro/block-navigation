@@ -4,7 +4,7 @@ import { useState, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
 import "./BlockContent.styl";
-import { blocks_content_info } from "utils/data";
+import { blocks_content_info } from "@/utils/data";
 import { BlockContentImage } from "./BlockContentImage";
 import { BlockContentText } from "./BlockContentText";
 

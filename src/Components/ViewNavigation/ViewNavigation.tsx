@@ -10,7 +10,7 @@ import { useDispatch, useSelect } from "@wordpress/data";
 import { FixedSizeList as List } from "react-window";
 
 import "./ViewNavigation.styl";
-import { Div } from "utils/components";
+import { Div } from "@/utils/components";
 import { Block } from "../Block";
 import { Toolbar } from "../Toolbar";
 import { ContextContainer } from "../App/AppContainer";

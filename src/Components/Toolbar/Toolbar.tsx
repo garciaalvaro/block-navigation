@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import "./Toolbar.styl";
-import { Div, Button } from "utils/components";
+import { Div, Button } from "@/utils/components";
 import { BlockHeader } from "../BlockHeader";
 
 export const Toolbar: FunctionComponent = () => {

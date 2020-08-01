@@ -3,8 +3,8 @@ import { __ } from "@wordpress/i18n";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { SelectControl } from "@wordpress/components";
 
-import { addPrefix } from "utils/tools";
-import { color_schemes } from "utils/data";
+import { addPrefix } from "@/utils/tools";
+import { color_schemes } from "@/utils/data";
 
 export const ControlColorScheme: FunctionComponent = () => {
 	const color_scheme = useSelect(select =>

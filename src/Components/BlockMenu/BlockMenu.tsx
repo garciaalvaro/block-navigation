@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
 
 import "./BlockMenu.styl";
-import { Div } from "utils/components";
+import { Div } from "@/utils/components";
 import { ButtonEdit } from "./ButtonEdit";
 import { ButtonMoveTo } from "./ButtonMoveTo";
 import { ButtonsMove } from "./ButtonsMove";

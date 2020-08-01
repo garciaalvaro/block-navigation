@@ -1,8 +1,8 @@
 import { registerStore } from "@wordpress/data";
 
-import { reducer } from "store/reducer";
-import { actions } from "store/actions";
-import { selectors } from "store/selectors";
+import { reducer } from "@/store/reducer";
+import { actions } from "@/store/actions";
+import { selectors } from "@/store/selectors";
 
 registerStore("melonpan/block-navigation", {
 	reducer,

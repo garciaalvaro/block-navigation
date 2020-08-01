@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 
-import { Icon, Button } from "utils/components";
+import { Icon, Button } from "@/utils/components";
 import { BlockMenu } from "./BlockMenu";
-import { useToggle } from "utils/hooks";
+import { useToggle } from "@/utils/hooks";
 
 interface Props {
 	id: BlockId;

@@ -4,7 +4,7 @@ import { useRef, Fragment } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
 import "./Block.styl";
-import { Div, DivRef, Button, Icon } from "utils/components";
+import { Div, DivRef, Button, Icon } from "@/utils/components";
 import { BlockHeader } from "../BlockHeader";
 import { BlockMenuButton } from "../BlockMenu";
 import { useDropAreas } from "./useDropAreas";

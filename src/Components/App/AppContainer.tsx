@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
 import { useRef, useState, useEffect, createContext } from "@wordpress/element";
 
-import { DivRef } from "utils/components";
-import { useWindowSize } from "utils/hooks";
+import { DivRef } from "@/utils/components";
+import { useWindowSize } from "@/utils/hooks";
 
 export const ContextContainer = createContext<{
 	container_ref: HTMLDivElement | null;

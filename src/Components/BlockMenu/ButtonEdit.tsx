@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
 
-import { Div, Button, Icon, Span } from "utils/components";
+import { Div, Button, Icon, Span } from "@/utils/components";
 
 export const ButtonEdit: FunctionComponent<MenuProps> = props => {
 	const { id, closeMenu } = props;

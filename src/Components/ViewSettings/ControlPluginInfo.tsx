@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 
 import "./ControlPluginInfo.styl";
-import { Icon, Div, H3, Span } from "utils/components";
-import { plugin_title } from "utils/data";
+import { Icon, Div, H3, Span } from "@/utils/components";
+import { plugin_title } from "@/utils/data";
 
 export const ControlPluginInfo: FunctionComponent = () => {
 	return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { addPrefix } from "utils/tools/addPrefix";
+import { addPrefix } from "@/utils/tools/addPrefix";
 
 export type Icons = Record<
 	"log" | "copy" | "edit" | "collapse" | "expand" | "menu" | "move" | "logo",

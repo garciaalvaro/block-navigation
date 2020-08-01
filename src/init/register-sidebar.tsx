@@ -3,9 +3,9 @@ import { registerPlugin } from "@wordpress/plugins";
 import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
 import { Fragment } from "@wordpress/element";
 
-import { plugin_namespace, plugin_title } from "utils/data";
-import { Icon } from "utils/components";
-import { App } from "components/App";
+import { plugin_namespace, plugin_title } from "@/utils/data";
+import { Icon } from "@/utils/components";
+import { App } from "@/components/App";
 
 registerPlugin(plugin_namespace, {
 	icon: () => <Icon icon="logo" />,

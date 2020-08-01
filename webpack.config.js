@@ -2,6 +2,7 @@ const { name, description, version, homepage } = require("./package.json");
 const { BannerPlugin } = require("webpack");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const nib = require("nib");
 const path = require("path");
 
@@ -105,7 +106,14 @@ module.exports = (env, { mode }) => {
 		);
 
 		config.optimization = {
-			minimizer: [new OptimizeCSSAssetsPlugin()],
+			minimize: true,
+			minimizer: [
+				new OptimizeCSSAssetsPlugin(),
+
+				// As we are using a custom optimization, making use of
+				// OptimizeCSSAssetsPlugin, we also need to specify TerserPlugin
+				new TerserPlugin({ extractComments: false }),
+			],
 		};
 	}
 

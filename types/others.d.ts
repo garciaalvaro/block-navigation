@@ -25,3 +25,6 @@ type DropArea = {
 };
 
 type valueof<T> = T[keyof T];
+
+// CSS modules
+declare module "*.styl";

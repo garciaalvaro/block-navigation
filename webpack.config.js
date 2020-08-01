@@ -59,7 +59,16 @@ module.exports = (env, { mode }) => {
 		use: [
 			MiniCssExtractPlugin.loader,
 
-			"css-loader",
+			{
+				loader: "css-loader",
+				options: {
+					modules: {
+						localIdentName: is_production
+							? "[hash:base64:5]"
+							: "[name]-[local]-[hash:base64:2]",
+					},
+				},
+			},
 
 			{
 				loader: "stylus-loader",
@@ -67,10 +76,7 @@ module.exports = (env, { mode }) => {
 					use: [nib()],
 					import: [
 						"~nib/index.styl",
-						path.resolve(
-							__dirname,
-							"src/utils/data/stylus_variables.styl"
-						),
+						path.resolve(__dirname, "src/utils/css/variables.styl"),
 					],
 				},
 			},

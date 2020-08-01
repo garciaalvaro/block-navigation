@@ -1,3 +1,4 @@
+import React from "react";
 import { forwardRef } from "@wordpress/element";
 
 import { prepareProps } from "utils/tools/prepareProps";

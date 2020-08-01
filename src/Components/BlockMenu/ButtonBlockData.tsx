@@ -1,3 +1,4 @@
+import React from "react";
 import { __ } from "@wordpress/i18n";
 import { withSelect } from "@wordpress/data";
 
@@ -15,7 +16,7 @@ interface WithSelectProps {
 	>;
 }
 
-interface OwnProps extends MenuProps {}
+interface OwnProps extends MenuProps { }
 
 const l = (...args: any[]) => console.log(...args);
 

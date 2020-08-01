@@ -1,19 +1,20 @@
+import React from "react";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 
 import { Button } from "utils/Components";
 import { store_slug } from "utils/data";
 
-interface WithSelectProps extends Pick<State, "view"> {}
+interface WithSelectProps extends Pick<State, "view"> { }
 
-interface WithDispatchProps extends Pick<ActionCreators, "setView"> {}
+interface WithDispatchProps extends Pick<ActionCreators, "setView"> { }
 
 interface OwnProps {
 	tab_value: State["view"];
 	tab_label: string;
 }
 
-interface Props extends WithSelectProps, WithDispatchProps, OwnProps {}
+interface Props extends WithSelectProps, WithDispatchProps, OwnProps { }
 
 export const Tab: React.ComponentType<OwnProps> = compose(
 	withSelect<WithSelectProps>(select => ({

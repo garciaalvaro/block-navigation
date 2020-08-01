@@ -1,3 +1,4 @@
+import React from "react";
 import "./ViewSettings.styl";
 import { Div } from "utils/Components";
 import { ControlPluginInfo } from "./ControlPluginInfo";

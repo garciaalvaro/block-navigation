@@ -1,3 +1,4 @@
+import React from "react";
 import { withDispatch } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
 
@@ -9,8 +10,8 @@ import { BlockMenuButton } from "./BlockMenuButton";
 
 interface WithDispatchProps
 	extends Pick<
-		ActionCreators,
-		"setMovingType" | "setMovingBlock" | "resetMoving"
+	ActionCreators,
+	"setMovingType" | "setMovingBlock" | "resetMoving"
 	> {
 	selectBlock: Function;
 	moveBlockToPosition: Function;
@@ -18,13 +19,13 @@ interface WithDispatchProps
 
 interface OwnProps
 	extends Pick<
-		BlockProps,
-		| "index"
-		| "template_lock"
-		| "id"
-		| "parent_id"
-		| "block_type"
-		| "is_expanded"
+	BlockProps,
+	| "index"
+	| "template_lock"
+	| "id"
+	| "parent_id"
+	| "block_type"
+	| "is_expanded"
 	> {
 	block: Block;
 	can_move: boolean;

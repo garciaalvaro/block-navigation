@@ -1,3 +1,4 @@
+import React from "react";
 import { __ } from "@wordpress/i18n";
 import { withDispatch, withSelect } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
@@ -13,9 +14,9 @@ interface WithDispatchProps {
 	moveBlockToPosition: typeof import("wordpress__block-editor/store/actions").moveBlockToPosition;
 }
 
-interface OwnProps extends MenuProps {}
+interface OwnProps extends MenuProps { }
 
-interface Props extends WithSelectProps, WithDispatchProps, OwnProps {}
+interface Props extends WithSelectProps, WithDispatchProps, OwnProps { }
 
 export const ButtonsMove: React.ComponentType<OwnProps> = compose([
 	withSelect<WithSelectProps, MenuProps>((select, { parent_id }) => ({

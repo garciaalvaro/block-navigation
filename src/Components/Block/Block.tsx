@@ -1,3 +1,4 @@
+import React from "react";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 import {
@@ -24,28 +25,28 @@ interface WithDispatchProps {
 
 interface WithSelectProps
 	extends Pick<State, "moving_block" | "moving_type">,
-		Pick<
-			BlockProps,
-			| "template_lock"
-			| "moving"
-			| "block"
-			| "block_type"
-			| "is_selected"
-			| "can_receive_drop"
-			| "is_expanded"
-		> {}
+	Pick<
+	BlockProps,
+	| "template_lock"
+	| "moving"
+	| "block"
+	| "block_type"
+	| "is_selected"
+	| "can_receive_drop"
+	| "is_expanded"
+	> { }
 
 interface OwnProps
 	extends Pick<
-		BlockProps,
-		"id" | "parent_id" | "level" | "index" | "is_last_children"
-	> {}
+	BlockProps,
+	"id" | "parent_id" | "level" | "index" | "is_last_children"
+	> { }
 
 interface Props
 	extends OwnProps,
-		WithMoveProps,
-		WithSelectProps,
-		WithDispatchProps {}
+	WithMoveProps,
+	WithSelectProps,
+	WithDispatchProps { }
 
 export const Block: React.ComponentType<OwnProps> = compose(
 	withDispatch<WithDispatchProps, OwnProps>((dispatch, { id }) => ({
@@ -87,16 +88,16 @@ export const Block: React.ComponentType<OwnProps> = compose(
 
 		const reusable_block_entity =
 			block &&
-			block_type &&
-			block_type.name === "core/block" &&
-			// When creating a new reusable block Gutenberg returns
-			// a string for the ref attribute, until it is saved
-			typeof block.attributes.ref === "number"
+				block_type &&
+				block_type.name === "core/block" &&
+				// When creating a new reusable block Gutenberg returns
+				// a string for the ref attribute, until it is saved
+				typeof block.attributes.ref === "number"
 				? select("core").getEntityRecord<any>(
-						"postType",
-						"wp_block",
-						block.attributes.ref
-				  )
+					"postType",
+					"wp_block",
+					block.attributes.ref
+				)
 				: undefined;
 
 		return {
@@ -104,12 +105,12 @@ export const Block: React.ComponentType<OwnProps> = compose(
 			block:
 				reusable_block_entity && block
 					? {
-							...block,
-							attributes: {
-								...block.attributes,
-								title: reusable_block_entity.title.raw
-							}
-					  }
+						...block,
+						attributes: {
+							...block.attributes,
+							title: reusable_block_entity.title.raw
+						}
+					}
 					: block,
 			block_type,
 			is_selected,

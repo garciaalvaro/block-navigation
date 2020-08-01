@@ -1,3 +1,4 @@
+import React from "react";
 import { Fragment } from "@wordpress/element";
 
 import { Icons, icons } from "utils/data/icons";

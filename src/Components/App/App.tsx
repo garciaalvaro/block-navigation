@@ -1,3 +1,4 @@
+import React from "react";
 import { withSelect } from "@wordpress/data";
 
 import "./App.styl";
@@ -7,7 +8,7 @@ import { AppContainer } from "./AppContainer";
 import { ViewNavigation } from "../ViewNavigation/ViewNavigation";
 import { ViewSettings } from "../ViewSettings/ViewSettings";
 
-interface WithSelectProps extends Pick<State, "view"> {}
+interface WithSelectProps extends Pick<State, "view"> { }
 
 export const App: React.ComponentType = withSelect<WithSelectProps>(select => ({
 	view: select(store_slug).getView()

@@ -1,3 +1,4 @@
+import React from "react";
 import { prepareProps } from "utils/tools/prepareProps";
 
 export const Img: React.ComponentType<ComponentProps> = props => {

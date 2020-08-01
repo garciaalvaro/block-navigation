@@ -1,3 +1,4 @@
+import React from "react";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 import { useState } from "@wordpress/element";
@@ -14,10 +15,10 @@ interface WithDispatchProps extends Pick<ActionCreators, "resetMoving"> {
 	moveBlockToPosition: typeof import("wordpress__block-editor/store/actions").moveBlockToPosition;
 }
 
-interface WithSelectProps extends Pick<State, "moving_block"> {}
+interface WithSelectProps extends Pick<State, "moving_block"> { }
 
 interface OwnProps
-	extends Pick<BlockProps, "can_receive_drop" | "parent_id" | "index"> {}
+	extends Pick<BlockProps, "can_receive_drop" | "parent_id" | "index"> { }
 
 export const withMove = compose(
 	withDispatch<WithDispatchProps>(dispatch => ({

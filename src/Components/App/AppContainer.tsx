@@ -1,3 +1,4 @@
+import React from "react";
 import { withSelect } from "@wordpress/data";
 import { useRef, useState, useEffect, createContext } from "@wordpress/element";
 
@@ -70,7 +71,7 @@ export const AppContainer: React.ComponentType<OwnProps> = withSelect<
 
 		setHeight(
 			container_ref.current.offsetHeight -
-				(header_ref.current ? header_ref.current.offsetHeight : 0)
+			(header_ref.current ? header_ref.current.offsetHeight : 0)
 		);
 	}, [window_height]);
 

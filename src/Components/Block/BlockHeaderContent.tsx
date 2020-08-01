@@ -1,3 +1,4 @@
+import React from "react";
 import { isArray } from "lodash";
 import { useMemo } from "@wordpress/element";
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { addPrefix } from "utils/tools/addPrefix";
 
 export type Icons = Record<

@@ -49,6 +49,7 @@
 		"mini-css-extract-plugin": "^0.9.0",
 		"nib": "^1.1.2",
 		"optimize-css-assets-webpack-plugin": "^5.0.3",
+		"react": "^16.13.1",
 		"string-replace-loader": "^2.3.0",
 		"stylus": "^0.54.8",
 		"stylus-loader": "^3.0.2",

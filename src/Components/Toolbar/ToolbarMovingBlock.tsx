@@ -1,10 +1,11 @@
+import React from "react";
 import { withSelect } from "@wordpress/data";
 import { Icon } from "@wordpress/components";
 import { Fragment } from "@wordpress/element";
 
 import { Div, Span } from "utils/Components";
 
-interface WithSelectProps extends Pick<BlockProps, "block_type"> {}
+interface WithSelectProps extends Pick<BlockProps, "block_type"> { }
 
 interface OwnProps {
 	block_name: State["moving_block"]["block_name"];

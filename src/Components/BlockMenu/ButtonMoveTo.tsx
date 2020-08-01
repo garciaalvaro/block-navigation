@@ -1,3 +1,4 @@
+import React from "react";
 import { __ } from "@wordpress/i18n";
 import { withDispatch } from "@wordpress/data";
 
@@ -9,9 +10,9 @@ interface WithDispatchProps {
 	setMovingType: ActionCreators["setMovingType"];
 }
 
-interface OwnProps extends MenuProps {}
+interface OwnProps extends MenuProps { }
 
-interface Props extends OwnProps, WithDispatchProps {}
+interface Props extends OwnProps, WithDispatchProps { }
 
 export const ButtonMoveTo: React.ComponentType<OwnProps> = withDispatch<
 	WithDispatchProps,

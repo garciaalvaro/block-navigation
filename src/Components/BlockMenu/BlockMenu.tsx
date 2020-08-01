@@ -1,3 +1,4 @@
+import React from "react";
 import { withSelect } from "@wordpress/data";
 
 import "./BlockMenu.styl";
@@ -9,9 +10,9 @@ import { ButtonsMove } from "./ButtonsMove";
 import { ButtonCopyId } from "./ButtonCopyId";
 import { ButtonBlockData } from "./ButtonBlockData";
 
-interface WithSelectProps extends Pick<State, "color_scheme"> {}
+interface WithSelectProps extends Pick<State, "color_scheme"> { }
 
-interface OwnProps extends MenuProps {}
+interface OwnProps extends MenuProps { }
 
 export const BlockMenu: React.ComponentType<OwnProps> = withSelect<
 	WithSelectProps,

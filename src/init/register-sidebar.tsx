@@ -1,3 +1,4 @@
+import React from "react";
 import { registerPlugin } from "@wordpress/plugins";
 import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
 import { Fragment } from "@wordpress/element";

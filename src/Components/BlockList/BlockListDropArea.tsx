@@ -1,3 +1,4 @@
+import React from "react";
 import { withSelect } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 
@@ -5,15 +6,15 @@ import { store_slug } from "utils/data";
 import { Div } from "utils/Components";
 import { withMove, WithMoveProps } from "../HOC/withMove";
 
-interface WithSelectProps extends Pick<State, "moving_type"> {}
+interface WithSelectProps extends Pick<State, "moving_type"> { }
 
 interface OwnProps
 	extends Pick<
-		BlockProps,
-		"index" | "parent_id" | "level" | "can_receive_drop"
-	> {}
+	BlockProps,
+	"index" | "parent_id" | "level" | "can_receive_drop"
+	> { }
 
-interface Props extends WithMoveProps, WithSelectProps, OwnProps {}
+interface Props extends WithMoveProps, WithSelectProps, OwnProps { }
 
 export const BlockListDropArea: React.ComponentType<OwnProps> = compose([
 	withSelect<WithSelectProps>(select => ({

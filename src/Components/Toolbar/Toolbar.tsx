@@ -5,7 +5,7 @@ import { compose } from "@wordpress/compose";
 
 import "./Toolbar.styl";
 import { store_slug } from "utils/data";
-import { Div, Button } from "utils/Components";
+import { Div, Button } from "utils/components";
 import { ToolbarMovingBlock } from "./ToolbarMovingBlock";
 
 interface WithSelectProps extends Pick<State, "moving_block"> { }

@@ -3,7 +3,7 @@ import { withDispatch } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
 
 import "./BlockHeader.styl";
-import { Div, Span, Button, Icon } from "utils/Components";
+import { Div, Span, Button, Icon } from "utils/components";
 import { store_slug } from "utils/data";
 import { BlockHeaderContent } from "./BlockHeaderContent";
 import { BlockMenuButton } from "./BlockMenuButton";

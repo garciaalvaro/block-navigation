@@ -2,7 +2,7 @@ import React from "react";
 import { __ } from "@wordpress/i18n";
 import { withDispatch } from "@wordpress/data";
 
-import { Div, Button, Icon, Span } from "utils/Components";
+import { Div, Button, Icon, Span } from "utils/components";
 
 interface WithDispatchProps {
 	openGeneralSidebar: typeof import("wordpress__edit-post/store/actions").openGeneralSidebar;

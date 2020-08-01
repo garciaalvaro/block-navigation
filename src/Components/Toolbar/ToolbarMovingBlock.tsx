@@ -3,7 +3,7 @@ import { withSelect } from "@wordpress/data";
 import { Icon } from "@wordpress/components";
 import { Fragment } from "@wordpress/element";
 
-import { Div, Span } from "utils/Components";
+import { Div, Span } from "utils/components";
 
 interface WithSelectProps extends Pick<BlockProps, "block_type"> { }
 

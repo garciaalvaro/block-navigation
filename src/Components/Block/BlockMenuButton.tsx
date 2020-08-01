@@ -1,7 +1,7 @@
 import React from "react";
 import Popover, { ArrowContainer } from "react-tiny-popover";
 
-import { Icon, Button } from "utils/Components";
+import { Icon, Button } from "utils/components";
 import { BlockMenu } from "../BlockMenu/BlockMenu";
 import { useToggle } from "utils/hooks";
 

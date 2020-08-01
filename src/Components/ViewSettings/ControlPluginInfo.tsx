@@ -2,7 +2,7 @@ import React from "react";
 import { __ } from "@wordpress/i18n";
 
 import "./ControlPluginInfo.styl";
-import { Icon, Div, H3, Span } from "utils/Components";
+import { Icon, Div, H3, Span } from "utils/components";
 import { plugin_title } from "utils/data";
 
 export const ControlPluginInfo: React.ComponentType = props => {

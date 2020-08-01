@@ -2,7 +2,7 @@ import React from "react";
 import { withSelect, withDispatch } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 
-import { Button } from "utils/Components";
+import { Button } from "utils/components";
 import { store_slug } from "utils/data";
 
 interface WithSelectProps extends Pick<State, "view"> { }

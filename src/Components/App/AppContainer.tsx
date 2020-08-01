@@ -2,7 +2,7 @@ import React from "react";
 import { withSelect } from "@wordpress/data";
 import { useRef, useState, useEffect, createContext } from "@wordpress/element";
 
-import { DivRef } from "utils/Components";
+import { DivRef } from "utils/components";
 import { store_slug } from "utils/data";
 import { useWindowSize } from "utils/hooks";
 

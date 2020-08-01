@@ -3,7 +3,7 @@ import { withSelect } from "@wordpress/data";
 import { Fragment } from "@wordpress/element";
 
 import "./ViewNavigation.styl";
-import { Div } from "utils/Components";
+import { Div } from "utils/components";
 import { store_slug } from "utils/data";
 import { BlockList } from "../BlockList/BlockList";
 import { Toolbar } from "../Toolbar/Toolbar";

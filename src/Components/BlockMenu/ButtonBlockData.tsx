@@ -2,7 +2,7 @@ import React from "react";
 import { __ } from "@wordpress/i18n";
 import { withSelect } from "@wordpress/data";
 
-import { Div, Icon, Button, Span } from "utils/Components";
+import { Div, Icon, Button, Span } from "utils/components";
 
 interface WithSelectProps {
 	descendants_clientIds: ReturnType<

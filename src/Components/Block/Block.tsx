@@ -11,7 +11,7 @@ import {
 
 import "./Block.styl";
 import { ContextContainer } from "../App/AppContainer";
-import { DivRef } from "utils/Components";
+import { DivRef } from "utils/components";
 import { store_slug } from "utils/data";
 import { BlockHeader } from "./BlockHeader";
 import { BlockList } from "../BlockList/BlockList";

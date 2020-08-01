@@ -4,7 +4,7 @@ import { withDispatch, withSelect } from "@wordpress/data";
 import { compose } from "@wordpress/compose";
 import { Fragment, useMemo } from "@wordpress/element";
 
-import { Div, Icon, Button, Span } from "utils/Components";
+import { Div, Icon, Button, Span } from "utils/components";
 
 interface WithSelectProps {
 	sibling_ids: string[];

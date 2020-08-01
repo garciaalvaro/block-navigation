@@ -2,7 +2,7 @@ import React from "react";
 import { isArray } from "lodash";
 import { useMemo } from "@wordpress/element";
 
-import { Div, Span, Img } from "utils/Components";
+import { Div, Span, Img } from "utils/components";
 import { block_types } from "utils/data";
 import { getContent } from "utils/tools";
 

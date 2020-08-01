@@ -1,4 +1,4 @@
-![Banner Image](assets-repo/banner-1544x500.png)
+![Banner Image](docs/banner-1544x500.png)
 
 # Block Navigation
 
@@ -36,7 +36,7 @@ The plugin also provides some features for Plugin and Theme developers, such as:
 
 ## Screenshots
 
-<img src="assets-repo/screenshot-1.jpg" width="700px" alt="Main view, dark scheme" />
-<img src="assets-repo/screenshot-2.jpg" width="700px" alt="Dragging a block to a different position" />
-<img src="assets-repo/screenshot-3.jpg" width="700px" alt="Block menu" />
-<img src="assets-repo/screenshot-4.jpg" width="700px" alt="List of available color schemes, light and dark" />
+<img src="docs/screenshot-1.jpg" width="700px" alt="Main view, dark scheme" />
+<img src="docs/screenshot-2.jpg" width="700px" alt="Dragging a block to a different position" />
+<img src="docs/screenshot-3.jpg" width="700px" alt="Block menu" />
+<img src="docs/screenshot-4.jpg" width="700px" alt="List of available color schemes, light and dark" />

@@ -22,8 +22,8 @@ if ( ! defined( __NAMESPACE__ . '\PLUGIN_VERSION' ) ) {
 if ( ! defined( __NAMESPACE__ . '\PLUGIN_NAME' ) ) {
 	define( __NAMESPACE__ . '\PLUGIN_NAME', 'block-navigation' );
 }
-if ( ! defined( __NAMESPACE__ . '\BUILD_DIR' ) ) {
-	define( __NAMESPACE__ . '\BUILD_DIR', plugins_url( 'build/', __FILE__ ) );
+if ( ! defined( __NAMESPACE__ . '\DIST_DIR' ) ) {
+	define( __NAMESPACE__ . '\DIST_DIR', plugins_url( 'dist/', __FILE__ ) );
 }
 
 /**
@@ -58,14 +58,14 @@ function enqueue() {
 
 	wp_enqueue_style(
 		PLUGIN_NAME,
-		BUILD_DIR . PLUGIN_NAME . $version_slug . '.css',
+		DIST_DIR . PLUGIN_NAME . $version_slug . '.css',
 		array(),
 		PLUGIN_VERSION
 	);
 
 	wp_enqueue_script(
 		PLUGIN_NAME,
-		BUILD_DIR . PLUGIN_NAME . $version_slug . '.js',
+		DIST_DIR . PLUGIN_NAME . $version_slug . '.js',
 		array(
 			'lodash',
 			'wp-components',

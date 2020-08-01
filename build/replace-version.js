@@ -1,4 +1,4 @@
-const { name, version } = require("./package.json");
+const { name, version } = require("../package.json");
 const replace = require("replace-in-file");
 
 // Replace the version number

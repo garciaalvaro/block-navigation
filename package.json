@@ -13,7 +13,7 @@
 		"postcopy": "rm _release/_temp.js",
 		"version": "webpack --mode production --config webpack/version.config.babel.js",
 		"postversion": "rm _temp.js",
-		"prebuild": "rm -rf dist && npm run version",
+		"prebuild": "rm -rf dist && tsc && npm run version",
 		"build": "npm run prod",
 		"postbuild": "npm run copy"
 	},

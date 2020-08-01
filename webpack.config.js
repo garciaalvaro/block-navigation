@@ -5,8 +5,12 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const nib = require("nib");
 const path = require("path");
 
-module.exports = (env, argv) => {
+module.exports = (env, { mode }) => {
+	const is_production = mode === "production";
+
 	const config = {
+		watch: !is_production,
+
 		entry: path.resolve(__dirname, "src/entry.ts"),
 
 		output: {
@@ -80,7 +84,7 @@ module.exports = (env, argv) => {
 		})
 	);
 
-	if (argv.mode === "production") {
+	if (is_production) {
 		config.plugins.push(
 			new BannerPlugin({
 				banner: `${description} | ${version} | ${homepage}`,

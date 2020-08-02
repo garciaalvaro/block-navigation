@@ -43,7 +43,7 @@ export const App: FunctionComponent = () => {
 		$container.classList.add(styles.calculating_size);
 		$components_panel.classList.add(styles.calculating_size);
 
-		setHeight($components_panel.offsetHeight - 5);
+		setHeight($components_panel.offsetHeight - 2);
 		setWidth($components_panel.offsetWidth);
 
 		$container.classList.remove(styles.calculating_size);
@@ -69,7 +69,7 @@ export const App: FunctionComponent = () => {
 					container_width={width}
 				/>
 			) : (
-				<ViewSettings />
+				<ViewSettings container_height={height} />
 			)}
 		</div>
 	);

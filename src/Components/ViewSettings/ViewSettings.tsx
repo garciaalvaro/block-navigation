@@ -4,9 +4,16 @@ import styles from "./ViewSettings.styl";
 import { PluginInfo } from "./PluginInfo";
 import { ColorScheme } from "./ColorScheme";
 
-export const ViewSettings: FunctionComponent = () => {
+interface Props {
+	container_height: number;
+}
+
+export const ViewSettings: FunctionComponent<Props> = props => {
 	return (
-		<div className={styles.container}>
+		<div
+			className={styles.container}
+			style={{ height: props.container_height }}
+		>
 			<PluginInfo />
 
 			<ColorScheme />

@@ -10,7 +10,7 @@
 		"dev": "webpack --mode=development",
 		"prebuild": "rm -rf dist && rm -rf _release && npm run type-check && npm run prettier && npm run lint",
 		"build": "webpack --mode=production",
-		"postbuild": "npm run build_v1_scripts && node build/replace-version.js && node build/copy-files.js",
+		"postbuild": "node build/replace-version.js && node build/copy-files.js",
 		"build_v1_scripts": "git checkout v1.x && npm run prod && git checkout develop",
 		"type-check": "tsc",
 		"lint": "eslint 'src/**/*.{ts,tsx}'",

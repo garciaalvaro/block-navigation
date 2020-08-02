@@ -1,38 +1,39 @@
 import React, { FunctionComponent } from "react";
-import {
-	Fragment,
-	useEffect,
-	useCallback,
-	useContext,
-	useRef,
-} from "@wordpress/element";
+import { Fragment, useEffect, useCallback, useRef } from "@wordpress/element";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { FixedSizeList as List } from "react-window";
 
-import "./ViewNavigation.styl";
-import { Div } from "@/utils/components";
+import styles from "./ViewNavigation.styl";
+import { store_slug } from "@/utils/data";
 import { Block } from "../Block";
-import { Toolbar } from "../Toolbar";
-import { ContextContainer } from "../App/AppContainer";
-import { useBlockIds } from "./useBlockIds";
-import { useScrollTo } from "./useScrollTo";
+import { Toolbar } from "./Toolbar";
+import { useBlockIds, useScrollTo } from "./utils";
 
-export const ViewNavigation: FunctionComponent = () => {
-	const { container_height, container_width } = useContext(ContextContainer);
+interface Props {
+	container_width: number;
+	container_height: number;
+}
 
-	const list_ref = useRef(null);
+export const ViewNavigation: FunctionComponent<Props> = props => {
+	const { container_height, container_width } = props;
+
+	const $list = useRef(null);
 
 	const block_ids = useBlockIds();
 
 	const moving_block = useSelect(select =>
-		select("melonpan/block-navigation").getMovingBlock()
+		select(store_slug).getMovingBlock()
 	);
 
-	const { resetMoving } = useDispatch("melonpan/block-navigation");
+	const moving_type = useSelect(select => select(store_slug).getMovingType());
+
+	const { resetMoving } = useDispatch(store_slug);
 
 	const onDrop = useCallback(resetMoving, [resetMoving]);
 
-	useScrollTo({ block_ids, list_ref: list_ref.current });
+	const tab_height = 50;
+
+	useScrollTo({ block_ids, $list: $list.current });
 
 	useEffect(() => {
 		const onDropHandler = () => onDrop();
@@ -46,12 +47,13 @@ export const ViewNavigation: FunctionComponent = () => {
 
 	return (
 		<Fragment>
-			<Toolbar />
+			{moving_type === "by_click" && <Toolbar />}
 
-			<Div id="navigation">
+			<div className={styles.container}>
 				<List
-					outerRef={list_ref}
-					height={container_height - 50}
+					className={styles.content}
+					outerRef={$list}
+					height={container_height - tab_height}
 					width={container_width}
 					itemCount={block_ids.length}
 					itemSize={52}
@@ -61,7 +63,7 @@ export const ViewNavigation: FunctionComponent = () => {
 				>
 					{Block}
 				</List>
-			</Div>
+			</div>
 		</Fragment>
 	);
 };

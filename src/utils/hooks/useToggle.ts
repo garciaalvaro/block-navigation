@@ -9,9 +9,11 @@ export const useToggle = (
 	toggle: () => void;
 } => {
 	const [is_open, setOpen] = useState(initial_open);
-	const close = () => setOpen(false);
-	const open = () => setOpen(true);
-	const toggle = () => setOpen(is_open => !is_open);
 
-	return { is_open, close, open, toggle };
+	return {
+		is_open,
+		close: () => setOpen(false),
+		open: () => setOpen(true),
+		toggle: () => setOpen(is_open => !is_open),
+	};
 };

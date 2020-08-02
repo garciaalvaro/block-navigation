@@ -4,11 +4,11 @@ import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
 import { Fragment } from "@wordpress/element";
 
 import { plugin_namespace, plugin_title } from "@/utils/data";
-import { Icon } from "@/utils/components";
 import { App } from "@/components/App";
+import { Logo } from "@/components/Logo";
 
 registerPlugin(plugin_namespace, {
-	icon: () => <Icon icon="logo" />,
+	icon: Logo,
 
 	render: () => (
 		<Fragment>

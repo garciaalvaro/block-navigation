@@ -13,12 +13,6 @@ interface ComponentProps {
 	children?: import("react").ReactNode;
 }
 
-interface MenuProps {
-	id: string;
-	closeMenu: () => void;
-	setMovingBlock: () => void;
-}
-
 type DropArea = {
 	id: BlockId;
 	level: number;
@@ -28,3 +22,5 @@ type valueof<T> = T[keyof T];
 
 // CSS modules
 declare module "*.styl";
+
+type Icon = "copy" | "log" | "edit" | "collapse" | "expand" | "menu" | "move";

@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from "react";
-import "./ViewSettings.styl";
-import { Div } from "@/utils/components";
-import { ControlPluginInfo } from "./ControlPluginInfo";
-import { ControlColorScheme } from "./ControlColorScheme";
+
+import styles from "./ViewSettings.styl";
+import { PluginInfo } from "./PluginInfo";
+import { ColorScheme } from "./ColorScheme";
 
 export const ViewSettings: FunctionComponent = () => {
 	return (
-		<Div id="settings">
-			<ControlPluginInfo />
+		<div className={styles.container}>
+			<PluginInfo />
 
-			<ControlColorScheme />
-		</Div>
+			<ColorScheme />
+		</div>
 	);
 };

@@ -1,1 +1,0 @@
-export { ButtonCopyId } from "./ButtonCopyId";

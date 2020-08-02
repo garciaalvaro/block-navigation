@@ -1,1 +1,0 @@
-export { ButtonMoveTo } from "./ButtonMoveTo";

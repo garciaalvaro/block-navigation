@@ -1,1 +1,0 @@
-export { DropAreas } from "./DropAreas";

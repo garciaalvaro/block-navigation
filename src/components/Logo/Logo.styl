@@ -1,0 +1,43 @@
+/**
+ * Logo
+ */
+
+:global(#editor .components-icon-button:hover) .container
+
+	.line_1
+		fill #ffa076!important // Necessary
+	.line_2
+		fill #b8c9d0!important // Necessary
+	.line_3
+		fill #7d7876!important // Necessary
+
+:global(#editor .components-icon-button.is-toggled:hover) .container rect
+	fill #fff!important // Necessary
+
+:global(#editor .components-button.is-pressed:hover) .container rect
+	fill #fff
+
+.container
+
+	:global(#editor) &
+
+		.line_1
+			fill #ffa076
+		.line_2
+			fill #b8c9d0
+		.line_3
+			fill #7d7876
+
+	&:hover
+		rect
+			transform scaleY(1.3)
+
+	rect
+		transition transform .2s .1s $e_deceleration, fill .3s $e_deceleration
+
+	.line_1
+		transform-origin top center
+	.line_2
+		transform-origin center
+	.line_3
+		transform-origin bottom center

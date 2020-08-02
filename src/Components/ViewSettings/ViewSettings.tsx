@@ -1,14 +1,22 @@
-import "./ViewSettings.styl";
-import { Div } from "utils/Components";
-import { ControlPluginInfo } from "./ControlPluginInfo";
-import { ControlColorScheme } from "./ControlColorScheme";
+import React, { FunctionComponent } from "react";
 
-export const ViewSettings: React.ComponentType = () => {
+import styles from "./ViewSettings.styl";
+import { PluginInfo } from "./PluginInfo";
+import { ColorScheme } from "./ColorScheme";
+
+interface Props {
+	container_height: number;
+}
+
+export const ViewSettings: FunctionComponent<Props> = props => {
 	return (
-		<Div id="settings">
-			<ControlPluginInfo />
+		<div
+			className={styles.container}
+			style={{ height: props.container_height }}
+		>
+			<PluginInfo />
 
-			<ControlColorScheme />
-		</Div>
+			<ColorScheme />
+		</div>
 	);
 };

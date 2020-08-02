@@ -1,3 +1,2 @@
-export { addPrefix } from "./addPrefix";
-export { prepareProps } from "./prepareProps";
-export { getBlockAncestorsId } from "./getBlockAncestorsId";
+export { className } from "./className";
+export { getAncestorsId } from "./getAncestorsId";

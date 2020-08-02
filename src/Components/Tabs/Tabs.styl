@@ -2,36 +2,10 @@
  * Tabs
  */
 
-+prefix-classes('bn-')
-
-	#bn-tabs
-		display flex
-		height 50px
-		position sticky
-		top 0
-		z-index 10
-		background-color var(--background_color)
-
-	#bn-container
-
-		.button-tab
-			padding 5px
-			height 100%
-			width 50%
-			background transparent
-			display flex
-			align-items center
-			justify-content center
-			transition background-color .15s $e_deceleration
-			border-bottom 1px solid var(--color_01)
-
-			&:hover
-				background-color var(--color_005)
-				margin-bottom 1px
-
-			&.is_active
-				margin-bottom -1px
-				font-weight 600
-				padding-bottom 3px
-				border-bottom 3px solid var(--primary_color)
-				font-weight 600
+.container
+	display flex
+	height 50px
+	position sticky
+	top 0
+	z-index 10
+	background-color var(--background_color)

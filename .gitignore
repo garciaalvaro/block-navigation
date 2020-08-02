@@ -2,5 +2,5 @@
 .todo
 _extras
 _release
-build
+dist
 node_modules

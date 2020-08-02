@@ -1,8 +1,8 @@
 === Block Navigation ===
 Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
-Requires at least: 5.2
-Tested up to: 5.4
+Requires at least: 5.4
+Tested up to: 5.5
 Stable tag: 3.0.0
 Requires PHP: 7.1
 License: GPLv3
@@ -74,6 +74,10 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 3.0.0 =
+* Major refactor
+* Updated dependencies
 
 = 2.0.1 =
 * Fixed text being selected on drag

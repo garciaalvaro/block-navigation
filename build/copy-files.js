@@ -1,5 +1,6 @@
-const { name } = require("../package.json");
 const copyfiles = require("copyfiles");
+
+const { name } = require("../package.json");
 
 // Copy files to the _release folder
 copyfiles(

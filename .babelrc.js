@@ -3,5 +3,5 @@ module.exports = {
 		"@babel/preset-env", // Uses .browserslistrc info
 		"@babel/preset-react",
 		"@babel/preset-typescript",
-	]
-}
+	],
+};

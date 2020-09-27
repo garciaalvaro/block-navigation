@@ -13,6 +13,7 @@ import { Icon } from "@/utils/components/Icon";
 import { ButtonEdit } from "./ButtonEdit";
 import { ButtonMoveTo } from "./ButtonMoveTo";
 import { ButtonsMove } from "./ButtonsMove";
+import { ButtonRemove } from "./ButtonRemove";
 import { ButtonCopyId } from "./ButtonCopyId";
 import { ButtonBlockData } from "./ButtonBlockData";
 
@@ -66,6 +67,7 @@ export const Menu: FunctionComponent<Props> = props => {
 								setMovingBlock={setMovingBlock}
 							/>
 							<ButtonsMove closeMenu={close} id={id} />
+							<ButtonRemove closeMenu={close} id={id} />
 							<ButtonCopyId closeMenu={close} id={id} />
 							<ButtonBlockData closeMenu={close} id={id} />
 						</div>

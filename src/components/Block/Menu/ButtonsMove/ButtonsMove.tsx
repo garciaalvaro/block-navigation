@@ -21,6 +21,7 @@ export const ButtonsMove: FunctionComponent<Props> = props => {
 	const index = useSelect(select =>
 		select("core/block-editor").getBlockIndex(id, parent_id)
 	);
+
 	const can_move =
 		useSelect(select =>
 			select("core/block-editor").getTemplateLock(parent_id)

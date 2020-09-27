@@ -1,4 +1,4 @@
-import { dispatch, select } from "@wordpress/data";
+import "@wordpress/data";
 
 declare module "@wordpress/data" {
 	function dispatch(key: "melonpan/block-navigation"): ActionCreators;

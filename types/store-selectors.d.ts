@@ -9,6 +9,6 @@ interface Selectors<S = void> {
 	getMovingBlock: Selector<"moving_block", S>;
 	getView: Selector<"view", S>;
 	isExpanded: S extends void
-	? (id: BlockId) => boolean
-	: (state: S, id: BlockId) => boolean;
+		? (id: BlockId) => boolean
+		: (state: S, id: BlockId) => boolean;
 }

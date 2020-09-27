@@ -75,6 +75,9 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 3.1.0 =
+* Added "Remove Block" button in block menu
+
 = 3.0.0 =
 * Major refactor
 * Updated dependencies

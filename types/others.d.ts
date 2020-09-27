@@ -23,4 +23,12 @@ type valueof<T> = T[keyof T];
 // CSS modules
 declare module "*.styl";
 
-type Icon = "copy" | "log" | "edit" | "collapse" | "expand" | "menu" | "move";
+type Icon =
+	| "remove"
+	| "copy"
+	| "log"
+	| "edit"
+	| "collapse"
+	| "expand"
+	| "menu"
+	| "move";

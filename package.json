@@ -9,7 +9,7 @@
 		"start": "npm run dev",
 		"prebuild": "npm run test && npm run clean:dist && npm run clean:release",
 		"build": "webpack --mode=production",
-		"postbuild": "node build/replace-version.js && node build/copy-files.js",
+		"postbuild": "node scripts/replace-version.js && node scripts/copy-files.js",
 		"build_v1_scripts": "git checkout v1.x && npm run prod && git checkout develop",
 		"clean:dist": "rm -rf dist",
 		"clean:release": "rm -rf _release",

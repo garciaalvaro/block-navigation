@@ -17,8 +17,8 @@
 		"test": "npm run test:types && npm run test:lint && npm run test:prettier",
 		"test:types": "tsc",
 		"test:lint": "eslint \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.js\"",
-		"test:prettier": "prettier --check \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.js\"",
-		"prettier": "prettier --write \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.js\""
+		"test:prettier": "prettier --check \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.{js,php}\"",
+		"prettier": "prettier --write \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.{js,php}\""
 	},
 	"dependencies": {
 		"@wordpress/components": "^10.2.0",
@@ -39,6 +39,7 @@
 		"@babel/preset-react": "^7.10.4",
 		"@babel/preset-typescript": "^7.10.4",
 		"@babel/register": "^7.11.5",
+		"@prettier/plugin-php": "^0.16.0",
 		"@types/lodash": "^4.14.161",
 		"@types/react-dom": "^16.9.8",
 		"@types/react-window": "^1.8.2",

@@ -95,20 +95,19 @@ module.exports = (env, { mode }) => {
 	if (is_production) {
 		config.plugins.push(
 			new BannerPlugin({
-				banner: `${description} | ${version} | ${homepage}`,
-				include: new RegExp(/.*?\.css/),
+				banner: `${description} v${version} | ${homepage}`,
+				include: /\.css/,
 			})
 		);
 
 		config.plugins.push(
 			new BannerPlugin({
 				banner: [
-					`/*! ${description} | ${version} | ${homepage} */`,
-					`/*! react-tiny-popover | https://github.com/alexkatz/react-tiny-popover | Alex Katz | MIT License */`,
-					`/*! copy-text-to-clipboard | https://github.com/sindresorhus/copy-text-to-clipboard | Sindre Sorhus | MIT License */`,
-				].join(""),
-				raw: true,
-				include: new RegExp(/.*?\.js/),
+					`${description} v${version} | ${homepage}`,
+					`react-tiny-popover | https://github.com/alexkatz/react-tiny-popover | Alex Katz | MIT License`,
+					`copy-text-to-clipboard | https://github.com/sindresorhus/copy-text-to-clipboard | Sindre Sorhus | MIT License`,
+				].join("\n"),
+				include: /\.js/,
 			})
 		);
 

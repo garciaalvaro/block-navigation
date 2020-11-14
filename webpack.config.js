@@ -3,7 +3,6 @@ const { BannerPlugin } = require("webpack");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const nib = require("nib");
 const path = require("path");
 
 module.exports = (env, { mode }) => {
@@ -73,11 +72,15 @@ module.exports = (env, { mode }) => {
 			{
 				loader: "stylus-loader",
 				options: {
-					use: [nib()],
-					import: [
-						"~nib/index.styl",
-						path.resolve(__dirname, "src/utils/css/variables.styl"),
-					],
+					stylusOptions: {
+						use: "nib",
+						import: [
+							path.resolve(
+								__dirname,
+								"src/utils/css/variables.styl"
+							),
+						],
+					},
 				},
 			},
 		],

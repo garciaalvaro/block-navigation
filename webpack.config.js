@@ -118,7 +118,6 @@ module.exports = (env, { mode }) => {
 		);
 
 		config.optimization = {
-			minimize: true,
 			minimizer: [
 				new CssMinimizerPlugin(),
 

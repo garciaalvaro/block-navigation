@@ -16,9 +16,9 @@
 		"dev": "webpack --mode=development",
 		"test": "npm run test:types && npm run test:lint && npm run test:prettier",
 		"test:types": "tsc",
-		"test:lint": "eslint \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.js\"",
-		"test:prettier": "prettier --check \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.{js,php}\"",
-		"prettier": "prettier --write \"{build,src,types}/**/*.{js,ts,tsx}\" \"*.{js,php}\""
+		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
+		"test:prettier": "prettier --check \"**/*.{js,ts,tsx,php,json}\"",
+		"prettier": "prettier --write \"**/*.{js,ts,tsx,php,json}\""
 	},
 	"dependencies": {
 		"@wordpress/components": "^11.1.1",

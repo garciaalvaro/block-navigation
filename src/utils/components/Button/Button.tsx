@@ -6,8 +6,7 @@ import { className as classNameUtil } from "@/utils/tools/className";
 interface Props {
 	type?: "text" | "icon";
 	icon?: Icon;
-	// eslint-disable-next-line @typescript-eslint/ban-types
-	onClick: Function;
+	onClick: () => void;
 	className?: string | (string | null | undefined)[];
 }
 
@@ -17,7 +16,7 @@ export const Button: FunctionComponent<Props> = props => {
 	return (
 		<button
 			type="button"
-			onClick={event => onClick(event)}
+			onClick={onClick}
 			className={classNameUtil([
 				styles.container,
 				type ? styles[type] : null,

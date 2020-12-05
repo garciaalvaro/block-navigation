@@ -12,4 +12,4 @@ type ActionCreators = {
 	setColorScheme: ActionCreator<"SET_COLOR_SCHEME", State["color_scheme"]>;
 };
 
-type Actions = ReturnType<valueof<ActionCreators>>;
+type Actions = ReturnType<ValueOf<ActionCreators>>;

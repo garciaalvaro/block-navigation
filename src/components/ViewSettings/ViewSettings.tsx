@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 
-import styles from "./ViewSettings.styl";
 import { PluginInfo } from "./PluginInfo";
 import { ColorScheme } from "./ColorScheme";
 
@@ -10,10 +9,7 @@ interface Props {
 
 export const ViewSettings: FunctionComponent<Props> = props => {
 	return (
-		<div
-			className={styles.container}
-			style={{ height: props.container_height }}
-		>
+		<div style={{ height: props.container_height }}>
 			<PluginInfo />
 
 			<ColorScheme />

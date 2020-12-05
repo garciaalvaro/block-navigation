@@ -23,6 +23,10 @@
 	display flex
 	background-color var(--background_color)
 
+	.no-moving.is_selected &
+		color var(--color_over_primary_color)
+		fill currentColor
+
 	.no-moving.is_selected &:before
 		background-color var(--primary_color)
 
@@ -31,7 +35,7 @@
 		pointer-events none
 
 	.moving.can_receive_drop.no-moving_is_over &:after
-		border-top-color var(--secondary_color_2)
+		border-top-color var(--secondary_color)
 
 	&:before
 	&:after
@@ -43,7 +47,7 @@
 
 	&:before
 		bottom 0
-		border-left 1px solid var(--secondary_color_2)
+		border-left 1px solid var(--secondary_color)
 
 	.level-0 &:before
 		border-left none

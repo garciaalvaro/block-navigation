@@ -1,4 +1,4 @@
-import { useEffect } from "@wordpress/element";
+import { useEffect, useLayoutEffect, useState } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
 interface Props {
@@ -9,6 +9,8 @@ interface Props {
 export const useScrollTo = (props: Props): void => {
 	const { block_ids, $list } = props;
 
+	const [is_first_render, setIsFirstRender] = useState(true);
+
 	const selected_blocks = useSelect(select =>
 		select("core/block-editor").getSelectedBlockClientIds()
 	);
@@ -17,7 +19,15 @@ export const useScrollTo = (props: Props): void => {
 		select("core/block-editor").getSelectedBlockClientId()
 	);
 
+	// On the first render, props.$ref doesn't have a value assigned yet.
+	// This means that the hook which triggers the scroll doesn't run.
+	// Using the is_first_render state a second render is triggered,
+	// ensuring that the hook runs correctly.
 	useEffect(() => {
+		setIsFirstRender(false);
+	}, []);
+
+	useLayoutEffect(() => {
 		if (!$list || (!selected_blocks.length && !selected_block)) return;
 
 		const block_index = block_ids.findIndex(id => {
@@ -41,5 +51,5 @@ export const useScrollTo = (props: Props): void => {
 		if (is_above || is_below) {
 			$list.scrollTop = block_offsetTop - block_height / 2;
 		}
-	}, [...selected_blocks, selected_block]);
+	}, [is_first_render, ...selected_blocks, selected_block]);
 };

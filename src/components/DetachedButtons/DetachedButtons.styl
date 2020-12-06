@@ -2,23 +2,32 @@
  * DetachedButton
  */
 
-button.container
+.container
+	position absolute
+	bottom 0
+	left 0
+	display flex
+
+button.button
 
 	&
 	&:hover
 	&:focus
-		position absolute
-		bottom 0
-		left 0
 		background var(--primary_color)
 		color var(--color_over_primary_color)
 		fill currentColor
 		display flex
 		align-items center
-		font-size 0.95em
+		font-size 0.9em
 		font-weight 500
-		padding .5em .7em .5em .3em
+		padding .7em .7em .7em .3em
 		text-transform uppercase
 
 	svg
 		margin-right .3em
+
+.button + button.button
+
+	&
+	&:hover
+		border-left 2px solid var(--detached_bordercolor)

@@ -3,6 +3,8 @@ export const selectors: Selectors<State> = {
 
 	getColorScheme: state => state.color_scheme,
 
+	detachedIsExpanded: state => state.detached_is_expanded,
+
 	getMovingType: state => state.moving_type,
 
 	getMovingBlock: state => state.moving_block,

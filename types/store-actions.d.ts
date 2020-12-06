@@ -5,6 +5,8 @@ type ActionCreator<T, P = void> = (
 type ActionCreators = {
 	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
 	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;
+	collapseDetached: ActionCreator<"COLLAPSE_DETACHED">;
+	expandDetached: ActionCreator<"EXPAND_DETACHED">;
 	resetMoving: ActionCreator<"RESET_MOVING">;
 	setDetached: ActionCreator<"SET_DETACHED", State["is_detached"]>;
 	setMovingBlock: ActionCreator<"SET_MOVING_BLOCK", State["moving_block"]>;

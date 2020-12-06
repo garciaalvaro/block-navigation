@@ -5,6 +5,7 @@ const initial_state: State = {
 	moving_block: null,
 	blocks_collapsed: [],
 	is_detached: false,
+	detached_is_expanded: false,
 };
 
 export const reducer = (state = initial_state, action: Actions): State => {
@@ -44,6 +45,22 @@ export const reducer = (state = initial_state, action: Actions): State => {
 			return {
 				...state,
 				is_detached: action.payload,
+				detached_is_expanded: true,
+				view: "navigation",
+			};
+		}
+
+		case "COLLAPSE_DETACHED": {
+			return {
+				...state,
+				detached_is_expanded: false,
+			};
+		}
+
+		case "EXPAND_DETACHED": {
+			return {
+				...state,
+				detached_is_expanded: true,
 			};
 		}
 

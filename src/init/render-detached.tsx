@@ -4,7 +4,7 @@ import { select } from "@wordpress/data";
 
 import { store } from "./register-store";
 import { store_slug } from "@/utils/data";
-import { App } from "@/components/App";
+import { AppDetached } from "@/components/App";
 
 const $container = document.createElement("div");
 $container.id = "block-navigation-detached";
@@ -12,7 +12,7 @@ $container.id = "block-navigation-detached";
 const renderDetached = () => {
 	document.body.appendChild($container);
 
-	render(<App parent_is_detached={true} />, $container);
+	render(<AppDetached />, $container);
 };
 
 const removeDetached = () => {

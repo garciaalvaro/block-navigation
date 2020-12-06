@@ -34,10 +34,8 @@ export const Header: FunctionComponent<Props> = props => {
 			className={className({
 				[styles.container]: true,
 				[styles.ancestor_is_moving]: ancestor_is_moving,
-				[styles.moving]: moving,
 				[styles["no-moving"]]: !moving,
 				[styles.is_moving]: is_moving,
-				[styles["no-is_moving"]]: !is_moving,
 				[styles.can_move]: can_move,
 				[styles["no-can_move"]]: !can_move,
 			})}

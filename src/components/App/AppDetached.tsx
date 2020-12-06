@@ -11,7 +11,7 @@ import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 
 export const AppDetached: FunctionComponent = () => {
-	const { setDetached } = useDispatch(store_slug);
+	const { resetDetach } = useDispatch(store_slug);
 	const is_expanded = useSelect(select =>
 		select(store_slug).detachedIsExpanded()
 	);
@@ -28,7 +28,7 @@ export const AppDetached: FunctionComponent = () => {
 
 	useEffect(() => {
 		if (is_mobile) {
-			setDetached(false);
+			resetDetach();
 		}
 	}, [window_height, window_width]);
 

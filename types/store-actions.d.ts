@@ -8,7 +8,8 @@ type ActionCreators = {
 	collapseDetached: ActionCreator<"COLLAPSE_DETACHED">;
 	expandDetached: ActionCreator<"EXPAND_DETACHED">;
 	resetMoving: ActionCreator<"RESET_MOVING">;
-	setDetached: ActionCreator<"SET_DETACHED", State["is_detached"]>;
+	detach: ActionCreator<"DETACH">;
+	resetDetach: ActionCreator<"RESET_DETACH">;
 	setMovingBlock: ActionCreator<"SET_MOVING_BLOCK", State["moving_block"]>;
 	setMovingType: ActionCreator<"SET_MOVING_TYPE", State["moving_type"]>;
 	setView: ActionCreator<"SET_VIEW", State["view"]>;

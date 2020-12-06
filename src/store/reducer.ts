@@ -41,11 +41,19 @@ export const reducer = (state = initial_state, action: Actions): State => {
 			};
 		}
 
-		case "SET_DETACHED": {
+		case "DETACH": {
 			return {
 				...state,
-				is_detached: action.payload,
+				is_detached: true,
 				detached_is_expanded: true,
+				view: "navigation",
+			};
+		}
+
+		case "RESET_DETACH": {
+			return {
+				...state,
+				is_detached: false,
 				view: "navigation",
 			};
 		}

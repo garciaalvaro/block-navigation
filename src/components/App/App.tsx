@@ -14,7 +14,7 @@ import { store_slug } from "@/utils/data";
 
 export const App: FunctionComponent = () => {
 	const view = useSelect(select => select(store_slug).getView());
-	const { setDetached } = useDispatch(store_slug);
+	const { resetDetach } = useDispatch(store_slug);
 
 	const [color_type, color_name] = useSelect(select =>
 		select(store_slug).getColorScheme()
@@ -28,7 +28,7 @@ export const App: FunctionComponent = () => {
 	const is_mobile = window_width < 783;
 
 	useEffect(() => {
-		setDetached(false);
+		resetDetach();
 	}, []);
 
 	useEffect(() => {

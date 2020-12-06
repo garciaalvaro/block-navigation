@@ -14,16 +14,20 @@ export const DetachedButtons: FunctionComponent = () => {
 		select(store_slug).detachedIsExpanded()
 	);
 
-	const { setDetached, expandDetached, collapseDetached } = useDispatch(
-		store_slug
-	);
+	const {
+		detach,
+		resetDetach,
+		expandDetached,
+		collapseDetached,
+	} = useDispatch(store_slug);
 
 	const { openGeneralSidebar } = useDispatch("core/edit-post");
 
 	const close = () => {
-		setDetached(!is_detached);
-
-		if (!is_detached) {
+		if (is_detached) {
+			resetDetach();
+		} else {
+			detach();
 			openGeneralSidebar("edit-post/block");
 		}
 	};

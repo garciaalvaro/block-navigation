@@ -13,9 +13,12 @@ export const actions: ActionCreators = {
 		type: "RESET_MOVING",
 	}),
 
-	setDetached: payload => ({
-		type: "SET_DETACHED",
-		payload,
+	detach: () => ({
+		type: "DETACH",
+	}),
+
+	resetDetach: () => ({
+		type: "RESET_DETACH",
 	}),
 
 	expandDetached: () => ({

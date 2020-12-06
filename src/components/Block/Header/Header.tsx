@@ -1,10 +1,11 @@
 import React, { FunctionComponent, DragEventHandler } from "react";
-import { useDispatch } from "@wordpress/data";
+import { useDispatch, useSelect } from "@wordpress/data";
 
 import styles from "./Header.styl";
 import { Title } from "../Title";
 import { Body } from "../Body";
 import { className } from "@/utils/tools";
+import { store_slug } from "@/utils/data";
 
 interface Props {
 	id: BlockId;
@@ -27,6 +28,8 @@ export const Header: FunctionComponent<Props> = props => {
 		can_move,
 	} = props;
 
+	const is_detached = useSelect(select => select(store_slug).isDetached());
+
 	const { selectBlock } = useDispatch("core/block-editor");
 
 	return (
@@ -38,6 +41,7 @@ export const Header: FunctionComponent<Props> = props => {
 				[styles.is_moving]: is_moving,
 				[styles.can_move]: can_move,
 				[styles["no-can_move"]]: !can_move,
+				[styles.is_detached]: is_detached,
 			})}
 			draggable={can_move}
 			onClick={() => selectBlock(id)}

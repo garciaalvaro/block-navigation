@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from "react";
-import { useSelect } from "@wordpress/data";
+import { useSelect, useDispatch } from "@wordpress/data";
 import { useRef, useState, useEffect, Fragment } from "@wordpress/element";
 
 import styles from "./App.styl";
+import { DetachedButton } from "../DetachedButton";
 import { Tabs } from "../Tabs";
 import { ViewNavigation } from "../ViewNavigation";
 import { ViewSettings } from "../ViewSettings";
@@ -11,8 +12,14 @@ import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 import styles_color from "@/utils/css/color.styl";
 
-export const App: FunctionComponent = () => {
+interface Props {
+	parent_is_detached?: boolean;
+}
+
+export const App: FunctionComponent<Props> = props => {
+	const { parent_is_detached } = props;
 	const view = useSelect(select => select(store_slug).getView());
+	const { setDetached } = useDispatch(store_slug);
 
 	const [color_type, color_name] = useSelect(select =>
 		select(store_slug).getColorScheme()
@@ -23,8 +30,23 @@ export const App: FunctionComponent = () => {
 	const $app = useRef<HTMLDivElement | null>(null);
 	const [height, setHeight] = useState(0);
 	const [width, setWidth] = useState(0);
+	const is_mobile = window_width < 783;
 
 	useEffect(() => {
+		if (parent_is_detached) return;
+
+		setDetached(false);
+	}, []);
+
+	useEffect(() => {
+		if (is_mobile) {
+			setDetached(false);
+		}
+	}, [window_width]);
+
+	useEffect(() => {
+		if (parent_is_detached) return;
+
 		const $container = $app.current?.parentElement;
 		const $container_parent = $container?.parentElement;
 
@@ -53,8 +75,8 @@ export const App: FunctionComponent = () => {
 		const width = $container.offsetWidth || 0;
 		const height = $container.offsetHeight || 0;
 
-		setHeight(height);
 		setWidth(width);
+		setHeight(height);
 	}, [window_height, window_width]);
 
 	const width_height_is_ready = width > 0 && height > 0;
@@ -66,11 +88,12 @@ export const App: FunctionComponent = () => {
 				styles.container,
 				styles_color[color_type],
 				styles_color[color_name],
+				...(parent_is_detached ? [styles.is_detached] : []),
 			])}
 		>
 			{width_height_is_ready && (
 				<Fragment>
-					<Tabs />
+					{!parent_is_detached && <Tabs />}
 
 					{view === "navigation" ? (
 						<ViewNavigation
@@ -84,6 +107,8 @@ export const App: FunctionComponent = () => {
 					) : (
 						<ViewSettings />
 					)}
+
+					{!is_mobile && <DetachedButton />}
 				</Fragment>
 			)}
 		</div>

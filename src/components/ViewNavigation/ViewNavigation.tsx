@@ -21,6 +21,8 @@ export const ViewNavigation: FunctionComponent<Props> = props => {
 
 	const block_ids = useBlockIds();
 
+	const is_detached = useSelect(select => select(store_slug).isDetached());
+
 	const moving_block = useSelect(select =>
 		select(store_slug).getMovingBlock()
 	);
@@ -31,7 +33,7 @@ export const ViewNavigation: FunctionComponent<Props> = props => {
 
 	const onDrop = useCallback(resetMoving, [resetMoving]);
 
-	const tab_height = 50;
+	const tab_height = is_detached ? 0 : 50;
 
 	useScrollTo({ block_ids, $list: $list.current });
 

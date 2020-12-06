@@ -44,7 +44,7 @@ export const DetachedButtons: FunctionComponent = () => {
 
 			{is_detached && (
 				<Button className={styles.button} onClick={toggle}>
-					<Icon icon={is_expanded ? "detach" : "expand"} />
+					<Icon icon={is_expanded ? "expand" : "collapse"} />
 
 					<span>{is_expanded ? __("Collapse") : __("Expand")}</span>
 				</Button>

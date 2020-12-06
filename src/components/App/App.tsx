@@ -6,6 +6,7 @@ import styles from "./App.styl";
 import { Tabs } from "../Tabs";
 import { ViewNavigation } from "../ViewNavigation";
 import { ViewSettings } from "../ViewSettings";
+import { useWindowSize } from "@/utils/hooks";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 import styles_color from "@/utils/css/color.styl";
@@ -18,7 +19,7 @@ export const App: FunctionComponent = () => {
 	).split("-");
 
 	const moving_type = useSelect(select => select(store_slug).getMovingType());
-
+	const { window_height, window_width } = useWindowSize();
 	const $app = useRef<HTMLDivElement | null>(null);
 	const [height, setHeight] = useState(0);
 	const [width, setWidth] = useState(0);
@@ -30,23 +31,31 @@ export const App: FunctionComponent = () => {
 		if (!$container || !$container_parent) return;
 
 		$container.style.flexGrow = "1";
+		$container.style.maxHeight = "100%";
 		$container_parent.style.display = "flex";
 		$container_parent.style.flexDirection = "column";
 		$container_parent.style.overflow = "visible";
 
-		const width = $container?.offsetWidth || 0;
-		const height = $container?.offsetHeight || 0;
-
-		setHeight(height);
-		setWidth(width);
-
 		return () => {
 			$container.style.flexGrow = "";
+			$container.style.maxHeight = "";
 			$container_parent.style.display = "";
 			$container_parent.style.flexDirection = "";
 			$container_parent.style.overflow = "";
 		};
 	}, []);
+
+	useEffect(() => {
+		const $container = $app.current?.parentElement;
+
+		if (!$container) return;
+
+		const width = $container.offsetWidth || 0;
+		const height = $container.offsetHeight || 0;
+
+		setHeight(height);
+		setWidth(width);
+	}, [window_height, window_width]);
 
 	const width_height_is_ready = width > 0 && height > 0;
 

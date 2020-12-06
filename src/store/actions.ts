@@ -13,6 +13,11 @@ export const actions: ActionCreators = {
 		type: "RESET_MOVING",
 	}),
 
+	setDetached: payload => ({
+		type: "SET_DETACHED",
+		payload,
+	}),
+
 	setMovingBlock: payload => ({
 		type: "SET_MOVING_BLOCK",
 		payload,

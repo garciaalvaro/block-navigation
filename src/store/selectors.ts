@@ -9,5 +9,7 @@ export const selectors: Selectors<State> = {
 
 	getView: state => state.view,
 
+	isDetached: state => state.is_detached,
+
 	isExpanded: (state, id) => !state.blocks_collapsed.includes(id),
 };

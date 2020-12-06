@@ -4,6 +4,7 @@ const initial_state: State = {
 	moving_type: null,
 	moving_block: null,
 	blocks_collapsed: [],
+	is_detached: false,
 };
 
 export const reducer = (state = initial_state, action: Actions): State => {
@@ -36,6 +37,13 @@ export const reducer = (state = initial_state, action: Actions): State => {
 				...state,
 				moving_block: null,
 				moving_type: null,
+			};
+		}
+
+		case "SET_DETACHED": {
+			return {
+				...state,
+				is_detached: action.payload,
 			};
 		}
 

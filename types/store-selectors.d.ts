@@ -8,6 +8,7 @@ interface Selectors<S = void> {
 	getMovingType: Selector<"moving_type", S>;
 	getMovingBlock: Selector<"moving_block", S>;
 	getView: Selector<"view", S>;
+	isDetached: Selector<"is_detached", S>;
 	isExpanded: S extends void
 		? (id: BlockId) => boolean
 		: (state: S, id: BlockId) => boolean;

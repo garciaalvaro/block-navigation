@@ -1,13 +1,12 @@
 import React, { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
-import { useRef, useState, useEffect } from "@wordpress/element";
+import { useRef, useState, useEffect, Fragment } from "@wordpress/element";
 
 import styles from "./App.styl";
 import { Tabs } from "../Tabs";
 import { ViewNavigation } from "../ViewNavigation";
 import { ViewSettings } from "../ViewSettings";
 import { className } from "@/utils/tools";
-import { useWindowSize } from "@/utils/hooks";
 import { store_slug } from "@/utils/data";
 import styles_color from "@/utils/css/color.styl";
 
@@ -21,34 +20,35 @@ export const App: FunctionComponent = () => {
 	const moving_type = useSelect(select => select(store_slug).getMovingType());
 
 	const $app = useRef<HTMLDivElement | null>(null);
-	const { window_height, window_width } = useWindowSize();
-	const [height, setHeight] = useState(555);
-	const [width, setWidth] = useState(555);
+	const [height, setHeight] = useState(0);
+	const [width, setWidth] = useState(0);
 
 	useEffect(() => {
-		if (!$app.current) return;
+		const $container = $app.current?.parentElement;
+		const $container_parent = $container?.parentElement;
 
-		const $app_container = $app.current;
+		if (!$container || !$container_parent) return;
 
-		const $container = $app_container.closest<HTMLDivElement>(
-			".edit-post-sidebar"
-		);
+		$container.style.flexGrow = "1";
+		$container_parent.style.display = "flex";
+		$container_parent.style.flexDirection = "column";
+		$container_parent.style.overflow = "visible";
 
-		const $components_panel = $app_container.closest<HTMLDivElement>(
-			".components-panel"
-		);
+		const width = $container?.offsetWidth || 0;
+		const height = $container?.offsetHeight || 0;
 
-		if (!$container || !$components_panel) return;
+		setHeight(height);
+		setWidth(width);
 
-		$container.classList.add(styles.calculating_size);
-		$components_panel.classList.add(styles.calculating_size);
+		return () => {
+			$container.style.flexGrow = "";
+			$container_parent.style.display = "";
+			$container_parent.style.flexDirection = "";
+			$container_parent.style.overflow = "";
+		};
+	}, []);
 
-		setHeight($components_panel.offsetHeight - 2);
-		setWidth($components_panel.offsetWidth);
-
-		$container.classList.remove(styles.calculating_size);
-		$app_container.classList.remove(styles.calculating_size);
-	}, [window_height, window_width]);
+	const width_height_is_ready = width > 0 && height > 0;
 
 	return (
 		<div
@@ -59,17 +59,23 @@ export const App: FunctionComponent = () => {
 				styles_color[color_name],
 			])}
 		>
-			<Tabs />
+			{width_height_is_ready && (
+				<Fragment>
+					<Tabs />
 
-			{view === "navigation" ? (
-				<ViewNavigation
-					container_height={
-						moving_type === "by_click" ? height - 55 : height
-					}
-					container_width={width}
-				/>
-			) : (
-				<ViewSettings container_height={height} />
+					{view === "navigation" ? (
+						<ViewNavigation
+							container_height={
+								moving_type === "by_click"
+									? height - 55
+									: height
+							}
+							container_width={width}
+						/>
+					) : (
+						<ViewSettings />
+					)}
+				</Fragment>
 			)}
 		</div>
 	);

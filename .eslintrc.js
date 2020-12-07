@@ -30,7 +30,7 @@ module.exports = {
 
 	settings: {
 		react: {
-			version: "16.9.0", // Version used in WP 5.4.1
+			version: "16.9.0", // Version used in WP 5.5
 		},
 	},
 };

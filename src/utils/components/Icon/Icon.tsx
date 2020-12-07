@@ -8,6 +8,29 @@ export const Icon: FunctionComponent<Props> = props => {
 	const { icon } = props;
 
 	switch (icon) {
+		case "detach":
+			return (
+				/* https://material.io/tools/icons/?icon=south_west */
+				<svg
+					enableBackground="new 0 0 24 24"
+					viewBox="0 0 24 24"
+					width="19"
+					height="19"
+				>
+					<rect fill="none" height="24" width="24" />
+					<path d="M15,19v-2H8.41L20,5.41L18.59,4L7,15.59V9H5v10H15z" />
+				</svg>
+			);
+
+		case "close":
+			return (
+				/* https://material.io/tools/icons/?icon=close */
+				<svg width="19" height="19" viewBox="0 0 24 24">
+					<path d="M0 0h24v24H0z" fill="none" />
+					<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+				</svg>
+			);
+
 		case "remove":
 			return (
 				/* https://material.io/tools/icons/?icon=delete */

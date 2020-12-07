@@ -6,7 +6,7 @@
 	display flex
 	align-items center
 	justify-content space-between
-	padding 0 1.3em
+	padding 0 1em
 	position sticky
 	top 50px
 	z-index 2
@@ -18,8 +18,15 @@
 	color var(--color_over_primary_color)
 	fill currentColor
 
+	&.is_detached
+		top 0
+		padding-left .3em
+		border-top none
+		border-bottom none
+
 .button
 	white-space nowrap
+	margin-right -1em
 
 	&
 	&:hover

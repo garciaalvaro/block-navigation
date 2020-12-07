@@ -11,4 +11,7 @@ type State = {
 	};
 	color_scheme: string;
 	blocks_collapsed: BlockId[];
+	is_detached: boolean;
+	detached_is_expanded: boolean;
+	detached_size: { width: number; height: number };
 };

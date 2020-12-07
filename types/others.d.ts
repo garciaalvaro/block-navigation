@@ -24,6 +24,8 @@ type ValueOf<T> = T[keyof T];
 declare module "*.styl";
 
 type Icon =
+	| "detach"
+	| "close"
 	| "remove"
 	| "copy"
 	| "log"

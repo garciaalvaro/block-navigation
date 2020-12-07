@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { Fragment, useEffect, useCallback, useRef } from "@wordpress/element";
 import { useDispatch, useSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
 import { FixedSizeList as List } from "react-window";
 
 import styles from "./ViewNavigation.styl";
@@ -21,6 +22,8 @@ export const ViewNavigation: FunctionComponent<Props> = props => {
 
 	const block_ids = useBlockIds();
 
+	const is_detached = useSelect(select => select(store_slug).isDetached());
+
 	const moving_block = useSelect(select =>
 		select(store_slug).getMovingBlock()
 	);
@@ -31,7 +34,7 @@ export const ViewNavigation: FunctionComponent<Props> = props => {
 
 	const onDrop = useCallback(resetMoving, [resetMoving]);
 
-	const tab_height = 50;
+	const tab_height = is_detached ? 0 : 50;
 
 	useScrollTo({ block_ids, $list: $list.current });
 
@@ -50,19 +53,25 @@ export const ViewNavigation: FunctionComponent<Props> = props => {
 			{moving_type === "by_click" && <Toolbar />}
 
 			<div className={styles.container}>
-				<List
-					className={styles.content}
-					outerRef={$list}
-					height={container_height - tab_height}
-					width={container_width}
-					itemCount={block_ids.length}
-					itemSize={52}
-					itemKey={index => block_ids[index]}
-					itemData={{ block_ids }}
-					overscanCount={20}
-				>
-					{Block}
-				</List>
+				{block_ids.length === 0 ? (
+					<span className={styles.no_blocks}>
+						{__("There are no blocks.")}
+					</span>
+				) : (
+					<List
+						className={styles.content}
+						outerRef={$list}
+						height={container_height - tab_height}
+						width={container_width}
+						itemCount={block_ids.length}
+						itemSize={52}
+						itemKey={index => block_ids[index]}
+						itemData={{ block_ids }}
+						overscanCount={20}
+					>
+						{Block}
+					</List>
+				)}
 			</div>
 		</Fragment>
 	);

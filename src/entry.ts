@@ -1,2 +1,1 @@
-import "./init/register-store";
-import "./init/register-sidebar";
+import "./init";

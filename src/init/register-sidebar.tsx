@@ -8,10 +8,8 @@ import { App } from "@/components/App";
 import { Logo } from "@/components/Logo";
 
 registerPlugin(plugin_namespace, {
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-expect-error
 	// Wp 5.3 doesnt accept passing the component directly (icon: Logo)
-	// TODO: Check and fix
+	// @ts-expect-error TODO: Check and fix
 	icon: <Logo />,
 
 	render: () => (

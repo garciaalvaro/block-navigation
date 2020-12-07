@@ -5,8 +5,7 @@ import { Button } from "@/utils/components/Button";
 import { Icon } from "@/utils/components/Icon";
 
 interface Props {
-	// eslint-disable-next-line @typescript-eslint/ban-types
-	onClick: Function;
+	onClick: () => void;
 	icon: Icon;
 	label: string;
 	is_disabled?: boolean;

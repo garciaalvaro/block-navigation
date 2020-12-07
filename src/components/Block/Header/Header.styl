@@ -5,12 +5,15 @@
 .container
 	display flex
 	align-items center
-	padding-left 1.3em
+	padding-left 1em
 	overflow hidden
 	white-space nowrap
 	margin-left 1px
 	position relative
 	flex-grow 1
+
+	&.is_detached
+		padding-left .5em
 
 	&.is_moving
 		background-color var(--background_color)

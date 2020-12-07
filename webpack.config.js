@@ -1,22 +1,27 @@
-const { name, description, version, homepage } = require("./package.json");
+const {
+	name: short_name,
+	description: name,
+	version,
+	homepage,
+} = require("./package.json");
 const { BannerPlugin } = require("webpack");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const nib = require("nib");
 const path = require("path");
 
 module.exports = (env, { mode }) => {
 	const is_production = mode === "production";
+	const is_development = !is_production;
 
 	const config = {
-		watch: !is_production,
+		watch: is_development,
 
 		entry: path.resolve(__dirname, "src/entry.ts"),
 
 		output: {
 			path: path.resolve(__dirname, "dist"),
-			filename: `${name}.js`,
+			filename: `${short_name}.js`,
 		},
 
 		resolve: {
@@ -73,11 +78,15 @@ module.exports = (env, { mode }) => {
 			{
 				loader: "stylus-loader",
 				options: {
-					use: [nib()],
-					import: [
-						"~nib/index.styl",
-						path.resolve(__dirname, "src/utils/css/variables.styl"),
-					],
+					stylusOptions: {
+						use: "nib",
+						import: [
+							path.resolve(
+								__dirname,
+								"src/utils/css/variables.styl"
+							),
+						],
+					},
 				},
 			},
 		],
@@ -85,37 +94,35 @@ module.exports = (env, { mode }) => {
 
 	config.plugins.push(
 		new MiniCssExtractPlugin({
-			filename: `${name}.css`,
+			filename: `${short_name}.css`,
 		})
 	);
 
 	if (is_production) {
 		config.plugins.push(
 			new BannerPlugin({
-				banner: `${description} | ${version} | ${homepage}`,
-				include: new RegExp(/.*?\.css/),
+				banner: `${name} v${version} | ${homepage}`,
+				include: /\.css/,
 			})
 		);
 
 		config.plugins.push(
 			new BannerPlugin({
 				banner: [
-					`/*! ${description} | ${version} | ${homepage} */`,
-					`/*! react-tiny-popover | https://github.com/alexkatz/react-tiny-popover | Alex Katz | MIT License */`,
-					`/*! copy-text-to-clipboard | https://github.com/sindresorhus/copy-text-to-clipboard | Sindre Sorhus | MIT License */`,
-				].join(""),
-				raw: true,
-				include: new RegExp(/.*?\.js/),
+					`${name} v${version} | ${homepage}`,
+					`react-tiny-popover | https://github.com/alexkatz/react-tiny-popover | Alex Katz | MIT License`,
+					`copy-text-to-clipboard | https://github.com/sindresorhus/copy-text-to-clipboard | Sindre Sorhus | MIT License`,
+				].join("\n"),
+				include: /\.js/,
 			})
 		);
 
 		config.optimization = {
-			minimize: true,
 			minimizer: [
-				new OptimizeCSSAssetsPlugin(),
+				new CssMinimizerPlugin(),
 
 				// As we are using a custom optimization, making use of
-				// OptimizeCSSAssetsPlugin, we also need to specify TerserPlugin
+				// CssMinimizerPlugin, we also need to specify TerserPlugin
 				new TerserPlugin({ extractComments: false }),
 			],
 		};

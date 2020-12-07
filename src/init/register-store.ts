@@ -5,11 +5,10 @@ import { reducer } from "@/store/reducer";
 import { actions } from "@/store/actions";
 import { selectors } from "@/store/selectors";
 
-registerStore(store_slug, {
+export const store = registerStore(store_slug, {
 	reducer,
 	actions,
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-expect-error
+	// @ts-expect-error TODO
 	selectors,
-	persist: ["color_scheme"],
+	persist: ["color_scheme", "is_detached", "detached_size"],
 });

@@ -6,19 +6,32 @@
 	display flex
 	align-items center
 	justify-content space-between
-	padding 0 1.3em
+	padding 0 1em
 	position sticky
 	top 50px
 	z-index 2
 	background var(--primary_color)
 	border-top 1px solid var(--background_color)
 	line-height 4em
-	color var(--color_1)
 	overflow hidden
 	border-bottom 2px solid var(--background_color)
+	color var(--color_over_primary_color)
+	fill currentColor
+
+	&.is_detached
+		top 0
+		padding-left .3em
+		border-top none
+		border-bottom none
 
 .button
 	white-space nowrap
+	margin-right -1em
+
+	&
+	&:hover
+	&:focus
+		font-size .95em
 
 .block_title
 	display flex

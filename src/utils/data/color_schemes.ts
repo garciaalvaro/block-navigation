@@ -5,6 +5,7 @@ type ColorScheme = {
 	label: string;
 	type: "light" | "dark";
 	name:
+		| "wp"
 		| "banana"
 		| "melon"
 		| "melocoton"
@@ -21,6 +22,12 @@ type ColorScheme = {
 
 // For backward compatibility we use type-name as value
 export const color_schemes: ColorScheme[] = [
+	{
+		value: "light-wp",
+		name: "wp",
+		label: __("WordPress admin"),
+		type: "light",
+	},
 	{
 		value: "light-banana",
 		name: "banana",

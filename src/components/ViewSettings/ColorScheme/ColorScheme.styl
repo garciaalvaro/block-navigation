@@ -4,15 +4,25 @@
 
 .container
 	background-color var(--primary_color)
-	padding 2em 1.2em
+	color var(--color_over_primary_color)
+
+	div&
+		border-radius 0
+		padding 2em 1.2em
+		padding-top 1.5em
+
+	&&& label
+		font-weight 500
+		margin-bottom 1em
+		color inherit
 
 	select
 
 		&
 		&:hover
 		&:focus
-			color var(--color_1)
-			border-color var(--color_1)
+			border-color var(--color)
 			background-color var(--primary_color)
 			outline-color transparent
 			box-shadow none
+			color inherit

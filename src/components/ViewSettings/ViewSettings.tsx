@@ -1,22 +1,15 @@
 import React, { FunctionComponent } from "react";
+import { Fragment } from "@wordpress/element";
 
-import styles from "./ViewSettings.styl";
 import { PluginInfo } from "./PluginInfo";
 import { ColorScheme } from "./ColorScheme";
 
-interface Props {
-	container_height: number;
-}
-
-export const ViewSettings: FunctionComponent<Props> = props => {
+export const ViewSettings: FunctionComponent = () => {
 	return (
-		<div
-			className={styles.container}
-			style={{ height: props.container_height }}
-		>
+		<Fragment>
 			<PluginInfo />
 
 			<ColorScheme />
-		</div>
+		</Fragment>
 	);
 };

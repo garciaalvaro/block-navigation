@@ -1,1 +1,1 @@
-export * from "./DetachedButtons";
+export { DetachedButtons } from "./DetachedButtons";

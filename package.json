@@ -1,6 +1,6 @@
 {
 	"name": "block-navigation",
-	"version": "3.1.0",
+	"version": "3.2.0",
 	"description": "Block Navigation",
 	"homepage": "https://wordpress.org/plugins/block-navigation",
 	"author": "Alvaro Garcia",
@@ -10,7 +10,6 @@
 		"prebuild": "npm run test:types && npm run clean:dist && npm run clean:release",
 		"build": "webpack --mode=production",
 		"postbuild": "node scripts/replace-version.js && node scripts/copy-files.js",
-		"build_v1_scripts": "git checkout v1.x && npm run prod && git checkout develop",
 		"clean:dist": "rm -rf dist",
 		"clean:release": "rm -rf _release",
 		"dev": "webpack --mode=development",

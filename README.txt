@@ -1,9 +1,9 @@
 === Block Navigation ===
 Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
-Requires at least: 5.4
-Tested up to: 5.5
-Stable tag: 3.1.0
+Requires at least: 5.5
+Tested up to: 5.6
+Stable tag: 3.2.0
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -74,6 +74,11 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 3.2.0 =
+* Added detach mode
+* Added WordPress admin color scheme
+* Updated dependencies
 
 = 3.1.0 =
 * Added "Remove Block" button in block menu

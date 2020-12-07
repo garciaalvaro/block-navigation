@@ -1,2 +1,2 @@
-export * from "./App";
-export * from "./AppDetached";
+export { App } from "./App";
+export { AppDetached } from "./AppDetached";

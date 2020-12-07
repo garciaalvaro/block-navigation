@@ -1,6 +1,6 @@
 const initial_state: State = {
 	view: "navigation",
-	color_scheme: "wp",
+	color_scheme: "light-wp",
 	moving_type: null,
 	moving_block: null,
 	blocks_collapsed: [],

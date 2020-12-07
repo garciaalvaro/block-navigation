@@ -3,8 +3,10 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 
 import styles from "./DetachedButtons.styl";
+import styles_color from "@/utils/css/color.styl";
 import { Button } from "@/utils/components/Button";
 import { Icon } from "@/utils/components/Icon";
+import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 
 export const DetachedButtons: FunctionComponent = () => {
@@ -13,6 +15,10 @@ export const DetachedButtons: FunctionComponent = () => {
 	const is_expanded = useSelect(select =>
 		select(store_slug).detachedIsExpanded()
 	);
+
+	const [color_type, color_name] = useSelect(select =>
+		select(store_slug).getColorScheme()
+	).split("-");
 
 	const {
 		detach,
@@ -35,7 +41,13 @@ export const DetachedButtons: FunctionComponent = () => {
 	const toggle = is_expanded ? collapseDetached : expandDetached;
 
 	return (
-		<div className={styles.container}>
+		<div
+			className={className([
+				styles.container,
+				styles_color[color_type],
+				styles_color[color_name],
+			])}
+		>
 			<Button className={styles.button} onClick={close}>
 				<Icon icon={is_detached ? "close" : "detach"} />
 

@@ -10,5 +10,5 @@ export const store = registerStore(store_slug, {
 	actions,
 	// @ts-expect-error TODO
 	selectors,
-	persist: ["color_scheme", "is_detached"],
+	persist: ["color_scheme", "is_detached", "detached_size"],
 });

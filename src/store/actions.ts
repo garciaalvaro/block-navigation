@@ -13,6 +13,11 @@ export const actions: ActionCreators = {
 		type: "RESET_MOVING",
 	}),
 
+	setDetachedSize: payload => ({
+		type: "SET_DETACHED_SIZE",
+		payload,
+	}),
+
 	detach: () => ({
 		type: "DETACH",
 	}),

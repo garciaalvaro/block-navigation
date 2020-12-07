@@ -6,6 +6,7 @@ const initial_state: State = {
 	blocks_collapsed: [],
 	is_detached: false,
 	detached_is_expanded: false,
+	detached_size: { width: 240, height: 400 },
 };
 
 export const reducer = (state = initial_state, action: Actions): State => {
@@ -38,6 +39,13 @@ export const reducer = (state = initial_state, action: Actions): State => {
 				...state,
 				moving_block: null,
 				moving_type: null,
+			};
+		}
+
+		case "SET_DETACHED_SIZE": {
+			return {
+				...state,
+				detached_size: action.payload,
 			};
 		}
 

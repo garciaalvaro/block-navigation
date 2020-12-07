@@ -3,7 +3,6 @@
  */
 
 .container
-	overflow hidden
 	background-color var(--background_color)
 	color var(--color)
 	fill var(--svg_color)
@@ -15,9 +14,28 @@
 
 .is_detached
 	outline 1px solid var(--detached_bordercolor)
+	position absolute
+	bottom calc(0.9 * 3em)
+	left 0
 
-.is_expanded
-	height 300px
+	:global(.components-resizable-box__handle)
+		display block // This is necessary for WP 5.4. TODO: Check
+
+	:global(.components-resizable-box__handle):after
+		background-color var(--primary_color)
+
+.resize_content
+	position absolute
+	top 0
+	bottom 0
+	left 0
+	right 0
+	display flex
+	align-items center
+	justify-content center
+
+	span
+		padding 2em
 
 :global(#block-navigation-detached)
 	position fixed

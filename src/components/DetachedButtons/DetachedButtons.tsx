@@ -23,6 +23,7 @@ export const DetachedButtons: FunctionComponent = () => {
 	const {
 		detach,
 		resetDetach,
+		resetDetachedSize,
 		expandDetached,
 		collapseDetached,
 	} = useDispatch(store_slug);
@@ -32,6 +33,9 @@ export const DetachedButtons: FunctionComponent = () => {
 	const close = () => {
 		if (is_detached) {
 			resetDetach();
+			// If the user clicks the close button,
+			// reset the size of the detached list.
+			resetDetachedSize();
 		} else {
 			detach();
 			openGeneralSidebar("edit-post/block");

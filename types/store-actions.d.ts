@@ -10,6 +10,7 @@ interface ActionCreators {
 	resetMoving: ActionCreator<"RESET_MOVING">;
 	detach: ActionCreator<"DETACH">;
 	resetDetach: ActionCreator<"RESET_DETACH">;
+	resetDetachedSize: ActionCreator<"RESET_DETACHED_SIZE">;
 	setDetachedSize: ActionCreator<"SET_DETACHED_SIZE", State["detached_size"]>;
 	setMovingBlock: ActionCreator<"SET_MOVING_BLOCK", State["moving_block"]>;
 	setMovingType: ActionCreator<"SET_MOVING_TYPE", State["moving_type"]>;

@@ -49,6 +49,13 @@ export const reducer = (state = initial_state, action: Actions): State => {
 			};
 		}
 
+		case "RESET_DETACHED_SIZE": {
+			return {
+				...state,
+				detached_size: initial_state.detached_size,
+			};
+		}
+
 		case "DETACH": {
 			return {
 				...state,

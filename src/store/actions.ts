@@ -26,6 +26,10 @@ export const actions: ActionCreators = {
 		type: "RESET_DETACH",
 	}),
 
+	resetDetachedSize: () => ({
+		type: "RESET_DETACHED_SIZE",
+	}),
+
 	expandDetached: () => ({
 		type: "EXPAND_DETACHED",
 	}),

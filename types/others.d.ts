@@ -13,15 +13,18 @@ interface ComponentProps {
 	children?: import("react").ReactNode;
 }
 
-type DropArea = {
+interface DropArea {
 	id: BlockId;
 	level: number;
-};
+}
 
 type ValueOf<T> = T[keyof T];
 
 // CSS modules
-declare module "*.styl";
+declare module "*.styl" {
+	const styles: { [className: string]: string };
+	export default styles;
+}
 
 type Icon =
 	| "detach"

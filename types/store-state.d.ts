@@ -1,4 +1,4 @@
-type State = {
+interface State {
 	view: "navigation" | "settings";
 	moving_type: null | "by_click" | "by_drag";
 	moving_block: null | {
@@ -14,4 +14,4 @@ type State = {
 	is_detached: boolean;
 	detached_is_expanded: boolean;
 	detached_size: { width: number; height: number };
-};
+}

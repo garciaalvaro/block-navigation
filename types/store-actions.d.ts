@@ -2,7 +2,7 @@ type ActionCreator<T, P = void> = (
 	payload: P
 ) => P extends void ? { type: T } : { type: T; payload: P };
 
-type ActionCreators = {
+interface ActionCreators {
 	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
 	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;
 	collapseDetached: ActionCreator<"COLLAPSE_DETACHED">;
@@ -15,6 +15,6 @@ type ActionCreators = {
 	setMovingType: ActionCreator<"SET_MOVING_TYPE", State["moving_type"]>;
 	setView: ActionCreator<"SET_VIEW", State["view"]>;
 	setColorScheme: ActionCreator<"SET_COLOR_SCHEME", State["color_scheme"]>;
-};
+}
 
 type Actions = ReturnType<ValueOf<ActionCreators>>;

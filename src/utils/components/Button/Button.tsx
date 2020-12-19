@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from "react";
 
 import styles from "./Button.styl";
-import { className as classNameUtil } from "@/utils/tools/className";
+import { className as classNameUtil } from "@/utils/tools";
+import { Icon } from "../Icon";
 
 interface Props {
 	type?: "text" | "icon";
@@ -11,7 +12,7 @@ interface Props {
 }
 
 export const Button: FunctionComponent<Props> = props => {
-	const { children, className, type, onClick } = props;
+	const { children, className, icon, type, onClick } = props;
 
 	return (
 		<button
@@ -23,6 +24,8 @@ export const Button: FunctionComponent<Props> = props => {
 				...(Array.isArray(className) ? className : [className]),
 			])}
 		>
+			{icon && <Icon icon={icon} />}
+
 			{children}
 		</button>
 	);

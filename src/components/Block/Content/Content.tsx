@@ -4,7 +4,6 @@ import { useRef } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
 import styles from "./Content.styl";
-import { Icon } from "@/utils/components/Icon";
 import { Button } from "@/utils/components/Button";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
@@ -154,9 +153,8 @@ export const Content: FunctionComponent<Props> = props => {
 						type="icon"
 						className={styles.button}
 						onClick={toggleBlock}
-					>
-						<Icon icon={is_expanded ? "collapse" : "expand"} />
-					</Button>
+						icon={is_expanded ? "collapse" : "expand"}
+					/>
 				)}
 
 				<Menu

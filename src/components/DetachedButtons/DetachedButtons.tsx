@@ -5,7 +5,6 @@ import { __ } from "@wordpress/i18n";
 import styles from "./DetachedButtons.styl";
 import styles_color from "@/utils/css/color.styl";
 import { Button } from "@/utils/components/Button";
-import { Icon } from "@/utils/components/Icon";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 
@@ -52,16 +51,20 @@ export const DetachedButtons: FunctionComponent = () => {
 				styles_color[color_name],
 			])}
 		>
-			<Button className={styles.button} onClick={close}>
-				<Icon icon={is_detached ? "close" : "detach"} />
-
+			<Button
+				className={styles.button}
+				onClick={close}
+				icon={is_detached ? "close" : "detach"}
+			>
 				<span>{is_detached ? __("Close") : __("Detach")}</span>
 			</Button>
 
 			{is_detached && (
-				<Button className={styles.button} onClick={toggle}>
-					<Icon icon={is_expanded ? "expand" : "collapse"} />
-
+				<Button
+					className={styles.button}
+					onClick={toggle}
+					icon={is_expanded ? "expand" : "collapse"}
+				>
 					<span>{is_expanded ? __("Collapse") : __("Expand")}</span>
 				</Button>
 			)}

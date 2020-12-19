@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
-import { Fragment } from "@wordpress/element";
 import { Popover, ArrowContainer } from "react-tiny-popover";
 
 import styles from "./Menu.styl";
@@ -9,7 +8,6 @@ import { store_slug } from "@/utils/data";
 import { className } from "@/utils/tools";
 import { useToggle } from "@/utils/hooks";
 import { Button } from "@/utils/components/Button";
-import { Icon } from "@/utils/components/Icon";
 import { ButtonEdit } from "./ButtonEdit";
 import { ButtonMoveTo } from "./ButtonMoveTo";
 import { ButtonsMove } from "./ButtonsMove";
@@ -69,9 +67,12 @@ export const Menu: FunctionComponent<Props> = props => {
 			)}
 		>
 			<div className={styles.button_container}>
-				<Button type="icon" onClick={toggle} className={styles.button}>
-					<Icon icon="menu" />
-				</Button>
+				<Button
+					type="icon"
+					onClick={toggle}
+					className={styles.button}
+					icon="menu"
+				/>
 			</div>
 		</Popover>
 	);

@@ -18,4 +18,4 @@ interface ActionCreators {
 	setColorScheme: ActionCreator<"SET_COLOR_SCHEME", State["color_scheme"]>;
 }
 
-type Actions = ReturnType<ValueOf<ActionCreators>>;
+type Action = ReturnType<ValueOf<ActionCreators>>;

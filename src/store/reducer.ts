@@ -9,7 +9,11 @@ const initial_state: State = {
 	detached_size: { width: 240, height: 400 },
 };
 
-export const reducer = (state = initial_state, action: Actions): State => {
+interface Reducer {
+	(state: State | undefined, action: Action): State;
+}
+
+export const reducer: Reducer = (state = initial_state, action) => {
 	switch (action.type) {
 		case "COLLAPSE_BLOCK": {
 			return {

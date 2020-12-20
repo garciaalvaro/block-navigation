@@ -7,7 +7,7 @@ import styles_color from "@/utils/css/color.styl";
 import { store_slug } from "@/utils/data";
 import { className } from "@/utils/tools";
 import { useToggle } from "@/utils/hooks";
-import { Button } from "@/utils/components/Button";
+import { Button } from "@/utils/components";
 import { ButtonEdit } from "./ButtonEdit";
 import { ButtonMoveTo } from "./ButtonMoveTo";
 import { ButtonsMove } from "./ButtonsMove";

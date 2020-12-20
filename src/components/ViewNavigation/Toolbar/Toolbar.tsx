@@ -5,7 +5,7 @@ import { useDispatch, useSelect } from "@wordpress/data";
 import styles from "./Toolbar.styl";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
-import { Button } from "@/utils/components/Button";
+import { Button } from "@/utils/components";
 import { Title as BlockTitle } from "@/components/Block/Title";
 
 export const Toolbar: FunctionComponent = () => {

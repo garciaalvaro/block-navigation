@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useSelect, useDispatch } from "@wordpress/data";
 
 import styles from "./Tab.styl";
-import { Button } from "@/utils/components/Button";
+import { Button } from "@/utils/components";
 import { store_slug } from "@/utils/data";
 
 interface Props {

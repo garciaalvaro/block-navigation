@@ -4,7 +4,7 @@ import { useRef } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
 import styles from "./Content.styl";
-import { Button } from "@/utils/components/Button";
+import { Button } from "@/utils/components";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 import { Header } from "../Header";

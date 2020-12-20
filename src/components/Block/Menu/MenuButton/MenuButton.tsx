@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 import styles from "./MenuButton.styl";
-import { Button } from "@/utils/components/Button";
-import { Icon } from "@/utils/components/Icon";
+import { Button, Icon } from "@/utils/components";
 
 interface Props {
 	onClick: () => void;

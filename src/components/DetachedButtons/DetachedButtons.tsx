@@ -4,7 +4,7 @@ import { __ } from "@wordpress/i18n";
 
 import styles from "./DetachedButtons.styl";
 import styles_color from "@/utils/css/color.styl";
-import { Button } from "@/utils/components/Button";
+import { Button } from "@/utils/components";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 

@@ -6,10 +6,11 @@ type BlockContentInfo = Record<
 >;
 
 export const blocks_content_info: BlockContentInfo = {
-	...applyFilters<BlockContentInfo>(
+	...(applyFilters(
 		"blockNavigation.addBlockContentAttributePath",
 		{}
-	),
+	) as BlockContentInfo),
+
 	"melonpan-block/images": { type: "image", path: ["images"] },
 	"core/gallery": { type: "image", path: ["images"] },
 	"core/media-text": { type: "image", path: ["mediaUrl"] },

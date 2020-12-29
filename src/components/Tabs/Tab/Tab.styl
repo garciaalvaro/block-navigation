@@ -10,7 +10,7 @@
 	display flex
 	align-items center
 	justify-content center
-	transition background-color .05s $e_deceleration
+	transition background-color .05s var(--e_deceleration)
 	letter-spacing .02em
 
 	button&
@@ -19,7 +19,7 @@
 	button&:hover
 		background-color var(--tab_bgcolor)
 		margin-bottom 1px
-		transition background-color .1s $e_deceleration
+		transition background-color .1s var(--e_deceleration)
 
 	button&.is_active
 		margin-bottom -1px

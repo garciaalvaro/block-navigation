@@ -31,7 +31,7 @@
 		background-color var(--primary_color)
 
 	.moving &
-		transition transform .3s .05s $e_deceleration
+		transition transform .3s .05s var(--e_deceleration)
 		pointer-events none
 
 	.moving.can_receive_drop.no-moving_is_over &:after
@@ -55,7 +55,7 @@
 	&:after
 		height 1px
 		border-top 1px dashed transparent
-		transition border-color .1s $e_deceleration
+		transition border-color .1s var(--e_deceleration)
 
 .button
 	position relative

@@ -75,20 +75,7 @@ module.exports = (env, { mode }) => {
 				},
 			},
 
-			{
-				loader: "stylus-loader",
-				options: {
-					stylusOptions: {
-						use: "nib",
-						import: [
-							path.resolve(
-								__dirname,
-								"src/utils/css/variables.styl"
-							),
-						],
-					},
-				},
-			},
+			"stylus-loader",
 		],
 	});
 

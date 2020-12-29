@@ -18,7 +18,7 @@ export const MenuButton: FunctionComponent<Props> = props => {
 		<Button
 			className={[
 				className,
-				styles.container,
+				styles.button,
 				is_disabled ? styles.is_disabled : null,
 			]}
 			onClick={onClick}

@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import copy from "copy-text-to-clipboard";
 
+import styles from "./ButtonCopyId.styl";
 import { MenuButton } from "../MenuButton";
 
 interface Props {
@@ -19,6 +20,7 @@ export const ButtonCopyId: FunctionComponent<Props> = props => {
 
 	return (
 		<MenuButton
+			className={styles.button}
 			onClick={onClick}
 			icon="copy"
 			label={__("Copy Block clientId")}

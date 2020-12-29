@@ -3,18 +3,17 @@
  */
 
 .container
-	background-color var(--primary_color)
 	color var(--color_over_primary_color)
+	position relative
 
-	div&
-		border-radius 0
-		padding 2em 1.2em
-		padding-top 1.5em
-
-	&&& label
-		font-weight 500
-		margin-bottom 1em
-		color inherit
+	&:before
+		content ""
+		position absolute
+		top 0
+		bottom 0
+		left 0
+		right 0
+		background-color var(--primary_color)
 
 	select
 

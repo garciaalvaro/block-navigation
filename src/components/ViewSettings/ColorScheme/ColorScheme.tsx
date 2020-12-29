@@ -14,12 +14,13 @@ export const ColorScheme: FunctionComponent = () => {
 	const { setColorScheme } = useDispatch(store_slug);
 
 	return (
-		<SelectControl
-			className={styles.container}
-			label={__("Color scheme:")}
-			value={color_scheme}
-			onChange={(selected: string) => setColorScheme(selected)}
-			options={color_schemes}
-		/>
+		<div className={styles.container}>
+			<SelectControl
+				label={__("Color scheme:")}
+				value={color_scheme}
+				onChange={(selected: string) => setColorScheme(selected)}
+				options={color_schemes}
+			/>
+		</div>
 	);
 };

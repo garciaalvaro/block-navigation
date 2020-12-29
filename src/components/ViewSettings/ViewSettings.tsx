@@ -1,15 +1,18 @@
 import React, { FunctionComponent } from "react";
-import { Fragment } from "@wordpress/element";
 
+import styles from "./ViewSettings.styl";
 import { PluginInfo } from "./PluginInfo";
 import { ColorScheme } from "./ColorScheme";
+import { DevMode } from "./DevMode";
 
 export const ViewSettings: FunctionComponent = () => {
 	return (
-		<Fragment>
+		<div className={styles.container}>
 			<PluginInfo />
 
 			<ColorScheme />
-		</Fragment>
+
+			<DevMode />
+		</div>
 	);
 };

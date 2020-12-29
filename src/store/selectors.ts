@@ -15,5 +15,7 @@ export const selectors: Selectors<State> = {
 
 	isDetached: state => state.is_detached,
 
+	isDev: state => state.is_dev,
+
 	isExpanded: (state, id) => !state.blocks_collapsed.includes(id),
 };

@@ -38,6 +38,11 @@ export const actions: ActionCreators = {
 		type: "COLLAPSE_DETACHED",
 	}),
 
+	setDev: payload => ({
+		type: "SET_DEV",
+		payload,
+	}),
+
 	setMovingBlock: payload => ({
 		type: "SET_MOVING_BLOCK",
 		payload,

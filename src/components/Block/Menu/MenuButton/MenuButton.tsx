@@ -8,14 +8,16 @@ interface Props {
 	icon: Icon;
 	label: string;
 	is_disabled?: boolean;
+	className?: string;
 }
 
 export const MenuButton: FunctionComponent<Props> = props => {
-	const { onClick, icon, label, is_disabled } = props;
+	const { className, onClick, icon, label, is_disabled } = props;
 
 	return (
 		<Button
 			className={[
+				className,
 				styles.container,
 				is_disabled ? styles.is_disabled : null,
 			]}

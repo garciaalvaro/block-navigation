@@ -29,6 +29,8 @@ export const Menu: FunctionComponent<Props> = props => {
 		select(store_slug).getColorScheme()
 	);
 
+	const is_dev = useSelect(select => select(store_slug).isDev());
+
 	const [color_type, color_name] = color_scheme.split("-");
 
 	return (
@@ -53,15 +55,22 @@ export const Menu: FunctionComponent<Props> = props => {
 						])}
 					>
 						<ButtonEdit closeMenu={close} id={id} />
+
 						<ButtonMoveTo
 							closeMenu={close}
 							id={id}
 							setMovingBlock={setMovingBlock}
 						/>
+
 						<ButtonsMove closeMenu={close} id={id} />
+
 						<ButtonRemove closeMenu={close} id={id} />
-						<ButtonCopyId closeMenu={close} id={id} />
-						<ButtonBlockData closeMenu={close} id={id} />
+
+						{is_dev && <ButtonCopyId closeMenu={close} id={id} />}
+
+						{is_dev && (
+							<ButtonBlockData closeMenu={close} id={id} />
+						)}
 					</div>
 				</ArrowContainer>
 			)}

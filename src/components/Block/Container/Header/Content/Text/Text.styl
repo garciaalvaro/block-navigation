@@ -2,6 +2,10 @@
  * Block - Container - Header - Content - Text
  */
 
-.container:before
-	content "|"
-	margin 0 .7em
+.container
+	text-overflow ellipsis
+	overflow hidden
+
+	&:before
+		content "|"
+		margin 0 .7em

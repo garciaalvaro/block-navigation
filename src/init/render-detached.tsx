@@ -9,13 +9,18 @@ import { AppDetached } from "@/components/App";
 const $container = document.createElement("div");
 $container.id = "block-navigation-detached";
 
+// Use a counter to set a unique key so if the container is
+// removed and after re-rendered, a new instance is created.
+let app_detached_key = 0;
+
 const renderDetached = () => {
 	document.body.appendChild($container);
 
-	render(<AppDetached />, $container);
+	render(<AppDetached key={app_detached_key} />, $container);
 };
 
 const removeDetached = () => {
+	app_detached_key++;
 	$container.parentNode?.removeChild($container);
 };
 

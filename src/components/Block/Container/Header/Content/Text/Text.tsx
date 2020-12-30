@@ -26,10 +26,10 @@ const getText = (content_raw: string) => {
 
 export const Text: FunctionComponent<Props> = props => {
 	const { content_raw } = props;
-	const [content, setContent] = useState(getText(content_raw));
+	const [content, setContent] = useState(getText(content_raw).slice(0, 100));
 
 	useEffect(() => {
-		setContent(getText(content_raw));
+		setContent(getText(content_raw).slice(0, 100));
 	}, [content_raw]);
 
 	if (!content) {

@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { useState, useEffect } from "@wordpress/element";
 
-import styles from "./Body.styl";
-import { className } from "@/utils/tools";
+import styles from "./Images.styl";
 
 interface Props {
 	content_raw: { url: string }[] | string;
@@ -25,7 +24,7 @@ export const Images: FunctionComponent<Props> = props => {
 	}
 
 	return (
-		<div className={className([styles.container, styles["type-image"]])}>
+		<div className={styles.container}>
 			{content.map((url, index) => (
 				<div key={index} className={styles.image_container}>
 					<img className={styles.image} src={url} />

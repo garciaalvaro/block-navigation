@@ -2,8 +2,7 @@ import React, { FunctionComponent } from "react";
 import { useState, useEffect } from "@wordpress/element";
 import { create, getTextContent } from "@wordpress/rich-text";
 
-import styles from "./Body.styl";
-import { className } from "@/utils/tools";
+import styles from "./Text.styl";
 
 interface Props {
 	content_raw: string;
@@ -37,9 +36,5 @@ export const Text: FunctionComponent<Props> = props => {
 		return null;
 	}
 
-	return (
-		<span className={className([styles.container, styles["type-text"]])}>
-			{content}
-		</span>
-	);
+	return <span className={styles.container}>{content}</span>;
 };

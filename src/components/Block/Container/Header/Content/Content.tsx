@@ -37,9 +37,10 @@ export const Content: FunctionComponent<Props> = props => {
 			return;
 		}
 
-		const content = get(attributes, blocks_content[name].path);
+		const { path, type } = blocks_content[name];
+		const content = get(attributes, path);
 
-		if (content === undefined) {
+		if (!content) {
 			setContent(null);
 			setContentType(null);
 
@@ -47,7 +48,7 @@ export const Content: FunctionComponent<Props> = props => {
 		}
 
 		setContent(content);
-		setContentType(blocks_content[name].type);
+		setContentType(type);
 	}, [name, attributes]);
 
 	if (!content_type) {

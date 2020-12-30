@@ -3,7 +3,7 @@ import { get } from "lodash";
 import { useState, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
-import { blocks_content_info } from "@/utils/data";
+import { blocks_content } from "@/utils/data";
 import { Images } from "./Images";
 import { Text } from "./Text";
 
@@ -30,14 +30,14 @@ export const Body: FunctionComponent<Props> = props => {
 		) || {};
 
 	useEffect(() => {
-		if (!blocks_content_info[name]) {
+		if (!blocks_content[name]) {
 			setContent(null);
 			setContentType(null);
 
 			return;
 		}
 
-		const content = get(attributes, blocks_content_info[name].path);
+		const content = get(attributes, blocks_content[name].path);
 
 		if (content === undefined) {
 			setContent(null);
@@ -47,7 +47,7 @@ export const Body: FunctionComponent<Props> = props => {
 		}
 
 		setContent(content);
-		setContentType(blocks_content_info[name].type);
+		setContentType(blocks_content[name].type);
 	}, [name, attributes]);
 
 	if (!content_type) {

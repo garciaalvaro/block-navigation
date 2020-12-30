@@ -37,3 +37,10 @@ type Icon =
 	| "expand"
 	| "menu"
 	| "move";
+
+interface BlockContent {
+	type: "text" | "image";
+	path: string[];
+}
+
+type BlocksContent = Record<string, BlockContent>;

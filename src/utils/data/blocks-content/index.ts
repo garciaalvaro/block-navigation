@@ -1,6 +1,7 @@
 import { applyFilters } from "@wordpress/hooks";
 
 import "./core";
+import "./genesis";
 import "./kadence";
 import "./melonpan";
 

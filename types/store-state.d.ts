@@ -13,6 +13,7 @@ interface State {
 	blocks_collapsed: BlockId[];
 	is_detached: boolean;
 	is_dev: boolean;
+	block_info_displayed: "title_content" | "title" | "content";
 	detached_position: "left" | "right";
 	detached_is_expanded: boolean;
 	detached_size: { width: number; height: number };

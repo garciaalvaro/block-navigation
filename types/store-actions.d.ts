@@ -8,6 +8,10 @@ interface ActionCreators {
 	collapseDetached: ActionCreator<"COLLAPSE_DETACHED">;
 	expandDetached: ActionCreator<"EXPAND_DETACHED">;
 	resetMoving: ActionCreator<"RESET_MOVING">;
+	setBlockInfoDisplayed: ActionCreator<
+		"SET_BLOCK_INFO_DISPLAYED",
+		State["block_info_displayed"]
+	>;
 	detach: ActionCreator<"DETACH">;
 	resetDetach: ActionCreator<"RESET_DETACH">;
 	resetDetachedSize: ActionCreator<"RESET_DETACHED_SIZE">;

@@ -5,7 +5,7 @@ import { RadioControl } from "@wordpress/components";
 
 import { store_slug } from "@/utils/data";
 
-const options = [
+const options: { value: State["detached_position"]; label: string }[] = [
 	{ value: "left", label: "Left" },
 	{ value: "right", label: "Right" },
 ];

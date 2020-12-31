@@ -16,4 +16,5 @@ interface Selectors<S = void> {
 	isExpanded: S extends void
 		? (id: BlockId) => boolean
 		: (state: S, id: BlockId) => boolean;
+	getBlockInfoDisplayed: Selector<"block_info_displayed", S>;
 }

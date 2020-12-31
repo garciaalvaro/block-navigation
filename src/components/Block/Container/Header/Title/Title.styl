@@ -18,6 +18,14 @@
 	overflow hidden
 	text-overflow ellipsis
 
+	&.block_info_displayed-content
+		display none
+
+		// If there is no content for a block
+		// display the title instead.
+		&:last-child
+			display block
+
 .icon
 	margin-right .7em
 

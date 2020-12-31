@@ -18,5 +18,6 @@ export const store = registerStore<State>(store_slug, {
 		"detached_size",
 		"detached_position",
 		"is_dev",
+		"block_info_displayed",
 	],
 });

@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 
 import styles from "./ViewSettings.styl";
 import { PluginInfo } from "./PluginInfo";
+import { BlockInfoDisplayed } from "./BlockInfoDisplayed";
 import { ColorScheme } from "./ColorScheme";
 import { DetachedPosition } from "./DetachedPosition";
 import { DevMode } from "./DevMode";
@@ -25,6 +26,8 @@ export const ViewSettings: FunctionComponent<Props> = props => {
 			<ColorScheme />
 
 			<DetachedPosition />
+
+			<BlockInfoDisplayed />
 
 			<DevMode />
 		</div>

@@ -4,6 +4,8 @@ import { Icon as WpIcon } from "@wordpress/components";
 import { Fragment } from "@wordpress/element";
 
 import styles from "./Title.styl";
+import { store_slug } from "@/utils/data";
+import { className } from "@/utils/tools";
 
 interface Props {
 	id: BlockId;
@@ -19,6 +21,10 @@ export const Title: FunctionComponent<Props> = props => {
 		select("core/blocks").getBlockType(name)
 	);
 
+	const block_info_displayed = useSelect(select =>
+		select(store_slug).getBlockInfoDisplayed()
+	);
+
 	const title = block_type?.title || name;
 
 	const icon = block_type?.icon.src;
@@ -31,7 +37,14 @@ export const Title: FunctionComponent<Props> = props => {
 				</div>
 			)}
 
-			<span className={styles.title}>{title}</span>
+			<span
+				className={className([
+					styles.title,
+					styles[`block_info_displayed-${block_info_displayed}`],
+				])}
+			>
+				{title}
+			</span>
 		</Fragment>
 	);
 };

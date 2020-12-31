@@ -30,6 +30,10 @@ export const Header: FunctionComponent<Props> = props => {
 
 	const is_detached = useSelect(select => select(store_slug).isDetached());
 
+	const block_info_displayed = useSelect(select =>
+		select(store_slug).getBlockInfoDisplayed()
+	);
+
 	const { selectBlock } = useDispatch("core/block-editor");
 
 	return (
@@ -51,7 +55,8 @@ export const Header: FunctionComponent<Props> = props => {
 			<div className={styles.content}>
 				<Title id={id} />
 
-				<Content id={id} />
+				{(block_info_displayed === "title_content" ||
+					block_info_displayed === "content") && <Content id={id} />}
 			</div>
 		</div>
 	);

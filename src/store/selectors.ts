@@ -20,4 +20,6 @@ export const selectors: Selectors<State> = {
 	isDev: state => state.is_dev,
 
 	isExpanded: (state, id) => !state.blocks_collapsed.includes(id),
+
+	getBlockInfoDisplayed: state => state.block_info_displayed,
 };

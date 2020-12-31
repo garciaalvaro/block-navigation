@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { useSelect, useDispatch } from "@wordpress/data";
-import { useEffect, useState, Fragment, useRef } from "@wordpress/element";
+import { useEffect, useState, useRef } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { ResizableBox } from "@wordpress/components";
 

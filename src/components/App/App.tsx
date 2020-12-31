@@ -87,7 +87,7 @@ export const App: FunctionComponent = () => {
 					}
 				/>
 			) : (
-				<ViewSettings />
+				<ViewSettings container_height={height} />
 			)}
 
 			{!is_mobile && <DetachedButtons />}

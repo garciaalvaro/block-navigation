@@ -21,6 +21,10 @@ export const AppDetached: FunctionComponent = () => {
 
 	const detached_size_ref = useRef(detached_size);
 
+	const detached_position = useSelect(select =>
+		select(store_slug).getDetachedPosition()
+	);
+
 	const is_expanded = useSelect(select =>
 		select(store_slug).detachedIsExpanded()
 	);
@@ -63,7 +67,12 @@ export const AppDetached: FunctionComponent = () => {
 	}, [window_height, window_width]);
 
 	return (
-		<Fragment>
+		<div
+			className={className([
+				styles.detached_container,
+				styles[detached_position],
+			])}
+		>
 			{is_expanded && (
 				<ResizableBox
 					className={className([
@@ -80,7 +89,10 @@ export const AppDetached: FunctionComponent = () => {
 					minWidth="150"
 					maxHeight={detached_max_size.height}
 					maxWidth={detached_max_size.width}
-					enable={{ topRight: true }}
+					enable={{
+						topLeft: detached_position === "right",
+						topRight: detached_position === "left",
+					}}
 					onResizeStart={() => {
 						detached_size_ref.current = detached_size;
 						setIsDragging(true);
@@ -117,6 +129,6 @@ export const AppDetached: FunctionComponent = () => {
 			)}
 
 			<DetachedButtons />
-		</Fragment>
+		</div>
 	);
 };

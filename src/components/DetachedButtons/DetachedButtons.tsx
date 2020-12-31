@@ -15,6 +15,10 @@ export const DetachedButtons: FunctionComponent = () => {
 		select(store_slug).detachedIsExpanded()
 	);
 
+	const detached_position = useSelect(select =>
+		select(store_slug).getDetachedPosition()
+	);
+
 	const [color_type, color_name] = useSelect(select =>
 		select(store_slug).getColorScheme()
 	).split("-");
@@ -47,6 +51,7 @@ export const DetachedButtons: FunctionComponent = () => {
 		<div
 			className={className([
 				styles.container,
+				...(is_detached ? [styles[detached_position]] : []),
 				styles_color[color_type],
 				styles_color[color_name],
 			])}

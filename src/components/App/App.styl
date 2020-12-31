@@ -40,11 +40,16 @@
 		padding 2em
 
 :global(#block-navigation-detached)
-	position fixed
-	bottom 0
-	left 0
-	width 240px
-	z-index 99999
 
 	*
 		box-sizing border-box
+
+.detached_container
+	position fixed
+	bottom 0
+	left 0
+	z-index 99999
+
+	&.right
+		left auto
+		right 0

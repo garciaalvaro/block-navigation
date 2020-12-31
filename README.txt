@@ -75,6 +75,13 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 3.3.0 =
+* Added "Detached position" setting
+* Added "Block info displayed" setting
+* Added "Developer mode" setting
+* Extended the list of blocks that display content
+* CSS and JS small fixes and improvements
+
 = 3.2.0 =
 * Added detach mode
 * Added WordPress admin color scheme

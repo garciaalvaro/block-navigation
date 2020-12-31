@@ -1,0 +1,32 @@
+/**
+ * Block - Container - Menu
+ */
+
+.menu
+	background-color var(--background_color)
+	border 1px solid var(--menu_bordercolor)
+	color var(--color)
+	fill var(--svg_color)
+	padding 5px 0
+	max-width 300px
+
+.button
+	position relative
+	transition opacity .1s .1s var(--e_deceleration)
+
+	&::selection
+		background-color transparent
+
+	.is_moving &
+	.ancestor_is_moving &
+		opacity .3
+
+.button_container
+	margin-left auto
+	display flex
+	align-items center
+	min-width 24px
+
+.popover
+	min-width 200px
+	z-index 999999

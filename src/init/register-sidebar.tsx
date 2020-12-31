@@ -8,9 +8,7 @@ import { App } from "@/components/App";
 import { Logo } from "@/components/Logo";
 
 registerPlugin(plugin_namespace, {
-	// Wp 5.3 doesnt accept passing the component directly (icon: Logo)
-	// @ts-expect-error TODO: Check and fix
-	icon: <Logo />,
+	icon: () => <Logo />,
 
 	render: () => (
 		<Fragment>

@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@wordpress/element";
+import { render, unmountComponentAtNode } from "@wordpress/element";
 import { select } from "@wordpress/data";
 
 import { store } from "./register-store";
@@ -16,7 +16,7 @@ const renderDetached = () => {
 };
 
 const removeDetached = () => {
-	$container.parentNode?.removeChild($container);
+	unmountComponentAtNode($container);
 };
 
 let is_detached = select(store_slug).isDetached();

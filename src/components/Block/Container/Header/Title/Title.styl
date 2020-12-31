@@ -1,0 +1,36 @@
+/**
+ * Block - Container - Header - Title
+ */
+
+.icon
+.title
+	transition opacity .1s .1s var(--e_deceleration)
+
+	&::selection
+		background-color transparent
+
+	.is_moving &
+	.ancestor_is_moving &
+		opacity .3
+
+.title
+	flex-shrink 1
+	overflow hidden
+	text-overflow ellipsis
+	min-width 3em
+
+	&.block_info_displayed-content
+		display none
+
+		// If there is no content for a block
+		// display the title instead.
+		&:last-child
+			display block
+
+.icon
+	margin-right .7em
+
+	svg
+		display block
+		width 23px
+		width 23px

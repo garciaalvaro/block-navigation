@@ -13,6 +13,16 @@ export const actions: ActionCreators = {
 		type: "RESET_MOVING",
 	}),
 
+	setBlockInfoDisplayed: payload => ({
+		type: "SET_BLOCK_INFO_DISPLAYED",
+		payload,
+	}),
+
+	setDetachedPosition: payload => ({
+		type: "SET_DETACHED_POSITION",
+		payload,
+	}),
+
 	setDetachedSize: payload => ({
 		type: "SET_DETACHED_SIZE",
 		payload,
@@ -26,12 +36,21 @@ export const actions: ActionCreators = {
 		type: "RESET_DETACH",
 	}),
 
+	resetDetachedSize: () => ({
+		type: "RESET_DETACHED_SIZE",
+	}),
+
 	expandDetached: () => ({
 		type: "EXPAND_DETACHED",
 	}),
 
 	collapseDetached: () => ({
 		type: "COLLAPSE_DETACHED",
+	}),
+
+	setDev: payload => ({
+		type: "SET_DEV",
+		payload,
 	}),
 
 	setMovingBlock: payload => ({

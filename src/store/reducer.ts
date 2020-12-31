@@ -5,11 +5,18 @@ const initial_state: State = {
 	moving_block: null,
 	blocks_collapsed: [],
 	is_detached: false,
+	is_dev: false,
+	block_info_displayed: "title_content",
+	detached_position: "left",
 	detached_is_expanded: false,
 	detached_size: { width: 240, height: 400 },
 };
 
-export const reducer = (state = initial_state, action: Actions): State => {
+interface Reducer {
+	(state: State | undefined, action: Action): State;
+}
+
+export const reducer: Reducer = (state = initial_state, action) => {
 	switch (action.type) {
 		case "COLLAPSE_BLOCK": {
 			return {
@@ -42,10 +49,31 @@ export const reducer = (state = initial_state, action: Actions): State => {
 			};
 		}
 
+		case "SET_BLOCK_INFO_DISPLAYED": {
+			return {
+				...state,
+				block_info_displayed: action.payload,
+			};
+		}
+
+		case "SET_DETACHED_POSITION": {
+			return {
+				...state,
+				detached_position: action.payload,
+			};
+		}
+
 		case "SET_DETACHED_SIZE": {
 			return {
 				...state,
 				detached_size: action.payload,
+			};
+		}
+
+		case "RESET_DETACHED_SIZE": {
+			return {
+				...state,
+				detached_size: initial_state.detached_size,
 			};
 		}
 
@@ -77,6 +105,13 @@ export const reducer = (state = initial_state, action: Actions): State => {
 			return {
 				...state,
 				detached_is_expanded: true,
+			};
+		}
+
+		case "SET_DEV": {
+			return {
+				...state,
+				is_dev: action.payload,
 			};
 		}
 

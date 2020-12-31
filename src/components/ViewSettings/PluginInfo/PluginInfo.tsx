@@ -15,9 +15,9 @@ export const PluginInfo: FunctionComponent = () => {
 			<div className={styles.info}>
 				<h3 className={styles.name}>{plugin_title}</h3>
 
-				<span className={styles.description}>
+				<p className={styles.description}>
 					{__("Block Navigation panel with useful features.")}
-				</span>
+				</p>
 			</div>
 		</div>
 	);

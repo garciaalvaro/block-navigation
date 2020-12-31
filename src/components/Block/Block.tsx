@@ -3,7 +3,7 @@ import { Fragment } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
 import { DropAreas } from "./DropAreas";
-import { Content } from "./Content";
+import { Container } from "./Container";
 import { useDropAreas, useAncestorsId } from "./utils";
 
 interface Props {
@@ -32,7 +32,7 @@ export const Block: FunctionComponent<Props> = props => {
 
 	return (
 		<Fragment>
-			<Content
+			<Container
 				id={id}
 				index_global={index_global}
 				drop_areas={drop_areas}

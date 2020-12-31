@@ -1,6 +1,6 @@
 import { __ } from "@wordpress/i18n";
 
-type ColorScheme = {
+interface ColorScheme {
 	value: string;
 	label: string;
 	type: "light" | "dark";
@@ -18,7 +18,7 @@ type ColorScheme = {
 		| "castana"
 		| "naranja"
 		| "ciruela";
-};
+}
 
 // For backward compatibility we use type-name as value
 export const color_schemes: ColorScheme[] = [

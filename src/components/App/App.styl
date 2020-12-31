@@ -3,6 +3,8 @@
  */
 
 .container
+	--e_standard cubic-bezier(0.4, 0.0, 0.2, 1)
+	--e_deceleration cubic-bezier(0.0, 0.0, 0.2, 1)
 	background-color var(--background_color)
 	color var(--color)
 	fill var(--svg_color)
@@ -38,11 +40,16 @@
 		padding 2em
 
 :global(#block-navigation-detached)
-	position fixed
-	bottom 0
-	left 0
-	width 240px
-	z-index 99999
 
 	*
 		box-sizing border-box
+
+.detached_container
+	position fixed
+	bottom 0
+	left 0
+	z-index 99999
+
+	&.right
+		left auto
+		right 0

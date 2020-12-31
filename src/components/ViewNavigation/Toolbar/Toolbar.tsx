@@ -5,8 +5,8 @@ import { useDispatch, useSelect } from "@wordpress/data";
 import styles from "./Toolbar.styl";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
-import { Button } from "@/utils/components/Button";
-import { Title as BlockTitle } from "@/components/Block/Title";
+import { Button } from "@/utils/components";
+import { Title } from "@/components/Block/Container/Header/Title";
 
 export const Toolbar: FunctionComponent = () => {
 	const { resetMoving } = useDispatch(store_slug);
@@ -25,7 +25,7 @@ export const Toolbar: FunctionComponent = () => {
 			})}
 		>
 			<div className={styles.block_title}>
-				{moving_block && <BlockTitle id={moving_block.id} />}
+				{moving_block && <Title id={moving_block.id} />}
 			</div>
 
 			<Button type="text" className={styles.button} onClick={resetMoving}>

@@ -1,4 +1,4 @@
-type State = {
+interface State {
 	view: "navigation" | "settings";
 	moving_type: null | "by_click" | "by_drag";
 	moving_block: null | {
@@ -12,6 +12,9 @@ type State = {
 	color_scheme: string;
 	blocks_collapsed: BlockId[];
 	is_detached: boolean;
+	is_dev: boolean;
+	block_info_displayed: "title_content" | "title" | "content";
+	detached_position: "left" | "right";
 	detached_is_expanded: boolean;
 	detached_size: { width: number; height: number };
-};
+}

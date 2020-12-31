@@ -25,7 +25,7 @@ export const BlockInfoDisplayed: FunctionComponent = () => {
 				[
 					`Select which info to display from each block.`,
 					`When "Content" is selected, if a block does not have content`,
-					`or it is not available, the block name will be displayed instead.`,
+					`or it is not available, the block title will be displayed instead.`,
 				].join(" ")
 			)}
 			selected={block_info_displayed}

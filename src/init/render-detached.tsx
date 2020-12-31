@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@wordpress/element";
+import { render, unmountComponentAtNode } from "@wordpress/element";
 import { select } from "@wordpress/data";
 
 import { store } from "./register-store";
@@ -9,19 +9,14 @@ import { AppDetached } from "@/components/App";
 const $container = document.createElement("div");
 $container.id = "block-navigation-detached";
 
-// Use a counter to set a unique key so if the container is
-// removed and after re-rendered, a new instance is created.
-let app_detached_key = 0;
-
 const renderDetached = () => {
 	document.body.appendChild($container);
 
-	render(<AppDetached key={app_detached_key} />, $container);
+	render(<AppDetached />, $container);
 };
 
 const removeDetached = () => {
-	app_detached_key++;
-	$container.parentNode?.removeChild($container);
+	unmountComponentAtNode($container);
 };
 
 let is_detached = select(store_slug).isDetached();

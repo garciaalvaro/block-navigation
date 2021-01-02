@@ -75,6 +75,9 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 3.3.1 =
+* Fixed bug in icon used to register the plugin
+
 = 3.3.0 =
 * Added "Detached position" setting
 * Added "Block info displayed" setting

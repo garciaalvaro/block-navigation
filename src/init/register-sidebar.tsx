@@ -8,7 +8,8 @@ import { App } from "@/components/App";
 import { Logo } from "@/components/Logo";
 
 registerPlugin(plugin_namespace, {
-	icon: () => <Logo />,
+	// @ts-expect-error TODO
+	icon: <Logo />,
 
 	render: () => (
 		<Fragment>

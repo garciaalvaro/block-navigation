@@ -8,7 +8,7 @@ replace.sync({
 	files: path.resolve(__dirname, `../${name}.php`),
 	from: [
 		/( \* Version: )\d+\.\d+\.\d+(-(beta|rc)(\d+)?)?/,
-		/(define.*?PLUGIN_VERSION.*?)\d+\.\d+\.\d+(-(beta|rc)(\d+)?)?/,
+		/(\$plugin_version = ")\d+\.\d+\.\d+(-(beta|rc)(\d+)?)?/,
 	],
 	to: `$1${version}`,
 });

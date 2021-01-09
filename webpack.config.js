@@ -35,7 +35,6 @@ module.exports = (env, { mode }) => {
 			react: "React",
 			"react-dom": "ReactDOM",
 			"@wordpress/components": "wp.components",
-			"@wordpress/compose": "wp.compose",
 			"@wordpress/data": "wp.data",
 			"@wordpress/edit-post": "wp.editPost",
 			"@wordpress/element": "wp.element",

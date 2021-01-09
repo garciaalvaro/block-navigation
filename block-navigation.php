@@ -41,7 +41,6 @@ function enqueue()
 		[
 			"lodash",
 			"wp-components",
-			"wp-compose",
 			"wp-data",
 			"wp-edit-post",
 			"wp-element",

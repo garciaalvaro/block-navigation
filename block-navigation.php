@@ -40,6 +40,8 @@ function enqueue()
 		$dist_dir . $plugin_name . ".js",
 		[
 			"lodash",
+			"wp-block-editor",
+			"wp-blocks",
 			"wp-components",
 			"wp-data",
 			"wp-edit-post",

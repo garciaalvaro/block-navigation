@@ -34,6 +34,8 @@ module.exports = (env, { mode }) => {
 			lodash: "lodash",
 			react: "React",
 			"react-dom": "ReactDOM",
+			"@wordpress/block-editor": "wp.blockEditor",
+			"@wordpress/blocks": "wp.blocks",
 			"@wordpress/components": "wp.components",
 			"@wordpress/data": "wp.data",
 			"@wordpress/edit-post": "wp.editPost",

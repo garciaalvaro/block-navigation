@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/block-navigation/
  * Description: Block Navigation sidebar panel for the new Block editor.
  * Author: melonpan
- * Version: 3.3.1
+ * Version: 3.3.2
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  */
@@ -16,38 +16,33 @@ if (!defined("ABSPATH")) {
 	exit();
 }
 
-if (!defined(__NAMESPACE__ . "\PLUGIN_VERSION")) {
-	define(__NAMESPACE__ . "\PLUGIN_VERSION", "3.3.1");
-}
-if (!defined(__NAMESPACE__ . "\PLUGIN_NAME")) {
-	define(__NAMESPACE__ . "\PLUGIN_NAME", "block-navigation");
-}
-if (!defined(__NAMESPACE__ . "\DIST_DIR")) {
-	define(__NAMESPACE__ . "\DIST_DIR", plugins_url("dist/", __FILE__));
-}
-
 /**
  * Enqueue the plugin styles and scripts.
  *
  * @since 1.0.0
  */
-add_action("enqueue_block_editor_assets", __NAMESPACE__ . '\enqueue');
+\add_action("enqueue_block_editor_assets", __NAMESPACE__ . '\enqueue');
 function enqueue()
 {
-	wp_enqueue_style(
-		PLUGIN_NAME,
-		DIST_DIR . PLUGIN_NAME . ".css",
+	$plugin_name = "block-navigation";
+	$plugin_version = "3.3.2";
+	$dist_dir = \plugins_url("dist/", __FILE__);
+
+	\wp_enqueue_style(
+		$plugin_name,
+		$dist_dir . $plugin_name . ".css",
 		[],
-		PLUGIN_VERSION
+		$plugin_version
 	);
 
-	wp_enqueue_script(
-		PLUGIN_NAME,
-		DIST_DIR . PLUGIN_NAME . ".js",
+	\wp_enqueue_script(
+		$plugin_name,
+		$dist_dir . $plugin_name . ".js",
 		[
 			"lodash",
+			"wp-block-editor",
+			"wp-blocks",
 			"wp-components",
-			"wp-compose",
 			"wp-data",
 			"wp-edit-post",
 			"wp-element",
@@ -56,7 +51,7 @@ function enqueue()
 			"wp-plugins",
 			"wp-rich-text",
 		],
-		PLUGIN_VERSION,
+		$plugin_version,
 		true // Enqueue in the footer.
 	);
 }

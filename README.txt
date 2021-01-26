@@ -75,6 +75,10 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 3.3.3 =
+* Fixed a style bug with Gutenberg 9.8
+* Updated dependencies
+
 = 3.3.2 =
 * Updated dependencies
 

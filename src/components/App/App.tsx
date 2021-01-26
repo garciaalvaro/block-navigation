@@ -42,6 +42,7 @@ export const App: FunctionComponent = () => {
 		$container_parent.style.display = "flex";
 		$container_parent.style.flexDirection = "column";
 		$container_parent.style.overflow = "visible";
+		$container_parent.style.height = "100%";
 
 		return () => {
 			$container.style.flexGrow = "";
@@ -49,6 +50,7 @@ export const App: FunctionComponent = () => {
 			$container_parent.style.display = "";
 			$container_parent.style.flexDirection = "";
 			$container_parent.style.overflow = "";
+			$container_parent.style.height = "";
 		};
 	}, []);
 

@@ -3,7 +3,7 @@ Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 5.5
 Tested up to: 5.6
-Stable tag: 3.3.2
+Stable tag: 3.3.3
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -74,6 +74,10 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 3.3.3 =
+* Fixed a style bug with Gutenberg 9.8
+* Updated dependencies
 
 = 3.3.2 =
 * Updated dependencies

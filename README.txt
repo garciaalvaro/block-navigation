@@ -2,7 +2,7 @@
 Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 5.5
-Tested up to: 5.6
+Tested up to: 5.7
 Stable tag: 3.3.3
 Requires PHP: 7.1
 License: GPLv3

@@ -75,6 +75,10 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 3.4.0 =
+* Fixed bug in WP 5.7, drop events not being triggered
+* Updated dependencies
+
 = 3.3.3 =
 * Fixed a style bug with Gutenberg 9.8
 * Updated dependencies

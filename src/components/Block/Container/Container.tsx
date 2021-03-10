@@ -83,7 +83,7 @@ export const Container: FunctionComponent<Props> = props => {
 	const onDrop = useDrop({
 		parent_id,
 		drop_areas,
-		$block: $block.current,
+		$block,
 	});
 
 	const toggleBlock = () =>
@@ -111,11 +111,10 @@ export const Container: FunctionComponent<Props> = props => {
 			})}
 			onDragEnter={() => setMovingIsOver(true)}
 			onDragLeave={() => setMovingIsOver(false)}
-			onDrop={event => onDrop(event.pageX)}
 			onClick={event => {
 				if (moving_type !== "by_click") return;
 
-				onDrop(event.pageX);
+				onDrop(event);
 				resetMoving();
 			}}
 		>

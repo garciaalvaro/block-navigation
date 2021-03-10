@@ -18,6 +18,8 @@ interface Props {
 export const ViewNavigation: FunctionComponent<Props> = props => {
 	const { container_height, container_width } = props;
 
+	const $root = useRef(document.querySelector("#editor > *"));
+
 	const $list = useRef(null);
 
 	const block_ids = useBlockIds();
@@ -43,8 +45,11 @@ export const ViewNavigation: FunctionComponent<Props> = props => {
 
 		if (moving_block) {
 			document.addEventListener("drop", onDropHandler);
+			// WP 5.7 seems to stop the propagation of the drop event in #editor
+			$root.current?.addEventListener("drop", onDropHandler);
 		} else {
 			document.removeEventListener("drop", onDropHandler);
+			$root.current?.removeEventListener("drop", onDropHandler);
 		}
 	}, [moving_block]);
 

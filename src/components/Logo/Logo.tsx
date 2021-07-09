@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-import styles from "./Logo.styl";
+import styles from "./logo.styl";
 
 export const Logo: FunctionComponent = () => {
 	return (

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-import styles from "./Button.styl";
+import styles from "./button.styl";
 import { Button as ButtonUtil, Icon } from "@/utils/components";
 
 interface Props {

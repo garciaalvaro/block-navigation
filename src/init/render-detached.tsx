@@ -4,7 +4,7 @@ import { select } from "@wordpress/data";
 
 import { store } from "./register-store";
 import { store_slug } from "@/utils/data";
-import { AppDetached } from "@/components/App";
+import { AppDetached } from "@/components/app";
 
 const $container = document.createElement("div");
 $container.id = "block-navigation-detached";

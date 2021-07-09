@@ -1,2 +1,2 @@
-export { useAncestorsId } from "./useAncestorsId";
-export { useDropAreas } from "./useDropAreas";
+export { useAncestorsId } from "./use-ancestors-id";
+export { useDropAreas } from "./use-drop-areas";

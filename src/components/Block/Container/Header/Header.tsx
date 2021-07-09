@@ -1,9 +1,9 @@
 import React, { FunctionComponent, DragEventHandler } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 
-import styles from "./Header.styl";
-import { Title } from "./Title";
-import { Content } from "./Content";
+import styles from "./header.styl";
+import { Title } from "./title";
+import { Content } from "./content";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
 

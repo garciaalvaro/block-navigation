@@ -1,1 +1,1 @@
-export { Block } from "./Block";
+export { Block } from "./block";

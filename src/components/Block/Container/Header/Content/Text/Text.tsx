@@ -3,7 +3,7 @@ import { useState, useEffect } from "@wordpress/element";
 import { create, getTextContent } from "@wordpress/rich-text";
 import { useSelect } from "@wordpress/data";
 
-import styles from "./Text.styl";
+import styles from "./text.styl";
 import { store_slug } from "@/utils/data";
 import { className } from "@/utils/tools";
 

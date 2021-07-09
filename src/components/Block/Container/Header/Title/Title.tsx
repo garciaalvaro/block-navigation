@@ -3,7 +3,7 @@ import { useSelect } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
 import { Fragment } from "@wordpress/element";
 
-import styles from "./Title.styl";
+import styles from "./title.styl";
 import { store_slug } from "@/utils/data";
 import { className } from "@/utils/tools";
 

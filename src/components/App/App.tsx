@@ -2,12 +2,12 @@ import React, { FunctionComponent } from "react";
 import { useDispatch, useSelect } from "@wordpress/data";
 import { useRef, useState, useEffect } from "@wordpress/element";
 
-import styles from "./App.styl";
+import styles from "./app.styl";
 import styles_color from "@/utils/css/color.styl";
-import { DetachedButtons } from "../DetachedButtons";
-import { Tabs } from "../Tabs";
-import { ViewNavigation } from "../ViewNavigation";
-import { ViewSettings } from "../ViewSettings";
+import { DetachedButtons } from "../detached-buttons";
+import { Tabs } from "../tabs";
+import { ViewNavigation } from "../view-navigation";
+import { ViewSettings } from "../view-settings";
 import { useWindowSize } from "@/utils/hooks";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";

@@ -4,8 +4,8 @@ import { useState, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
 import { blocks_content } from "@/utils/data";
-import { Images } from "./Images";
-import { Text } from "./Text";
+import { Images } from "./images";
+import { Text } from "./text";
 
 interface Props {
 	id: BlockId;

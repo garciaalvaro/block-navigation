@@ -1,3 +1,3 @@
-export { useDrop } from "./useDrop";
-export { useIsSelected } from "./useIsSelected";
-export { useMovingIsOver } from "./useMovingIsOver";
+export { useDrop } from "./use-drop";
+export { useIsSelected } from "./use-is-selected";
+export { useMovingIsOver } from "./use-moving-is-over";

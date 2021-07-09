@@ -3,12 +3,12 @@ import { useDispatch, useSelect } from "@wordpress/data";
 import { useRef } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
-import styles from "./Container.styl";
+import styles from "./container.styl";
 import { Button } from "@/utils/components";
 import { className } from "@/utils/tools";
 import { store_slug } from "@/utils/data";
-import { Header } from "./Header";
-import { Menu } from "./Menu";
+import { Header } from "./header";
+import { Menu } from "./menu";
 import { useDrop, useIsSelected, useMovingIsOver } from "./utils";
 
 interface Props {
@@ -20,13 +20,8 @@ interface Props {
 }
 
 export const Container: FunctionComponent<Props> = props => {
-	const {
-		id,
-		index_global,
-		drop_areas,
-		ancestors_id,
-		react_window_style,
-	} = props;
+	const { id, index_global, drop_areas, ancestors_id, react_window_style } =
+		props;
 
 	const $block = useRef<HTMLDivElement | null>(null);
 

@@ -1,2 +1,2 @@
-export { useToggle } from "./useToggle";
-export { useWindowSize } from "./useWindowSize";
+export { useToggle } from "./use-toggle";
+export { useWindowSize } from "./use-window-size";

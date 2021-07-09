@@ -4,8 +4,8 @@ import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
 import { Fragment } from "@wordpress/element";
 
 import { plugin_namespace, plugin_title } from "@/utils/data";
-import { App } from "@/components/App";
-import { Logo } from "@/components/Logo";
+import { App } from "@/components/app";
+import { Logo } from "@/components/logo";
 
 registerPlugin(plugin_namespace, {
 	// @ts-expect-error TODO

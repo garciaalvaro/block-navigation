@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 
-import styles from "./Tabs.styl";
-import { Tab } from "./Tab";
+import styles from "./tabs.styl";
+import { Tab } from "./tab";
 
 const tabs: { value: State["view"]; label: string }[] = [
 	{ value: "navigation", label: __("Navigation") },

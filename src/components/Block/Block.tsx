@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import { Fragment } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
-import { DropAreas } from "./DropAreas";
-import { Container } from "./Container";
+import { DropAreas } from "./drop-areas";
+import { Container } from "./container";
 import { useDropAreas, useAncestorsId } from "./utils";
 
 interface Props {

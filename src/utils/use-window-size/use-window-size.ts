@@ -3,41 +3,25 @@ import { useState, useEffect } from "@wordpress/element";
 
 import type { UseWindowSize } from "./types";
 
-// https://stackoverflow.com/a/28241682 | CC BY-SA 3.0
 export const useWindowSize: UseWindowSize = (time = 300) => {
-	const [width, setWidth] = useState(
-		document.documentElement.clientWidth ||
-			document.body.clientWidth ||
-			window.innerWidth
-	);
+	const [width, setWidth] = useState(window.innerWidth);
+	const [height, setHeight] = useState(window.innerHeight);
 
-	const [height, setHeight] = useState(
-		document.documentElement.clientHeight ||
-			document.body.clientHeight ||
-			window.innerHeight
-	);
-
-	const throttled = throttle(
-		() => {
-			setWidth(
-				document.documentElement.clientWidth ||
-					document.body.clientWidth ||
-					window.innerWidth
-			);
-			setHeight(
-				document.documentElement.clientHeight ||
-					document.body.clientHeight ||
-					window.innerHeight
-			);
-		},
-		time,
-		{
-			leading: true,
-			trailing: true,
-		}
-	);
+	const [is_mobile, setIsMobile] = useState(width < 783);
 
 	useEffect(() => {
+		const throttled = throttle(
+			() => {
+				setWidth(window.innerWidth);
+				setHeight(window.innerHeight);
+			},
+			time,
+			{
+				leading: true,
+				trailing: true,
+			}
+		);
+
 		window.addEventListener("resize", throttled);
 
 		return () => {
@@ -46,5 +30,9 @@ export const useWindowSize: UseWindowSize = (time = 300) => {
 		};
 	}, []);
 
-	return { window_width: width, window_height: height };
+	useEffect(() => {
+		setIsMobile(width < 783);
+	}, [width]);
+
+	return { window_width: width, window_height: height, is_mobile };
 };

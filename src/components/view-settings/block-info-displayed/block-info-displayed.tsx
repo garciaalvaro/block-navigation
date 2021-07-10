@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { RadioControl } from "@wordpress/components";
 
-import { store_slug } from "@/utils/data";
+import { store_slug } from "@/store";
 
 const options: { value: State["block_info_displayed"]; label: string }[] = [
 	{ value: "title_content", label: "Title & Content" },

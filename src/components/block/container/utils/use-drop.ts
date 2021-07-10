@@ -2,8 +2,8 @@ import type { MouseEvent, RefObject } from "react";
 import { dispatch, select } from "@wordpress/data";
 import { useEffect, useCallback } from "@wordpress/element";
 
-import { getAncestorsId } from "@/utils/tools";
-import { store_slug } from "@/utils/data";
+import { getAncestorsId } from "@/utils";
+import { store_slug } from "@/store";
 
 interface Props {
 	parent_id: BlockId;
@@ -59,9 +59,10 @@ export const useDrop: UseDrop = props => {
 					: drop_block_index + 1;
 
 			if (drop_area.level > drop_block_level) {
-				const drop_block_children_length = select(
-					"core/block-editor"
-				).getBlockOrder(drop_block_id).length;
+				const drop_block_children_length =
+					select("core/block-editor").getBlockOrder(
+						drop_block_id
+					).length;
 
 				moveBlockToPosition(
 					moving_block.id,

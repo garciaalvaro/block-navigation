@@ -1,6 +1,6 @@
 import { registerStore } from "@wordpress/data";
 
-import { store_slug } from "@/utils/data";
+import { store_slug } from "@/store";
 import { reducer } from "@/store/reducer";
 import { actions } from "@/store/actions";
 import { selectors } from "@/store/selectors";

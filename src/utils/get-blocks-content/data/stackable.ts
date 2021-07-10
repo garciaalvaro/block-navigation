@@ -1,6 +1,6 @@
-import { addFilter } from "@wordpress/hooks";
+import type { BlocksContent } from "../types";
 
-const blocks_content: BlocksContent = {
+export const blocks_content: BlocksContent = {
 	"ugb/accordion": { type: "text", path: ["title"] },
 	"ugb/blockquote": { type: "text", path: ["text"] },
 	"ugb/button": { type: "text", path: ["button1Text"] },
@@ -27,8 +27,3 @@ const blocks_content: BlocksContent = {
 	},
 	"ugb/image-box": { type: "image", path: ["image1FullUrl"] },
 };
-
-addFilter("blockNavigation.addBlockContentAttributePath", "ugb", other => ({
-	...other,
-	...blocks_content,
-}));

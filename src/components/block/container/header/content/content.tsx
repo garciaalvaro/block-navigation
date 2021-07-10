@@ -3,13 +3,15 @@ import { get } from "lodash";
 import { useState, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
-import { blocks_content } from "@/utils/data";
+import { getBlocksContent } from "@/utils";
 import { Images } from "./images";
 import { Text } from "./text";
 
 interface Props {
 	id: BlockId;
 }
+
+const blocks_content = getBlocksContent();
 
 export const Content: FunctionComponent<Props> = props => {
 	const { id } = props;

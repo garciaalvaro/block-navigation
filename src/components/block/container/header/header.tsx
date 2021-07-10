@@ -4,8 +4,8 @@ import { useDispatch, useSelect } from "@wordpress/data";
 import styles from "./header.styl";
 import { Title } from "./title";
 import { Content } from "./content";
-import { className } from "@/utils/tools";
-import { store_slug } from "@/utils/data";
+import { className } from "@/utils";
+import { store_slug } from "@/store";
 
 interface Props {
 	id: BlockId;

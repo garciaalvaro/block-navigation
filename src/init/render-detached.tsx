@@ -3,7 +3,7 @@ import { render, unmountComponentAtNode } from "@wordpress/element";
 import { select } from "@wordpress/data";
 
 import { store } from "./register-store";
-import { store_slug } from "@/utils/data";
+import { store_slug } from "@/store";
 import { AppDetached } from "@/components/app";
 
 const $container = document.createElement("div");

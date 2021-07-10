@@ -4,9 +4,9 @@ import { useRef } from "@wordpress/element";
 import { ListChildComponentProps } from "react-window";
 
 import styles from "./container.styl";
-import { Button } from "@/utils/components";
-import { className } from "@/utils/tools";
-import { store_slug } from "@/utils/data";
+import { Button } from "../../button";
+import { className } from "@/utils";
+import { store_slug } from "@/store";
 import { Header } from "./header";
 import { Menu } from "./menu";
 import { useDrop, useIsSelected, useMovingIsOver } from "./utils";

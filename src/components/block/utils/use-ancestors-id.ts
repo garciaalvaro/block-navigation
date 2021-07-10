@@ -1,7 +1,7 @@
 import { useSelect } from "@wordpress/data";
 import { useState, useEffect } from "@wordpress/element";
 
-import { getAncestorsId } from "@/utils/tools";
+import { getAncestorsId } from "@/utils";
 
 export const useAncestorsId = (id: BlockId): BlockId[] => {
 	const blocks_id = useSelect(select =>

@@ -1,10 +1,10 @@
 import { throttle } from "lodash";
 import { useState, useEffect } from "@wordpress/element";
 
+import type { UseWindowSize } from "./types";
+
 // https://stackoverflow.com/a/28241682 | CC BY-SA 3.0
-export const useWindowSize = (
-	time = 300
-): { window_width: number; window_height: number } => {
+export const useWindowSize: UseWindowSize = (time = 300) => {
 	const [width, setWidth] = useState(
 		document.documentElement.clientWidth ||
 			document.body.clientWidth ||

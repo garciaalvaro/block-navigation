@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 import { useSelect, useDispatch } from "@wordpress/data";
 
 import styles from "./tab.styl";
-import { Button } from "@/utils/components";
-import { store_slug } from "@/utils/data";
+import { Button } from "../../button";
+import { store_slug } from "@/store";
 
 interface Props {
 	value: State["view"];

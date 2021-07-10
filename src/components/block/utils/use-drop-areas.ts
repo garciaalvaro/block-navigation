@@ -1,8 +1,8 @@
 import { useSelect, select } from "@wordpress/data";
 import { useEffect, useState } from "@wordpress/element";
 
-import { getAncestorsId } from "@/utils/tools";
-import { store_slug } from "@/utils/data";
+import { getAncestorsId } from "@/utils";
+import { store_slug } from "@/store";
 
 interface Props {
 	id: BlockId;
@@ -36,9 +36,8 @@ export const useDropAreas = (props: Props): DropArea[] => {
 	useEffect(() => {
 		if (!moving_block) return;
 
-		const { canInsertBlockType, getTemplateLock, getBlockOrder } = select(
-			"core/block-editor"
-		);
+		const { canInsertBlockType, getTemplateLock, getBlockOrder } =
+			select("core/block-editor");
 
 		const moving_block_next_sibling_same_level_id = block_ids
 			.slice(moving_block.index_global + 1)

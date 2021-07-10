@@ -1,6 +1,6 @@
-export const className = (
-	classNames: (string | null | undefined)[] | Record<string, boolean>
-): string => {
+import type { ClassName } from "./types";
+
+export const className: ClassName = classNames => {
 	if (Array.isArray(classNames)) {
 		return classNames.filter(className => className).join(" ");
 	}

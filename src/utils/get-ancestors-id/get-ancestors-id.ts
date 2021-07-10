@@ -1,9 +1,11 @@
 import { select } from "@wordpress/data";
 
+import type { GetAncestorsId } from "./types";
+
 const getParentId = (id: BlockId) =>
 	select("core/block-editor").getBlockRootClientId(id);
 
-export const getAncestorsId = (id: BlockId): BlockId[] => {
+export const getAncestorsId: GetAncestorsId = id => {
 	// @ts-expect-error TODO
 	const { getBlockParents } = select("core/block-editor");
 

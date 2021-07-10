@@ -3,9 +3,9 @@ import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import styles from "./toolbar.styl";
-import { className } from "@/utils/tools";
-import { store_slug } from "@/utils/data";
-import { Button } from "@/utils/components";
+import { className } from "@/utils";
+import { store_slug } from "@/store";
+import { Button } from "../../button";
 import { Title } from "@/components/block/container/header/title";
 
 export const Toolbar: FunctionComponent = () => {

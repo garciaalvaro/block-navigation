@@ -1,24 +1,6 @@
 import { __ } from "@wordpress/i18n";
 
-interface ColorScheme {
-	value: string;
-	label: string;
-	type: "light" | "dark";
-	name:
-		| "wp"
-		| "banana"
-		| "melon"
-		| "melocoton"
-		| "coco"
-		| "mandarina"
-		| "pistacho"
-		| "higo"
-		| "mango"
-		| "endrina"
-		| "castana"
-		| "naranja"
-		| "ciruela";
-}
+import type { ColorScheme } from "./types";
 
 // For backward compatibility we use type-name as value
 export const color_schemes: ColorScheme[] = [

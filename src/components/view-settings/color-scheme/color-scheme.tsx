@@ -4,7 +4,8 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import { SelectControl } from "@wordpress/components";
 
 import styles from "./color-scheme.styl";
-import { color_schemes, store_slug } from "@/utils/data";
+import { color_schemes } from "@/utils";
+import { store_slug } from "@/store";
 
 export const ColorScheme: FunctionComponent = () => {
 	const color_scheme = useSelect(select =>

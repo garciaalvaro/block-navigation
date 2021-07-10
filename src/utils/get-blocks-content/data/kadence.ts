@@ -1,6 +1,6 @@
-import { addFilter } from "@wordpress/hooks";
+import type { BlocksContent } from "../types";
 
-const blocks_content: BlocksContent = {
+export const blocks_content: BlocksContent = {
 	"kadence/advancedheading": { type: "text", path: ["content"] },
 	"kadence/advancedbtn": { type: "text", path: ["btns", "0", "text"] },
 	"kadence/form": { type: "text", path: ["fields", "0", "label"] },
@@ -15,8 +15,3 @@ const blocks_content: BlocksContent = {
 		path: ["testimonials", "0", "title"],
 	},
 };
-
-addFilter("blockNavigation.addBlockContentAttributePath", "kadence", other => ({
-	...other,
-	...blocks_content,
-}));

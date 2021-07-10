@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 import styles from "./button.styl";
-import { className as classNameUtil } from "@/utils/tools";
+import { className as classNameUtil } from "@/utils";
 import { Icon } from "../icon";
 
 interface Props {

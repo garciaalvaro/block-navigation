@@ -5,7 +5,7 @@ import { __ } from "@wordpress/i18n";
 import { FixedSizeList as List } from "react-window";
 
 import styles from "./view-navigation.styl";
-import { store_slug } from "@/utils/data";
+import { store_slug } from "@/store";
 import { Block } from "../block";
 import { Toolbar } from "./toolbar";
 import { useBlockIds, useScrollTo } from "./utils";

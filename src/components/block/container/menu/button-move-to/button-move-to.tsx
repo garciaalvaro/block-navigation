@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import { Button as MenuButton } from "../button";
-import { store_slug } from "@/utils/data";
+import { store_slug } from "@/store";
 
 interface Props {
 	id: BlockId;

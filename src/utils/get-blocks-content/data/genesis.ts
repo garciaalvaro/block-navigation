@@ -1,6 +1,6 @@
-import { addFilter } from "@wordpress/hooks";
+import type { BlocksContent } from "../types";
 
-const blocks_content: BlocksContent = {
+export const blocks_content: BlocksContent = {
 	"genesis-blocks/gb-testimonial": {
 		type: "text",
 		path: ["testimonialContent", "0", "props", "children", "0"],
@@ -46,12 +46,3 @@ const blocks_content: BlocksContent = {
 		path: ["containerImgURL"],
 	},
 };
-
-addFilter(
-	"blockNavigation.addBlockContentAttributePath",
-	"genesis-blocks",
-	other => ({
-		...other,
-		...blocks_content,
-	})
-);

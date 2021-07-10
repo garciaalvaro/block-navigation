@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { ListChildComponentProps } from "react-window";
 
 import styles from "./drop-areas.styl";
-import { className } from "@/utils/tools";
+import { className } from "@/utils";
 
 interface Props {
 	react_window_style: ListChildComponentProps["style"];

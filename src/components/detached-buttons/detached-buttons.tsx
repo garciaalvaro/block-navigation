@@ -3,10 +3,10 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 
 import styles from "./detached-buttons.styl";
-import styles_color from "@/utils/css/color.styl";
-import { Button } from "@/utils/components";
-import { className } from "@/utils/tools";
-import { store_slug } from "@/utils/data";
+import styles_color from "@/styles/color.styl";
+import { Button } from "../button";
+import { className } from "@/utils";
+import { store_slug } from "@/store";
 
 export const DetachedButtons: FunctionComponent = () => {
 	const is_detached = useSelect(select => select(store_slug).isDetached());

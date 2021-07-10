@@ -1,6 +1,6 @@
-import { addFilter } from "@wordpress/hooks";
+import type { BlocksContent } from "../types";
 
-const blocks_content: BlocksContent = {
+export const blocks_content: BlocksContent = {
 	"core/gallery": { type: "image", path: ["images"] },
 	"core/media-text": { type: "image", path: ["mediaUrl"] },
 	"core/image": { type: "image", path: ["url"] },
@@ -16,8 +16,3 @@ const blocks_content: BlocksContent = {
 	"core/heading": { type: "text", path: ["content"] },
 	"core/block": { type: "text", path: ["title"] },
 };
-
-addFilter("blockNavigation.addBlockContentAttributePath", "core", other => ({
-	...other,
-	...blocks_content,
-}));

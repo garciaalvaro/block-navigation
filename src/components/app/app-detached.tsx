@@ -5,12 +5,11 @@ import { __ } from "@wordpress/i18n";
 import { ResizableBox } from "@wordpress/components";
 
 import styles from "./app.styl";
-import styles_color from "@/utils/css/color.styl";
+import styles_color from "@/styles/color.styl";
 import { DetachedButtons } from "../detached-buttons";
 import { ViewNavigation } from "../view-navigation";
-import { useWindowSize } from "@/utils/hooks";
-import { className } from "@/utils/tools";
-import { store_slug } from "@/utils/data";
+import { className, useWindowSize } from "@/utils";
+import { store_slug } from "@/store";
 
 export const AppDetached: FunctionComponent = () => {
 	const { resetDetach, setDetachedSize } = useDispatch(store_slug);

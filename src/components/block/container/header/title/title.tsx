@@ -4,8 +4,8 @@ import { Icon as WpIcon } from "@wordpress/components";
 import { Fragment } from "@wordpress/element";
 
 import styles from "./title.styl";
-import { store_slug } from "@/utils/data";
-import { className } from "@/utils/tools";
+import { store_slug } from "@/store";
+import { className } from "@/utils";
 
 interface Props {
 	id: BlockId;

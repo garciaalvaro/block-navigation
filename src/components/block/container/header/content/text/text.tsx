@@ -4,8 +4,8 @@ import { create, getTextContent } from "@wordpress/rich-text";
 import { useSelect } from "@wordpress/data";
 
 import styles from "./text.styl";
-import { store_slug } from "@/utils/data";
-import { className } from "@/utils/tools";
+import { store_slug } from "@/store";
+import { className } from "@/utils";
 
 interface Props {
 	content_raw: string;

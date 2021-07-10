@@ -3,7 +3,7 @@ import { __ } from "@wordpress/i18n";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { CheckboxControl } from "@wordpress/components";
 
-import { store_slug } from "@/utils/data";
+import { store_slug } from "@/store";
 
 export const DevMode: FunctionComponent = () => {
 	const is_dev = useSelect(select => select(store_slug).isDev());

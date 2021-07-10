@@ -1,13 +1,8 @@
 import { useState } from "@wordpress/element";
 
-export const useToggle = (
-	initial_open = false
-): {
-	is_open: boolean;
-	close: () => void;
-	open: () => void;
-	toggle: () => void;
-} => {
+import type { UseToggle } from "./types";
+
+export const useToggle: UseToggle = (initial_open = false) => {
 	const [is_open, setOpen] = useState(initial_open);
 
 	return {

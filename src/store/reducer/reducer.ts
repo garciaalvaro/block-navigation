@@ -3,6 +3,56 @@ import type { Reducer } from "./types";
 
 export const reducer: Reducer = (state = initial_state, action) => {
 	switch (action.type) {
+		case "DETACHED_CLOSE": {
+			return {
+				...state,
+				is_detached: false,
+			};
+		}
+
+		case "DETACHED_COLLAPSE": {
+			return {
+				...state,
+				detached_is_expanded: false,
+			};
+		}
+
+		case "DETACHED_EXPAND": {
+			return {
+				...state,
+				detached_is_expanded: true,
+			};
+		}
+
+		case "DETACHED_DETACH": {
+			return {
+				...state,
+				is_detached: true,
+				detached_is_expanded: true,
+			};
+		}
+
+		case "DETACHED_SIZE_RESET": {
+			return {
+				...state,
+				detached_size: initial_state.detached_size,
+			};
+		}
+
+		case "DETACHED_SIZE_UPDATE": {
+			return {
+				...state,
+				detached_size: action.payload,
+			};
+		}
+
+		case "DETACHED_POSITION_UPDATE": {
+			return {
+				...state,
+				detached_position: action.payload,
+			};
+		}
+
 		case "COLLAPSE_BLOCK": {
 			return {
 				...state,
@@ -38,58 +88,6 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			return {
 				...state,
 				block_info_displayed: action.payload,
-			};
-		}
-
-		case "SET_DETACHED_POSITION": {
-			return {
-				...state,
-				detached_position: action.payload,
-			};
-		}
-
-		case "SET_DETACHED_SIZE": {
-			return {
-				...state,
-				detached_size: action.payload,
-			};
-		}
-
-		case "RESET_DETACHED_SIZE": {
-			return {
-				...state,
-				detached_size: initial_state.detached_size,
-			};
-		}
-
-		case "DETACH": {
-			return {
-				...state,
-				is_detached: true,
-				detached_is_expanded: true,
-				view: "navigation",
-			};
-		}
-
-		case "RESET_DETACH": {
-			return {
-				...state,
-				is_detached: false,
-				view: "navigation",
-			};
-		}
-
-		case "COLLAPSE_DETACHED": {
-			return {
-				...state,
-				detached_is_expanded: false,
-			};
-		}
-
-		case "EXPAND_DETACHED": {
-			return {
-				...state,
-				detached_is_expanded: true,
 			};
 		}
 

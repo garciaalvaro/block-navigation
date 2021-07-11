@@ -2,27 +2,27 @@ import type { State } from "../state";
 import type { Selectors } from "./types";
 
 export const selectors: Selectors<State> = {
-	getBlocksCollapsed: state => state.blocks_collapsed,
+	block_info_displayed: state => state.block_info_displayed,
 
-	getColorScheme: state => state.color_scheme,
+	blocks_collapsed: state => state.blocks_collapsed,
 
-	getDetachedPosition: state => state.detached_position,
+	color_scheme: state => state.color_scheme,
 
-	getDetachedSize: state => state.detached_size,
+	detached_is_expanded: state => state.detached_is_expanded,
 
-	detachedIsExpanded: state => state.detached_is_expanded,
+	detached_position: state => state.detached_position,
 
-	getMovingType: state => state.moving_type,
+	detached_size: state => state.detached_size,
 
-	getMovingBlock: state => state.moving_block,
+	is_detached: state => state.is_detached,
 
-	getView: state => state.view,
+	is_dev: state => state.is_dev,
 
-	isDetached: state => state.is_detached,
+	is_expanded: (state, id) => !state.blocks_collapsed.includes(id),
 
-	isDev: state => state.is_dev,
+	moving_block: state => state.moving_block,
 
-	isExpanded: (state, id) => !state.blocks_collapsed.includes(id),
+	moving_type: state => state.moving_type,
 
-	getBlockInfoDisplayed: state => state.block_info_displayed,
+	view: state => state.view,
 };

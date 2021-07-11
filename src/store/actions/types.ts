@@ -1,8 +1,12 @@
+import type { State } from "../state";
+
 type ActionCreator<T, P = void> = (
 	payload: P
 ) => P extends void ? { type: T } : { type: T; payload: P };
 
-interface ActionCreators {
+type BlockId = string;
+
+export interface ActionCreators {
 	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
 	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;
 	collapseDetached: ActionCreator<"COLLAPSE_DETACHED">;
@@ -27,4 +31,4 @@ interface ActionCreators {
 	setColorScheme: ActionCreator<"SET_COLOR_SCHEME", State["color_scheme"]>;
 }
 
-type Action = ReturnType<ValueOf<ActionCreators>>;
+export type Action = ReturnType<ValueOf<ActionCreators>>;

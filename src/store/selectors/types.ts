@@ -1,8 +1,10 @@
+import type { State } from "../state";
+
 type Selector<T extends keyof State, S = void> = S extends void
 	? () => State[T]
 	: (state: S) => State[T];
 
-interface Selectors<S = void> {
+export interface Selectors<S = void> {
 	getBlocksCollapsed: Selector<"blocks_collapsed", S>;
 	getColorScheme: Selector<"color_scheme", S>;
 	getDetachedPosition: Selector<"detached_position", S>;

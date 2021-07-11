@@ -1,6 +1,7 @@
 import { registerStore } from "@wordpress/data";
 
-import { store_slug, reducer, actions, selectors } from "@/store";
+import { actions, reducer, selectors, store_slug } from "@/store";
+import type { State } from "@/store";
 
 export const store = registerStore<State>(store_slug, {
 	reducer,

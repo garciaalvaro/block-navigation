@@ -1,4 +1,6 @@
-interface State {
+type BlockId = string;
+
+export interface State {
 	view: "navigation" | "settings";
 	moving_type: null | "by_click" | "by_drag";
 	moving_block: null | {

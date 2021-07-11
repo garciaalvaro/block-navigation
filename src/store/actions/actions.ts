@@ -1,3 +1,5 @@
+import type { ActionCreators } from "./types";
+
 export const actions: ActionCreators = {
 	collapseBlock: payload => ({
 		type: "COLLAPSE_BLOCK",

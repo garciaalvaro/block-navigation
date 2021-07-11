@@ -1,20 +1,5 @@
-const initial_state: State = {
-	view: "navigation",
-	color_scheme: "light-wp",
-	moving_type: null,
-	moving_block: null,
-	blocks_collapsed: [],
-	is_detached: false,
-	is_dev: false,
-	block_info_displayed: "title_content",
-	detached_position: "left",
-	detached_is_expanded: false,
-	detached_size: { width: 240, height: 400 },
-};
-
-interface Reducer {
-	(state: State | undefined, action: Action): State;
-}
+import { state as initial_state } from "../state";
+import type { Reducer } from "./types";
 
 export const reducer: Reducer = (state = initial_state, action) => {
 	switch (action.type) {

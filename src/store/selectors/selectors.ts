@@ -1,3 +1,6 @@
+import type { State } from "../state";
+import type { Selectors } from "./types";
+
 export const selectors: Selectors<State> = {
 	getBlocksCollapsed: state => state.blocks_collapsed,
 

@@ -1,0 +1,42 @@
+/**
+ * Detached - Buttons
+ */
+
+.container
+	position absolute
+	bottom 0
+	left 0
+	display flex
+
+	&.right
+		flex-direction row-reverse
+		left auto
+		right 0
+
+button.button
+	cursor pointer
+	fill currentColor
+	display flex
+	align-items center
+	letter-spacing .03em
+	font-weight 500
+	line-height 3em
+	padding 0 1em 0 .5em
+	text-transform uppercase
+
+	&
+	&:hover
+	&:focus
+		font-size 0.9em
+		background var(--primary_color)
+		color var(--color_over_primary_color)
+
+	svg
+		margin-right .3em
+
+.left button.button:last-child
+.right button.button:first-child
+
+	&
+	&:hover
+		border-left 2px solid var(--detached_bordercolor)

@@ -1,0 +1,28 @@
+/**
+ * Detached
+ */
+
+.container
+	--e_standard cubic-bezier(0.4, 0.0, 0.2, 1)
+	--e_deceleration cubic-bezier(0.0, 0.0, 0.2, 1)
+	background-color var(--background_color)
+	color var(--color)
+	fill var(--svg_color)
+	position fixed
+	bottom 0
+	left 0
+	z-index 99999
+
+	&.right
+		left auto
+		right 0
+
+	*
+		box-sizing border-box
+		user-select none // TODO
+
+	:global(.components-resizable-box__handle)
+		display block // This is necessary for WP 5.4. TODO: Check
+
+	:global(.components-resizable-box__handle):after
+		background-color var(--primary_color)

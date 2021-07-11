@@ -17,7 +17,9 @@
 		"test:types": "tsc",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
 		"test:prettier": "prettier --check \"**/*.{js,ts,tsx,php,json}\"",
-		"prettier": "prettier --write \"**/*.{js,ts,tsx,php,json}\""
+		"prettier": "prettier --write \"**/*.{js,ts,tsx,php,json}\"",
+		"test:unit": "jest",
+		"test:unit:watch": "jest --watch"
 	},
 	"dependencies": {
 		"@babel/core": "^7.14.6",
@@ -58,12 +60,14 @@
 	},
 	"devDependencies": {
 		"@prettier/plugin-php": "^0.17.2",
+		"@types/jest": "^26.0.24",
 		"@typescript-eslint/eslint-plugin": "^4.28.2",
 		"@typescript-eslint/parser": "^4.28.2",
 		"eslint": "^7.30.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^3.4.0",
 		"eslint-plugin-react": "^7.24.0",
+		"jest": "^27.0.6",
 		"prettier": "^2.3.2"
 	}
 }

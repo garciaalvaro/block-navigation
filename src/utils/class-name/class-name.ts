@@ -1,15 +1,31 @@
 import type { ClassName } from "./types";
 
-export const className: ClassName = classNames => {
-	if (Array.isArray(classNames)) {
-		return classNames.filter(className => className).join(" ");
-	}
+export const className: ClassName = (...classNames) => {
+	return classNames
+		.reduce<string[]>((acc, _className) => {
+			let className = _className;
 
-	return Object.keys(classNames).reduce((acc, key) => {
-		if (!classNames[key]) {
-			return acc;
-		}
+			if (typeof className === "object" && className !== null) {
+				const classNameObj = className;
 
-		return `${acc} ${key}`;
-	}, "");
+				className = Object.keys(className).reduce((acc, key) => {
+					if (!classNameObj[key]) {
+						return acc;
+					}
+
+					if (!acc) {
+						return key;
+					}
+
+					return `${acc} ${key}`;
+				}, "");
+			}
+
+			if (!className) {
+				return acc;
+			}
+
+			return [...acc, className];
+		}, [])
+		.join(" ");
 };

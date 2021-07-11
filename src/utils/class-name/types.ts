@@ -1,3 +1,8 @@
-export type ClassName = (
-	classNames: (string | null | undefined)[] | Record<string, boolean>
-) => string;
+export type ClassNameProps = (
+	| string
+	| null
+	| undefined
+	| Record<string, boolean>
+)[];
+
+export type ClassName = (...classNames: ClassNameProps) => string;

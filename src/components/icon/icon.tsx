@@ -1,13 +1,9 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 
-interface Props {
-	icon: Icon;
-}
+import type { Component } from "./types";
 
-export const Icon: FunctionComponent<Props> = props => {
-	const { icon } = props;
-
-	switch (icon) {
+export const Icon: Component = props => {
+	switch (props.icon) {
 		case "detach":
 			return (
 				/* https://material.io/tools/icons/?icon=south_west */

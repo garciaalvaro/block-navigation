@@ -14,15 +14,3 @@ declare module "*.styl" {
 	const styles: { [className: string]: string };
 	export default styles;
 }
-
-type Icon =
-	| "detach"
-	| "close"
-	| "remove"
-	| "copy"
-	| "log"
-	| "edit"
-	| "collapse"
-	| "expand"
-	| "menu"
-	| "move";

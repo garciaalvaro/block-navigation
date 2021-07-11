@@ -3,6 +3,7 @@ export { color_schemes } from "./color-schemes";
 export { getAncestorsId } from "./get-ancestors-id";
 export { getBlocksContent } from "./get-blocks-content";
 export { useToggle } from "./use-toggle";
+export { useButton } from "./use-button";
 export { useClassName } from "./use-class-name";
 export { useColor } from "./use-color";
 export { useVirtualList } from "./use-virtual-list";

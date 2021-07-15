@@ -3,10 +3,9 @@ import { useSelect } from "@wordpress/data";
 
 import styles from "./styles.styl";
 import type { Component } from "./types";
+import { Buttons, Content } from "./components";
 import { useClassName } from "@/utils";
 import { store_slug } from "@/store";
-import { Content } from "./content";
-import { Buttons } from "./buttons";
 
 export const AppDetached: Component = props => {
 	const { is_expanded } = props;

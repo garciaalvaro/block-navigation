@@ -16,7 +16,7 @@ const tabs: TabOption[] = [
 	{ value: "settings", label: __("Settings") },
 ];
 
-export const View: FunctionComponent = () => {
+export const AppSidebar: FunctionComponent = () => {
 	const [view, setView] = useState<ViewName>("navigation");
 
 	const color_className = useColor();

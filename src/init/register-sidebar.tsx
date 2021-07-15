@@ -1,6 +1,6 @@
 import React from "react";
 import { registerPlugin } from "@wordpress/plugins";
-import { PluginSidebar, PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
+import { PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
 import { Fragment } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 
@@ -14,15 +14,15 @@ registerPlugin(plugin_namespace, {
 	// @ts-expect-error TODO
 	icon: <Logo />,
 
-	render: () => (
-		<Fragment>
-			<PluginSidebar name={plugin_namespace} title={plugin_title}>
+	render: () => {
+		return (
+			<Fragment>
 				<App />
-			</PluginSidebar>
 
-			<PluginSidebarMoreMenuItem target={plugin_namespace}>
-				{plugin_title}
-			</PluginSidebarMoreMenuItem>
-		</Fragment>
-	),
+				<PluginSidebarMoreMenuItem target={plugin_namespace}>
+					{plugin_title}
+				</PluginSidebarMoreMenuItem>
+			</Fragment>
+		);
+	},
 });

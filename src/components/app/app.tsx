@@ -1,97 +1,29 @@
-import React, { FunctionComponent } from "react";
-import { useDispatch, useSelect } from "@wordpress/data";
-import { useRef, useState, useEffect } from "@wordpress/element";
+import React from "react";
+import type { FunctionComponent } from "react";
+import { useSelect } from "@wordpress/data";
+import { PluginSidebar } from "@wordpress/edit-post";
+import { createPortal, Fragment } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 
-import styles from "./app.styl";
-import styles_color from "@/styles/color.styl";
-import { DetachedButtons } from "../detached-buttons";
-import { Tabs } from "../tabs";
-import { ViewNavigation } from "../view-navigation";
-import { ViewSettings } from "../view-settings";
-import { className, useWindowSize } from "@/utils";
+import { AppDetached } from "../app-detached";
+import { AppSidebar } from "../app-sidebar";
 import { store_slug } from "@/store";
 
+const plugin_namespace = "block-navigation";
+const plugin_title = __("Block Navigation");
+
 export const App: FunctionComponent = () => {
-	const view = useSelect(select => select(store_slug).getView());
-	const { resetDetach } = useDispatch(store_slug);
+	const is_detached = useSelect(select => select(store_slug).is_detached());
 
-	const [color_type, color_name] = useSelect(select =>
-		select(store_slug).getColorScheme()
-	).split("-");
-
-	const moving_type = useSelect(select => select(store_slug).getMovingType());
-	const { window_height, window_width } = useWindowSize();
-	const $app = useRef<HTMLDivElement | null>(null);
-	const [height, setHeight] = useState(0);
-	const [width, setWidth] = useState(0);
-	const is_mobile = window_width < 783;
-
-	useEffect(() => {
-		resetDetach();
-	}, []);
-
-	useEffect(() => {
-		const $container = $app.current?.parentElement;
-		const $container_parent = $container?.parentElement;
-
-		if (!$container || !$container_parent) return;
-
-		$container.style.flexGrow = "1";
-		$container.style.maxHeight = "100%";
-		$container_parent.style.display = "flex";
-		$container_parent.style.flexDirection = "column";
-		$container_parent.style.overflow = "visible";
-		$container_parent.style.height = "100%";
-
-		return () => {
-			$container.style.flexGrow = "";
-			$container.style.maxHeight = "";
-			$container_parent.style.display = "";
-			$container_parent.style.flexDirection = "";
-			$container_parent.style.overflow = "";
-			$container_parent.style.height = "";
-		};
-	}, []);
-
-	useEffect(() => {
-		const $container = $app.current?.parentElement;
-
-		if (!$container) return;
-
-		const width = $container.offsetWidth || 0;
-		const height = $container.offsetHeight || 0;
-
-		setWidth(width);
-		setHeight(height);
-	}, [window_height, window_width]);
-
-	if (width === 0 || height === 0) {
-		return <div ref={$app}></div>;
-	}
-
+	// Render PluginSidebar component always.
+	// Render the Detached component (in a portal) only when it is enabled.
 	return (
-		<div
-			ref={$app}
-			className={className([
-				styles.container,
-				styles_color[color_type],
-				styles_color[color_name],
-			])}
-		>
-			<Tabs />
+		<Fragment>
+			{is_detached && createPortal(<AppDetached />, document.body)}
 
-			{view === "navigation" ? (
-				<ViewNavigation
-					container_width={width}
-					container_height={
-						moving_type === "by_click" ? height - 55 : height
-					}
-				/>
-			) : (
-				<ViewSettings container_height={height} />
-			)}
-
-			{!is_mobile && <DetachedButtons />}
-		</div>
+			<PluginSidebar name={plugin_namespace} title={plugin_title}>
+				<AppSidebar />
+			</PluginSidebar>
+		</Fragment>
 	);
 };

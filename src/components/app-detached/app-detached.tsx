@@ -8,7 +8,7 @@ import { store_slug } from "@/store";
 import { Content } from "./content";
 import { Buttons } from "./buttons";
 
-export const Detached: Component = props => {
+export const AppDetached: Component = props => {
 	const { is_expanded } = props;
 
 	const detached_position = useSelect(select =>

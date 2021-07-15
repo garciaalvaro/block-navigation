@@ -1,10 +1,11 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { Fragment, useState } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 
 import styles from "./styles.styl";
 import type { ViewName, TabOption } from "./types";
+import { useColor, useClassName } from "@/utils";
 import { Tab } from "./components";
 import { ViewNavigation } from "../view-navigation";
 import { ViewSettings } from "../view-settings";
@@ -17,8 +18,11 @@ const tabs: TabOption[] = [
 export const View: FunctionComponent = () => {
 	const [view, setView] = useState<ViewName>("navigation");
 
+	const color_className = useColor();
+	const className = useClassName(styles.container, ...color_className);
+
 	return (
-		<Fragment>
+		<div className={className}>
 			<div className={styles.tabs}>
 				{tabs.map(tab => (
 					<Tab
@@ -33,6 +37,6 @@ export const View: FunctionComponent = () => {
 			</div>
 
 			{view === "navigation" ? <ViewNavigation /> : <ViewSettings />}
-		</Fragment>
+		</div>
 	);
 };

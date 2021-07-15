@@ -4,6 +4,7 @@ import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 
 import styles from "./styles.styl";
+import { setLayout } from "./utils";
 import type { ViewName, TabOption } from "./types";
 import { useColor, useClassName, useWindowSize } from "@/utils";
 import { Tab, DetachButton } from "./components";
@@ -23,8 +24,10 @@ export const View: FunctionComponent = () => {
 
 	const { is_mobile } = useWindowSize();
 
+	const $container = setLayout();
+
 	return (
-		<div className={className}>
+		<div ref={$container} className={className}>
 			<div className={styles.tabs}>
 				{tabs.map(tab => (
 					<Tab

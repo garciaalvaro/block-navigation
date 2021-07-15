@@ -1,0 +1,26 @@
+/**
+ * View - DetachButton
+ */
+
+button.button
+	position absolute
+	bottom 0
+	left 0
+
+	&
+	&:hover
+	&:focus
+		background var(--primary_color)
+		color var(--color_over_primary_color)
+		fill currentColor
+		display flex
+		align-items center
+		font-size 0.9em
+		letter-spacing .03em
+		font-weight 500
+		line-height 3em
+		padding 0 1em 0 .5em
+		text-transform uppercase
+
+	svg
+		margin-right .3em

@@ -5,8 +5,8 @@ import { __ } from "@wordpress/i18n";
 
 import styles from "./styles.styl";
 import type { ViewName, TabOption } from "./types";
-import { useColor, useClassName } from "@/utils";
-import { Tab } from "./components";
+import { useColor, useClassName, useWindowSize } from "@/utils";
+import { Tab, DetachButton } from "./components";
 import { ViewNavigation } from "../view-navigation";
 import { ViewSettings } from "../view-settings";
 
@@ -20,6 +20,8 @@ export const View: FunctionComponent = () => {
 
 	const color_className = useColor();
 	const className = useClassName(styles.container, ...color_className);
+
+	const { is_mobile } = useWindowSize();
 
 	return (
 		<div className={className}>
@@ -37,6 +39,8 @@ export const View: FunctionComponent = () => {
 			</div>
 
 			{view === "navigation" ? <ViewNavigation /> : <ViewSettings />}
+
+			{!is_mobile && <DetachButton />}
 		</div>
 	);
 };

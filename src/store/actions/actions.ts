@@ -1,6 +1,41 @@
 import type { ActionCreators } from "./types";
 
 export const actions: ActionCreators = {
+	detachedClose: payload => ({
+		type: "DETACHED_CLOSE",
+		payload,
+	}),
+
+	detachedCollapse: payload => ({
+		type: "DETACHED_COLLAPSE",
+		payload,
+	}),
+
+	detachedExpand: payload => ({
+		type: "DETACHED_EXPAND",
+		payload,
+	}),
+
+	detachedDetach: payload => ({
+		type: "DETACHED_DETACH",
+		payload,
+	}),
+
+	detachedSizeReset: payload => ({
+		type: "DETACHED_SIZE_RESET",
+		payload,
+	}),
+
+	detachedSizeUpdate: payload => ({
+		type: "DETACHED_SIZE_UPDATE",
+		payload,
+	}),
+
+	detachedPositionUpdate: payload => ({
+		type: "DETACHED_POSITION_UPDATE",
+		payload,
+	}),
+
 	collapseBlock: payload => ({
 		type: "COLLAPSE_BLOCK",
 		payload,
@@ -18,36 +53,6 @@ export const actions: ActionCreators = {
 	setBlockInfoDisplayed: payload => ({
 		type: "SET_BLOCK_INFO_DISPLAYED",
 		payload,
-	}),
-
-	setDetachedPosition: payload => ({
-		type: "SET_DETACHED_POSITION",
-		payload,
-	}),
-
-	setDetachedSize: payload => ({
-		type: "SET_DETACHED_SIZE",
-		payload,
-	}),
-
-	detach: () => ({
-		type: "DETACH",
-	}),
-
-	resetDetach: () => ({
-		type: "RESET_DETACH",
-	}),
-
-	resetDetachedSize: () => ({
-		type: "RESET_DETACHED_SIZE",
-	}),
-
-	expandDetached: () => ({
-		type: "EXPAND_DETACHED",
-	}),
-
-	collapseDetached: () => ({
-		type: "COLLAPSE_DETACHED",
 	}),
 
 	setDev: payload => ({

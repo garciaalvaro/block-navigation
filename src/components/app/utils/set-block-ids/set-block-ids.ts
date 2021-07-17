@@ -2,9 +2,8 @@ import { useEffect } from "@wordpress/element";
 import { useSelect, useDispatch } from "@wordpress/data";
 
 import type { SetBlockIds } from "./types";
-import { getDescendantIds } from "./utils";
 import { store_slug } from "@/store";
-import { plugin_namespace } from "@/utils";
+import { plugin_namespace, getDescendantIds } from "@/utils";
 
 export const setBlockIds: SetBlockIds = () => {
 	const { idsVisibleUpdate } = useDispatch(store_slug);

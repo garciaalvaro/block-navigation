@@ -41,4 +41,4 @@ export interface ActionCreators {
 	setColorScheme: ActionCreator<"SET_COLOR_SCHEME", State["color_scheme"]>;
 }
 
-export type Action = ReturnType<ValueOf<ActionCreators>>;
+export type Action = ReturnType<ActionCreators[keyof ActionCreators]>;

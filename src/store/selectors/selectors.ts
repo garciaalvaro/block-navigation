@@ -1,8 +1,5 @@
-import { uniq } from "lodash";
-
 import type { State } from "../state";
 import type { Selectors } from "./types";
-import { getDescendantIds } from "@/utils";
 
 export const selectors: Selectors<State> = {
 	block_info_displayed: state => state.block_info_displayed,
@@ -20,6 +17,16 @@ export const selectors: Selectors<State> = {
 	ids_collapsed: state => state.ids_collapsed,
 
 	ids_hidden: state => state.ids_hidden,
+
+	ids_visible: state => {
+		const { ids, ids_hidden } = state;
+
+		if (!ids) {
+			return [];
+		}
+
+		return ids.filter(id => !ids_hidden.includes(id));
+	},
 
 	is_detached: state => state.is_detached,
 

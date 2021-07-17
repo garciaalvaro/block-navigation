@@ -14,7 +14,8 @@ export interface Selectors<S = void> {
 	moving_type: Selector<"moving_type", S>;
 	ids_collapsed: Selector<"ids_collapsed", S>;
 	ids: Selector<"ids", S>;
-	ids_hidden: Selector<"ids", S>;
+	ids_hidden: Selector<"ids_hidden", S>;
+	ids_visible: Selector<"ids", S>;
 	is_detached: Selector<"is_detached", S>;
 	is_dev: Selector<"is_dev", S>;
 	is_expanded: S extends void

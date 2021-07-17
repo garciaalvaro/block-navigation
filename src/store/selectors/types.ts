@@ -1,3 +1,4 @@
+import type { BlockId } from "@/types";
 import type { State } from "../state";
 
 type Selector<T extends keyof State, S = void> = S extends void
@@ -15,7 +16,7 @@ export interface Selectors<S = void> {
 	ids_collapsed: Selector<"ids_collapsed", S>;
 	ids: Selector<"ids", S>;
 	ids_hidden: Selector<"ids_hidden", S>;
-	ids_visible: Selector<"ids", S>;
+	ids_visible: BlockId[];
 	is_detached: Selector<"is_detached", S>;
 	is_dev: Selector<"is_dev", S>;
 	is_expanded: S extends void

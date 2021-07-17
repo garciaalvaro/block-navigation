@@ -1,10 +1,9 @@
 import type { State } from "../state";
+import type { BlockId } from "@/types";
 
 type ActionCreator<T, P = void> = (
 	payload: P
 ) => P extends void ? { type: T } : { type: T; payload: P };
-
-type BlockId = string;
 
 export interface ActionCreators {
 	detachedClose: ActionCreator<"DETACHED_CLOSE">;

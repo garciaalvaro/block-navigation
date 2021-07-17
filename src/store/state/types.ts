@@ -1,4 +1,4 @@
-type BlockId = string;
+import type { BlockId } from "@/types";
 
 export interface State {
 	view: "navigation" | "settings";

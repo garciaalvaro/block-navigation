@@ -1,6 +1,7 @@
 import { select } from "@wordpress/data";
 
 import type { GetAncestorsId } from "./types";
+import type { BlockId } from "@/types";
 
 const getParentId = (id: BlockId) =>
 	select("core/block-editor").getBlockRootClientId(id);

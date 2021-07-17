@@ -1,8 +1,8 @@
 import { useRef, useEffect } from "@wordpress/element";
 
-import type { SetLayout } from "./types";
+import type { Util } from "./types";
 
-export const setLayout: SetLayout = () => {
+export const setLayout: Util = () => {
 	const $container = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {

@@ -1,8 +1,9 @@
 import { select } from "@wordpress/data";
 
-import type { GetDescendantIds } from "./types";
+import type { Util } from "./types";
+import type { BlockId } from "@/types";
 
-export const getDescendantIds: GetDescendantIds = (id = "") => {
+export const getDescendantIds: Util = (id = "") => {
 	const ids: BlockId[] = id ? [id] : [];
 
 	const children_id: BlockId[] =

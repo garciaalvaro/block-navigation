@@ -1,4 +1,4 @@
-export type UseButton = (type?: "icon" | "text") => {
+export type Util = (type?: "icon" | "text") => {
 	attributes: {
 		type: "button";
 	};

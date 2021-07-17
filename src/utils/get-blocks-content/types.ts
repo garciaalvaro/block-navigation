@@ -5,4 +5,4 @@ export interface BlockContent {
 
 export type BlocksContent = Record<string, BlockContent>;
 
-export type RegisterFilters = () => BlocksContent;
+export type Util = () => BlocksContent;

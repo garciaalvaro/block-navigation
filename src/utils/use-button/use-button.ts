@@ -1,7 +1,7 @@
 import styles from "./styles.styl";
-import type { UseButton } from "./types";
+import type { Util } from "./types";
 
-export const useButton: UseButton = (type = "text") => {
+export const useButton: Util = (type = "text") => {
 	return {
 		attributes: {
 			type: "button",

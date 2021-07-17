@@ -1,11 +1,11 @@
 import { useSelect, useDispatch } from "@wordpress/data";
 import { useEffect, useMemo } from "@wordpress/element";
 
-import type { UseSizeMax } from "./types";
+import type { Util } from "./types";
 import { useWindowSize } from "@/utils";
 import { store_slug } from "@/store";
 
-export const useSizeMax: UseSizeMax = () => {
+export const useSizeMax: Util = () => {
 	const { detachedCollapse, detachedSizeUpdate } = useDispatch(store_slug);
 	const is_expanded = useSelect(select =>
 		select(store_slug).detached_is_expanded()

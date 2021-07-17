@@ -5,4 +5,4 @@ export type ClassNameProps = (
 	| Record<string, boolean>
 )[];
 
-export type ClassName = (...classNames: ClassNameProps) => string;
+export type Util = (...classNames: ClassNameProps) => string;

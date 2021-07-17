@@ -1,4 +1,4 @@
-export type UseToggle = (initial_open: boolean) => {
+export type Util = (initial_open: boolean) => {
 	is_open: boolean;
 	close: () => void;
 	open: () => void;

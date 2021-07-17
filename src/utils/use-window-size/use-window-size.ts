@@ -1,9 +1,9 @@
 import { throttle } from "lodash";
 import { useState, useEffect } from "@wordpress/element";
 
-import type { UseWindowSize } from "./types";
+import type { Util } from "./types";
 
-export const useWindowSize: UseWindowSize = (time = 300) => {
+export const useWindowSize: Util = (time = 300) => {
 	const [width, setWidth] = useState(window.innerWidth);
 	const [height, setHeight] = useState(window.innerHeight);
 

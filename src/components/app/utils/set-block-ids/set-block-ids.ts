@@ -1,11 +1,11 @@
 import { useEffect } from "@wordpress/element";
 import { useSelect, useDispatch } from "@wordpress/data";
 
-import type { SetBlockIds } from "./types";
+import type { Util } from "./types";
 import { store_slug } from "@/store";
 import { plugin_namespace, getDescendantIds } from "@/utils";
 
-export const setBlockIds: SetBlockIds = () => {
+export const setBlockIds: Util = () => {
 	const { idsUpdate } = useDispatch(store_slug);
 
 	const ids = useSelect(select =>

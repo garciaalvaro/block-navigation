@@ -1,3 +1,3 @@
-import type { ClassName } from "../class-name";
+import type { Util as ClassName } from "../class-name";
 
-export type UseClassName = ClassName;
+export type Util = ClassName;

@@ -1,3 +1,3 @@
 import type { BlockId } from "@/types";
 
-export type GetDescendantIds = (id?: BlockId) => BlockId[];
+export type Util = (id?: BlockId) => BlockId[];

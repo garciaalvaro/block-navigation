@@ -1,1 +1,1 @@
-export type SetBlockIds = () => void;
+export type Util = () => void;

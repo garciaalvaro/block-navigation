@@ -1,1 +1,1 @@
-export type UseColor = () => string[];
+export type Util = () => string[];

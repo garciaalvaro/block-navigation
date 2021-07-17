@@ -1,1 +1,1 @@
-export type UseSizeMax = () => { width: number; height: number };
+export type Util = () => { width: number; height: number };

@@ -1,9 +1,9 @@
 import { addFilter, applyFilters } from "@wordpress/hooks";
 
 import { data } from "./data";
-import type { RegisterFilters, BlocksContent } from "./types";
+import type { Util, BlocksContent } from "./types";
 
-export const getBlocksContent: RegisterFilters = () => {
+export const getBlocksContent: Util = () => {
 	addFilter(
 		"blockNavigation.addBlockContentAttributePath",
 		"core",

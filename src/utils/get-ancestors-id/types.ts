@@ -1,1 +1,3 @@
-export type GetAncestorsId = (id: BlockId) => BlockId[];
+import type { BlockId } from "@/types";
+
+export type Util = (id: BlockId) => BlockId[];

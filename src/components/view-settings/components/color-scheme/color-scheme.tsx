@@ -3,14 +3,12 @@ import { __ } from "@wordpress/i18n";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { SelectControl } from "@wordpress/components";
 
-import styles from "./color-scheme.styl";
+import styles from "./styles.styl";
 import { color_schemes } from "@/utils";
 import { store_slug } from "@/store";
 
 export const ColorScheme: FunctionComponent = () => {
-	const color_scheme = useSelect(select =>
-		select(store_slug).getColorScheme()
-	);
+	const color_scheme = useSelect(select => select(store_slug).color_scheme());
 
 	const { setColorScheme } = useDispatch(store_slug);
 

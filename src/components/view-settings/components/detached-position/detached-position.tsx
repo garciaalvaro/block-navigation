@@ -4,6 +4,7 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import { RadioControl } from "@wordpress/components";
 
 import { store_slug } from "@/store";
+import type { State } from "@/store";
 
 const options: { value: State["detached_position"]; label: string }[] = [
 	{ value: "left", label: "Left" },
@@ -12,17 +13,17 @@ const options: { value: State["detached_position"]; label: string }[] = [
 
 export const DetachedPosition: FunctionComponent = () => {
 	const detached_position = useSelect(select =>
-		select(store_slug).getDetachedPosition()
+		select(store_slug).detached_position()
 	);
 
-	const { setDetachedPosition } = useDispatch(store_slug);
+	const { detachedPositionUpdate } = useDispatch(store_slug);
 
 	return (
 		<RadioControl
 			label={__("Detached position")}
 			options={options}
 			selected={detached_position}
-			onChange={setDetachedPosition}
+			onChange={detachedPositionUpdate}
 		/>
 	);
 };

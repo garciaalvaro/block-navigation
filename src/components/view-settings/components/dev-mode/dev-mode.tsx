@@ -6,7 +6,7 @@ import { CheckboxControl } from "@wordpress/components";
 import { store_slug } from "@/store";
 
 export const DevMode: FunctionComponent = () => {
-	const is_dev = useSelect(select => select(store_slug).isDev());
+	const is_dev = useSelect(select => select(store_slug).is_dev());
 	const { setDev } = useDispatch(store_slug);
 
 	return (

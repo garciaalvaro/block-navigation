@@ -4,6 +4,7 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import { RadioControl } from "@wordpress/components";
 
 import { store_slug } from "@/store";
+import type { State } from "@/store";
 
 const options: { value: State["block_info_displayed"]; label: string }[] = [
 	{ value: "title_content", label: "Title & Content" },
@@ -13,7 +14,7 @@ const options: { value: State["block_info_displayed"]; label: string }[] = [
 
 export const BlockInfoDisplayed: FunctionComponent = () => {
 	const block_info_displayed = useSelect(select =>
-		select(store_slug).getBlockInfoDisplayed()
+		select(store_slug).block_info_displayed()
 	);
 
 	const { setBlockInfoDisplayed } = useDispatch(store_slug);

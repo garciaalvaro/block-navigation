@@ -1,5 +1,8 @@
+import { uniq } from "lodash";
+
 import type { State } from "../state";
 import type { Selectors } from "./types";
+import { getDescendantIds } from "@/utils";
 
 export const selectors: Selectors<State> = {
 	block_info_displayed: state => state.block_info_displayed,
@@ -13,6 +16,18 @@ export const selectors: Selectors<State> = {
 	detached_size: state => state.detached_size,
 
 	ids_collapsed: state => state.ids_collapsed,
+
+	ids_hidden: state => {
+		const { ids_collapsed } = state;
+
+		if (!ids_collapsed.length) {
+			return [];
+		}
+
+		const ids = ids_collapsed.flatMap(id => getDescendantIds(id));
+
+		return uniq(ids);
+	},
 
 	ids_visible: state => state.ids_visible,
 

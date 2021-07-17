@@ -13,6 +13,7 @@ export interface Selectors<S = void> {
 	moving_block: Selector<"moving_block", S>;
 	moving_type: Selector<"moving_type", S>;
 	ids_collapsed: Selector<"ids_collapsed", S>;
+	ids_hidden: Selector<"ids_hidden", S>;
 	ids_visible: Selector<"ids_visible", S>;
 	is_detached: Selector<"is_detached", S>;
 	is_dev: Selector<"is_dev", S>;

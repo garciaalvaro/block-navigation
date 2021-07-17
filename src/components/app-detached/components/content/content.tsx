@@ -24,8 +24,8 @@ export const Content: FunctionComponent = () => {
 	const size = useRef({ width, height });
 	const size_max = useSizeMax();
 
-	const color_className = useColor();
-	const className = useClassName(styles.container, ...color_className);
+	const { className: color_className } = useColor();
+	const className = useClassName(styles.container, color_className);
 
 	return (
 		<ResizableBox

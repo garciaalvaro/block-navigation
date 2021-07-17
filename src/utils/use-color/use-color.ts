@@ -11,9 +11,9 @@ export const useColor: Util = () => {
 	);
 
 	const className = useMemo(
-		() => [styles[color_type], styles[color_name]],
+		() => `${styles[color_type]} ${styles[color_name]}`,
 		[color_type, color_name]
 	);
 
-	return className;
+	return { className, color_type, color_name };
 };

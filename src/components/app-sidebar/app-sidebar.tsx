@@ -19,8 +19,8 @@ const tabs: TabOption[] = [
 export const AppSidebar: FunctionComponent = () => {
 	const [view, setView] = useState<ViewName>("navigation");
 
-	const color_className = useColor();
-	const className = useClassName(styles.container, ...color_className);
+	const { className: color_className } = useColor();
+	const className = useClassName(styles.container, color_className);
 
 	const { is_mobile } = useWindowSize();
 

@@ -28,12 +28,12 @@ export const Buttons: Component = props => {
 		detachedSizeReset();
 	};
 
-	const color_className = useColor();
+	const { className: color_className } = useColor();
 
 	const className_container = useClassName(
 		styles.container,
 		styles[detached_position],
-		...color_className
+		color_className
 	);
 
 	const button_props = useButton();

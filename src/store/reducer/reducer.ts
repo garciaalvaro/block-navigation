@@ -53,10 +53,10 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
-		case "IDS_VISIBLE_UPDATE": {
+		case "IDS_UPDATE": {
 			return {
 				...state,
-				ids_collapsed: action.payload,
+				ids: action.payload,
 			};
 		}
 

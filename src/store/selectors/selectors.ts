@@ -15,6 +15,8 @@ export const selectors: Selectors<State> = {
 
 	detached_size: state => state.detached_size,
 
+	ids: state => state.ids,
+
 	ids_collapsed: state => state.ids_collapsed,
 
 	ids_hidden: state => {
@@ -28,8 +30,6 @@ export const selectors: Selectors<State> = {
 
 		return uniq(ids);
 	},
-
-	ids_visible: state => state.ids_visible,
 
 	is_detached: state => state.is_detached,
 

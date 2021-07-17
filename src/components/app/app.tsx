@@ -13,7 +13,7 @@ import { plugin_namespace, plugin_title } from "@/utils";
 export const App: FunctionComponent = () => {
 	const is_detached = useSelect(select => select(store_slug).is_detached());
 
-	// This hook will update ids_visible in the store
+	// This hook will update ids in the store
 	setBlockIds();
 
 	// Render PluginSidebar component always.

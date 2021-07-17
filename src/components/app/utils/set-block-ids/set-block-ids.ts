@@ -6,7 +6,7 @@ import { store_slug } from "@/store";
 import { plugin_namespace, getDescendantIds } from "@/utils";
 
 export const setBlockIds: SetBlockIds = () => {
-	const { idsVisibleUpdate } = useDispatch(store_slug);
+	const { idsUpdate } = useDispatch(store_slug);
 
 	const ids = useSelect(select =>
 		select("core/block-editor").getClientIdsWithDescendants()
@@ -29,6 +29,6 @@ export const setBlockIds: SetBlockIds = () => {
 		// If the plugin is in the sidebar but not open, skip
 		if (!is_detached && !sidebar_is_open) return;
 
-		idsVisibleUpdate(getDescendantIds());
+		idsUpdate(getDescendantIds());
 	}, [ids, detached_is_expanded, is_detached, sidebar_is_open]);
 };

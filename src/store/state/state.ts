@@ -8,8 +8,8 @@ export const state: State = {
 	is_dev: false,
 	block_info_displayed: "title_content",
 
+	ids: null,
 	ids_collapsed: [],
-	ids_visible: null,
 
 	moving_block: null,
 	moving_type: null,

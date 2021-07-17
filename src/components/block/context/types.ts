@@ -6,6 +6,9 @@ export type Context = {
 	ancestors_id: BlockId[];
 	id: BlockId;
 	parent_id: BlockId;
+	menu_is_open: boolean;
+	toggleMenu: () => void;
+	closeMenu: () => void;
 };
 
 interface Props {

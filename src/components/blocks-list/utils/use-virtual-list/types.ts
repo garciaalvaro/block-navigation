@@ -8,7 +8,7 @@ export interface ContentStyle {
 	height: number;
 }
 
-export type UseVirtualList = (props: {
+export type Util = (props: {
 	item_height: number;
 	items_index_to_keep_rendered?: number[];
 	items_length: number;

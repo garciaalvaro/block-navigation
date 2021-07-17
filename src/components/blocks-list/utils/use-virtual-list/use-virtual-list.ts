@@ -1,10 +1,10 @@
 import { useMemo, useRef, useState, useEffect } from "@wordpress/element";
 
 import styles from "./styles.styl";
-import { useWindowSize } from "../use-window-size";
-import type { UseVirtualList, ItemStyle, ContentStyle } from "./types";
+import { useWindowSize } from "@/utils";
+import type { Util, ItemStyle, ContentStyle } from "./types";
 
-export const useVirtualList: UseVirtualList = props => {
+export const useVirtualList: Util = props => {
 	const { item_height, items_index_to_keep_rendered, items_length } = props;
 	const $container = useRef<HTMLDivElement | null>(null);
 	const [container_height, setContainerHeight] = useState(0);

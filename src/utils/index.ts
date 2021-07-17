@@ -8,5 +8,4 @@ export { useToggle } from "./use-toggle";
 export { useButton } from "./use-button";
 export { useClassName } from "./use-class-name";
 export { useColor } from "./use-color";
-export { useVirtualList } from "./use-virtual-list";
 export { useWindowSize } from "./use-window-size";

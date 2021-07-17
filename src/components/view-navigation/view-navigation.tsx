@@ -5,15 +5,16 @@ import { useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 
 import styles from "./styles.styl";
-import { store_slug } from "@/store";
 import { Toolbar } from "./components/toolbar";
+import { store_slug } from "@/store";
 import { BlocksList } from "../blocks-list";
 
 export const ViewNavigation: FunctionComponent = () => {
 	const moving_type = useSelect(select => select(store_slug).moving_type());
+	const ids = useSelect(select => select(store_slug).ids());
 	const ids_visible = useSelect(select => select(store_slug).ids_visible());
 
-	if (!ids_visible) {
+	if (!ids) {
 		return <Fragment>{__("Loading...")}</Fragment>;
 	}
 

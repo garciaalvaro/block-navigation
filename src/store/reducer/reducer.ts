@@ -53,17 +53,24 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
+		case "IDS_VISIBLE_UPDATE": {
+			return {
+				...state,
+				ids_collapsed: action.payload,
+			};
+		}
+
 		case "COLLAPSE_BLOCK": {
 			return {
 				...state,
-				blocks_collapsed: [...state.blocks_collapsed, action.payload],
+				ids_collapsed: [...state.ids_collapsed, action.payload],
 			};
 		}
 
 		case "EXPAND_BLOCK": {
 			return {
 				...state,
-				blocks_collapsed: state.blocks_collapsed.filter(
+				ids_collapsed: state.ids_collapsed.filter(
 					id => id !== action.payload
 				),
 			};

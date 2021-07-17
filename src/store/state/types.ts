@@ -12,10 +12,13 @@ export interface State {
 		name: string;
 	};
 	color_scheme: string;
-	blocks_collapsed: BlockId[];
 	is_detached: boolean;
 	is_dev: boolean;
 	block_info_displayed: "title_content" | "title" | "content";
+
+	ids_visible: null | BlockId[];
+	ids_collapsed: BlockId[];
+
 	detached_position: "left" | "right";
 	detached_is_expanded: boolean;
 	detached_size: { width: number; height: number };

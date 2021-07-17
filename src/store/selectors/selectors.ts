@@ -4,8 +4,6 @@ import type { Selectors } from "./types";
 export const selectors: Selectors<State> = {
 	block_info_displayed: state => state.block_info_displayed,
 
-	blocks_collapsed: state => state.blocks_collapsed,
-
 	color_scheme: state => state.color_scheme,
 
 	detached_is_expanded: state => state.detached_is_expanded,
@@ -14,11 +12,15 @@ export const selectors: Selectors<State> = {
 
 	detached_size: state => state.detached_size,
 
+	ids_collapsed: state => state.ids_collapsed,
+
+	ids_visible: state => state.ids_visible,
+
 	is_detached: state => state.is_detached,
 
 	is_dev: state => state.is_dev,
 
-	is_expanded: (state, id) => !state.blocks_collapsed.includes(id),
+	is_expanded: (state, id) => !state.ids_collapsed.includes(id),
 
 	moving_block: state => state.moving_block,
 

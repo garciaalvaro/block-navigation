@@ -21,8 +21,11 @@ export interface ActionCreators {
 		State["detached_position"]
 	>;
 
+	idsVisibleUpdate: ActionCreator<"IDS_VISIBLE_UPDATE", BlockId[]>;
+
 	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
 	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;
+
 	resetMoving: ActionCreator<"RESET_MOVING">;
 	setBlockInfoDisplayed: ActionCreator<
 		"SET_BLOCK_INFO_DISPLAYED",

@@ -51,10 +51,6 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
-	resetMoving: () => ({
-		type: "RESET_MOVING",
-	}),
-
 	setBlockInfoDisplayed: payload => ({
 		type: "SET_BLOCK_INFO_DISPLAYED",
 		payload,
@@ -65,14 +61,18 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
-	setMovingBlock: payload => ({
-		type: "SET_MOVING_BLOCK",
+	movingBlockUpdate: payload => ({
+		type: "MOVING_BLOCK_UPDATE",
 		payload,
 	}),
 
-	setMovingType: payload => ({
-		type: "SET_MOVING_TYPE",
+	movingTypeUpdate: payload => ({
+		type: "MOVING_TYPE_UPDATE",
 		payload,
+	}),
+
+	movingTypeReset: () => ({
+		type: "MOVING_TYPE_RESET",
 	}),
 
 	setView: payload => ({

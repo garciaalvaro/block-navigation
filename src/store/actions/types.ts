@@ -26,14 +26,18 @@ export interface ActionCreators {
 	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
 	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;
 
-	resetMoving: ActionCreator<"RESET_MOVING">;
+	movingBlockUpdate: ActionCreator<
+		"MOVING_BLOCK_UPDATE",
+		State["moving_block"]
+	>;
+	movingTypeUpdate: ActionCreator<"MOVING_TYPE_UPDATE", State["moving_type"]>;
+	movingTypeReset: ActionCreator<"MOVING_TYPE_RESET">;
+
 	setBlockInfoDisplayed: ActionCreator<
 		"SET_BLOCK_INFO_DISPLAYED",
 		State["block_info_displayed"]
 	>;
 	setDev: ActionCreator<"SET_DEV", State["is_dev"]>;
-	setMovingBlock: ActionCreator<"SET_MOVING_BLOCK", State["moving_block"]>;
-	setMovingType: ActionCreator<"SET_MOVING_TYPE", State["moving_type"]>;
 	setView: ActionCreator<"SET_VIEW", State["view"]>;
 	setColorScheme: ActionCreator<"SET_COLOR_SCHEME", State["color_scheme"]>;
 }

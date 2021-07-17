@@ -76,18 +76,24 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
-		case "SET_MOVING_TYPE": {
+		case "MOVING_BLOCK_UPDATE": {
+			return {
+				...state,
+				moving_block: action.payload,
+			};
+		}
+
+		case "MOVING_TYPE_UPDATE": {
 			return {
 				...state,
 				moving_type: action.payload,
 			};
 		}
 
-		case "RESET_MOVING": {
+		case "MOVING_TYPE_RESET": {
 			return {
 				...state,
-				moving_block: null,
-				moving_type: null,
+				moving_type: initial_state.moving_type,
 			};
 		}
 
@@ -102,13 +108,6 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			return {
 				...state,
 				is_dev: action.payload,
-			};
-		}
-
-		case "SET_MOVING_BLOCK": {
-			return {
-				...state,
-				moving_block: action.payload,
 			};
 		}
 

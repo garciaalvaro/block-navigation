@@ -2,15 +2,14 @@ type BlockId = string;
 
 export interface State {
 	view: "navigation" | "settings";
-	moving_type: null | "by_click" | "by_drag";
+
 	moving_block: null | {
 		id: BlockId;
-		parent_id: BlockId;
-		index_local: number;
-		index_global: number;
-		level: number;
 		name: string;
+		parent_id: BlockId;
 	};
+	moving_type: null | "by_click" | "by_drag";
+
 	color_scheme: string;
 	is_detached: boolean;
 	is_dev: boolean;

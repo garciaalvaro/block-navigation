@@ -7,7 +7,6 @@ export const store = registerStore<State>(store_slug, {
 	reducer,
 	// @ts-expect-error TODO
 	actions,
-	// @ts-expect-error TODO
 	selectors,
 
 	persist: [

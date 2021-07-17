@@ -1,26 +1,58 @@
 import type { BlockId } from "@/types";
 import type { State } from "../state";
 
-type Selector<T extends keyof State, S = void> = S extends void
-	? () => State[T]
-	: (state: S) => State[T];
+type Selector<R, P = void> = (payload: P) => R;
+type SelectorCreator<R, P = void> = (state: State, payload: P) => R;
 
-export interface Selectors<S = void> {
-	block_info_displayed: Selector<"block_info_displayed", S>;
-	color_scheme: Selector<"color_scheme", S>;
-	detached_is_expanded: Selector<"detached_is_expanded", S>;
-	detached_position: Selector<"detached_position", S>;
-	detached_size: Selector<"detached_size", S>;
-	moving_block: Selector<"moving_block", S>;
-	moving_type: Selector<"moving_type", S>;
-	ids_collapsed: Selector<"ids_collapsed", S>;
-	ids: Selector<"ids", S>;
-	ids_hidden: Selector<"ids_hidden", S>;
+interface SelectorsReturn {
+	block_info_displayed: State["block_info_displayed"];
+	color_scheme: State["color_scheme"];
+	detached_is_expanded: State["detached_is_expanded"];
+	detached_position: State["detached_position"];
+	detached_size: State["detached_size"];
+	moving_block: State["moving_block"];
+	moving_type: State["moving_type"];
+	ids_collapsed: State["ids_collapsed"];
+	ids: State["ids"];
+	ids_hidden: State["ids_hidden"];
 	ids_visible: BlockId[];
-	is_detached: Selector<"is_detached", S>;
-	is_dev: Selector<"is_dev", S>;
-	is_expanded: S extends void
-		? (id: BlockId) => boolean
-		: (state: S, id: BlockId) => boolean;
-	view: Selector<"view", S>;
+	is_detached: State["is_detached"];
+	is_dev: State["is_dev"];
+	is_expanded: boolean;
+	view: State["view"];
 }
+
+interface SelectorsPayload {
+	is_expanded: BlockId;
+}
+
+type SelectorsWithoutPayload = {
+	[K in keyof Omit<SelectorsReturn, keyof SelectorsPayload>]: Selector<
+		SelectorsReturn[K]
+	>;
+};
+
+type SelectorsWithPayload = {
+	[K in keyof SelectorsPayload]: Selector<
+		SelectorsReturn[K],
+		SelectorsPayload[K]
+	>;
+};
+
+type SelectorCreatorsWithoutPayload = {
+	[K in keyof Omit<SelectorsReturn, keyof SelectorsPayload>]: SelectorCreator<
+		SelectorsReturn[K]
+	>;
+};
+
+type SelectorCreatorsWithPayload = {
+	[K in keyof SelectorsPayload]: SelectorCreator<
+		SelectorsReturn[K],
+		SelectorsPayload[K]
+	>;
+};
+
+export type Selectors = SelectorsWithoutPayload & SelectorsWithPayload;
+
+export type SelectorCreators = SelectorCreatorsWithoutPayload &
+	SelectorCreatorsWithPayload;

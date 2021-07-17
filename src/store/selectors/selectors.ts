@@ -1,7 +1,6 @@
-import type { State } from "../state";
-import type { Selectors } from "./types";
+import type { SelectorCreators } from "./types";
 
-export const selectors: Selectors<State> = {
+export const selectors: SelectorCreators = {
 	block_info_displayed: state => state.block_info_displayed,
 
 	color_scheme: state => state.color_scheme,

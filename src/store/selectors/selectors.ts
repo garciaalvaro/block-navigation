@@ -19,17 +19,7 @@ export const selectors: Selectors<State> = {
 
 	ids_collapsed: state => state.ids_collapsed,
 
-	ids_hidden: state => {
-		const { ids_collapsed } = state;
-
-		if (!ids_collapsed.length) {
-			return [];
-		}
-
-		const ids = ids_collapsed.flatMap(id => getDescendantIds(id));
-
-		return uniq(ids);
-	},
+	ids_hidden: state => state.ids_hidden,
 
 	is_detached: state => state.is_detached,
 

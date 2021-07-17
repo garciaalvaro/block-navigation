@@ -17,6 +17,7 @@ export interface State {
 
 	ids: null | BlockId[];
 	ids_collapsed: BlockId[];
+	ids_hidden: BlockId[];
 
 	detached_position: "left" | "right";
 	detached_is_expanded: boolean;

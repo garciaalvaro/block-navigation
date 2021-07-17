@@ -1,5 +1,6 @@
 import { state as initial_state } from "../state";
 import type { Reducer } from "./types";
+import { getIdsHidden } from "./utils";
 
 export const reducer: Reducer = (state = initial_state, action) => {
 	switch (action.type) {
@@ -57,6 +58,7 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			return {
 				...state,
 				ids: action.payload,
+				ids_hidden: getIdsHidden(state.ids_collapsed),
 			};
 		}
 
@@ -64,6 +66,7 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			return {
 				...state,
 				ids_collapsed: [...state.ids_collapsed, action.payload],
+				ids_hidden: getIdsHidden(state.ids_collapsed),
 			};
 		}
 
@@ -73,6 +76,7 @@ export const reducer: Reducer = (state = initial_state, action) => {
 				ids_collapsed: state.ids_collapsed.filter(
 					id => id !== action.payload
 				),
+				ids_hidden: getIdsHidden(state.ids_collapsed),
 			};
 		}
 

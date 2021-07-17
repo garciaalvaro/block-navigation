@@ -39,7 +39,7 @@ export const Buttons: Component = props => {
 	const button_props = useButton();
 	const className_button = useClassName(
 		styles.button,
-		...button_props.className
+		button_props.className
 	);
 
 	return (

@@ -24,6 +24,10 @@ export const selectors: SelectorCreators = {
 			return [];
 		}
 
+		if (!ids_hidden.length) {
+			return ids;
+		}
+
 		return ids.filter(id => !ids_hidden.includes(id));
 	},
 

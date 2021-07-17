@@ -12,7 +12,7 @@ export const Tab: Component = props => {
 	const className = useClassName(
 		styles.container,
 		is_active ? styles.is_active : null,
-		...button_props.className
+		button_props.className
 	);
 
 	return (

@@ -36,7 +36,7 @@ export const BlocksList: FunctionComponent = () => {
 	scrollToSelectedBlock($container);
 
 	return (
-		<div className={container_className}>
+		<div ref={$container} className={container_className}>
 			<div className={content_className} style={content_style}>
 				{items_style.map((style, index) => (
 					<BlockContextProvider id={ids_visible[index]}>

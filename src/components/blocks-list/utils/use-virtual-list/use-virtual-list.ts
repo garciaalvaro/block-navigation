@@ -45,7 +45,7 @@ export const useVirtualList: Util = props => {
 					return { top };
 				}
 
-				return null;
+				return undefined;
 			});
 
 			setItemsStyle(items_style);

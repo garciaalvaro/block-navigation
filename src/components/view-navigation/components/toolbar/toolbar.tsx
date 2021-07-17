@@ -21,7 +21,7 @@ export const Toolbar: FunctionComponent = () => {
 	const button_props = useButton();
 	const className_button = useClassName(
 		styles.button,
-		...button_props.className
+		button_props.className
 	);
 
 	const className_container = useClassName({

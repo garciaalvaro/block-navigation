@@ -13,7 +13,7 @@ export const DetachButton: FunctionComponent = () => {
 	const { openGeneralSidebar } = useDispatch("core/edit-post");
 
 	const button_props = useButton();
-	const className = useClassName(styles.button, ...button_props.className);
+	const className = useClassName(styles.button, button_props.className);
 
 	const close = () => {
 		detachedDetach();

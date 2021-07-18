@@ -60,6 +60,13 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
+		case "IDS_COLLAPSED_UPDATE": {
+			return {
+				...state,
+				ids_collapsed: action.payload,
+			};
+		}
+
 		case "IDS_HIDDEN_UPDATE": {
 			return {
 				...state,

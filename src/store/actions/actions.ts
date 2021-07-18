@@ -41,11 +41,20 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
+	idsCollapsedUpdate: payload => ({
+		type: "IDS_COLLAPSED_UPDATE",
+		payload,
+	}),
+
 	idsHiddenUpdate: payload => ({
 		type: "IDS_HIDDEN_UPDATE",
 		payload,
 	}),
 
+	idsVisibleUpdate: payload => ({
+		type: "IDS_VISIBLE_UPDATE",
+		payload,
+	}),
 	collapseBlock: payload => ({
 		type: "COLLAPSE_BLOCK",
 		payload,

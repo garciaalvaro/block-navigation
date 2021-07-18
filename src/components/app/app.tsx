@@ -7,7 +7,7 @@ import { createPortal, Fragment } from "@wordpress/element";
 import { setBlockIds } from "./utils";
 import { AppDetached } from "../app-detached";
 import { AppSidebar } from "../app-sidebar";
-import { store_slug } from "@/store";
+import { store_slug, SideEffects } from "@/store";
 import { plugin_namespace, plugin_title } from "@/utils";
 
 export const App: FunctionComponent = () => {
@@ -20,6 +20,8 @@ export const App: FunctionComponent = () => {
 	// Render the Detached component (in a portal) only when it is enabled.
 	return (
 		<Fragment>
+			<SideEffects />
+
 			{is_detached && createPortal(<AppDetached />, document.body)}
 
 			<PluginSidebar name={plugin_namespace} title={plugin_title}>

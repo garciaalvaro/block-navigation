@@ -21,6 +21,7 @@ export interface ActionCreators {
 	>;
 
 	idsUpdate: ActionCreator<"IDS_UPDATE", BlockId[]>;
+	idsHiddenUpdate: ActionCreator<"IDS_HIDDEN_UPDATE", BlockId[]>;
 
 	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
 	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;

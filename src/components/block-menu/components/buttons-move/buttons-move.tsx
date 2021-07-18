@@ -1,22 +1,14 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
+import type { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
-import { Fragment } from "@wordpress/element";
+import { Fragment, useContext } from "@wordpress/element";
 
-import { Button as MenuButton } from "../button";
+import { context } from "@/components/block";
+import { Button } from "../button";
 
-interface Props {
-	id: BlockId;
-	closeMenu: () => void;
-}
-
-export const ButtonsMove: FunctionComponent<Props> = props => {
-	const { id, closeMenu } = props;
-
-	const parent_id =
-		useSelect(select =>
-			select("core/block-editor").getBlockRootClientId(id)
-		) || "";
+export const ButtonsMove: FunctionComponent = () => {
+	const { id, parent_id } = useContext(context);
 
 	const index = useSelect(select =>
 		select("core/block-editor").getBlockIndex(id, parent_id)
@@ -42,7 +34,6 @@ export const ButtonsMove: FunctionComponent<Props> = props => {
 			return;
 		}
 
-		closeMenu();
 		moveBlockToPosition(id, parent_id, parent_id, index - 1);
 	};
 
@@ -51,25 +42,26 @@ export const ButtonsMove: FunctionComponent<Props> = props => {
 			return;
 		}
 
-		closeMenu();
 		moveBlockToPosition(id, parent_id, parent_id, index + 1);
 	};
 
 	return (
 		<Fragment>
-			<MenuButton
+			<Button
 				onClick={onClickUp}
 				icon="collapse"
 				is_disabled={move_up_is_disabled}
-				label={__("Move Block Up")}
-			/>
+			>
+				{__("Move Block Up")}
+			</Button>
 
-			<MenuButton
+			<Button
 				onClick={onClickDown}
 				icon="expand"
 				is_disabled={move_down_is_disabled}
-				label={__("Move Block Down")}
-			/>
+			>
+				{__("Move Block Down")}
+			</Button>
 		</Fragment>
 	);
 };

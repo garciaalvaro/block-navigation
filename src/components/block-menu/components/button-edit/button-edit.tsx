@@ -1,30 +1,25 @@
 import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch } from "@wordpress/data";
+import { useContext } from "@wordpress/element";
 
-import { Button as MenuButton } from "../button";
+import { context } from "@/components/block";
+import { Button } from "../button";
 
-interface Props {
-	id: BlockId;
-	closeMenu: () => void;
-}
+export const ButtonEdit: FunctionComponent = () => {
+	const { id } = useContext(context);
 
-export const ButtonEdit: FunctionComponent<Props> = props => {
-	const { id, closeMenu } = props;
 	const { openGeneralSidebar } = useDispatch("core/edit-post");
 	const { selectBlock } = useDispatch("core/block-editor");
 
 	const onClick = () => {
-		closeMenu();
 		selectBlock(id);
 		openGeneralSidebar("edit-post/block");
 	};
 
 	return (
-		<MenuButton
-			onClick={onClick}
-			icon="edit"
-			label={__("Open Block Settings")}
-		/>
+		<Button onClick={onClick} icon="edit">
+			{__("Open Block Settings")}
+		</Button>
 	);
 };

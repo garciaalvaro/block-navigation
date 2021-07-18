@@ -1,19 +1,17 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
+import type { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
+import { useContext } from "@wordpress/element";
 
-import { Button as MenuButton } from "../button";
+import { Button } from "../button";
+import { context } from "@/components/block";
 
 declare global {
 	interface Window {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		safari?: any;
 	}
-}
-
-interface Props {
-	id: BlockId;
-	closeMenu: () => void;
 }
 
 // Safari doesn't log the one-line version of the log
@@ -23,17 +21,16 @@ const is_safari = window.safari !== undefined;
 
 const multiple_log = is_safari;
 
-export const ButtonBlockData: FunctionComponent<Props> = props => {
-	const { id, closeMenu } = props;
+export const ButtonBlockData: FunctionComponent = () => {
+	const { id, parent_id } = useContext(context);
 
-	const { name, attributes: attributes_value } = useSelect(select =>
-		select("core/block-editor").getBlock(id)
-	) || { name: "", attributes: {} };
-
-	const parent_id =
-		useSelect(select =>
-			select("core/block-editor").getBlockRootClientId(id)
-		) || "";
+	const { name, attributes: attributes_value } = useSelect(
+		select =>
+			select("core/block-editor").getBlock(id) || {
+				name: "",
+				attributes: {},
+			}
+	);
 
 	const index = useSelect(select =>
 		select("core/block-editor").getBlockIndex(id, parent_id)
@@ -60,11 +57,7 @@ export const ButtonBlockData: FunctionComponent<Props> = props => {
 	);
 
 	const onClick = () => {
-		closeMenu();
-
-		if (!block_type) {
-			return;
-		}
+		if (!block_type) return;
 
 		const { log, group, groupEnd } = console;
 		const { title, attributes: attributes_definition } = block_type;
@@ -112,10 +105,8 @@ export const ButtonBlockData: FunctionComponent<Props> = props => {
 	};
 
 	return (
-		<MenuButton
-			onClick={onClick}
-			icon="log"
-			label={__("Console log Block Data")}
-		/>
+		<Button onClick={onClick} icon="log">
+			{__("Console log Block Data")}
+		</Button>
 	);
 };

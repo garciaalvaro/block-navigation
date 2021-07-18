@@ -1,20 +1,17 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
+import type { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
+import { useContext } from "@wordpress/element";
 
-import { Button as MenuButton } from "../button";
+import { context } from "@/components/block";
+import { Button } from "../button";
 import { store_slug } from "@/store";
 
-interface Props {
-	id: BlockId;
-	closeMenu: () => void;
-	setMovingBlock: () => void;
-}
+export const ButtonMoveTo: FunctionComponent = () => {
+	const { id } = useContext(context);
 
-export const ButtonMoveTo: FunctionComponent<Props> = props => {
-	const { id, closeMenu, setMovingBlock } = props;
-
-	const { setMovingType } = useDispatch(store_slug);
+	const { setMovingType, setMovingBlock } = useDispatch(store_slug);
 
 	const parent_id =
 		useSelect(select =>
@@ -27,15 +24,15 @@ export const ButtonMoveTo: FunctionComponent<Props> = props => {
 		) !== "all";
 
 	return (
-		<MenuButton
+		<Button
 			is_disabled={!can_move}
 			onClick={() => {
-				closeMenu();
 				setMovingType("by_click");
 				setMovingBlock();
 			}}
 			icon="move"
-			label={__("Move Block To")}
-		/>
+		>
+			{__("Move Block To")}
+		</Button>
 	);
 };

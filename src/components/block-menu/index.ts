@@ -1,1 +1,1 @@
-export { Menu } from "./menu";
+export { BlockMenu } from "./block-menu";

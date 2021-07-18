@@ -21,23 +21,18 @@ export const BlocksList: FunctionComponent = () => {
 		// TODO: Confirm the dependencies array
 	}, [moving_block]);
 
-	const {
-		$container,
-		container_className,
-		content_className,
-		content_style,
-		items_style,
-	} = useVirtualList({
-		items_index_to_keep_rendered,
-		item_height: 52,
-		items_length: ids_visible.length,
-	});
+	const { $container, container_className, content_style, items_style } =
+		useVirtualList({
+			items_index_to_keep_rendered,
+			item_height: 52,
+			items_length: ids_visible.length,
+		});
 
 	scrollToSelectedBlock($container);
 
 	return (
 		<div ref={$container} className={container_className}>
-			<div className={content_className} style={content_style}>
+			<div style={content_style}>
 				{items_style.map((style, index) =>
 					style ? (
 						<ContextProvider key={index} id={ids_visible[index]}>

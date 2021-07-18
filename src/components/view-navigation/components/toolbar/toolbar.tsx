@@ -4,7 +4,7 @@ import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import styles from "./styles.styl";
-import { Header } from "@/components/block-header";
+// import { Header } from "@/components/block-header";
 import { store_slug } from "@/store";
 import { useClassName, useButton } from "@/utils";
 
@@ -36,7 +36,8 @@ export const Toolbar: FunctionComponent = () => {
 	return (
 		<div className={className_container}>
 			<div className={styles.block_title}>
-				<Header in_toolbar={true} id={moving_block.id} />
+				{/* TODO */}
+				{/* <Header in_toolbar={true} id={moving_block.id} /> */}
 			</div>
 
 			<button

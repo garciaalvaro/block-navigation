@@ -1,2 +1,2 @@
 export { Block } from "./block";
-export { context } from "./context";
+export { context, ContextProvider } from "./context";

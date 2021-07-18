@@ -5,7 +5,7 @@ import { useSelect } from "@wordpress/data";
 
 import { scrollToSelectedBlock, useVirtualList } from "./utils";
 import { store_slug } from "@/store";
-import { BlockContextProvider, Block } from "../block";
+import { ContextProvider, Block } from "../block";
 
 export const BlocksList: FunctionComponent = () => {
 	const ids_visible = useSelect(select => select(store_slug).ids_visible());
@@ -38,11 +38,13 @@ export const BlocksList: FunctionComponent = () => {
 	return (
 		<div ref={$container} className={container_className}>
 			<div className={content_className} style={content_style}>
-				{items_style.map((style, index) => (
-					<BlockContextProvider id={ids_visible[index]}>
-						<Block style={style} />
-					</BlockContextProvider>
-				))}
+				{items_style.map((style, index) =>
+					style ? (
+						<ContextProvider key={index} id={ids_visible[index]}>
+							<Block style={style} />
+						</ContextProvider>
+					) : null
+				)}
 			</div>
 		</div>
 	);

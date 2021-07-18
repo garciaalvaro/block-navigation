@@ -17,19 +17,7 @@ export const selectors: SelectorCreators = {
 
 	ids_hidden: state => state.ids_hidden,
 
-	ids_visible: state => {
-		const { ids, ids_hidden } = state;
-
-		if (!ids) {
-			return [];
-		}
-
-		if (!ids_hidden.length) {
-			return ids;
-		}
-
-		return ids.filter(id => !ids_hidden.includes(id));
-	},
+	ids_visible: state => state.ids_visible,
 
 	is_detached: state => state.is_detached,
 

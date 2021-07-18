@@ -16,6 +16,8 @@ export const state: State = {
 	moving_block: null,
 	moving_type: null,
 
+	drop_areas: [],
+
 	detached_position: "left",
 	detached_is_expanded: false,
 	detached_size: { width: 240, height: 400 },

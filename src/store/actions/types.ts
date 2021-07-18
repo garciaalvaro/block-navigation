@@ -1,5 +1,5 @@
 import type { State } from "../state";
-import type { BlockId } from "@/types";
+import type { BlockId, DropArea } from "@/types";
 
 type ActionCreator<T, P = void> = (
 	payload: P
@@ -27,6 +27,8 @@ export interface ActionCreators {
 
 	collapseBlock: ActionCreator<"COLLAPSE_BLOCK", BlockId>;
 	expandBlock: ActionCreator<"EXPAND_BLOCK", BlockId>;
+
+	dropAreasUpdate: ActionCreator<"DROP_AREAS_UPDATE", DropArea[]>;
 
 	movingBlockUpdate: ActionCreator<
 		"MOVING_BLOCK_UPDATE",

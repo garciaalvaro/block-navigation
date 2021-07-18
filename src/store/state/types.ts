@@ -1,4 +1,4 @@
-import type { BlockId } from "@/types";
+import type { BlockId, DropArea } from "@/types";
 
 export interface State {
 	view: "navigation" | "settings";
@@ -19,6 +19,8 @@ export interface State {
 	ids_collapsed: BlockId[];
 	ids_hidden: BlockId[];
 	ids_visible: BlockId[];
+
+	drop_areas: DropArea[];
 
 	detached_position: "left" | "right";
 	detached_is_expanded: boolean;

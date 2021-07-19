@@ -1,5 +1,6 @@
 export { SideEffects } from "./side-effects";
 export { actions } from "./actions";
+export type { ActionCreators } from "./actions";
 export { reducer } from "./reducer";
 export { selectors } from "./selectors";
 export type { Selectors } from "./selectors";

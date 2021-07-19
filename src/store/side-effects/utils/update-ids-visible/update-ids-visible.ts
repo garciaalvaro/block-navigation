@@ -21,5 +21,6 @@ export const updateIdsVisible = (): void => {
 		const ids_visible = ids.filter(id => !ids_hidden.includes(id));
 
 		idsVisibleUpdate(ids_visible);
-	}, [ids, ids_hidden]);
+		// TODO: Check ids in the dependency array
+	}, [ids, ...ids_hidden]);
 };

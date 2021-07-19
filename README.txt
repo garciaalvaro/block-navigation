@@ -75,6 +75,9 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 3.4.1 =
+* Added a temporary patch for WP 5.8 drop event
+
 = 3.4.0 =
 * Fixed bug in WP 5.7, drop events not being triggered
 * Updated dependencies

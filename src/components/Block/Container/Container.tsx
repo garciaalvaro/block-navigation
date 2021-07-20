@@ -125,6 +125,8 @@ export const Container: FunctionComponent<Props> = props => {
 					moving={moving}
 					is_moving={is_moving}
 					can_move={can_move}
+					// TODO: Temporary patch for WP 5.8
+					onDragEnd={() => resetMoving()}
 					onDragStart={(e: React.DragEvent) => {
 						if (e.dataTransfer && e.dataTransfer.setData) {
 							// Needed for Firefox to work.

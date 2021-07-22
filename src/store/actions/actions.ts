@@ -56,11 +56,6 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
-	dropAreasUpdate: payload => ({
-		type: "DROP_AREAS_UPDATE",
-		payload,
-	}),
-
 	collapseBlock: payload => ({
 		type: "COLLAPSE_BLOCK",
 		payload,

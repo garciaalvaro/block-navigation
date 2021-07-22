@@ -63,10 +63,12 @@
 		"@types/jest": "^26.0.24",
 		"@typescript-eslint/eslint-plugin": "^4.28.4",
 		"@typescript-eslint/parser": "^4.28.4",
+		"@wordpress/data": "^5.2.0",
 		"eslint": "^7.31.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^3.4.0",
 		"eslint-plugin-react": "^7.24.0",
+		"identity-obj-proxy": "^3.0.0",
 		"jest": "^27.0.6",
 		"prettier": "^2.3.2"
 	}

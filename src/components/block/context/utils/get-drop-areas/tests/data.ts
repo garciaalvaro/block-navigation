@@ -2,6 +2,13 @@ import type { MockDataBlocksKey, MockDataBlocksValue } from "./types";
 
 const data_blocks = new Map<MockDataBlocksKey, MockDataBlocksValue>();
 
+data_blocks.set("", {
+	id: "",
+	ancestors_id: [],
+	parent_id: "",
+	index: 0,
+	children: ["a", "b"],
+});
 data_blocks.set("a", {
 	id: "a",
 	ancestors_id: [],

@@ -23,8 +23,9 @@ test("getDropAreas", () => {
 	expect(
 		getDropAreas({
 			id: block.id,
+			parent_id: block.parent_id,
 			ancestors_id: block.ancestors_id,
-			moving_block: { id: "", parent_id: "", name: "" },
+			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})
 	).toStrictEqual([
@@ -49,8 +50,9 @@ test("getDropAreas first block in nested list", () => {
 	expect(
 		getDropAreas({
 			id: block.id,
+			parent_id: block.parent_id,
 			ancestors_id: block.ancestors_id,
-			moving_block: { id: "", parent_id: "", name: "" },
+			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})
 	).toStrictEqual([
@@ -70,8 +72,9 @@ test("getDropAreas first block in list", () => {
 	expect(
 		getDropAreas({
 			id: block.id,
+			parent_id: block.parent_id,
 			ancestors_id: block.ancestors_id,
-			moving_block: { id: "", parent_id: "", name: "" },
+			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})
 	).toStrictEqual([
@@ -83,7 +86,7 @@ test("getDropAreas first block in list", () => {
 	]);
 });
 
-test("getDropAreas first block in listq", () => {
+test("getDropAreas last block in list", () => {
 	const block = data_blocks.get("b");
 
 	if (!block) return;
@@ -91,8 +94,9 @@ test("getDropAreas first block in listq", () => {
 	expect(
 		getDropAreas({
 			id: block.id,
+			parent_id: block.parent_id,
 			ancestors_id: block.ancestors_id,
-			moving_block: { id: "", parent_id: "", name: "" },
+			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})
 	).toStrictEqual([

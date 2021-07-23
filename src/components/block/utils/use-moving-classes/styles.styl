@@ -1,0 +1,30 @@
+/**
+ * useMovingClasses
+ */
+
+.no-a_block_is_moving.no-can_move
+	cursor default
+
+.no-a_block_is_moving.can_move
+	// https://stackoverflow.com/a/18294634 | CC BY-SA 3.0
+	cursor move // fallback if grab cursor is unsupported
+	cursor grab
+
+.can_receive_drop.moving_is_over
+
+	.content:last-child
+	~ .container .content:last-child
+		transform translateY(100%)
+
+.moving_type-by_click.can_receive_drop
+	cursor pointer
+
+.is_moving
+.ancestor_is_moving
+	opacity .3
+
+.a_block_is_moving .content:before
+	content ""
+
+.can_receive_drop.no-moving_is_over .content:after
+	border-color var(--secondary_color)

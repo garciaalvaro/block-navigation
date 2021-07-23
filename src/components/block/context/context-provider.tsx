@@ -29,7 +29,7 @@ export const ContextProvider: Component = props => {
 		[ancestors_id]
 	);
 
-	const drop_areas = useDropAreas({ id, ancestors_id });
+	const drop_areas = useDropAreas({ id, parent_id, ancestors_id });
 
 	return (
 		<context.Provider

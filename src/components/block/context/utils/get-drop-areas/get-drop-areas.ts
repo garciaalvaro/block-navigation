@@ -1,7 +1,7 @@
 import { select } from "@wordpress/data";
 
 import { getPrevId } from "../get-prev-id";
-import { canHaveChildren } from "../can-have-children";
+import { canReceiveDrop } from "../can-receive-drop";
 import type { Util } from "./types";
 import type { DropArea } from "@/types";
 import { getAncestorsId, getParentId } from "@/utils";
@@ -10,11 +10,17 @@ import { getAncestorsId, getParentId } from "@/utils";
 // Given an id, the drop will occur as a children of it.
 export const getDropAreas: Util = ({
 	id,
+	parent_id,
 	ancestors_id,
 	ids_visible,
 	moving_block,
 }) => {
+	const { getBlockIndex, getBlockOrder } = select("core/block-editor");
 	const drop_areas: DropArea[] = [];
+
+	if (!moving_block) {
+		return drop_areas;
+	}
 
 	let prev_id = getPrevId(id, ids_visible);
 
@@ -30,19 +36,27 @@ export const getDropAreas: Util = ({
 		];
 	}
 
+	let children_index = 0;
 	let prev_level = getAncestorsId(prev_id).length - ancestors_id.length;
 
 	while (prev_level >= -1) {
-		// If the block can have children, add the drop area
-		if (canHaveChildren(prev_id, moving_block)) {
+		children_index =
+			prev_level === -1
+				? getBlockIndex(id, parent_id)
+				: getBlockOrder(prev_id).length;
+
+		if (
+			canReceiveDrop({
+				children_index,
+				id: prev_id,
+				moving_block,
+				ids_visible,
+			})
+		) {
 			drop_areas.push({
 				id: prev_id,
 				level: prev_level + 1,
-				index:
-					prev_level === -1
-						? select("core/block-editor").getBlockIndex(id)
-						: select("core/block-editor").getBlockOrder(prev_id)
-								.length,
+				index: children_index,
 			});
 		}
 

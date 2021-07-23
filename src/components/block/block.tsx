@@ -49,7 +49,9 @@ export const Block: Component = props => {
 		>
 			<BlockDropAreas />
 
-			<div className={className_content}>{id}</div>
+			<div className={className_content}>
+				<div>{id}</div>
+			</div>
 		</div>
 	);
 };

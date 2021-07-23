@@ -1,12 +1,11 @@
-import type { BlockId, DropArea } from "@/types";
+import type { BlockId } from "@/types";
 import type { State } from "@/store";
 
 interface Props {
+	children_index: number;
 	id: BlockId;
-	parent_id: BlockId;
-	ancestors_id: BlockId[];
 	ids_visible: State["ids_visible"];
 	moving_block: State["moving_block"];
 }
 
-export type Util = (props: Props) => DropArea[];
+export type Util = (props: Props) => boolean;

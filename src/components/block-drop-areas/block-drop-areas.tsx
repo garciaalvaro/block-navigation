@@ -11,9 +11,13 @@ import { context } from "../block";
 export const BlockDropAreas: FunctionComponent = () => {
 	const { drop_areas } = useContext(context);
 
-	const { moveBlockToPosition } = useDispatch("core/block-editor");
-
 	const moving_block = useSelect(select => select(store_slug).moving_block());
+
+	const { movingTypeReset, movingBlockUpdate } = useDispatch(store_slug);
+
+	// @ts-expect-error @wordpress/block-editor types are outdated
+	const { moveBlockToPosition, stopDraggingBlocks } =
+		useDispatch("core/block-editor");
 
 	if (!drop_areas.length) {
 		return null;
@@ -39,6 +43,14 @@ export const BlockDropAreas: FunctionComponent = () => {
 							id,
 							index
 						);
+
+						// Although these events get called on onDragEnd,
+						// calling theme here will trigger the update sooner.
+						// Calling them on onDragEnd is still needed, in case
+						// there is no drop inside a drop area.
+						stopDraggingBlocks();
+						movingBlockUpdate(null);
+						movingTypeReset();
 					}}
 					// Necessary for onDrop to fire
 					onDragOver={e => e.preventDefault()}

@@ -60,7 +60,10 @@ export const BlockMenu: FunctionComponent = () => {
 		>
 			<div className={styles.button_container}>
 				<button
-					onClick={toggleMenu}
+					onClick={e => {
+						e.stopPropagation();
+						toggleMenu();
+					}}
 					className={className_button}
 					{...button_props.attributes}
 				>

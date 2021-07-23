@@ -28,3 +28,28 @@
 
 .can_receive_drop.no-moving_is_over .content:after
 	border-color var(--secondary_color)
+
+.content
+	transition transform .3s .05s var(--e_deceleration)
+
+	.no-a_block_is_moving &
+		transition transform .1s var(--e_deceleration)
+
+	&:after
+		content ""
+		width 100%
+		height 1px
+		position absolute
+		top 0
+		left 0
+		border-top 1px dashed transparent
+		transition border-color .1s var(--e_deceleration)
+
+	&:before
+		content normal
+		width 100%
+		height 100%
+		background-color var(--background_color)
+		position absolute
+		top 0
+		right calc(100% + 1px)

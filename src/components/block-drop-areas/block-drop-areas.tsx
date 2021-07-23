@@ -1,7 +1,7 @@
 import React from "react";
 import type { FunctionComponent } from "react";
 import { useContext } from "@wordpress/element";
-import { useDispatch, useSelect } from "@wordpress/data";
+import { useDispatch, useSelect, select } from "@wordpress/data";
 
 import styles from "./styles.styl";
 import { className, getParentId } from "@/utils";
@@ -37,11 +37,20 @@ export const BlockDropAreas: FunctionComponent = () => {
 
 						if (moving_block_parent_id === null) return;
 
+						const parent_id = getParentId(id) || "";
+
 						moveBlockToPosition(
 							moving_block.id,
 							moving_block_parent_id,
 							id,
-							index
+							moving_block_parent_id === parent_id &&
+								index >=
+									select("core/block-editor").getBlockIndex(
+										moving_block.id,
+										moving_block_parent_id
+									)
+								? index - 1
+								: index
 						);
 
 						// Although these events get called on onDragEnd,

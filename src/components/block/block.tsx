@@ -7,6 +7,7 @@ import type { Component } from "./types";
 import { useMovingAttributes, useMovingClasses, useSelectBlock } from "./utils";
 import { context } from "./context";
 import { useClassName } from "@/utils";
+import { BlockMenu } from "../block-menu";
 import { BlockDropAreas } from "../block-drop-areas";
 import { store_slug } from "@/store";
 
@@ -51,6 +52,8 @@ export const Block: Component = props => {
 
 			<div className={className_content}>
 				<div>{id}</div>
+
+				<BlockMenu />
 			</div>
 		</div>
 	);

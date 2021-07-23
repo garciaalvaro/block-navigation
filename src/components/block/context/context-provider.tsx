@@ -5,6 +5,7 @@ import { useSelect } from "@wordpress/data";
 import type { Component } from "./types";
 import { context } from "./context";
 import type { BlockId } from "@/types";
+import { useDropAreas } from "./utils";
 import { useToggle } from "@/utils";
 
 export const ContextProvider: Component = props => {
@@ -28,10 +29,13 @@ export const ContextProvider: Component = props => {
 		[ancestors_id]
 	);
 
+	const drop_areas = useDropAreas({ id, ancestors_id });
+
 	return (
 		<context.Provider
 			value={{
 				ancestors_id,
+				drop_areas,
 				id,
 				parent_id,
 				toggleMenu,

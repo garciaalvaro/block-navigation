@@ -4,6 +4,7 @@ import type { Context } from "./types";
 
 export const initial: Context = {
 	ancestors_id: [],
+	drop_areas: [],
 	id: "",
 	parent_id: "",
 	menu_is_open: false,

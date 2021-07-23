@@ -1,9 +1,10 @@
 import type { FunctionComponent } from "react";
 
-import type { BlockId } from "@/types";
+import type { BlockId, DropArea } from "@/types";
 
 export type Context = {
 	ancestors_id: BlockId[];
+	drop_areas: DropArea[];
 	id: BlockId;
 	parent_id: BlockId;
 	menu_is_open: boolean;

@@ -19,7 +19,7 @@ import {
 } from "./components";
 
 export const BlockMenu: FunctionComponent = () => {
-	const { toggleMenu, menu_is_open } = useContext(context);
+	const { toggleMenu, menu_is_open, closeMenu } = useContext(context);
 	const is_dev = useSelect(select => select(store_slug).is_dev());
 
 	const { className: color_className, color_type } = useColor();
@@ -36,7 +36,7 @@ export const BlockMenu: FunctionComponent = () => {
 		<Popover
 			containerClassName={popover_className}
 			isOpen={menu_is_open}
-			onClickOutside={close}
+			onClickOutside={closeMenu}
 			containerStyle={{ transition: "none" }}
 			content={({ position, childRect, popoverRect }) => (
 				<ArrowContainer

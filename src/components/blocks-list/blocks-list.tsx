@@ -35,7 +35,10 @@ export const BlocksList: FunctionComponent = () => {
 			<div style={content_style}>
 				{items_style.map((style, index) =>
 					style ? (
-						<ContextProvider key={index} id={ids_visible[index]}>
+						<ContextProvider
+							key={style.top}
+							id={ids_visible[index]}
+						>
 							<Block style={style} />
 						</ContextProvider>
 					) : null

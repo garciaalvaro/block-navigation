@@ -25,17 +25,23 @@
 	.content > div
 		opacity .3
 
-.a_block_is_moving .content:before
-	content ""
-
-.can_receive_drop.no-moving_is_over .content:after
-	border-color var(--secondary_color)
-
 .content
 	transition transform .3s .05s var(--e_deceleration)
 
+	& > div
+		transition opacity .1s var(--e_deceleration)
+
+	.a_block_is_moving &
+		pointer-events none
+
+	.a_block_is_moving &:before
+		content ""
+
 	.no-a_block_is_moving &
 		transition transform .1s var(--e_deceleration)
+
+	.can_receive_drop.no-moving_is_over &:after
+		border-color var(--secondary_color)
 
 	&:after
 		content ""
@@ -43,7 +49,7 @@
 		height 1px
 		position absolute
 		top 0
-		left 0
+		left 2px
 		border-top 1px dashed transparent
 		transition border-color .1s var(--e_deceleration)
 

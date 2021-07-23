@@ -1,6 +1,6 @@
-import type { ClassName } from "./types";
+import type { Util } from "./types";
 
-export const className: ClassName = (...classNames) => {
+export const className: Util = (...classNames) => {
 	return classNames
 		.reduce<string[]>((acc, _className) => {
 			let className = _className;

@@ -1,5 +1,6 @@
 export type ClassNameProps = (
 	| string
+	| false
 	| null
 	| undefined
 	| Record<string, boolean>

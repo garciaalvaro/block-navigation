@@ -32,7 +32,7 @@ export const useDropAreas: Util = props => {
 				moving_block,
 			})
 		);
-	}, [moving_block, id, ...ancestors_id, ...ids_visible]);
+	}, [moving_block, id, ancestors_id, ids_visible]);
 
 	return drop_areas;
 };

@@ -22,5 +22,5 @@ export const updateIdsHidden = (): void => {
 		ids_hidden = uniq(ids_hidden);
 
 		idsHiddenUpdate(ids_hidden);
-	}, [...ids_collapsed]);
+	}, [ids_collapsed]);
 };

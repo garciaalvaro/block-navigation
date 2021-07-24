@@ -11,6 +11,7 @@ import {
 	BlockMenu,
 	ContextProvider as BlockMenuContextProvider,
 } from "../block-menu";
+import { BlockToggleButton } from "../block-toggle-button";
 import { BlockDropAreas } from "../block-drop-areas";
 import { store_slug } from "@/store";
 
@@ -55,6 +56,8 @@ export const Block: Component = props => {
 
 			<div className={className_content}>
 				<div>{id}</div>
+
+				<BlockToggleButton />
 
 				<BlockMenuContextProvider>
 					<BlockMenu />

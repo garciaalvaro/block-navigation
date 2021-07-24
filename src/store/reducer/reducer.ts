@@ -81,19 +81,16 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
-		case "COLLAPSE_BLOCK": {
-			return {
-				...state,
-				ids_collapsed: [...state.ids_collapsed, action.payload],
-			};
-		}
+		case "TOGGLE_BLOCK": {
+			const is_collapsed = state.ids_collapsed.includes(action.payload);
 
-		case "EXPAND_BLOCK": {
+			const ids_collapsed = is_collapsed
+				? state.ids_collapsed.filter(id => id !== action.payload)
+				: [...state.ids_collapsed, action.payload];
+
 			return {
 				...state,
-				ids_collapsed: state.ids_collapsed.filter(
-					id => id !== action.payload
-				),
+				ids_collapsed,
 			};
 		}
 

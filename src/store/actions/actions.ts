@@ -56,13 +56,8 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
-	collapseBlock: payload => ({
-		type: "COLLAPSE_BLOCK",
-		payload,
-	}),
-
-	expandBlock: payload => ({
-		type: "EXPAND_BLOCK",
+	toggleBlock: payload => ({
+		type: "TOGGLE_BLOCK",
 		payload,
 	}),
 

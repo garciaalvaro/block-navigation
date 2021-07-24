@@ -18,7 +18,12 @@ export const updateIdsHidden = (): void => {
 			return;
 		}
 
-		let ids_hidden = ids_collapsed.flatMap(id => getDescendantIds(id));
+		let ids_hidden = ids_collapsed.flatMap(id =>
+			// Get the id of the collapsed block descendants
+			// but exclude the collapsed block id.
+			getDescendantIds(id).slice(1)
+		);
+
 		ids_hidden = uniq(ids_hidden);
 
 		idsHiddenUpdate(ids_hidden);

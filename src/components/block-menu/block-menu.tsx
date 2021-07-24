@@ -1,6 +1,6 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { useContext } from "@wordpress/element";
+import { useContext, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { ArrowContainer, Popover } from "react-tiny-popover";
 
@@ -31,6 +31,19 @@ export const BlockMenu: FunctionComponent = () => {
 		styles.button,
 		button_props.className
 	);
+
+	// onClickOutside is not triggered when clicking other popover
+	// buttons, so we add an event listener to manually close it.
+	useEffect(() => {
+		if (!menu_is_open) return;
+
+		const closeMenuDelayed = () => setTimeout(closeMenu, 0);
+
+		document.body.addEventListener("click", closeMenuDelayed);
+
+		return () =>
+			document.body.removeEventListener("click", closeMenuDelayed);
+	}, [menu_is_open]);
 
 	return (
 		<Popover

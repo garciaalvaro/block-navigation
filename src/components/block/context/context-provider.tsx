@@ -6,16 +6,9 @@ import type { Component } from "./types";
 import { context } from "./context";
 import type { BlockId } from "@/types";
 import { useDropAreas } from "./utils";
-import { useToggle } from "@/utils";
 
 export const ContextProvider: Component = props => {
 	const { id } = props;
-
-	const {
-		toggle: toggleMenu,
-		close: closeMenu,
-		is_open: menu_is_open,
-	} = useToggle(false);
 
 	const ancestors_id: BlockId[] = useSelect(select =>
 		select(
@@ -38,9 +31,6 @@ export const ContextProvider: Component = props => {
 				drop_areas,
 				id,
 				parent_id,
-				toggleMenu,
-				closeMenu,
-				menu_is_open,
 			}}
 		>
 			{props.children}

@@ -7,11 +7,6 @@ export const initial: Context = {
 	drop_areas: [],
 	id: "",
 	parent_id: "",
-	menu_is_open: false,
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	toggleMenu: () => {},
-	// eslint-disable-next-line @typescript-eslint/no-empty-function
-	closeMenu: () => {},
 };
 
 export const context = createContext<Context>(initial);

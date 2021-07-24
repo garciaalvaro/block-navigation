@@ -4,7 +4,7 @@ import { useContext } from "@wordpress/element";
 
 import styles from "./styles.styl";
 import type { Component } from "./types";
-import { context } from "@/components/block";
+import { context } from "../../context";
 import { Icon } from "@/components/icon";
 import { useButton, useClassName } from "@/utils";
 

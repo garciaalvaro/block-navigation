@@ -7,7 +7,7 @@ import { ArrowContainer, Popover } from "react-tiny-popover";
 import styles from "./styles.styl";
 import { useColor, useClassName, useButton } from "@/utils";
 import { store_slug } from "@/store";
-import { context } from "../block";
+import { context } from "./context";
 import { Icon } from "../icon";
 import {
 	ButtonEdit,

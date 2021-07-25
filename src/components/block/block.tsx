@@ -19,9 +19,10 @@ import { store_slug } from "@/store";
 export const Block: Component = props => {
 	const { style } = props;
 
-	const { id, ancestors_id } = useContext(context);
+	const { ancestors_id } = useContext(context);
 
 	const moving_block = useSelect(select => select(store_slug).moving_block());
+	const is_detached = useSelect(select => select(store_slug).is_detached());
 
 	const { className: className_select, ...select_attributes } =
 		useSelectBlock();
@@ -34,11 +35,12 @@ export const Block: Component = props => {
 		className_content: className_content_moving,
 	} = useMovingClasses({ can_move, moving_is_over, is_moving });
 
-	const className_container = useClassName(
-		styles.container,
-		styles[`level-${ancestors_id.length}`],
-		className_container_moving
-	);
+	const className_container = useClassName({
+		[styles.container]: true,
+		[styles.is_detached]: is_detached,
+		[styles[`level-${ancestors_id.length}`]]: true,
+		[className_container_moving]: true,
+	});
 
 	const className_content = useClassName({
 		[styles.content]: true,

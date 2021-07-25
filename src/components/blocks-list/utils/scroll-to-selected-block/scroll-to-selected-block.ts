@@ -7,9 +7,12 @@ import type { Util } from "./types";
 export const scrollToSelectedBlock: Util = $container => {
 	const ids_visible = useSelect(select => select(store_slug).ids_visible());
 
+	const is_detached = useSelect(select => select(store_slug).is_detached());
+
 	const selected_blocks = useSelect(select =>
 		select("core/block-editor").getSelectedBlockClientIds()
 	);
+
 	const selected_block = useSelect(select =>
 		select("core/block-editor").getSelectedBlockClientId()
 	);
@@ -23,7 +26,7 @@ export const scrollToSelectedBlock: Util = $container => {
 			return;
 		}
 
-		const block_height = 52;
+		const block_height = is_detached ? 39 : 52;
 		let block_offsetTop = 0;
 
 		ids_visible.every(id => {

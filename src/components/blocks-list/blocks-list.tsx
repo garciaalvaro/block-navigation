@@ -11,6 +11,7 @@ export const BlocksList: FunctionComponent = () => {
 	const ids_visible = useSelect(select => select(store_slug).ids_visible());
 
 	const moving_block = useSelect(select => select(store_slug).moving_block());
+	const is_detached = useSelect(select => select(store_slug).is_detached());
 
 	const items_index_to_keep_rendered = useMemo<number[]>(() => {
 		if (!moving_block || !ids_visible) return [];
@@ -24,7 +25,7 @@ export const BlocksList: FunctionComponent = () => {
 	const { $container, container_className, content_style, items_style } =
 		useVirtualList({
 			items_index_to_keep_rendered,
-			item_height: 52,
+			item_height: is_detached ? 39 : 52,
 			items_length: ids_visible.length,
 		});
 

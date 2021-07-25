@@ -1,8 +1,8 @@
-import React from "react";
 import type { FunctionComponent } from "react";
 
 import {
 	closeDetached,
+	resetMoving,
 	updateIdsCollapsed,
 	updateIdsHidden,
 	updateIdsVisible,
@@ -10,6 +10,7 @@ import {
 
 export const SideEffects: FunctionComponent = () => {
 	closeDetached();
+	resetMoving();
 	updateIdsCollapsed();
 	updateIdsHidden();
 	updateIdsVisible();

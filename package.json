@@ -13,7 +13,7 @@
 		"clean:dist": "rm -rf dist",
 		"clean:release": "rm -rf _release",
 		"dev": "webpack --mode=development",
-		"test": "npm run test:types && npm run test:lint && npm run test:prettier",
+		"test": "npm run test:types && npm run test:lint && npm run test:prettier && npm run test:unit",
 		"test:types": "tsc",
 		"test:lint": "eslint \"**/*.{js,ts,tsx}\"",
 		"test:prettier": "prettier --check \"**/*.{js,ts,tsx,php,json}\"",

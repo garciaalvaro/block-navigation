@@ -13,6 +13,7 @@ import {
 } from "../block-menu";
 import { BlockToggleButton } from "../block-toggle-button";
 import { BlockDropAreas } from "../block-drop-areas";
+import { BlockContent } from "../block-content";
 import { store_slug } from "@/store";
 
 export const Block: Component = props => {
@@ -55,7 +56,7 @@ export const Block: Component = props => {
 			<BlockDropAreas />
 
 			<div className={className_content}>
-				<div>{id}</div>
+				<BlockContent />
 
 				<BlockToggleButton />
 

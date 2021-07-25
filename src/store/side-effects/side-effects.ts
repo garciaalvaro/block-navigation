@@ -3,6 +3,7 @@ import type { FunctionComponent } from "react";
 import {
 	closeDetached,
 	resetMoving,
+	setBlockIds,
 	updateIdsCollapsed,
 	updateIdsHidden,
 	updateIdsVisible,
@@ -11,6 +12,7 @@ import {
 export const SideEffects: FunctionComponent = () => {
 	closeDetached();
 	resetMoving();
+	setBlockIds();
 	updateIdsCollapsed();
 	updateIdsHidden();
 	updateIdsVisible();

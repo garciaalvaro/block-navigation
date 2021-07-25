@@ -1,11 +1,11 @@
 import { useEffect } from "@wordpress/element";
 import { useSelect, useDispatch } from "@wordpress/data";
 
-import type { Util } from "./types";
 import { store_slug } from "@/store";
 import { plugin_namespace, getDescendantIds } from "@/utils";
 
-export const setBlockIds: Util = () => {
+// This hook will update the ids in the store
+export const setBlockIds = (): void => {
 	const { idsUpdate } = useDispatch(store_slug);
 
 	const ids = useSelect(select =>

@@ -37,13 +37,11 @@ export const BlockDropAreas: FunctionComponent = () => {
 
 						if (moving_block_parent_id === null) return;
 
-						const parent_id = getParentId(id) || "";
-
 						moveBlockToPosition(
 							moving_block.id,
 							moving_block_parent_id,
 							id,
-							moving_block_parent_id === parent_id &&
+							moving_block_parent_id === id &&
 								index >=
 									select("core/block-editor").getBlockIndex(
 										moving_block.id,

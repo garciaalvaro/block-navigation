@@ -13,6 +13,7 @@ mockSelect({
 	canInsertBlockType: () => true,
 	getBlockIndex: id => data_blocks.get(id as BlockId)?.index,
 	getBlockOrder: id => data_blocks.get(id as BlockId)?.children,
+	is_expanded: () => true,
 });
 
 test("getDropAreas", () => {

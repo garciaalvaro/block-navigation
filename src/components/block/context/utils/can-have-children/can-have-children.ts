@@ -1,3 +1,4 @@
+import { store_slug } from "@/store";
 import { select } from "@wordpress/data";
 
 import type { Util } from "./types";
@@ -12,5 +13,7 @@ export const canHaveChildren: Util = (id, moving_block) => {
 		id
 	);
 
-	return can_have_children;
+	const is_expanded = select(store_slug).is_expanded(id);
+
+	return can_have_children && is_expanded;
 };

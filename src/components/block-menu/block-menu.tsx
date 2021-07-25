@@ -1,11 +1,11 @@
 import React from "react";
-import type { FunctionComponent } from "react";
+import type { FunctionComponent, MouseEvent } from "react";
 import { useContext, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { ArrowContainer, Popover } from "react-tiny-popover";
 
 import styles from "./styles.styl";
-import { useColor, useClassName, useButton } from "@/utils";
+import { useColor, useClassName, Button } from "@/utils";
 import { store_slug } from "@/store";
 import { context } from "./context";
 import { Icon } from "../icon";
@@ -25,12 +25,6 @@ export const BlockMenu: FunctionComponent = () => {
 	const { className: color_className, color_type } = useColor();
 	const menu_className = useClassName(styles.menu, color_className);
 	const popover_className = useClassName(styles.popover, color_className);
-
-	const button_props = useButton("icon");
-	const className_button = useClassName(
-		styles.button,
-		button_props.className
-	);
 
 	// onClickOutside is not triggered when clicking other popover
 	// buttons, so we add an event listener to manually close it.
@@ -72,16 +66,16 @@ export const BlockMenu: FunctionComponent = () => {
 			)}
 		>
 			<div className={styles.button_container}>
-				<button
-					onClick={e => {
+				<Button
+					button_type="icon"
+					className={styles.button}
+					onClick={(e: MouseEvent) => {
 						e.stopPropagation();
 						toggleMenu();
 					}}
-					className={className_button}
-					{...button_props.attributes}
 				>
 					<Icon icon="menu" />
-				</button>
+				</Button>
 			</div>
 		</Popover>
 	);

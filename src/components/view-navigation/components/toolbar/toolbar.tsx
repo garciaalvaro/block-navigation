@@ -7,7 +7,7 @@ import styles from "./styles.styl";
 import { ContextProvider } from "@/components/block";
 import { BlockContent } from "@/components/block-content";
 import { store_slug } from "@/store";
-import { useClassName, useButton } from "@/utils";
+import { useClassName, Button } from "@/utils";
 
 export const Toolbar: FunctionComponent = () => {
 	const { movingTypeReset, movingBlockUpdate } = useDispatch(store_slug);
@@ -18,12 +18,6 @@ export const Toolbar: FunctionComponent = () => {
 	const is_detached = useSelect(select => select(store_slug).is_detached());
 
 	const moving_block = useSelect(select => select(store_slug).moving_block());
-
-	const button_props = useButton();
-	const className_button = useClassName(
-		styles.button,
-		button_props.className
-	);
 
 	const className_container = useClassName({
 		[styles.container]: true,
@@ -42,17 +36,16 @@ export const Toolbar: FunctionComponent = () => {
 				</ContextProvider>
 			</div>
 
-			<button
-				className={className_button}
+			<Button
+				className={styles.button}
 				onClick={() => {
 					stopDraggingBlocks();
 					movingBlockUpdate(null);
 					movingTypeReset();
 				}}
-				{...button_props.attributes}
 			>
 				{__("Cancel Move")}
-			</button>
+			</Button>
 		</div>
 	);
 };

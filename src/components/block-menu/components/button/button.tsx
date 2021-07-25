@@ -6,20 +6,12 @@ import styles from "./styles.styl";
 import type { Component } from "./types";
 import { context } from "../../context";
 import { Icon } from "@/components/icon";
-import { useButton, useClassName } from "@/utils";
+import { Button as ButtonUtil, className } from "@/utils";
 
 export const Button: Component = props => {
 	const { children, icon, is_disabled } = props;
 
 	const { closeMenu } = useContext(context);
-
-	const button_props = useButton();
-	const className = useClassName(
-		styles.button,
-		button_props.className,
-		is_disabled ? styles.is_disabled : null,
-		props.className
-	);
 
 	const onClick: MouseEventHandler = (...args) => {
 		props.onClick(...args);
@@ -28,16 +20,19 @@ export const Button: Component = props => {
 	};
 
 	return (
-		<button
-			className={className}
+		<ButtonUtil
+			className={className(
+				styles.button,
+				is_disabled ? styles.is_disabled : null,
+				props.className
+			)}
 			onClick={onClick}
-			{...button_props.attributes}
 		>
 			<div className={styles.icon}>
 				<Icon icon={icon} />
 			</div>
 
 			<span>{children}</span>
-		</button>
+		</ButtonUtil>
 	);
 };

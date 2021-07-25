@@ -4,7 +4,7 @@ import { useContext } from "@wordpress/element";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import styles from "./styles.styl";
-import { useButton } from "@/utils";
+import { Button } from "@/utils";
 import { store_slug } from "@/store";
 import { context } from "../block";
 import { Icon } from "../icon";
@@ -20,8 +20,6 @@ export const BlockToggleButton: FunctionComponent = () => {
 
 	const { toggleBlock } = useDispatch(store_slug);
 
-	const button_props = useButton("icon");
-
 	const onClick: MouseEventHandler = e => {
 		e.stopPropagation();
 
@@ -34,13 +32,9 @@ export const BlockToggleButton: FunctionComponent = () => {
 
 	return (
 		<div className={styles.container}>
-			<button
-				className={button_props.className}
-				onClick={onClick}
-				{...button_props.attributes}
-			>
+			<Button button_type="icon" onClick={onClick}>
 				<Icon icon={is_expanded ? "collapse" : "expand"} />
-			</button>
+			</Button>
 		</div>
 	);
 };

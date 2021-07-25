@@ -5,15 +5,12 @@ import { __ } from "@wordpress/i18n";
 
 import styles from "./styles.styl";
 import { Icon } from "@/components/Icon";
-import { useButton, useClassName } from "@/utils";
+import { Button } from "@/utils";
 import { store_slug } from "@/store";
 
 export const DetachButton: FunctionComponent = () => {
 	const { detachedDetach } = useDispatch(store_slug);
 	const { openGeneralSidebar } = useDispatch("core/edit-post");
-
-	const button_props = useButton();
-	const className = useClassName(styles.button, button_props.className);
 
 	const close = () => {
 		detachedDetach();
@@ -21,9 +18,9 @@ export const DetachButton: FunctionComponent = () => {
 	};
 
 	return (
-		<button className={className} onClick={close}>
+		<Button className={styles.button} onClick={close}>
 			<Icon icon="detach" />
 			<span>{__("Detach")}</span>
-		</button>
+		</Button>
 	);
 };

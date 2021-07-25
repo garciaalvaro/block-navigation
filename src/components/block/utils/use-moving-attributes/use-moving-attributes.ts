@@ -17,10 +17,11 @@ export const useMovingAttributes: Util = () => {
 		select => select("core/block-editor").getBlockName(id) || ""
 	);
 
-	const can_move = useSelect(
-		select =>
-			select("core/block-editor").getTemplateLock(parent_id) !== "all"
-	);
+	const can_move =
+		useSelect(
+			select =>
+				select("core/block-editor").getTemplateLock(parent_id) !== "all"
+		) && !moving_block;
 
 	const { movingTypeUpdate, movingTypeReset, movingBlockUpdate } =
 		useDispatch(store_slug);

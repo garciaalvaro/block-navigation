@@ -4,12 +4,13 @@ import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
 import styles from "./styles.styl";
-// import { Header } from "@/components/block-header";
+import { ContextProvider } from "@/components/block";
+import { BlockContent } from "@/components/block-content";
 import { store_slug } from "@/store";
 import { useClassName, useButton } from "@/utils";
 
 export const Toolbar: FunctionComponent = () => {
-	const { movingTypeReset } = useDispatch(store_slug);
+	const { movingTypeReset, movingBlockUpdate } = useDispatch(store_slug);
 
 	// @ts-expect-error @wordpress/block-editor types are outdated
 	const { stopDraggingBlocks } = useDispatch("core/block-editor");
@@ -36,14 +37,16 @@ export const Toolbar: FunctionComponent = () => {
 	return (
 		<div className={className_container}>
 			<div className={styles.block_title}>
-				{/* TODO */}
-				{/* <Header in_toolbar={true} id={moving_block.id} /> */}
+				<ContextProvider id={moving_block.id}>
+					<BlockContent />
+				</ContextProvider>
 			</div>
 
 			<button
 				className={className_button}
 				onClick={() => {
 					stopDraggingBlocks();
+					movingBlockUpdate(null);
 					movingTypeReset();
 				}}
 				{...button_props.attributes}

@@ -11,9 +11,10 @@
 	cursor grab
 
 .can_receive_drop.moving_is_over
+.can_receive_drop:hover
 
-	.content:last-child
-	~ .container .content:last-child
+	.content
+	~ .container .content
 		transform translateY(100%)
 
 .moving_type-by_click.can_receive_drop

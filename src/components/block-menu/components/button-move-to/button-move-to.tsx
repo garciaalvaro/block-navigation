@@ -11,24 +11,32 @@ import { store_slug } from "@/store";
 export const ButtonMoveTo: FunctionComponent = () => {
 	const { id } = useContext(context);
 
-	const { setMovingType, setMovingBlock } = useDispatch(store_slug);
+	const { movingBlockUpdate, movingTypeUpdate } = useDispatch(store_slug);
 
-	const parent_id =
-		useSelect(select =>
-			select("core/block-editor").getBlockRootClientId(id)
-		) || "";
+	const parent_id = useSelect(
+		select => select("core/block-editor").getBlockRootClientId(id) || ""
+	);
 
-	const can_move =
-		useSelect(select =>
-			select("core/block-editor").getTemplateLock(parent_id)
-		) !== "all";
+	const name = useSelect(
+		select => select("core/block-editor").getBlockName(id) || ""
+	);
+
+	const can_move = useSelect(
+		select =>
+			select("core/block-editor").getTemplateLock(parent_id) !== "all"
+	);
 
 	return (
 		<Button
 			is_disabled={!can_move}
 			onClick={() => {
-				setMovingType("by_click");
-				setMovingBlock();
+				movingTypeUpdate("by_click");
+
+				movingBlockUpdate({
+					id,
+					name,
+					parent_id,
+				});
 			}}
 			icon="move"
 		>

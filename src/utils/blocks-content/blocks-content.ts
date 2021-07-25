@@ -3,7 +3,7 @@ import { addFilter, applyFilters } from "@wordpress/hooks";
 import { data } from "./data";
 import type { Util, BlocksContent } from "./types";
 
-export const getBlocksContent: Util = () => {
+const getBlocksContent: Util = () => {
 	addFilter(
 		"blockNavigation.addBlockContentAttributePath",
 		"core",
@@ -18,7 +18,7 @@ export const getBlocksContent: Util = () => {
 		"genesis-blocks",
 		other => ({
 			...other,
-			...blocks_content,
+			...data.genesis,
 		})
 	);
 
@@ -27,19 +27,19 @@ export const getBlocksContent: Util = () => {
 		"kadence",
 		other => ({
 			...other,
-			...blocks_content,
+			...data.kadence,
 		})
 	);
 
 	addFilter(
 		"blockNavigation.addBlockContentAttributePath",
 		"melonpan",
-		other => ({ ...other, ...blocks_content })
+		other => ({ ...other, ...data.melonpan })
 	);
 
 	addFilter("blockNavigation.addBlockContentAttributePath", "ugb", other => ({
 		...other,
-		...blocks_content,
+		...data.stackable,
 	}));
 
 	const blocks_content = applyFilters(
@@ -49,3 +49,5 @@ export const getBlocksContent: Util = () => {
 
 	return blocks_content;
 };
+
+export const blocks_content = getBlocksContent();

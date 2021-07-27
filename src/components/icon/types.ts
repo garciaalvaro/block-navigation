@@ -1,6 +1,8 @@
 import { FunctionComponent } from "react";
 
 export type IconName =
+	| "collapse_all"
+	| "expand_all"
 	| "detach"
 	| "close"
 	| "remove"

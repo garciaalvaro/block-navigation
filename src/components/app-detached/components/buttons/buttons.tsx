@@ -7,8 +7,11 @@ import type { Component } from "./types";
 import { store_slug } from "@/store";
 import { Button, ButtonsContainer } from "@/utils";
 import { Icon } from "@/components/icon";
+import { ToggleBlocks } from "@/components/button-toggle-blocks";
 
 export const Buttons: Component = props => {
+	const { is_expanded } = props;
+
 	const detached_position = useSelect(select =>
 		select(store_slug).detached_position()
 	);
@@ -38,7 +41,7 @@ export const Buttons: Component = props => {
 				<span>{__("Close")}</span>
 			</Button>
 
-			{props.is_expanded ? (
+			{is_expanded ? (
 				<Button
 					className={styles.button}
 					onClick={() => detachedCollapse()}
@@ -55,6 +58,8 @@ export const Buttons: Component = props => {
 					<span>{__("Expand")}</span>
 				</Button>
 			)}
+
+			{is_expanded && <ToggleBlocks />}
 		</ButtonsContainer>
 	);
 };

@@ -5,7 +5,7 @@ import { __ } from "@wordpress/i18n";
 import styles from "./styles.styl";
 import type { Component } from "./types";
 import { store_slug } from "@/store";
-import { useClassName, useColor, Button } from "@/utils";
+import { Button, ButtonsContainer } from "@/utils";
 import { Icon } from "@/components/icon";
 
 export const Buttons: Component = props => {
@@ -28,16 +28,11 @@ export const Buttons: Component = props => {
 		detachedSizeReset();
 	};
 
-	const { className: color_className } = useColor();
-
-	const className_container = useClassName(
-		styles.container,
-		styles[detached_position],
-		color_className
-	);
-
 	return (
-		<div className={className_container}>
+		<ButtonsContainer
+			align={detached_position}
+			reverse_direction={detached_position === "right"}
+		>
 			<Button className={styles.button} onClick={close}>
 				<Icon icon="close" />
 				<span>{__("Close")}</span>
@@ -60,6 +55,6 @@ export const Buttons: Component = props => {
 					<span>{__("Expand")}</span>
 				</Button>
 			)}
-		</div>
+		</ButtonsContainer>
 	);
 };

@@ -7,7 +7,12 @@ import { useSelect, useDispatch } from "@wordpress/data";
 import styles from "./styles.styl";
 import { setLayout } from "./utils";
 import type { ViewName, TabOption } from "./types";
-import { useColor, useClassName, useWindowSize } from "@/utils";
+import {
+	useColor,
+	useClassName,
+	useWindowSize,
+	ButtonsContainer,
+} from "@/utils";
 import { Tab, DetachButton } from "./components";
 import { ViewNavigation } from "../view-navigation";
 import { ViewSettings } from "../view-settings";
@@ -58,7 +63,9 @@ export const AppSidebar: FunctionComponent = () => {
 
 			{view === "navigation" ? <ViewNavigation /> : <ViewSettings />}
 
-			{!is_mobile && <DetachButton />}
+			<ButtonsContainer align="left">
+				{!is_mobile && <DetachButton />}
+			</ButtonsContainer>
 		</div>
 	);
 };

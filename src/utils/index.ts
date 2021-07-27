@@ -1,5 +1,6 @@
 export { blocks_content } from "./blocks-content";
 export { Button } from "./button";
+export { ButtonsContainer } from "./buttons-container";
 export { className } from "./class-name";
 export { color_schemes } from "./color-schemes";
 export { getAncestorsId } from "./get-ancestors-id";

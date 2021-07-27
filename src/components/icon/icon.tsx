@@ -10,7 +10,7 @@ export const Icon: Component = props => {
 				<svg
 					enableBackground="new 0 0 24 24"
 					viewBox="0 0 24 24"
-					width="19"
+					width="24"
 					height="19"
 				>
 					<rect fill="none" height="24" width="24" />

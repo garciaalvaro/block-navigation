@@ -12,6 +12,7 @@ export const useMovingClasses: Util = props => {
 
 	const { ancestors_id, drop_areas } = useContext(context);
 
+	const moving_type = useSelect(select => select(store_slug).moving_type());
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 	const can_receive_drop = drop_areas.length > 0;
 	const a_block_is_moving = moving_block?.id !== undefined;
@@ -23,6 +24,7 @@ export const useMovingClasses: Util = props => {
 
 	const className_container = useClassName({
 		[styles.container]: true,
+		[styles["moving_type-by_click"]]: moving_type === "by_click",
 		[styles.moving_is_over]: moving_is_over,
 		[styles["no-moving_is_over"]]: !moving_is_over,
 		[styles.ancestor_is_moving]: ancestor_is_moving,

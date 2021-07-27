@@ -4,7 +4,7 @@ import { useSelect } from "@wordpress/data";
 
 import styles from "./styles.styl";
 import { Buttons, Content } from "./components";
-import { useClassName } from "@/utils";
+import { useClassName, useColor } from "@/utils";
 import { store_slug } from "@/store";
 
 export const AppDetached: FunctionComponent = () => {
@@ -16,7 +16,12 @@ export const AppDetached: FunctionComponent = () => {
 		select(store_slug).detached_is_expanded()
 	);
 
-	const className = useClassName(styles.container, styles[detached_position]);
+	const { className: color_className } = useColor();
+	const className = useClassName(
+		styles.container,
+		color_className,
+		styles[detached_position]
+	);
 
 	return (
 		<div className={className}>

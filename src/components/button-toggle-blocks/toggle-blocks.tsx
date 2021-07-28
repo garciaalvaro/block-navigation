@@ -4,7 +4,7 @@ import { useDispatch, useSelect, select } from "@wordpress/data";
 import { useEffect, useMemo } from "@wordpress/element";
 
 import styles from "./styles.styl";
-import { Icon } from "@/components/Icon";
+import { Icon } from "@/components/icon";
 import { Button, useToggle } from "@/utils";
 import { store_slug } from "@/store";
 import type { BlockId } from "@/types";

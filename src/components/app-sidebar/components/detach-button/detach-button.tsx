@@ -4,7 +4,7 @@ import { useDispatch } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 
 import styles from "./styles.styl";
-import { Icon } from "@/components/Icon";
+import { Icon } from "@/components/icon";
 import { Button } from "@/utils";
 import { store_slug } from "@/store";
 

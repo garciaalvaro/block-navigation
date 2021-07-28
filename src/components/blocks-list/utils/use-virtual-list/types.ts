@@ -1,23 +1,15 @@
 import type { RefObject } from "react";
 
-export type ItemStyle =
-	| {
-			top: number;
-	  }
-	| undefined;
-
-export interface ContentStyle {
-	height: number;
-}
+import type { ContentStyle } from "../use-content-styles";
+import type { ItemStyle } from "../use-items-styles";
 
 export type Util = (props: {
 	item_height: number;
-	items_index_to_keep_rendered?: number[];
-	items_length: number;
+	number_of_items: number;
 }) => {
 	$container: RefObject<HTMLDivElement>;
 	container_className: string;
-	content_className: string;
-	content_style: ContentStyle;
-	items_style: ItemStyle[];
+	content_styles: ContentStyle;
+	items_styles: ItemStyle[];
+	items_visible: number[];
 };

@@ -10,7 +10,9 @@ import { store_slug } from "@/store";
 import { context } from "../block";
 
 export const BlockDropAreas: FunctionComponent = () => {
-	const { drop_areas } = useContext(context);
+	const { drop_areas, ancestors_id } = useContext(context);
+
+	const block_level = ancestors_id.length;
 
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 	const moving_type = useSelect(select => select(store_slug).moving_type());
@@ -74,7 +76,8 @@ export const BlockDropAreas: FunctionComponent = () => {
 					onDragOver={e => e.preventDefault()}
 					className={className(
 						styles["drop_area"],
-						styles[`level-${drop_area.level}`]
+						styles[`level-${drop_area.level + block_level}`],
+						styles[`block_level-${block_level}`]
 					)}
 				/>
 			))}

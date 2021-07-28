@@ -4,7 +4,7 @@ import { useContext } from "@wordpress/element";
 
 import styles from "./styles.styl";
 import type { Component } from "./types";
-import { useMovingAttributes, useMovingClasses, useSelectBlock } from "./utils";
+import { useMovingAttributes, useMovingStyles, useSelectBlock } from "./utils";
 import { context } from "./context";
 import { useClassName } from "@/utils";
 import {
@@ -33,7 +33,7 @@ export const Block: Component = props => {
 	const {
 		className_container: className_container_moving,
 		className_content: className_content_moving,
-	} = useMovingClasses({ can_move, moving_is_over, is_moving });
+	} = useMovingStyles({ can_move, moving_is_over, is_moving });
 
 	const className_container = useClassName({
 		[styles.container]: true,

@@ -7,7 +7,7 @@ import { context } from "../../context";
 import { useClassName } from "@/utils";
 import { store_slug } from "@/store";
 
-export const useMovingClasses: Util = props => {
+export const useMovingStyles: Util = props => {
 	const { moving_is_over, is_moving, can_move } = props;
 
 	const { ancestors_id, drop_areas } = useContext(context);

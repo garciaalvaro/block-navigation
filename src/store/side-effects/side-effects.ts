@@ -5,7 +5,6 @@ import {
 	useResetMoving,
 	useSetBlockIds,
 	useUpdateIdsCollapsed,
-	useUpdateIdsHidden,
 	useUpdateIdsVisible,
 } from "./utils";
 
@@ -14,7 +13,6 @@ export const SideEffects: FunctionComponent = () => {
 	useResetMoving();
 	useSetBlockIds();
 	useUpdateIdsCollapsed();
-	useUpdateIdsHidden();
 	useUpdateIdsVisible();
 
 	return null;

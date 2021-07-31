@@ -46,11 +46,6 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
-	idsHiddenUpdate: payload => ({
-		type: "IDS_HIDDEN_UPDATE",
-		payload,
-	}),
-
 	idsVisibleUpdate: payload => ({
 		type: "IDS_VISIBLE_UPDATE",
 		payload,

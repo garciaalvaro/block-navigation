@@ -23,7 +23,6 @@ export interface ActionCreators {
 
 	idsUpdate: ActionCreator<"IDS_UPDATE", BlockId[]>;
 	idsCollapsedUpdate: ActionCreator<"IDS_COLLAPSED_UPDATE", BlockId[]>;
-	idsHiddenUpdate: ActionCreator<"IDS_HIDDEN_UPDATE", BlockId[]>;
 	idsVisibleUpdate: ActionCreator<"IDS_VISIBLE_UPDATE", BlockId[]>;
 
 	toggleBlock: ActionCreator<"TOGGLE_BLOCK", BlockId>;

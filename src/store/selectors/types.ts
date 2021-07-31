@@ -14,7 +14,6 @@ interface SelectorsReturn {
 	moving_type: State["moving_type"];
 	ids_collapsed: State["ids_collapsed"];
 	ids: State["ids"];
-	ids_hidden: State["ids_hidden"];
 	ids_visible: BlockId[];
 	is_detached: State["is_detached"];
 	is_dev: State["is_dev"];

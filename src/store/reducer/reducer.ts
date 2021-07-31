@@ -67,13 +67,6 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
-		case "IDS_HIDDEN_UPDATE": {
-			return {
-				...state,
-				ids_hidden: action.payload,
-			};
-		}
-
 		case "IDS_VISIBLE_UPDATE": {
 			return {
 				...state,

@@ -1,5 +1,10 @@
 import { useSelect, useDispatch } from "@wordpress/data";
-import { useContext, useEffect, useState } from "@wordpress/element";
+import {
+	useContext,
+	useEffect,
+	useState,
+	useLayoutEffect,
+} from "@wordpress/element";
 
 import { store_slug } from "@/store";
 
@@ -31,6 +36,8 @@ export const useMovingAttributes: Util = () => {
 	const { startDraggingBlocks, stopDraggingBlocks } =
 		useDispatch("core/block-editor");
 
+	// We need this callback to trigger the frame after the drag starts
+	// so the correct classes are applied to the drag image.
 	useEffect(() => {
 		if (!is_moving) return;
 
@@ -41,7 +48,16 @@ export const useMovingAttributes: Util = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [is_moving]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
+		if (moving_block || !is_moving) return;
+
+		// Reset is_moving
+		setIsMoving(false);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [moving_block]);
+
+	useLayoutEffect(() => {
 		if (moving_block || !moving_is_over) return;
 
 		// Reset moving_is_over

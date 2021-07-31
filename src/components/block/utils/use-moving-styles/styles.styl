@@ -39,7 +39,9 @@
 		content ""
 
 	.no-a_block_is_moving &
-		transition transform .1s var(--e_deceleration)
+	.no-a_block_is_moving & > div
+	.no-a_block_is_moving &:after
+		transition none
 
 	.can_receive_drop.no-moving_is_over &:after
 		border-color var(--secondary_color)

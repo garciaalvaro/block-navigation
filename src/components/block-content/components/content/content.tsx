@@ -53,25 +53,23 @@ export const Content: FunctionComponent = () => {
 		return null;
 	}, [block_content, attributes]);
 
-	if (block_content?.type === "text") {
-		if (content && content[0] !== null) {
-			return (
-				<Fragment>
-					{block_info_displayed === "title_content" && (
-						<span className={styles.separator}>|</span>
-					)}
-
-					<span className={styles.text}>{content[0]}</span>
-				</Fragment>
-			);
-		}
-
-		if (block_info_displayed === "content") {
-			return <Title />;
-		}
+	if (!content || content[0] === null) {
+		return <Title />;
 	}
 
-	if (content && block_content?.type === "image") {
+	if (block_content?.type === "text") {
+		return (
+			<Fragment>
+				{block_info_displayed === "title_content" && (
+					<span className={styles.separator}>|</span>
+				)}
+
+				<span className={styles.text}>{content[0]}</span>
+			</Fragment>
+		);
+	}
+
+	if (block_content?.type === "image") {
 		return (
 			<Fragment>
 				{block_info_displayed === "title_content" && (

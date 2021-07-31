@@ -42,10 +42,12 @@ export const useMovingAttributes: Util = () => {
 	}, [is_moving]);
 
 	useEffect(() => {
-		if (moving_block) return;
+		if (moving_block || !moving_is_over) return;
 
 		// Reset moving_is_over
 		setMovingIsOver(false);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [moving_block]);
 
 	// Delay the assignment of moving_block so we can apply

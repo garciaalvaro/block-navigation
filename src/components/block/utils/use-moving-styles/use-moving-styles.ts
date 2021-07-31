@@ -33,7 +33,9 @@ export const useMovingStyles: Util = props => {
 			moving_type,
 			moving_is_over,
 			ancestor_is_moving,
+			moving_block,
 			is_moving,
+			can_move,
 			drop_areas,
 		],
 		{

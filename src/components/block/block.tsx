@@ -2,11 +2,13 @@ import React from "react";
 import { useSelect } from "@wordpress/data";
 import { useContext } from "@wordpress/element";
 
+import { useClassName } from "@/utils";
+import { store_slug } from "@/store";
+
 import styles from "./styles.styl";
 import type { Component } from "./types";
 import { useMovingAttributes, useMovingStyles, useSelectBlock } from "./utils";
 import { context } from "./context";
-import { useClassName } from "@/utils";
 import {
 	BlockMenu,
 	ContextProvider as BlockMenuContextProvider,
@@ -14,7 +16,6 @@ import {
 import { BlockToggleButton } from "../block-toggle-button";
 import { BlockDropAreas } from "../block-drop-areas";
 import { BlockContent } from "../block-content";
-import { store_slug } from "@/store";
 
 export const Block: Component = props => {
 	const { style } = props;
@@ -52,7 +53,9 @@ export const Block: Component = props => {
 		<div
 			style={style}
 			className={className_container}
+			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...moving_attributes}
+			// eslint-disable-next-line react/jsx-props-no-spreading
 			{...select_attributes}
 		>
 			<BlockDropAreas />

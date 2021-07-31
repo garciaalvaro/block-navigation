@@ -3,7 +3,7 @@ import { useLayoutEffect } from "@wordpress/element";
 
 import { store_slug } from "@/store";
 
-export const updateIdsVisible = (): void => {
+export const useUpdateIdsVisible = (): void => {
 	const ids = useSelect(select => select(store_slug).ids());
 
 	const ids_hidden = useSelect(select => select(store_slug).ids_hidden());
@@ -21,5 +21,6 @@ export const updateIdsVisible = (): void => {
 		const ids_visible = ids.filter(id => !ids_hidden.includes(id));
 
 		idsVisibleUpdate(ids_visible);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ids, ids_hidden]);
 };

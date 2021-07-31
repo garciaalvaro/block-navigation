@@ -4,8 +4,9 @@ import { __ } from "@wordpress/i18n";
 import { useSelect } from "@wordpress/data";
 import { useContext } from "@wordpress/element";
 
-import { Button } from "../button";
 import { context } from "@/components/block";
+
+import { Button } from "../button";
 
 declare global {
 	interface Window {

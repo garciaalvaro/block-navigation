@@ -2,9 +2,10 @@ import { useState, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { store_slug } from "@/store";
 
+import type { DropArea } from "@/types";
+
 import { getDropAreas } from "../get-drop-areas";
 import type { Util } from "./types";
-import type { DropArea } from "@/types";
 
 export const useDropAreas: Util = props => {
 	const { id, parent_id, ancestors_id } = props;
@@ -32,7 +33,7 @@ export const useDropAreas: Util = props => {
 				moving_block,
 			})
 		);
-	}, [moving_block, id, ancestors_id, ids_visible]);
+	}, [moving_block, id, ancestors_id, parent_id, ids_visible]);
 
 	return drop_areas;
 };

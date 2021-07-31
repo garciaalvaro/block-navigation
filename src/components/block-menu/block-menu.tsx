@@ -4,9 +4,10 @@ import { useContext, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { ArrowContainer, Popover } from "react-tiny-popover";
 
-import styles from "./styles.styl";
 import { useColor, useClassName, Button } from "@/utils";
 import { store_slug } from "@/store";
+
+import styles from "./styles.styl";
 import { context } from "./context";
 import { Icon } from "../icon";
 import {
@@ -35,8 +36,10 @@ export const BlockMenu: FunctionComponent = () => {
 
 		document.body.addEventListener("click", closeMenuDelayed);
 
+		// eslint-disable-next-line consistent-return
 		return () =>
 			document.body.removeEventListener("click", closeMenuDelayed);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [menu_is_open]);
 
 	return (

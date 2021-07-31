@@ -3,21 +3,22 @@ import type { FunctionComponent } from "react";
 import { useDispatch, useSelect, select } from "@wordpress/data";
 import { useEffect, useMemo } from "@wordpress/element";
 
-import styles from "./styles.styl";
 import { Icon } from "@/components/icon";
 import { Button, useToggle } from "@/utils";
 import { store_slug } from "@/store";
 import type { BlockId } from "@/types";
 
+import styles from "./styles.styl";
+
 export const ToggleBlocks: FunctionComponent = () => {
 	const { idsCollapsedUpdate } = useDispatch(store_slug);
 
-	const ids_collapsed = useSelect(select =>
-		select(store_slug).ids_collapsed()
+	const ids_collapsed = useSelect(_select =>
+		_select(store_slug).ids_collapsed()
 	);
 
-	const root_ids = useSelect(select =>
-		select("core/block-editor").getBlockOrder("")
+	const root_ids = useSelect(_select =>
+		_select("core/block-editor").getBlockOrder("")
 	);
 
 	const collapsible_root_ids = useMemo(() => {
@@ -54,6 +55,7 @@ export const ToggleBlocks: FunctionComponent = () => {
 		} else {
 			buttonShowCollapse();
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ids_collapsed]);
 
 	return (

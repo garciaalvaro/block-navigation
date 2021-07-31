@@ -2,7 +2,7 @@ import { useRef, useEffect } from "@wordpress/element";
 
 import type { Util } from "./types";
 
-export const setLayout: Util = () => {
+export const useSetLayout: Util = () => {
 	const $container = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
@@ -18,6 +18,7 @@ export const setLayout: Util = () => {
 		$container_grandparent.style.overflow = "visible";
 		$container_grandparent.style.height = "100%";
 
+		// eslint-disable-next-line consistent-return
 		return () => {
 			if (!$container_parent || !$container_grandparent) return;
 

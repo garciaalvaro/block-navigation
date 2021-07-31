@@ -4,9 +4,10 @@ import { Fragment } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { __ } from "@wordpress/i18n";
 
+import { store_slug } from "@/store";
+
 import styles from "./styles.styl";
 import { Toolbar } from "./components/toolbar";
-import { store_slug } from "@/store";
 import { BlocksList } from "../blocks-list";
 
 export const ViewNavigation: FunctionComponent = () => {

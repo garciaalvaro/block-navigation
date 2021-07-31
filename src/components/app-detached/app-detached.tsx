@@ -2,10 +2,11 @@ import React from "react";
 import type { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
 
-import styles from "./styles.styl";
-import { Buttons, Content } from "./components";
 import { useClassName, useColor } from "@/utils";
 import { store_slug } from "@/store";
+
+import styles from "./styles.styl";
+import { Buttons, Content } from "./components";
 
 export const AppDetached: FunctionComponent = () => {
 	const detached_position = useSelect(select =>

@@ -2,8 +2,9 @@ import React from "react";
 import type { FunctionComponent } from "react";
 import { useSelect } from "@wordpress/data";
 
-import { scrollToSelectedBlock, useVirtualList } from "./utils";
 import { store_slug } from "@/store";
+
+import { useScrollToSelectedBlock, useVirtualList } from "./utils";
 import { ContextProvider, Block } from "../block";
 
 export const BlocksList: FunctionComponent = () => {
@@ -22,7 +23,7 @@ export const BlocksList: FunctionComponent = () => {
 		number_of_items: ids_visible.length,
 	});
 
-	scrollToSelectedBlock($container);
+	useScrollToSelectedBlock($container);
 
 	return (
 		<div ref={$container} className={container_className}>

@@ -1,16 +1,11 @@
 import { select } from "@wordpress/data";
 
-import type { Util } from "./types";
-import { canHaveChildren } from "../can-have-children";
-import { getPrevId } from "../get-prev-id";
 import { getAncestorsId } from "@/utils";
 
-export const canReceiveDrop: Util = ({
-	id,
-	children_index,
-	moving_block,
-	ids_visible,
-}) => {
+import type { Util } from "./types";
+import { canHaveChildren } from "../can-have-children";
+
+export const canReceiveDrop: Util = ({ id, children_index, moving_block }) => {
 	if (!moving_block) {
 		return false;
 	}
@@ -33,8 +28,6 @@ export const canReceiveDrop: Util = ({
 		moving_block.parent_id === id &&
 		getBlockIndex(moving_block.id, moving_block.parent_id) ===
 			children_index - 1;
-
-	moving_block.id === getPrevId(id, ids_visible);
 
 	const can_receive_drop =
 		can_have_children &&

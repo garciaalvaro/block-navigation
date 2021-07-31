@@ -3,12 +3,14 @@ import type { FunctionComponent } from "react";
 import { get } from "lodash";
 import { useMemo, useContext, Fragment } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
 
-import styles from "./styles.styl";
-import { getText } from "./utils";
 import { blocks_content } from "@/utils";
 import { context } from "@/components/block";
 import { store_slug } from "@/store";
+
+import styles from "./styles.styl";
+import { getText } from "./utils";
 import { Title } from "../title";
 
 export const Content: FunctionComponent = () => {
@@ -26,10 +28,7 @@ export const Content: FunctionComponent = () => {
 		select(store_slug).block_info_displayed()
 	);
 
-	const block_content = useMemo(
-		() => blocks_content[name],
-		[name, attributes]
-	);
+	const block_content = useMemo(() => blocks_content[name], [name]);
 
 	const content = useMemo(() => {
 		if (block_content?.type === "image") {
@@ -43,7 +42,9 @@ export const Content: FunctionComponent = () => {
 			}
 
 			return [attr_value];
-		} else if (block_content?.type === "text") {
+		}
+
+		if (block_content?.type === "text") {
 			const attr_value: string = get(attributes, block_content.path);
 
 			return [getText(attr_value)];
@@ -78,8 +79,10 @@ export const Content: FunctionComponent = () => {
 				)}
 
 				{content.map((url, index) => (
+					// Images might be repeated so we cant use the image url
+					// eslint-disable-next-line react/no-array-index-key
 					<span key={index} className={styles.image_container}>
-						<img src={url} />
+						<img src={url} alt={__("Block content")} />
 					</span>
 				))}
 			</Fragment>

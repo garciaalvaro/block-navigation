@@ -9,6 +9,6 @@ export const useToggle: Util = (initial_open = false) => {
 		is_open,
 		close: () => setOpen(false),
 		open: () => setOpen(true),
-		toggle: () => setOpen(is_open => !is_open),
+		toggle: () => setOpen(_is_open => !_is_open),
 	};
 };

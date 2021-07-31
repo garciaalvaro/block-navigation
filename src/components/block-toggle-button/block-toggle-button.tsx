@@ -3,9 +3,10 @@ import type { FunctionComponent, MouseEventHandler } from "react";
 import { useContext } from "@wordpress/element";
 import { useDispatch, useSelect } from "@wordpress/data";
 
-import styles from "./styles.styl";
 import { Button } from "@/utils";
 import { store_slug } from "@/store";
+
+import styles from "./styles.styl";
 import { context } from "../block";
 import { Icon } from "../icon";
 

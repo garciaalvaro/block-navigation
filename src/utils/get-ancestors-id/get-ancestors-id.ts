@@ -1,7 +1,8 @@
 import { select } from "@wordpress/data";
 
-import type { Util } from "./types";
 import type { BlockId } from "@/types";
+
+import type { Util } from "./types";
 import { getParentId } from "../get-parent-id";
 
 export const getAncestorsId: Util = id => {

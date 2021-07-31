@@ -28,7 +28,7 @@ export const useWindowSize: Util = (time = 300) => {
 			window.removeEventListener("resize", throttled);
 			throttled.cancel();
 		};
-	}, []);
+	}, [time]);
 
 	useEffect(() => {
 		setIsMobile(width < 783);

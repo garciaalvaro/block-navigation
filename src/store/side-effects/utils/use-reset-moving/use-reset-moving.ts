@@ -3,7 +3,7 @@ import { useLayoutEffect } from "@wordpress/element";
 
 import { store_slug } from "@/store";
 
-export const resetMoving = (): void => {
+export const useResetMoving = (): void => {
 	// @ts-expect-error @wordpress/block-editor types are outdated
 	const { stopDraggingBlocks } = useDispatch("core/block-editor");
 
@@ -18,5 +18,6 @@ export const resetMoving = (): void => {
 		stopDraggingBlocks();
 		movingBlockUpdate(null);
 		movingTypeReset();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [is_detached]);
 };

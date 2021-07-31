@@ -1,11 +1,12 @@
 import { useSelect } from "@wordpress/data";
 import { useContext, useMemo } from "@wordpress/element";
 
+import { useClassName } from "@/utils";
+import { store_slug } from "@/store";
+
 import styles from "./styles.styl";
 import type { Util } from "./types";
 import { context } from "../../context";
-import { useClassName } from "@/utils";
-import { store_slug } from "@/store";
 
 export const useMovingStyles: Util = props => {
 	const { moving_is_over, is_moving, can_move } = props;

@@ -5,11 +5,12 @@ import { useState, useRef } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { ResizableBox } from "@wordpress/components";
 
-import styles from "./styles.styl";
-import { useSizeMax } from "./utils";
 import { useClassName, useColor } from "@/utils";
 import { store_slug } from "@/store";
 import { ViewNavigation } from "@/components/view-navigation";
+
+import styles from "./styles.styl";
+import { useSizeMax } from "./utils";
 
 export const Content: FunctionComponent = () => {
 	const [is_dragging, setIsDragging] = useState(false);

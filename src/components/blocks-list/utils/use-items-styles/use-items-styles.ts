@@ -9,8 +9,10 @@ export const useItemsStyles: Util = props => {
 	const [boundaries, setBoundaries] = useState({ top: 0, bottom: 0 });
 
 	useEffect(() => {
+		const $container_ref = $container.current;
+
 		const updateBoundaries = () => {
-			const scroll_top = $container.current?.scrollTop || 0;
+			const scroll_top = $container_ref?.scrollTop || 0;
 			const offset = container_height / 2;
 			const boundary_top = scroll_top - item_height - offset;
 			const boundary_bottom = scroll_top + container_height + offset;
@@ -24,10 +26,11 @@ export const useItemsStyles: Util = props => {
 		updateBoundaries();
 
 		// TODO: debounce the scroll
-		$container.current?.addEventListener("scroll", updateBoundaries);
+		$container_ref?.addEventListener("scroll", updateBoundaries);
 
 		return () =>
-			$container.current?.removeEventListener("scroll", updateBoundaries);
+			$container_ref?.removeEventListener("scroll", updateBoundaries);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [container_height, item_height]);
 
 	const items_styles = useMemo(

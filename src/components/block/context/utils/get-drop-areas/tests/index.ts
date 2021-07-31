@@ -1,7 +1,7 @@
-import { getDropAreas } from "../get-drop-areas";
 import { mockUtils, mockSelect } from "@/utils-test";
-
 import type { BlockId } from "@/types";
+
+import { getDropAreas } from "../get-drop-areas";
 import { data_block_ids, data_blocks } from "./data";
 
 jest.mock("@/utils");

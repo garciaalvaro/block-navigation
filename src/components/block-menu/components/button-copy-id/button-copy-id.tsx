@@ -3,8 +3,9 @@ import { __ } from "@wordpress/i18n";
 import { useContext } from "@wordpress/element";
 import copy from "copy-text-to-clipboard";
 
-import styles from "./styles.styl";
 import { context } from "@/components/block";
+
+import styles from "./styles.styl";
 import { Button } from "../button";
 
 export const ButtonCopyId: FunctionComponent = () => {

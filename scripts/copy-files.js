@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const copyfiles = require("copyfiles");
 
 const { name } = require("../package.json");

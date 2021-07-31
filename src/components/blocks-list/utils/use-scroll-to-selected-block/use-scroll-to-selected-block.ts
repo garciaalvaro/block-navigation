@@ -4,7 +4,7 @@ import { useSelect } from "@wordpress/data";
 import { store_slug } from "@/store";
 import type { Util } from "./types";
 
-export const scrollToSelectedBlock: Util = $container => {
+export const useScrollToSelectedBlock: Util = $container => {
 	const ids_visible = useSelect(select => select(store_slug).ids_visible());
 
 	const is_detached = useSelect(select => select(store_slug).is_detached());
@@ -46,7 +46,9 @@ export const scrollToSelectedBlock: Util = $container => {
 			$container.current.offsetHeight;
 
 		if (is_above || is_below) {
+			// eslint-disable-next-line no-param-reassign
 			$container.current.scrollTop = block_offsetTop - block_height / 2;
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [selected_blocks, selected_block]);
 };

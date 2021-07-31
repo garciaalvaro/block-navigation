@@ -5,7 +5,7 @@ import { store_slug } from "@/store";
 import { plugin_namespace, getDescendantIds } from "@/utils";
 
 // This hook will update the ids in the store
-export const setBlockIds = (): void => {
+export const useSetBlockIds = (): void => {
 	const { idsUpdate } = useDispatch(store_slug);
 
 	const ids = useSelect(select =>
@@ -30,5 +30,6 @@ export const setBlockIds = (): void => {
 		if (!is_detached && !sidebar_is_open) return;
 
 		idsUpdate(getDescendantIds());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ids, detached_is_expanded, is_detached, sidebar_is_open]);
 };

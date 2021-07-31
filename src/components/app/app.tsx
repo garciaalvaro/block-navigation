@@ -4,10 +4,11 @@ import { useSelect } from "@wordpress/data";
 import { PluginSidebar } from "@wordpress/edit-post";
 import { createPortal, Fragment } from "@wordpress/element";
 
-import { AppDetached } from "../app-detached";
-import { AppSidebar } from "../app-sidebar";
 import { store_slug, SideEffects } from "@/store";
 import { plugin_namespace, plugin_title } from "@/utils";
+
+import { AppDetached } from "../app-detached";
+import { AppSidebar } from "../app-sidebar";
 
 export const App: FunctionComponent = () => {
 	const is_detached = useSelect(select => select(store_slug).is_detached());

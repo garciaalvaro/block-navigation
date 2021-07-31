@@ -1,5 +1,6 @@
-import { canHaveChildren } from "./can-have-children";
 import { mockSelect } from "@/utils-test";
+
+import { canHaveChildren } from "./can-have-children";
 
 jest.mock("@wordpress/data");
 

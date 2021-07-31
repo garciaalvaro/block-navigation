@@ -1,5 +1,11 @@
-import type { AnyAction } from "@wordpress/data";
-import type { ActionCreators, Selectors } from "@/store";
+import type { AnyAction, Store } from "@wordpress/data";
+import type {
+	ActionCreators,
+	Selectors,
+	State,
+	SelectorCreators,
+	Reducer,
+} from "@/store";
 
 declare module "@wordpress/data" {
 	function dispatch(key: "melonpan/block-navigation"): ActionCreators;

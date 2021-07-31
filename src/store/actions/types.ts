@@ -1,5 +1,6 @@
-import type { State } from "../state";
 import type { BlockId } from "@/types";
+
+import type { State } from "../state";
 
 type ActionCreator<T, P = void> = (
 	payload: P

@@ -4,20 +4,21 @@ import { useState, useEffect } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
 import { useSelect, useDispatch } from "@wordpress/data";
 
-import styles from "./styles.styl";
-import { setLayout } from "./utils";
-import type { ViewName, TabOption } from "./types";
 import {
 	useColor,
 	useClassName,
 	useWindowSize,
 	ButtonsContainer,
 } from "@/utils";
+import { store_slug } from "@/store";
+
+import styles from "./styles.styl";
+import { useSetLayout } from "./utils";
+import type { ViewName, TabOption } from "./types";
 import { Tab, DetachButton } from "./components";
 import { ToggleBlocks } from "../button-toggle-blocks";
 import { ViewNavigation } from "../view-navigation";
 import { ViewSettings } from "../view-settings";
-import { store_slug } from "@/store";
 
 const tabs: TabOption[] = [
 	{ value: "navigation", label: __("Navigation") },
@@ -32,7 +33,7 @@ export const AppSidebar: FunctionComponent = () => {
 
 	const { is_mobile } = useWindowSize();
 
-	const $container = setLayout();
+	const $container = useSetLayout();
 
 	// @ts-expect-error @wordpress/block-editor types are outdated
 	const { stopDraggingBlocks } = useDispatch("core/block-editor");
@@ -45,6 +46,7 @@ export const AppSidebar: FunctionComponent = () => {
 		stopDraggingBlocks();
 		movingBlockUpdate(null);
 		movingTypeReset();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [view]);
 
 	return (

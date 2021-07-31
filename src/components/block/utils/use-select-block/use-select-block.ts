@@ -1,9 +1,10 @@
 import { useSelect, useDispatch } from "@wordpress/data";
 import { useState, useEffect, useContext } from "@wordpress/element";
 
+import { useClassName } from "@/utils";
+
 import styles from "./styles.styl";
 import type { Util } from "./types";
-import { useClassName } from "@/utils";
 import { context } from "../../context";
 
 export const useSelectBlock: Util = () => {

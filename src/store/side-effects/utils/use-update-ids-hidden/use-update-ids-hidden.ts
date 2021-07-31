@@ -5,7 +5,7 @@ import { useLayoutEffect } from "@wordpress/element";
 import { getDescendantIds } from "@/utils";
 import { store_slug } from "@/store";
 
-export const updateIdsHidden = (): void => {
+export const useUpdateIdsHidden = (): void => {
 	const ids_collapsed = useSelect(select =>
 		select(store_slug).ids_collapsed()
 	);
@@ -27,5 +27,6 @@ export const updateIdsHidden = (): void => {
 		ids_hidden = uniq(ids_hidden);
 
 		idsHiddenUpdate(ids_hidden);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ids_collapsed]);
 };

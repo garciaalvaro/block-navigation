@@ -1,8 +1,9 @@
 import React from "react";
 
+import { Button, className } from "@/utils";
+
 import styles from "./styles.styl";
 import type { Component } from "./types";
-import { Button, className } from "@/utils";
 
 export const Tab: Component = props => {
 	const { is_active, label, onClick } = props;

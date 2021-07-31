@@ -1,9 +1,10 @@
 import { useSelect, useDispatch } from "@wordpress/data";
 import { useEffect, useMemo } from "@wordpress/element";
 
-import type { Util } from "./types";
 import { useWindowSize } from "@/utils";
 import { store_slug } from "@/store";
+
+import type { Util } from "./types";
 
 export const useSizeMax: Util = () => {
 	const { detachedCollapse, detachedSizeUpdate } = useDispatch(store_slug);
@@ -45,6 +46,7 @@ export const useSizeMax: Util = () => {
 
 			detachedSizeUpdate({ width, height });
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [window_height, window_width]);
 
 	return detached_max_size;

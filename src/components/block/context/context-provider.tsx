@@ -1,13 +1,14 @@
 import React from "react";
 import { useMemo } from "@wordpress/element";
 
+import { getAncestorsId } from "@/utils";
+
 import type { Component } from "./types";
 import { context } from "./context";
 import { useDropAreas } from "./utils";
-import { getAncestorsId } from "@/utils";
 
 export const ContextProvider: Component = props => {
-	const { id } = props;
+	const { children, id } = props;
 
 	const ancestors_id = useMemo(() => getAncestorsId(id), [id]);
 
@@ -27,7 +28,7 @@ export const ContextProvider: Component = props => {
 				parent_id,
 			}}
 		>
-			{props.children}
+			{children}
 		</context.Provider>
 	);
 };

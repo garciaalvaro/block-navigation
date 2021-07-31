@@ -1,10 +1,13 @@
 import React from "react";
 import type { FunctionComponent } from "react";
 
-import { context } from "./context";
 import { useToggle } from "@/utils";
 
+import { context } from "./context";
+
 export const ContextProvider: FunctionComponent = props => {
+	const { children } = props;
+
 	const {
 		toggle: toggleMenu,
 		close: closeMenu,
@@ -19,7 +22,7 @@ export const ContextProvider: FunctionComponent = props => {
 				menu_is_open,
 			}}
 		>
-			{props.children}
+			{children}
 		</context.Provider>
 	);
 };

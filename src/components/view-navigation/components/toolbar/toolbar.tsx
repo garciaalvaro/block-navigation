@@ -3,11 +3,12 @@ import type { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 import { useDispatch, useSelect } from "@wordpress/data";
 
-import styles from "./styles.styl";
 import { ContextProvider } from "@/components/block";
 import { BlockContent } from "@/components/block-content";
 import { store_slug } from "@/store";
 import { useClassName, Button } from "@/utils";
+
+import styles from "./styles.styl";
 
 export const Toolbar: FunctionComponent = () => {
 	const { movingTypeReset, movingBlockUpdate } = useDispatch(store_slug);

@@ -1,21 +1,21 @@
 import type { FunctionComponent } from "react";
 
 import {
-	closeDetached,
-	resetMoving,
-	setBlockIds,
-	updateIdsCollapsed,
-	updateIdsHidden,
-	updateIdsVisible,
+	useCloseDetached,
+	useResetMoving,
+	useSetBlockIds,
+	useUpdateIdsCollapsed,
+	useUpdateIdsHidden,
+	useUpdateIdsVisible,
 } from "./utils";
 
 export const SideEffects: FunctionComponent = () => {
-	closeDetached();
-	resetMoving();
-	setBlockIds();
-	updateIdsCollapsed();
-	updateIdsHidden();
-	updateIdsVisible();
+	useCloseDetached();
+	useResetMoving();
+	useSetBlockIds();
+	useUpdateIdsCollapsed();
+	useUpdateIdsHidden();
+	useUpdateIdsVisible();
 
 	return null;
 };

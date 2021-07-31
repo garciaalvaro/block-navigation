@@ -1,8 +1,9 @@
 import React from "react";
 
+import { useClassName } from "@/utils";
+
 import styles from "./styles.styl";
 import type { Component } from "./types";
-import { useClassName } from "@/utils";
 
 export const Button: Component = props => {
 	const {
@@ -20,6 +21,7 @@ export const Button: Component = props => {
 	});
 
 	return (
+		// eslint-disable-next-line react/jsx-props-no-spreading
 		<button type="button" className={className} {...rest}>
 			{children}
 		</button>

@@ -4,8 +4,9 @@ import { useContext } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
 
-import styles from "./styles.styl";
 import { store_slug } from "@/store";
+
+import styles from "./styles.styl";
 import { context } from "../block";
 import { Content, Title } from "./components";
 

@@ -3,9 +3,10 @@ import { __ } from "@wordpress/i18n";
 import { useSelect, useDispatch } from "@wordpress/data";
 import { SelectControl } from "@wordpress/components";
 
-import styles from "./styles.styl";
 import { color_schemes } from "@/utils";
 import { store_slug } from "@/store";
+
+import styles from "./styles.styl";
 
 export const ColorScheme: FunctionComponent = () => {
 	const color_scheme = useSelect(select => select(store_slug).color_scheme());

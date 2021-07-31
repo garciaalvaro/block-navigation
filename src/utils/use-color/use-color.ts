@@ -1,9 +1,10 @@
 import { useMemo } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
+import { store_slug } from "@/store";
+
 import styles from "./styles.styl";
 import type { Util } from "./types";
-import { store_slug } from "@/store";
 
 export const useColor: Util = () => {
 	const [color_type, color_name] = useSelect(select =>

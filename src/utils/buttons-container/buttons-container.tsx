@@ -22,6 +22,7 @@ export const ButtonsContainer: Component = props => {
 	});
 
 	return (
+		// eslint-disable-next-line react/jsx-props-no-spreading
 		<div className={className} {...rest}>
 			{children}
 		</div>

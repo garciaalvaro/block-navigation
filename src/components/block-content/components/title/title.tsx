@@ -3,8 +3,9 @@ import type { FunctionComponent } from "react";
 import { useContext } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
-import styles from "./styles.styl";
 import { context } from "@/components/block";
+
+import styles from "./styles.styl";
 
 export const Title: FunctionComponent = () => {
 	const { id } = useContext(context);

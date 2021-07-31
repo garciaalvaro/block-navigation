@@ -1,9 +1,10 @@
 import { useSelect, useDispatch } from "@wordpress/data";
 import { useContext, useEffect, useState } from "@wordpress/element";
 
+import { store_slug } from "@/store";
+
 import type { Util } from "./types";
 import { context } from "../../context";
-import { store_slug } from "@/store";
 
 export const useMovingAttributes: Util = () => {
 	const { id, parent_id } = useContext(context);
@@ -36,6 +37,8 @@ export const useMovingAttributes: Util = () => {
 		startDraggingBlocks([id]);
 		movingBlockUpdate({ id, name, parent_id });
 		movingTypeUpdate("by_drag");
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [is_moving]);
 
 	useEffect(() => {

@@ -1,31 +1,31 @@
 import type { Util } from "./types";
 
-export const className: Util = (...classNames) => {
-	return classNames
+export const className: Util = (...values) => {
+	return values
 		.reduce<string[]>((acc, _className) => {
-			let className = _className;
+			if (typeof _className === "object" && _className !== null) {
+				const classNameObj = _className;
 
-			if (typeof className === "object" && className !== null) {
-				const classNameObj = className;
-
-				className = Object.keys(className).reduce((acc, key) => {
+				// TODO
+				// eslint-disable-next-line no-param-reassign
+				_className = Object.keys(_className).reduce((_acc, key) => {
 					if (!classNameObj[key]) {
-						return acc;
+						return _acc;
 					}
 
-					if (!acc) {
+					if (!_acc) {
 						return key;
 					}
 
-					return `${acc} ${key}`;
+					return `${_acc} ${key}`;
 				}, "");
 			}
 
-			if (!className) {
+			if (!_className) {
 				return acc;
 			}
 
-			return [...acc, className];
+			return [...acc, _className];
 		}, [])
 		.join(" ");
 };

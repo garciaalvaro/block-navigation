@@ -11,6 +11,7 @@ registerPlugin(plugin_namespace, {
 	// @ts-expect-error TODO
 	icon: <Logo />,
 
+	// eslint-disable-next-line react/display-name
 	render: () => {
 		return (
 			<Fragment>

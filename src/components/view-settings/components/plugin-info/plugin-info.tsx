@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from "react";
 import { __ } from "@wordpress/i18n";
 
-import styles from "./styles.styl";
 import { Logo } from "@/components/logo";
+
+import styles from "./styles.styl";
 
 export const PluginInfo: FunctionComponent = () => {
 	return (

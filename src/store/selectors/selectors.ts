@@ -15,6 +15,8 @@ export const selectors: SelectorCreators = {
 
 	ids_collapsed: state => state.ids_collapsed,
 
+	ids_root_collapsible: state => state.ids_root_collapsible,
+
 	ids_visible: state => state.ids_visible,
 
 	is_detached: state => state.is_detached,

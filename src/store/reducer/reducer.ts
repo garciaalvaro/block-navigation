@@ -67,6 +67,13 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
+		case "IDS_ROOT_COLLAPSIBLE_UPDATE": {
+			return {
+				...state,
+				ids_root_collapsible: action.payload,
+			};
+		}
+
 		case "IDS_VISIBLE_UPDATE": {
 			return {
 				...state,

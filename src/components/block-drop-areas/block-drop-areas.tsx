@@ -36,6 +36,12 @@ export const BlockDropAreas: FunctionComponent = () => {
 			return;
 		}
 
+		// Reset moving necessary in by_click and also in by_drag,
+		// in the case that there is no drop.
+		stopDraggingBlocks();
+		movingBlockUpdate(null);
+		movingTypeReset();
+
 		const moving_block_parent_id = getParentId(moving_block.id);
 
 		if (moving_block_parent_id === null) return;
@@ -54,13 +60,13 @@ export const BlockDropAreas: FunctionComponent = () => {
 				: drop_area.index
 		);
 
-		// Although these events get called on onDragEnd,
-		// calling theme here will trigger the update sooner.
-		// Calling them on onDragEnd is still needed, in case
-		// there is no drop inside a drop area.
-		stopDraggingBlocks();
-		movingBlockUpdate(null);
-		movingTypeReset();
+		// // Although these events get called on onDragEnd,
+		// // calling them here will trigger the update sooner.
+		// // Calling them on onDragEnd is still needed, in case
+		// // there is no drop inside a drop area.
+		// stopDraggingBlocks();
+		// movingBlockUpdate(null);
+		// movingTypeReset();
 	};
 
 	if (!drop_areas.length) {

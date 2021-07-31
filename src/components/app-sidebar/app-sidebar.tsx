@@ -16,7 +16,7 @@ import styles from "./styles.styl";
 import { useSetLayout } from "./utils";
 import type { ViewName, TabOption } from "./types";
 import { Tab, DetachButton } from "./components";
-import { ToggleBlocks } from "../button-toggle-blocks";
+import { ButtonToggleBlocks } from "../button-toggle-blocks";
 import { ViewNavigation } from "../view-navigation";
 import { ViewSettings } from "../view-settings";
 
@@ -73,7 +73,7 @@ export const AppSidebar: FunctionComponent = () => {
 			<ButtonsContainer align="left">
 				{!is_mobile && <DetachButton />}
 
-				<ToggleBlocks />
+				<ButtonToggleBlocks />
 			</ButtonsContainer>
 		</div>
 	);

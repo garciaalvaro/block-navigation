@@ -5,7 +5,7 @@ import { __ } from "@wordpress/i18n";
 import { store_slug } from "@/store";
 import { Button, ButtonsContainer } from "@/utils";
 import { Icon } from "@/components/icon";
-import { ToggleBlocks } from "@/components/button-toggle-blocks";
+import { ButtonToggleBlocks } from "@/components/button-toggle-blocks";
 
 import styles from "./styles.styl";
 import type { Component } from "./types";
@@ -60,7 +60,7 @@ export const Buttons: Component = props => {
 				</Button>
 			)}
 
-			{is_expanded && <ToggleBlocks />}
+			{is_expanded && <ButtonToggleBlocks />}
 		</ButtonsContainer>
 	);
 };

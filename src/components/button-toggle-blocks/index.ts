@@ -1,1 +1,1 @@
-export { ToggleBlocks } from "./toggle-blocks";
+export { ButtonToggleBlocks } from "./toggle-blocks";

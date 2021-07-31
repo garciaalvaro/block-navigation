@@ -10,7 +10,7 @@ import type { BlockId } from "@/types";
 
 import styles from "./styles.styl";
 
-export const ToggleBlocks: FunctionComponent = () => {
+export const ButtonToggleBlocks: FunctionComponent = () => {
 	const { idsCollapsedUpdate } = useDispatch(store_slug);
 
 	const ids_collapsed = useSelect(_select =>

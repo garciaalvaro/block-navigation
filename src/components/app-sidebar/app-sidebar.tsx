@@ -73,7 +73,7 @@ export const AppSidebar: FunctionComponent = () => {
 			<ButtonsContainer align="left">
 				{!is_mobile && <DetachButton />}
 
-				<ButtonToggleBlocks />
+				{view === "navigation" && <ButtonToggleBlocks />}
 			</ButtonsContainer>
 		</div>
 	);

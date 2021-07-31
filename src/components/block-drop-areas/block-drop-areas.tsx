@@ -12,9 +12,9 @@ import styles from "./styles.styl";
 import { context } from "../block";
 
 export const BlockDropAreas: FunctionComponent = () => {
-	const { drop_areas, ancestors_id } = useContext(context);
+	const { drop_areas, ancestor_ids } = useContext(context);
 
-	const block_level = ancestors_id.length;
+	const block_level = ancestor_ids.length;
 
 	const moving_block = useSelect(_select =>
 		_select(store_slug).moving_block()

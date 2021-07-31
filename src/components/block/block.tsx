@@ -20,7 +20,7 @@ import { BlockContent } from "../block-content";
 export const Block: Component = props => {
 	const { style } = props;
 
-	const { ancestors_id } = useContext(context);
+	const { ancestor_ids } = useContext(context);
 
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 	const is_detached = useSelect(select => select(store_slug).is_detached());
@@ -37,11 +37,11 @@ export const Block: Component = props => {
 	} = useMovingStyles({ can_move, moving_is_over, is_moving });
 
 	const className_container = useClassName(
-		[is_detached, ancestors_id, className_container_moving],
+		[is_detached, ancestor_ids, className_container_moving],
 		{
 			[styles.container]: true,
 			[styles.is_detached]: is_detached,
-			[styles[`level-${ancestors_id.length}`]]: true,
+			[styles[`level-${ancestor_ids.length}`]]: true,
 			[className_container_moving]: true,
 		}
 	);

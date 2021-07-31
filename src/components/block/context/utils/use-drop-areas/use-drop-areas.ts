@@ -8,7 +8,7 @@ import { getDropAreas } from "../get-drop-areas";
 import type { Util } from "./types";
 
 export const useDropAreas: Util = props => {
-	const { id, parent_id, ancestors_id } = props;
+	const { id, parent_id, ancestor_ids } = props;
 
 	const [drop_areas, setDropAreas] = useState<DropArea[]>([]);
 
@@ -28,12 +28,12 @@ export const useDropAreas: Util = props => {
 			getDropAreas({
 				id,
 				parent_id,
-				ancestors_id,
+				ancestor_ids,
 				ids_visible,
 				moving_block,
 			})
 		);
-	}, [moving_block, id, ancestors_id, parent_id, ids_visible]);
+	}, [moving_block, id, ancestor_ids, parent_id, ids_visible]);
 
 	return drop_areas;
 };

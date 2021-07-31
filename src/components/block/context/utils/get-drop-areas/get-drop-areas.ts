@@ -1,7 +1,7 @@
 import { select } from "@wordpress/data";
 
 import type { DropArea } from "@/types";
-import { getAncestorsId, getParentId } from "@/utils";
+import { getAncestorIds, getParentId } from "@/utils";
 
 import { getPrevId } from "../get-prev-id";
 import { canReceiveDrop } from "../can-receive-drop";
@@ -12,7 +12,7 @@ import type { Util } from "./types";
 export const getDropAreas: Util = ({
 	id,
 	parent_id,
-	ancestors_id,
+	ancestor_ids,
 	ids_visible,
 	moving_block,
 }) => {
@@ -38,7 +38,7 @@ export const getDropAreas: Util = ({
 	}
 
 	let children_index = 0;
-	let prev_level = getAncestorsId(prev_id).length - ancestors_id.length;
+	let prev_level = getAncestorIds(prev_id).length - ancestor_ids.length;
 
 	while (prev_level >= -1) {
 		children_index =

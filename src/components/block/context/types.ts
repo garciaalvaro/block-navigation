@@ -3,7 +3,7 @@ import type { FunctionComponent } from "react";
 import type { BlockId, DropArea } from "@/types";
 
 export type Context = {
-	ancestors_id: BlockId[];
+	ancestor_ids: BlockId[];
 	drop_areas: DropArea[];
 	id: BlockId;
 	parent_id: BlockId;

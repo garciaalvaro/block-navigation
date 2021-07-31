@@ -4,7 +4,7 @@ export type MockDataBlocksKey = BlockId;
 
 export type MockDataBlocksValue = {
 	id: BlockId;
-	ancestors_id: BlockId[];
+	ancestor_ids: BlockId[];
 	parent_id: BlockId;
 	index: number;
 	children: BlockId[];

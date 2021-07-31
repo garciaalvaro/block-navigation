@@ -7,7 +7,7 @@ import { data_block_ids, data_blocks } from "./data";
 jest.mock("@/utils");
 jest.mock("@wordpress/data");
 
-mockUtils("getAncestorsId", (id: BlockId) => data_blocks.get(id)?.ancestors_id);
+mockUtils("getAncestorIds", (id: BlockId) => data_blocks.get(id)?.ancestor_ids);
 mockUtils("getParentId", (id: BlockId) => data_blocks.get(id)?.parent_id);
 mockSelect({
 	canInsertBlockType: () => true,
@@ -25,7 +25,7 @@ test("getDropAreas", () => {
 		getDropAreas({
 			id: block.id,
 			parent_id: block.parent_id,
-			ancestors_id: block.ancestors_id,
+			ancestor_ids: block.ancestor_ids,
 			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})
@@ -52,7 +52,7 @@ test("getDropAreas first block in nested list", () => {
 		getDropAreas({
 			id: block.id,
 			parent_id: block.parent_id,
-			ancestors_id: block.ancestors_id,
+			ancestor_ids: block.ancestor_ids,
 			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})
@@ -74,7 +74,7 @@ test("getDropAreas first block in list", () => {
 		getDropAreas({
 			id: block.id,
 			parent_id: block.parent_id,
-			ancestors_id: block.ancestors_id,
+			ancestor_ids: block.ancestor_ids,
 			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})
@@ -96,7 +96,7 @@ test("getDropAreas last block in list", () => {
 		getDropAreas({
 			id: block.id,
 			parent_id: block.parent_id,
-			ancestors_id: block.ancestors_id,
+			ancestor_ids: block.ancestor_ids,
 			moving_block: { id: "z", parent_id: "", name: "" },
 			ids_visible: data_block_ids,
 		})

@@ -3,7 +3,7 @@ export { Button } from "./button";
 export { ButtonsContainer } from "./buttons-container";
 export { className } from "./class-name";
 export { color_schemes } from "./color-schemes";
-export { getAncestorsId } from "./get-ancestors-id";
+export { getAncestorIds } from "./get-ancestor-ids";
 export { getDescendantIds } from "./get-descendant-ids";
 export { getParentId } from "./get-parent-id";
 export { plugin_namespace, plugin_title } from "./plugin-info";

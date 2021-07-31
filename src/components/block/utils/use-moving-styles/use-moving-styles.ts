@@ -11,7 +11,7 @@ import { context } from "../../context";
 export const useMovingStyles: Util = props => {
 	const { moving_is_over, is_moving, can_move } = props;
 
-	const { ancestors_id, drop_areas } = useContext(context);
+	const { ancestor_ids, drop_areas } = useContext(context);
 
 	const moving_type = useSelect(select => select(store_slug).moving_type());
 	const moving_block = useSelect(select => select(store_slug).moving_block());
@@ -21,12 +21,12 @@ export const useMovingStyles: Util = props => {
 			return false;
 		}
 
-		if (!ancestors_id.includes(moving_block.id)) {
+		if (!ancestor_ids.includes(moving_block.id)) {
 			return false;
 		}
 
 		return true;
-	}, [moving_block, ancestors_id]);
+	}, [moving_block, ancestor_ids]);
 
 	const className_container = useClassName(
 		[

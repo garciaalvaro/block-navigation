@@ -1,5 +1,5 @@
 import { useSelect, useDispatch } from "@wordpress/data";
-import { useState, useEffect, useContext } from "@wordpress/element";
+import { useState, useLayoutEffect, useContext } from "@wordpress/element";
 
 import { useClassName } from "@/utils";
 
@@ -33,7 +33,7 @@ export const useSelectBlock: Util = () => {
 		[styles.is_selected]: is_selected,
 	});
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		setIsSelected(is_selected_multiple || is_selected_single);
 	}, [is_selected_multiple, is_selected_single]);
 

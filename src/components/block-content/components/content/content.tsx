@@ -53,7 +53,7 @@ export const Content: FunctionComponent = () => {
 		return null;
 	}, [block_content, attributes]);
 
-	if (!content || content[0] === null) {
+	if (!content || !content[0]) {
 		return <Title />;
 	}
 

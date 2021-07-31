@@ -50,5 +50,5 @@ export const useScrollToSelectedBlock: Util = $container => {
 			$container.current.scrollTop = block_offsetTop - block_height / 2;
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [selected_blocks, selected_block]);
+	}, [`${selected_blocks}`, selected_block]);
 };

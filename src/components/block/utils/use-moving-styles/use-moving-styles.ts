@@ -16,10 +16,17 @@ export const useMovingStyles: Util = props => {
 	const moving_type = useSelect(select => select(store_slug).moving_type());
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 
-	const ancestor_is_moving = useMemo(
-		() => !!(moving_block?.id && ancestors_id.includes(moving_block?.id)),
-		[moving_block?.id, ancestors_id]
-	);
+	const ancestor_is_moving = useMemo(() => {
+		if (!moving_block) {
+			return false;
+		}
+
+		if (!ancestors_id.includes(moving_block.id)) {
+			return false;
+		}
+
+		return true;
+	}, [moving_block, ancestors_id]);
 
 	const className_container = useClassName(
 		[

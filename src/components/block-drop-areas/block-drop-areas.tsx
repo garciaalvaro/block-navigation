@@ -68,7 +68,17 @@ export const BlockDropAreas: FunctionComponent = () => {
 	}
 
 	return (
-		<div className={styles.container}>
+		<div
+			className={styles.container}
+			onDragLeave={e => {
+				// https://stackoverflow.com/a/54271161 | CC BY-SA 3.0
+				// Prevent drag leave from triggering when switching
+				// between drop areas.
+				if (e.currentTarget.contains(e.relatedTarget as Node)) {
+					e.stopPropagation();
+				}
+			}}
+		>
 			{drop_areas.map(drop_area => (
 				<div
 					role="button"

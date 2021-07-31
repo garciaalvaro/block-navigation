@@ -1,5 +1,5 @@
 import { useSelect, useDispatch } from "@wordpress/data";
-import { useContext, useEffect, useState, useRef } from "@wordpress/element";
+import { useContext, useEffect, useState } from "@wordpress/element";
 
 import { store_slug } from "@/store";
 
@@ -8,9 +8,6 @@ import { context } from "../../context";
 
 export const useMovingAttributes: Util = () => {
 	const { id, parent_id } = useContext(context);
-
-	// eslint-disable-next-line no-undef
-	const prevent_drag_leave_timeout = useRef<NodeJS.Timeout | null>(null);
 
 	const [moving_is_over, setMovingIsOver] = useState(false);
 	const [is_moving, setIsMoving] = useState(false);
@@ -62,26 +59,8 @@ export const useMovingAttributes: Util = () => {
 		movingTypeReset();
 	};
 
-	// Dragging between drop areas of the same block triggers
-	// onDragEnter and immediately onDragLeave.
-	const onDragEnter = () => {
-		prevent_drag_leave_timeout.current = setTimeout(() => {
-			prevent_drag_leave_timeout.current = null;
-		}, 100);
-
-		setMovingIsOver(true);
-	};
-	const onDragLeave = () => {
-		if (prevent_drag_leave_timeout.current) return;
-
-		setMovingIsOver(false);
-	};
-
-	useEffect(() => {
-		if (prevent_drag_leave_timeout.current) {
-			clearTimeout(prevent_drag_leave_timeout.current);
-		}
-	}, []);
+	const onDragEnter = () => setMovingIsOver(true);
+	const onDragLeave = () => setMovingIsOver(false);
 
 	return {
 		moving_is_over,

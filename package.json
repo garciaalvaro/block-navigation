@@ -30,7 +30,6 @@
 		"@types/lodash": "^4.14.171",
 		"@types/wordpress__block-editor": "^6.0.3",
 		"@types/wordpress__components": "^14.0.3",
-		"@types/wordpress__compose": "^4.0.0",
 		"@types/wordpress__data": "^4.6.10",
 		"@types/wordpress__edit-post": "^4.0.1",
 		"@types/wordpress__plugins": "^3.0.0",

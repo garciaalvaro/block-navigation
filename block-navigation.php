@@ -43,7 +43,6 @@ function enqueue()
 			"wp-block-editor",
 			"wp-blocks",
 			"wp-components",
-			"wp-compose",
 			"wp-data",
 			"wp-edit-post",
 			"wp-element",

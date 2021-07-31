@@ -40,7 +40,6 @@ module.exports = (env, { mode }) => {
 			"@wordpress/block-editor": "wp.blockEditor",
 			"@wordpress/blocks": "wp.blocks",
 			"@wordpress/components": "wp.components",
-			"@wordpress/compose": "wp.compose",
 			"@wordpress/data": "wp.data",
 			"@wordpress/edit-post": "wp.editPost",
 			"@wordpress/element": "wp.element",

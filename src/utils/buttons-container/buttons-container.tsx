@@ -13,7 +13,7 @@ export const ButtonsContainer: Component = props => {
 		...rest
 	} = props;
 
-	const className = useClassName({
+	const className = useClassName([reverse_direction, align, _className], {
 		[styles.container]: true,
 		[styles.reverse_direction]: !!reverse_direction,
 		[styles["align-left"]]: align === "left",

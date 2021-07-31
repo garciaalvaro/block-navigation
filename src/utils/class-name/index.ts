@@ -1,2 +1,2 @@
 export { className } from "./class-name";
-export type { Util } from "./types";
+export type { Util, ClassNameProps } from "./types";

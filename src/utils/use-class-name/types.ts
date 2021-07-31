@@ -1,3 +1,6 @@
-import type { Util as ClassName } from "../class-name";
+import type { Util as ClassName, ClassNameProps } from "../class-name";
 
-export type Util = ClassName;
+export type Util = (
+	dependencies: unknown[],
+	...classNames: ClassNameProps
+) => ReturnType<ClassName>;

@@ -20,7 +20,7 @@ export const Toolbar: FunctionComponent = () => {
 
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 
-	const className_container = useClassName({
+	const className_container = useClassName([is_detached], {
 		[styles.container]: true,
 		[styles.is_detached]: is_detached,
 	});

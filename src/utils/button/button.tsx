@@ -13,7 +13,7 @@ export const Button: Component = props => {
 		...rest
 	} = props;
 
-	const className = useClassName({
+	const className = useClassName([button_type, _className], {
 		[styles.button]: true,
 		[styles.icon]: button_type === "icon",
 		[styles.text]: button_type === "text",

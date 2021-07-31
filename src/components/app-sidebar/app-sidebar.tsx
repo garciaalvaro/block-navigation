@@ -29,7 +29,11 @@ export const AppSidebar: FunctionComponent = () => {
 	const [view, setView] = useState<ViewName>("navigation");
 
 	const { className: color_className } = useColor();
-	const className = useClassName(styles.container, color_className);
+	const className = useClassName(
+		[color_className],
+		styles.container,
+		color_className
+	);
 
 	const { is_mobile } = useWindowSize();
 

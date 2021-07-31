@@ -36,18 +36,24 @@ export const Block: Component = props => {
 		className_content: className_content_moving,
 	} = useMovingStyles({ can_move, moving_is_over, is_moving });
 
-	const className_container = useClassName({
-		[styles.container]: true,
-		[styles.is_detached]: is_detached,
-		[styles[`level-${ancestors_id.length}`]]: true,
-		[className_container_moving]: true,
-	});
+	const className_container = useClassName(
+		[is_detached, ancestors_id, className_container_moving],
+		{
+			[styles.container]: true,
+			[styles.is_detached]: is_detached,
+			[styles[`level-${ancestors_id.length}`]]: true,
+			[className_container_moving]: true,
+		}
+	);
 
-	const className_content = useClassName({
-		[styles.content]: true,
-		[className_content_moving]: true,
-		[className_select]: !moving_block,
-	});
+	const className_content = useClassName(
+		[moving_block, className_content_moving, className_select],
+		{
+			[styles.content]: true,
+			[className_content_moving]: true,
+			[className_select]: !moving_block,
+		}
+	);
 
 	return (
 		<div

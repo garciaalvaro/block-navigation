@@ -29,7 +29,7 @@ export const useSelectBlock: Util = () => {
 		selectBlock(id);
 	};
 
-	const className = useClassName({
+	const className = useClassName([is_selected], {
 		[styles.is_selected]: is_selected,
 	});
 

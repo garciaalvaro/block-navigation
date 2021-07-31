@@ -19,9 +19,10 @@ export const AppDetached: FunctionComponent = () => {
 
 	const { className: color_className } = useColor();
 	const className = useClassName(
+		[color_className, detached_position],
 		styles.container,
-		color_className,
-		styles[detached_position]
+		styles[detached_position],
+		color_className
 	);
 
 	return (

@@ -24,8 +24,16 @@ export const BlockMenu: FunctionComponent = () => {
 	const is_dev = useSelect(select => select(store_slug).is_dev());
 
 	const { className: color_className, color_type } = useColor();
-	const menu_className = useClassName(styles.menu, color_className);
-	const popover_className = useClassName(styles.popover, color_className);
+	const menu_className = useClassName(
+		[color_className],
+		styles.menu,
+		color_className
+	);
+	const popover_className = useClassName(
+		[color_className],
+		styles.popover,
+		color_className
+	);
 
 	// onClickOutside is not triggered when clicking other popover
 	// buttons, so we add an event listener to manually close it.

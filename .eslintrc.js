@@ -57,6 +57,22 @@ module.exports = {
 		"import/resolver": {
 			webpack: {
 				config: {
+					externals: {
+						lodash: "lodash",
+						react: "React",
+						"react-dom": "ReactDOM",
+						"@wordpress/block-editor": "wp.blockEditor",
+						"@wordpress/blocks": "wp.blocks",
+						"@wordpress/components": "wp.components",
+						"@wordpress/compose": "wp.compose",
+						"@wordpress/data": "wp.data",
+						"@wordpress/edit-post": "wp.editPost",
+						"@wordpress/element": "wp.element",
+						"@wordpress/hooks": "wp.hooks",
+						"@wordpress/i18n": "wp.i18n",
+						"@wordpress/plugins": "wp.plugins",
+						"@wordpress/rich-text": "wp.richText",
+					},
 					resolve: {
 						alias: {
 							"@/types": path.resolve(__dirname, "types"),

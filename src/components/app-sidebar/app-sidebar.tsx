@@ -1,8 +1,7 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { useState, useEffect } from "@wordpress/element";
+import { useState } from "@wordpress/element";
 import { __ } from "@wordpress/i18n";
-import { useSelect, useDispatch } from "@wordpress/data";
 
 import {
 	useColor,
@@ -10,7 +9,6 @@ import {
 	useWindowSize,
 	ButtonsContainer,
 } from "@/utils";
-import { store_slug } from "@/store";
 
 import styles from "./styles.styl";
 import { useSetLayout } from "./utils";
@@ -38,20 +36,6 @@ export const AppSidebar: FunctionComponent = () => {
 	const { is_mobile } = useWindowSize();
 
 	const $container = useSetLayout();
-
-	// @ts-expect-error @wordpress/block-editor types are outdated
-	const { stopDraggingBlocks } = useDispatch("core/block-editor");
-	const { movingBlockUpdate, movingTypeReset } = useDispatch(store_slug);
-	const moving_block = useSelect(select => select(store_slug).moving_block());
-
-	useEffect(() => {
-		if (!moving_block || view !== "settings") return;
-
-		stopDraggingBlocks();
-		movingBlockUpdate(null);
-		movingTypeReset();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [view]);
 
 	return (
 		<div ref={$container} className={className}>

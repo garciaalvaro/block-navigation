@@ -25,9 +25,13 @@ export const getDropAreas: Util = ({
 
 	let prev_id = getPrevId(id, ids_visible);
 
-	// If there is no previous id, it is the first
-	// block in the list.
+	// If there is no previous id, it is the first block in the list
 	if (!prev_id) {
+		// If the moving block is the first block in the list
+		if (moving_block.id === ids_visible[0]) {
+			return drop_areas;
+		}
+
 		return [
 			{
 				index: 0,

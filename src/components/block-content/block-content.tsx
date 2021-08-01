@@ -1,8 +1,9 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { useContext } from "@wordpress/element";
-import { useSelect } from "@wordpress/data";
+import { useContext, useMemo } from "@wordpress/element";
+import { useSelect, select } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
+import type { IconType } from "@wordpress/components";
 
 import { store_slug } from "@/store";
 
@@ -14,18 +15,37 @@ export const BlockContent: FunctionComponent = () => {
 	const { id } = useContext(context);
 
 	const block_name = useSelect(
-		select => select("core/block-editor").getBlockName(id) || ""
+		_select => _select("core/block-editor").getBlockName(id) || ""
 	);
 
-	const block_type = useSelect(select =>
-		select("core/blocks").getBlockType(block_name)
+	const block_type = useSelect(_select =>
+		_select("core/blocks").getBlockType(block_name)
 	);
 
-	const block_info_displayed = useSelect(select =>
-		select(store_slug).block_info_displayed()
+	const block_info_displayed = useSelect(_select =>
+		_select(store_slug).block_info_displayed()
 	);
 
-	const icon = block_type?.icon.src;
+	const block_attrs = useSelect(
+		_select => _select("core/block-editor").getBlockAttributes(id) || {}
+	);
+
+	const block_icon = useMemo(() => {
+		// @ts-expect-error @wordpress/blocks types are outdated
+		const { getActiveBlockVariation } = select("core/blocks");
+
+		// Check for older WP versions
+		if (getActiveBlockVariation) {
+			const block_variation: { icon: { src: IconType } } =
+				getActiveBlockVariation(block_name, block_attrs);
+
+			if (block_variation && block_variation.icon.src) {
+				return block_variation.icon.src;
+			}
+		}
+
+		return block_type?.icon.src;
+	}, [block_type, block_name, block_attrs]);
 
 	const show_title =
 		block_info_displayed === "title" ||
@@ -37,9 +57,9 @@ export const BlockContent: FunctionComponent = () => {
 
 	return (
 		<div className={styles.container}>
-			{icon && (
+			{block_icon && (
 				<div className={styles.icon}>
-					<WpIcon icon={icon} />
+					<WpIcon icon={block_icon} />
 				</div>
 			)}
 

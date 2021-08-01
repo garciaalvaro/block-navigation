@@ -17,6 +17,7 @@ export const useMovingAttributes: Util = () => {
 	const [moving_is_over, setMovingIsOver] = useState(false);
 	const [is_moving, setIsMoving] = useState(false);
 
+	const moving_type = useSelect(select => select(store_slug).moving_type());
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 
 	const name = useSelect(
@@ -39,14 +40,23 @@ export const useMovingAttributes: Util = () => {
 	// We need this callback to trigger the frame after the drag starts
 	// so the correct classes are applied to the drag image.
 	useEffect(() => {
-		if (!is_moving) return;
+		if (moving_type !== "by_drag" || !is_moving) return;
 
 		startDraggingBlocks([id]);
 		movingBlockUpdate({ id, name, parent_id });
-		movingTypeUpdate("by_drag");
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [is_moving]);
+
+	// TODO: Improve
+	// This hook is necessary for moving by_click
+	useEffect(() => {
+		if (moving_type !== "by_click" || moving_block?.id !== id) return;
+
+		setIsMoving(true);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [moving_block]);
 
 	useLayoutEffect(() => {
 		if (moving_block || !is_moving) return;
@@ -68,7 +78,10 @@ export const useMovingAttributes: Util = () => {
 
 	// Delay the assignment of moving_block so we can apply
 	// a different style (.content:before).
-	const onDragStart = () => setIsMoving(true);
+	const onDragStart = () => {
+		setIsMoving(true);
+		movingTypeUpdate("by_drag");
+	};
 	const onDragEnd = () => {
 		setIsMoving(false);
 

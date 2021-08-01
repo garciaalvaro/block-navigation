@@ -63,7 +63,7 @@ export const Content: FunctionComponent = () => {
 				block_attrs
 			);
 
-			if (block_variation && block_variation.title !== block_name) {
+			if (block_variation && block_variation.title) {
 				return [block_variation.title];
 			}
 		}

@@ -16,6 +16,7 @@ import {
 	ButtonsMove,
 	ButtonRemove,
 	ButtonCopyId,
+	ButtonDuplicate,
 	ButtonBlockData,
 } from "./components";
 
@@ -68,6 +69,7 @@ export const BlockMenu: FunctionComponent = () => {
 						<ButtonEdit />
 						<ButtonMoveTo />
 						<ButtonsMove />
+						<ButtonDuplicate />
 						<ButtonRemove />
 
 						{is_dev && <ButtonCopyId />}

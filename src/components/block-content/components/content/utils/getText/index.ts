@@ -1,1 +1,0 @@
-export { getText } from "./getText";

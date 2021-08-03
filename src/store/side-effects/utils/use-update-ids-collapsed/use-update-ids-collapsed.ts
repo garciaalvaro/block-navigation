@@ -19,6 +19,8 @@ export const useUpdateIdsCollapsed = (): void => {
 			ids.includes(id)
 		);
 
+		if (`${ids_collapsed_updated}` === `${ids_collapsed}`) return;
+
 		// If a block from ids_collapsed is removed,
 		// remove it from the ids_collapsed list.
 		idsCollapsedUpdate(ids_collapsed_updated);

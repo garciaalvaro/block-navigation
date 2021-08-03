@@ -1,1 +1,0 @@
-export { ViewSettings } from "./ViewSettings";

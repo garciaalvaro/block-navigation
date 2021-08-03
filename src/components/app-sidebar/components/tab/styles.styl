@@ -1,0 +1,30 @@
+/**
+ * Tab
+ */
+
+.container
+	padding 5px
+	height 100%
+	width 50%
+	background transparent
+	display flex
+	align-items center
+	justify-content center
+	transition background-color .05s var(--e_deceleration)
+	letter-spacing .02em
+
+	button&
+	button&:hover
+		border-bottom 1px solid var(--tab_bordercolor)
+
+	button&:hover
+		background-color var(--tab_bgcolor)
+		transition background-color .1s var(--e_deceleration)
+
+	button&.is_active
+		margin-bottom -1px
+		font-weight 600
+		padding-bottom 3px
+		border-bottom 3px solid var(--primary_color)
+		font-weight 600
+		letter-spacing 0.01em

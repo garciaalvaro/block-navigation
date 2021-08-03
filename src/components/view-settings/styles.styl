@@ -1,0 +1,31 @@
+/**
+ * ViewSettings
+ */
+
+.container
+	position relative
+	flex 1
+	overflow auto
+
+.content
+	position absolute
+	overflow auto
+	padding-bottom 100px
+
+	> div
+		padding 1.5em 1.2em
+		border-top 1px solid var(--tab_bordercolor)
+
+		&:first-child
+			border-top none
+
+	&&& label
+		font-weight 500
+		margin-bottom 1em
+		color inherit
+
+	&& p
+		color inherit
+		opacity .7
+		margin 1em 0 0
+		font-style normal

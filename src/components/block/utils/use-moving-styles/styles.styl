@@ -1,0 +1,66 @@
+/**
+ * useMovingStyles
+ */
+
+.no-a_block_is_moving.no-can_move
+	cursor default
+
+.no-a_block_is_moving.can_move
+	// https://stackoverflow.com/a/18294634 | CC BY-SA 3.0
+	cursor move // fallback if grab cursor is unsupported
+	cursor grab
+
+.can_receive_drop.moving_is_over
+.can_receive_drop.moving_type-by_click:hover
+
+	.content
+	~ .container .content
+		transform translateY(100%)
+
+.moving_type-by_click.can_receive_drop
+	cursor pointer
+
+.is_moving
+.ancestor_is_moving
+
+	.content > div
+		opacity .3
+
+.content
+	transition transform .3s .05s var(--e_deceleration)
+
+	& > div
+		transition opacity .1s var(--e_deceleration)
+
+	.a_block_is_moving &
+		pointer-events none
+
+	.a_block_is_moving &:before
+		content ""
+
+	.no-a_block_is_moving &
+	.no-a_block_is_moving & > div
+	.no-a_block_is_moving &:after
+		transition none
+
+	.can_receive_drop.no-moving_is_over &:after
+		border-color var(--secondary_color)
+
+	&:after
+		content ""
+		width 100%
+		height 1px
+		position absolute
+		top 0
+		left 2px
+		border-top 1px dashed transparent
+		transition border-color .1s var(--e_deceleration)
+
+	&:before
+		content normal
+		width 100%
+		height 100%
+		background-color var(--background_color)
+		position absolute
+		top 0
+		right calc(100% + 1px)

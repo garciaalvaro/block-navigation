@@ -10,7 +10,6 @@ export const state: State = {
 
 	ids: null,
 	ids_collapsed: [],
-	ids_root_collapsible: [],
 	ids_visible: [],
 
 	moving_block: null,

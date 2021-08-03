@@ -6,6 +6,7 @@ import { useEffect } from "@wordpress/element";
 import { Icon } from "@/components/icon";
 import { Button, useToggle } from "@/utils";
 import { store_slug } from "@/store";
+import type { BlockId } from "@/types";
 
 import styles from "./styles.styl";
 
@@ -16,9 +17,21 @@ export const ButtonToggleBlocks: FunctionComponent = () => {
 		_select(store_slug).ids_collapsed()
 	);
 
-	const ids_root_collapsible = useSelect(_select =>
-		_select(store_slug).ids_root_collapsible()
-	);
+	const ids_root_collapsible = useSelect(select => {
+		const { getBlockOrder } = select("core/block-editor");
+
+		const root_ids = getBlockOrder("");
+
+		const ids = root_ids.reduce<BlockId[]>((acc, id) => {
+			if (getBlockOrder(id).length > 0) {
+				return [...acc, id];
+			}
+
+			return acc;
+		}, []);
+
+		return ids;
+	});
 
 	const {
 		open: buttonShowExpand,

@@ -46,11 +46,6 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
-	idsRootCollapsibleUpdate: payload => ({
-		type: "IDS_ROOT_COLLAPSIBLE_UPDATE",
-		payload,
-	}),
-
 	idsVisibleUpdate: payload => ({
 		type: "IDS_VISIBLE_UPDATE",
 		payload,

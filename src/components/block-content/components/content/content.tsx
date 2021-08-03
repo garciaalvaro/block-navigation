@@ -17,11 +17,13 @@ export const Content: FunctionComponent = () => {
 	const { id } = useContext(context);
 
 	const block_name = useSelect(
-		_select => _select("core/block-editor").getBlockName(id) || ""
+		_select => _select("core/block-editor").getBlockName(id) || "",
+		[id]
 	);
 
 	const block_attrs = useSelect(
-		_select => _select("core/block-editor").getBlockAttributes(id) || {}
+		_select => _select("core/block-editor").getBlockAttributes(id) || {},
+		[id]
 	);
 
 	const block_info_displayed = useSelect(_select =>

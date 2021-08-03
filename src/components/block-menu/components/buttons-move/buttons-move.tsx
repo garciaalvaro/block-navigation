@@ -10,17 +10,20 @@ import { Button } from "../button";
 export const ButtonsMove: FunctionComponent = () => {
 	const { id, parent_id } = useContext(context);
 
-	const index = useSelect(select =>
-		select("core/block-editor").getBlockIndex(id, parent_id)
+	const index = useSelect(
+		select => select("core/block-editor").getBlockIndex(id, parent_id),
+		[id, parent_id]
 	);
 
-	const can_move =
-		useSelect(select =>
-			select("core/block-editor").getTemplateLock(parent_id)
-		) !== "all";
+	const can_move = useSelect(
+		select =>
+			select("core/block-editor").getTemplateLock(parent_id) !== "all",
+		[parent_id]
+	);
 
-	const sibling_ids = useSelect(select =>
-		select("core/block-editor").getBlockOrder(parent_id)
+	const sibling_ids = useSelect(
+		select => select("core/block-editor").getBlockOrder(parent_id),
+		[parent_id]
 	);
 
 	const { moveBlockToPosition } = useDispatch("core/block-editor");

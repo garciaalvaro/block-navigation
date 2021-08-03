@@ -21,14 +21,16 @@ export const useMovingAttributes: Util = () => {
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 
 	const name = useSelect(
-		select => select("core/block-editor").getBlockName(id) || ""
+		select => select("core/block-editor").getBlockName(id) || "",
+		[id]
 	);
 
-	const can_move =
-		useSelect(
-			select =>
-				select("core/block-editor").getTemplateLock(parent_id) !== "all"
-		) && !moving_block;
+	const can_move = useSelect(
+		select =>
+			select("core/block-editor").getTemplateLock(parent_id) !== "all" &&
+			!moving_block?.id,
+		[parent_id, moving_block?.id]
+	);
 
 	const { movingTypeUpdate, movingTypeReset, movingBlockUpdate } =
 		useDispatch(store_slug);

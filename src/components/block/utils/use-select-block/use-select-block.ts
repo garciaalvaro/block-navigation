@@ -13,12 +13,17 @@ export const useSelectBlock: Util = () => {
 
 	const moving_block = useSelect(select => select(store_slug).moving_block());
 
-	const is_selected_multiple = useSelect(select =>
-		select("core/block-editor").getSelectedBlockClientIds().includes(id)
+	const is_selected_multiple = useSelect(
+		select =>
+			select("core/block-editor")
+				.getSelectedBlockClientIds()
+				.includes(id),
+		[id]
 	);
 
 	const is_selected_single = useSelect(
-		select => select("core/block-editor").getSelectedBlockClientId() === id
+		select => select("core/block-editor").getSelectedBlockClientId() === id,
+		[id]
 	);
 
 	const [is_selected, setIsSelected] = useState(

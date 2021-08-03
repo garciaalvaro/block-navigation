@@ -15,16 +15,19 @@ export const ButtonMoveTo: FunctionComponent = () => {
 	const { movingBlockUpdate, movingTypeUpdate } = useDispatch(store_slug);
 
 	const parent_id = useSelect(
-		select => select("core/block-editor").getBlockRootClientId(id) || ""
+		select => select("core/block-editor").getBlockRootClientId(id) || "",
+		[id]
 	);
 
 	const name = useSelect(
-		select => select("core/block-editor").getBlockName(id) || ""
+		select => select("core/block-editor").getBlockName(id) || "",
+		[id]
 	);
 
 	const can_move = useSelect(
 		select =>
-			select("core/block-editor").getTemplateLock(parent_id) !== "all"
+			select("core/block-editor").getTemplateLock(parent_id) !== "all",
+		[parent_id]
 	);
 
 	return (

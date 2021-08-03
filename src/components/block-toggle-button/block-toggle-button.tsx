@@ -14,10 +14,14 @@ export const BlockToggleButton: FunctionComponent = () => {
 	const { id } = useContext(context);
 
 	const has_children = useSelect(
-		select => select("core/block-editor").getBlockOrder(id).length > 0
+		select => select("core/block-editor").getBlockOrder(id).length > 0,
+		[id]
 	);
 
-	const is_expanded = useSelect(select => select(store_slug).is_expanded(id));
+	const is_expanded = useSelect(
+		select => select(store_slug).is_expanded(id),
+		[id]
+	);
 
 	const { toggleBlock } = useDispatch(store_slug);
 

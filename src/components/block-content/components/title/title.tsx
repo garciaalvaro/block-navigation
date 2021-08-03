@@ -11,11 +11,13 @@ export const Title: FunctionComponent = () => {
 	const { id } = useContext(context);
 
 	const block_name = useSelect(
-		select => select("core/block-editor").getBlockName(id) || ""
+		select => select("core/block-editor").getBlockName(id) || "",
+		[id]
 	);
 
-	const block_type = useSelect(select =>
-		select("core/blocks").getBlockType(block_name)
+	const block_type = useSelect(
+		select => select("core/blocks").getBlockType(block_name),
+		[block_name]
 	);
 
 	const title = block_type?.title || block_name;

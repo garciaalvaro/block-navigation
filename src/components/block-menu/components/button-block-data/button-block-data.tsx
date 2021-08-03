@@ -30,31 +30,37 @@ export const ButtonBlockData: FunctionComponent = () => {
 			select("core/block-editor").getBlock(id) || {
 				name: "",
 				attributes: {},
-			}
+			},
+		[id]
 	);
 
-	const index = useSelect(select =>
-		select("core/block-editor").getBlockIndex(id, parent_id)
+	const index = useSelect(
+		select => select("core/block-editor").getBlockIndex(id, parent_id),
+		[id, parent_id]
 	);
 
 	const template_lock = useSelect(select =>
 		select("core/block-editor").getTemplateLock()
 	);
 
-	const block_type = useSelect(select =>
-		select("core/blocks").getBlockType(name)
+	const block_type = useSelect(
+		select => select("core/blocks").getBlockType(name),
+		[name]
 	);
 
-	const descendants_clientIds = useSelect(select =>
-		select("core/block-editor").getClientIdsOfDescendants([id])
+	const descendants_clientIds = useSelect(
+		select => select("core/block-editor").getClientIdsOfDescendants([id]),
+		[id]
 	);
 
-	const children_clientIds = useSelect(select =>
-		select("core/block-editor").getBlockOrder(id)
+	const children_clientIds = useSelect(
+		select => select("core/block-editor").getBlockOrder(id),
+		[id]
 	);
 
-	const root_clientId = useSelect(select =>
-		select("core/block-editor").getBlockHierarchyRootClientId(id)
+	const root_clientId = useSelect(
+		select => select("core/block-editor").getBlockHierarchyRootClientId(id),
+		[id]
 	);
 
 	const onClick = () => {

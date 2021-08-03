@@ -13,7 +13,6 @@ import { BlocksList } from "../blocks-list";
 export const ViewNavigation: FunctionComponent = () => {
 	const moving_type = useSelect(select => select(store_slug).moving_type());
 	const ids = useSelect(select => select(store_slug).ids());
-	const ids_visible = useSelect(select => select(store_slug).ids_visible());
 
 	// @ts-expect-error @wordpress/block-editor types are outdated
 	const { stopDraggingBlocks } = useDispatch("core/block-editor");
@@ -39,7 +38,7 @@ export const ViewNavigation: FunctionComponent = () => {
 			{moving_type === "by_click" && <Toolbar />}
 
 			<div className={styles.container}>
-				{ids_visible.length === 0 ? (
+				{ids.length === 0 ? (
 					<span className={styles.no_blocks}>
 						{__("There are no blocks.")}
 					</span>

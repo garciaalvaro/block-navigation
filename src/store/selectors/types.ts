@@ -19,6 +19,7 @@ interface SelectorsReturn {
 	is_dev: State["is_dev"];
 	is_expanded: boolean;
 	view: State["view"];
+	all_blocks_toggle_counter: State["all_blocks_toggle_counter"];
 }
 
 interface SelectorsPayload {

@@ -28,4 +28,6 @@ export const selectors: SelectorCreators = {
 	moving_type: state => state.moving_type,
 
 	view: state => state.view,
+
+	all_blocks_toggle_counter: state => state.all_blocks_toggle_counter,
 };

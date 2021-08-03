@@ -26,6 +26,8 @@ export interface ActionCreators {
 	idsVisibleUpdate: ActionCreator<"IDS_VISIBLE_UPDATE", BlockId[]>;
 
 	toggleBlock: ActionCreator<"TOGGLE_BLOCK", BlockId>;
+	allBlocksCollapse: ActionCreator<"ALL_BLOCKS_COLLAPSE", BlockId[]>;
+	allBlocksExpand: ActionCreator<"ALL_BLOCKS_EXPAND">;
 
 	movingBlockUpdate: ActionCreator<
 		"MOVING_BLOCK_UPDATE",

@@ -87,6 +87,22 @@ export const reducer: Reducer = (state = initial_state, action) => {
 			};
 		}
 
+		case "ALL_BLOCKS_EXPAND": {
+			return {
+				...state,
+				ids_collapsed: [],
+				all_blocks_toggle_counter: state.all_blocks_toggle_counter + 1,
+			};
+		}
+
+		case "ALL_BLOCKS_COLLAPSE": {
+			return {
+				...state,
+				ids_collapsed: action.payload,
+				all_blocks_toggle_counter: state.all_blocks_toggle_counter + 1,
+			};
+		}
+
 		case "MOVING_BLOCK_UPDATE": {
 			return {
 				...state,

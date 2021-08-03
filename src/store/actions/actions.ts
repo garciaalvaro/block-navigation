@@ -56,6 +56,16 @@ export const actions: ActionCreators = {
 		payload,
 	}),
 
+	allBlocksCollapse: payload => ({
+		type: "ALL_BLOCKS_COLLAPSE",
+		payload,
+	}),
+
+	allBlocksExpand: payload => ({
+		type: "ALL_BLOCKS_EXPAND",
+		payload,
+	}),
+
 	setBlockInfoDisplayed: payload => ({
 		type: "SET_BLOCK_INFO_DISPLAYED",
 		payload,

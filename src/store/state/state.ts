@@ -7,6 +7,7 @@ export const state: State = {
 	is_detached: false,
 	is_dev: false,
 	block_info_displayed: "title_content",
+	all_blocks_toggle_counter: 0,
 
 	ids: null,
 	ids_collapsed: [],

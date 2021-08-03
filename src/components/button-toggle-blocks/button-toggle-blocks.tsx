@@ -1,28 +1,30 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { useDispatch, useSelect } from "@wordpress/data";
-import { useEffect } from "@wordpress/element";
+import { useDispatch, useSelect, select } from "@wordpress/data";
+import { useMemo } from "@wordpress/element";
 
 import { Icon } from "@/components/icon";
-import { Button, useToggle } from "@/utils";
+import { Button } from "@/utils";
 import { store_slug } from "@/store";
 import type { BlockId } from "@/types";
 
 import styles from "./styles.styl";
 
 export const ButtonToggleBlocks: FunctionComponent = () => {
-	const { idsCollapsedUpdate } = useDispatch(store_slug);
+	const { allBlocksCollapse, allBlocksExpand } = useDispatch(store_slug);
 
+	const ids = useSelect(_select => _select(store_slug).ids());
 	const ids_collapsed = useSelect(_select =>
 		_select(store_slug).ids_collapsed()
 	);
 
-	const ids_root_collapsible = useSelect(select => {
+	const ids_root_collapsible = useMemo(() => {
 		const { getBlockOrder } = select("core/block-editor");
 
 		const root_ids = getBlockOrder("");
 
-		const ids = root_ids.reduce<BlockId[]>((acc, id) => {
+		// eslint-disable-next-line no-underscore-dangle
+		const _ids_root_collapsible = root_ids.reduce<BlockId[]>((acc, id) => {
 			if (getBlockOrder(id).length > 0) {
 				return [...acc, id];
 			}
@@ -30,40 +32,27 @@ export const ButtonToggleBlocks: FunctionComponent = () => {
 			return acc;
 		}, []);
 
-		return ids;
-	});
-
-	const {
-		open: buttonShowExpand,
-		close: buttonShowCollapse,
-		is_open: button_shows_expanded,
-	} = useToggle(true);
-
-	const expandAll = () => {
-		idsCollapsedUpdate([]);
-	};
-
-	const collapseAll = () => {
-		idsCollapsedUpdate(ids_root_collapsible);
-	};
-
-	useEffect(() => {
-		if (`${ids_collapsed}` === `${ids_root_collapsible}`) {
-			buttonShowExpand();
-		} else {
-			buttonShowCollapse();
-		}
+		return _ids_root_collapsible;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ids_collapsed]);
+	}, [ids]);
+
+	const show_expand_all = useMemo(
+		() => `${ids_collapsed.sort()}` === `${ids_root_collapsible.sort()}`,
+		[ids_collapsed, ids_root_collapsible]
+	);
 
 	return (
 		<Button
 			className={styles.button}
-			onClick={button_shows_expanded ? expandAll : collapseAll}
+			onClick={() => {
+				if (show_expand_all) {
+					allBlocksExpand();
+				} else {
+					allBlocksCollapse(ids_root_collapsible);
+				}
+			}}
 		>
-			<Icon
-				icon={button_shows_expanded ? "expand_all" : "collapse_all"}
-			/>
+			<Icon icon={show_expand_all ? "expand_all" : "collapse_all"} />
 		</Button>
 	);
 };

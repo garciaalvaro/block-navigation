@@ -14,6 +14,7 @@ export interface State {
 	is_detached: boolean;
 	is_dev: boolean;
 	block_info_displayed: "title_content" | "title" | "content";
+	all_blocks_toggle_counter: number; // TODO: Improve
 
 	ids: null | BlockId[];
 	ids_collapsed: BlockId[];

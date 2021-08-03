@@ -1,6 +1,6 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { useEffect, useLayoutEffect, useState } from "@wordpress/element";
+import { useLayoutEffect, useState } from "@wordpress/element";
 import { useSelect, select } from "@wordpress/data";
 
 import { store_slug } from "@/store";
@@ -11,11 +11,9 @@ import { ContextProvider, Block } from "../block";
 
 export const BlocksList: FunctionComponent = () => {
 	const ids_visible = useSelect(_select => _select(store_slug).ids_visible());
-	const ids_collapsed = useSelect(_select =>
-		_select(store_slug).ids_collapsed()
-	);
-	const ids_root_collapsible = useSelect(_select =>
-		_select(store_slug).ids_root_collapsible()
+
+	const all_blocks_toggle_counter = useSelect(_select =>
+		_select(store_slug).all_blocks_toggle_counter()
 	);
 
 	const is_detached = useSelect(_select => _select(store_slug).is_detached());
@@ -36,15 +34,8 @@ export const BlocksList: FunctionComponent = () => {
 	const [top_visible_block_id, setTopVisibleBlockId] =
 		useState<BlockId | null>(null);
 
-	useEffect(() => {
-		if (
-			(`${ids_collapsed}` !== `${ids_root_collapsible}` &&
-				ids_collapsed.length > 0) ||
-			ids_visible.length === 0 ||
-			!$container.current
-		) {
-			return;
-		}
+	useLayoutEffect(() => {
+		if (!$container.current || all_blocks_toggle_counter === 0) return;
 
 		const scroll_top = $container.current.scrollTop;
 
@@ -58,9 +49,10 @@ export const BlocksList: FunctionComponent = () => {
 		) {
 			setTopVisibleBlockId(null);
 		} else {
-			const root_block_id = select(
-				"core/block-editor"
-			).getBlockHierarchyRootClientId(
+			const { getBlockHierarchyRootClientId } =
+				select("core/block-editor");
+
+			const root_block_id = getBlockHierarchyRootClientId(
 				ids_visible[top_visible_block_index]
 			);
 
@@ -68,7 +60,7 @@ export const BlocksList: FunctionComponent = () => {
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ids_collapsed]);
+	}, [all_blocks_toggle_counter]);
 
 	useLayoutEffect(() => {
 		if (

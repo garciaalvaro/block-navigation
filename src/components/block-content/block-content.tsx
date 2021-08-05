@@ -3,7 +3,6 @@ import type { FunctionComponent } from "react";
 import { useContext, useMemo } from "@wordpress/element";
 import { useSelect, select } from "@wordpress/data";
 import { Icon as WpIcon } from "@wordpress/components";
-import type { IconType } from "@wordpress/components";
 
 import { store_slug } from "@/store";
 
@@ -39,7 +38,8 @@ export const BlockContent: FunctionComponent = () => {
 
 		// Check for older WP versions
 		if (getActiveBlockVariation) {
-			const block_variation: { icon: { src: IconType } } =
+			// eslint-disable-next-line no-undef
+			const block_variation: { icon: { src: JSX.Element } } =
 				getActiveBlockVariation(block_name, block_attrs);
 
 			if (block_variation && block_variation.icon.src) {

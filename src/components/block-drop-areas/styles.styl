@@ -8,26 +8,3 @@
 	position absolute
 	top 0
 	left 0
-
-.drop_area
-	position absolute
-	top 0
-	left 0
-	right 0
-	bottom 0
-	background-color var(--primary_color)
-	cursor pointer
-
-	& + &
-		background-color rgba(0,0,0,.1)
-
-for num in (1..20)
-
-	margin = num > 3 ? 1 : 1.5
-	prev_margin = num > 3 ? 1.5 : 0
-
-	.level-{num}
-		left (num * margin + prev_margin)em
-
-	.block_level-{num}
-		margin-left -(num * margin + prev_margin)em

@@ -1,7 +1,7 @@
 import React from "react";
-import { useMemo } from "@wordpress/element";
+import { useSelect } from "@wordpress/data";
 
-import { getAncestorIds } from "@/utils";
+import { BlockId } from "@/types";
 
 import type { Component } from "./types";
 import { context } from "./context";
@@ -10,11 +10,15 @@ import { useDropAreas } from "./utils";
 export const ContextProvider: Component = props => {
 	const { children, id } = props;
 
-	const ancestor_ids = useMemo(() => getAncestorIds(id), [id]);
+	const parent_id = useSelect(
+		select => select("core/block-editor").getBlockRootClientId(id) || "",
+		[id]
+	);
 
-	const parent_id = useMemo(
-		() => ancestor_ids.slice(-1)[0] || "",
-		[ancestor_ids]
+	const ancestor_ids = useSelect<BlockId[]>(
+		// @ts-expect-error @wordpress/block-editor types are outdated
+		select => select("core/block-editor").getBlockParents(id) || [],
+		[id]
 	);
 
 	const drop_areas = useDropAreas({ id, parent_id, ancestor_ids });

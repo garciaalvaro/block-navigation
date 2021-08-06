@@ -1,11 +1,11 @@
-import { useRef, useEffect } from "@wordpress/element";
+import { useRef, useLayoutEffect } from "@wordpress/element";
 
 import type { Util } from "./types";
 
 export const useSetLayout: Util = () => {
 	const $container = useRef<HTMLDivElement | null>(null);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const $container_parent = $container.current?.parentElement || null;
 		const $container_grandparent = $container_parent?.parentElement || null;
 

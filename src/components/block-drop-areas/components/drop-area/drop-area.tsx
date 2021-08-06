@@ -10,6 +10,13 @@ import { context } from "@/components/block";
 import styles from "./styles.styl";
 import type { Component } from "./types";
 
+// TODO
+// WP 5.7 does not seem to trigger onDrop events assigned with React.
+// For this reason we set a flag with the WP 5.7 version.
+const is_wp_57 = document.body.className
+	.split(" ")
+	.some(_className => /version-5-7-?\d?/.test(_className));
+
 export const DropArea: Component = props => {
 	const {
 		id: drop_area_id,
@@ -79,6 +86,8 @@ export const DropArea: Component = props => {
 	);
 
 	useEffect(() => {
+		if (!is_wp_57) return;
+
 		const $drop_area = $element.current;
 
 		if (!$drop_area) return;
@@ -99,6 +108,11 @@ export const DropArea: Component = props => {
 			role="button"
 			tabIndex={0}
 			aria-label={__("Drop block here")}
+			onDrop={() => {
+				if (is_wp_57) return;
+
+				moveTo();
+			}}
 			onClick={() => moveTo("click")}
 			onKeyDown={e => {
 				if (e.key !== "Enter") return;

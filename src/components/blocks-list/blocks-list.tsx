@@ -18,16 +18,14 @@ export const BlocksList: FunctionComponent = () => {
 
 	const is_detached = useSelect(_select => _select(store_slug).is_detached());
 
-	const {
-		$container,
-		container_className,
-		content_styles,
-		items_styles,
-		items_visible,
-	} = useVirtualList({
-		item_height: is_detached ? 39 : 52,
-		number_of_items: ids_visible.length,
-	});
+	const item_height = is_detached ? 39 : 52;
+
+	const { $container, container_className, content_styles, items_styles } =
+		useVirtualList({
+			item_ids: ids_visible,
+			item_height,
+			number_of_items: ids_visible.length,
+		});
 
 	useScrollToSelectedBlock($container);
 
@@ -39,21 +37,18 @@ export const BlocksList: FunctionComponent = () => {
 
 		const scroll_top = $container.current.scrollTop;
 
-		const top_visible_block_index = items_visible.find(
-			index => items_styles[index].top >= scroll_top
+		const top_visible_block = items_styles.find(
+			({ top }) => top >= scroll_top
 		);
 
-		if (
-			top_visible_block_index === undefined ||
-			!ids_visible[top_visible_block_index]
-		) {
+		if (!top_visible_block) {
 			setTopVisibleBlockId(null);
 		} else {
 			const { getBlockHierarchyRootClientId } =
 				select("core/block-editor");
 
 			const root_block_id = getBlockHierarchyRootClientId(
-				ids_visible[top_visible_block_index]
+				top_visible_block.id
 			);
 
 			setTopVisibleBlockId(root_block_id);
@@ -63,31 +58,28 @@ export const BlocksList: FunctionComponent = () => {
 	}, [all_blocks_toggle_counter]);
 
 	useLayoutEffect(() => {
-		if (
-			!ids_visible ||
-			top_visible_block_id === null ||
-			!$container.current
-		) {
+		if (!ids_visible || !top_visible_block_id || !$container.current) {
 			return;
 		}
 
 		setTopVisibleBlockId(null);
 
-		const top_visible_block_index = ids_visible?.findIndex(
+		const top_visible_block_index = ids_visible.findIndex(
 			id => id === top_visible_block_id
 		);
 
-		$container.current.scrollTop =
-			items_styles[top_visible_block_index].top;
+		if (top_visible_block_index === -1) return;
+
+		$container.current.scrollTop = top_visible_block_index * item_height;
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [top_visible_block_id]);
 
 	return (
 		<div ref={$container} className={container_className}>
 			<div style={content_styles}>
-				{items_visible.map(index => (
-					<ContextProvider key={index} id={ids_visible[index]}>
-						<Block style={items_styles[index]} />
+				{items_styles.map(({ id, top }) => (
+					<ContextProvider key={id} id={id}>
+						<Block style={{ top }} />
 					</ContextProvider>
 				))}
 			</div>

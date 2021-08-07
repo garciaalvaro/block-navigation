@@ -5,17 +5,20 @@ import { useContentStyles } from "../use-content-styles";
 import { useItemsStyles } from "../use-items-styles";
 
 export const useVirtualList: Util = props => {
-	const { item_height, number_of_items } = props;
+	const { item_ids, item_height } = props;
 
 	const { $container, container_height } = useContainerHeight();
 
-	const content_styles = useContentStyles({ item_height, number_of_items });
-
-	const { items_styles, items_visible } = useItemsStyles({
-		$container,
+	const content_styles = useContentStyles({
 		item_height,
+		number_of_items: item_ids.length,
+	});
+
+	const items_styles = useItemsStyles({
+		$container,
 		container_height,
-		number_of_items,
+		item_height,
+		item_ids,
 	});
 
 	return {
@@ -23,6 +26,5 @@ export const useVirtualList: Util = props => {
 		container_className: styles.container,
 		content_styles,
 		items_styles,
-		items_visible,
 	};
 };

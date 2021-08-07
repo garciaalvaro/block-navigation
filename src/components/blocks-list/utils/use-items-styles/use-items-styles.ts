@@ -1,14 +1,13 @@
-import { useMemo, useState, useEffect } from "@wordpress/element";
+import { useMemo, useState, useLayoutEffect } from "@wordpress/element";
 
 import type { Util } from "./types";
 
 export const useItemsStyles: Util = props => {
-	const { item_height, number_of_items, $container, container_height } =
-		props;
+	const { $container, container_height, item_height, item_ids } = props;
 
 	const [boundaries, setBoundaries] = useState({ top: 0, bottom: 0 });
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		const $container_ref = $container.current;
 
 		const updateBoundaries = () => {
@@ -18,8 +17,8 @@ export const useItemsStyles: Util = props => {
 			const boundary_bottom = scroll_top + container_height + offset;
 
 			setBoundaries({
-				top: boundary_top,
-				bottom: boundary_bottom,
+				top: Math.max(0, boundary_top),
+				bottom: Math.max(container_height, boundary_bottom),
 			});
 		};
 
@@ -33,36 +32,25 @@ export const useItemsStyles: Util = props => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [container_height, item_height]);
 
-	const items_styles = useMemo(
-		() =>
-			Array(number_of_items)
-				.fill(null)
-				.map((_, index) => ({ top: index * item_height })),
-		[number_of_items, item_height]
-	);
+	const items_styles = useMemo(() => {
+		const content_height = item_ids.length * item_height;
 
-	const items_visible = useMemo(
-		() =>
-			Array(number_of_items)
-				.fill(null)
-				.map((_, index) => index)
-				.filter((_, index) => {
-					const item = items_styles[index];
+		const top_percentage =
+			boundaries.top > 0 ? boundaries.top / content_height : 0;
+		const top_index = Math.floor(top_percentage * item_ids.length);
 
-					if (item === undefined) {
-						return false;
-					}
+		const bottom_percentage = boundaries.bottom / content_height;
+		const bottom_index = Math.ceil(bottom_percentage * item_ids.length);
 
-					const { top } = item;
+		const styles = item_ids
+			.slice(top_index, bottom_index)
+			.map((id, index) => ({
+				id,
+				top: item_height * (top_index + index),
+			}));
 
-					if (boundaries.top > top || boundaries.bottom <= top) {
-						return false;
-					}
+		return styles;
+	}, [item_ids, item_height, boundaries]);
 
-					return true;
-				}, []),
-		[number_of_items, boundaries, items_styles]
-	);
-
-	return { items_styles, items_visible };
+	return items_styles;
 };

@@ -1,4 +1,4 @@
-import { useLayoutEffect } from "@wordpress/element";
+import { useLayoutEffect, useMemo } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
 import { store_slug } from "@/store";
@@ -17,38 +17,39 @@ export const useScrollToSelectedBlock: Util = $container => {
 		select("core/block-editor").getSelectedBlockClientId()
 	);
 
-	useLayoutEffect(() => {
-		if (
-			!ids_visible.length ||
-			!$container.current ||
-			(!selected_blocks.length && !selected_block)
-		) {
-			return;
+	const offset_top = useMemo(() => {
+		const selected = [selected_block, ...selected_blocks];
+
+		const block_index = ids_visible.findIndex(id => selected.includes(id));
+
+		if (block_index === -1) {
+			return null;
 		}
 
 		const block_height = is_detached ? 39 : 52;
-		let block_offsetTop = 0;
 
-		ids_visible.every(id => {
-			// TODO If block is collapsed, scroll to closest ancestor
-			if ([selected_block, ...selected_blocks].includes(id)) {
-				return false;
-			}
+		return block_index * block_height;
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [is_detached, ids_visible, `${selected_blocks}`, selected_block]);
 
-			block_offsetTop += block_height;
+	useLayoutEffect(() => {
+		if (offset_top === null || !$container.current) return;
 
-			return true;
-		});
+		const block_height = is_detached ? 39 : 52;
 
-		const is_above = block_offsetTop - $container.current.scrollTop < 0;
+		const is_above = offset_top - $container.current.scrollTop < 0;
+
 		const is_below =
-			block_offsetTop + block_height - $container.current.scrollTop >
+			offset_top + block_height - $container.current.scrollTop >
 			$container.current.offsetHeight;
 
-		if (is_above || is_below) {
-			// eslint-disable-next-line no-param-reassign
-			$container.current.scrollTop = block_offsetTop - block_height / 2;
-		}
+		if (!is_above && !is_below) return;
+
+		// eslint-disable-next-line no-param-reassign
+		$container.current.scrollTop = Math.max(
+			0,
+			offset_top - block_height / 2
+		);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [`${selected_blocks}`, selected_block]);
+	}, [offset_top]);
 };

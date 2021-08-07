@@ -46,8 +46,12 @@ export const useSizeMax: Util = () => {
 
 			detachedSizeUpdate({ width, height });
 		}
+
+		return () => {
+			detachedCollapse();
+		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [window_height, window_width]);
+	}, [is_mobile, window_height, window_width]);
 
 	return detached_max_size;
 };

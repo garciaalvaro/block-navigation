@@ -1,0 +1,60 @@
+/**
+ * ButtonsContainer
+ */
+
+.align-left
+	left 0
+
+.align-right
+	right 0
+
+.container
+	position absolute
+	bottom 0
+	display flex
+	z-index 1
+
+	button
+		cursor pointer
+		fill currentColor
+		display flex
+		align-items center
+		letter-spacing .03em
+		font-weight 500
+		line-height 3em
+		margin 0
+		text-transform uppercase
+
+		&
+		&:hover
+		&:focus
+			font-size 0.9em
+			background var(--primary_color)
+			color var(--color_over_primary_color)
+
+		svg + span
+			margin-left .3em
+
+	button + button
+
+		&
+		&:hover
+		&:focus
+			border-left 2px solid var(--detached_bordercolor)
+
+.reverse_direction
+	flex-direction row-reverse
+
+	button
+
+		&:last-child
+		&:hover:last-child
+		&:focus:last-child
+			border-left none
+
+	button
+
+		&
+		&:hover
+		&:focus
+			border-left 2px solid var(--detached_bordercolor)

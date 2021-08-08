@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { BannerPlugin } = require("webpack");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const path = require("path");
+
 const {
 	name: short_name,
 	description: name,
 	version,
 	homepage,
 } = require("./package.json");
-const { BannerPlugin } = require("webpack");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const path = require("path");
 
 module.exports = (env, { mode }) => {
 	const is_production = mode === "production";
@@ -27,6 +29,7 @@ module.exports = (env, { mode }) => {
 		resolve: {
 			alias: {
 				"@": path.resolve(__dirname, "src"),
+				"@/types": path.resolve(__dirname, "types"),
 			},
 		},
 
@@ -56,7 +59,7 @@ module.exports = (env, { mode }) => {
 		exclude: /node_modules/,
 		loader: "babel-loader",
 		resolve: {
-			extensions: [".ts", ".tsx", ".js", ".jsx"],
+			extensions: [".ts", ".tsx", ".js"],
 		},
 	});
 

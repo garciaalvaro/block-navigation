@@ -29,8 +29,12 @@ export const useScrollToSelectedBlock: Util = $container => {
 		const block_height = is_detached ? 39 : 52;
 
 		return block_index * block_height;
+
+		// ids_visible is not included to prevent scrolling when ids
+		// change but the selected block did not, for example when
+		// a block collapses but a different one is selected.
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [is_detached, ids_visible, `${selected_blocks}`, selected_block]);
+	}, [is_detached, `${selected_blocks}`, selected_block]);
 
 	useLayoutEffect(() => {
 		if (offset_top === null || !$container.current) return;

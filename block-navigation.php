@@ -28,6 +28,15 @@ function enqueue()
 	$plugin_version = "3.4.1";
 	$dist_dir = \plugins_url("dist/", __FILE__);
 
+	// This check will prevent the script from loading in a screen
+	// that is not a post/cpt edit screen, like the widgets screen.
+	if (
+		function_exists("get_current_screen") &&
+		empty(get_current_screen()->post_type)
+	) {
+		return;
+	}
+
 	\wp_enqueue_style(
 		$plugin_name,
 		$dist_dir . $plugin_name . ".css",

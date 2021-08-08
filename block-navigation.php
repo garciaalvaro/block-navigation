@@ -4,7 +4,7 @@
  * Plugin URI: https://wordpress.org/plugins/block-navigation/
  * Description: Block Navigation sidebar panel for the new Block editor.
  * Author: melonpan
- * Version: 3.4.1
+ * Version: 4.0.0
  * License: GPL3+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
  */
@@ -25,8 +25,17 @@ if (!defined("ABSPATH")) {
 function enqueue()
 {
 	$plugin_name = "block-navigation";
-	$plugin_version = "3.4.1";
+	$plugin_version = "4.0.0";
 	$dist_dir = \plugins_url("dist/", __FILE__);
+
+	// This check will prevent the script from loading in a screen
+	// that is not a post/cpt edit screen, like the widgets screen.
+	if (
+		function_exists("get_current_screen") &&
+		empty(\get_current_screen()->post_type)
+	) {
+		return;
+	}
 
 	\wp_enqueue_style(
 		$plugin_name,

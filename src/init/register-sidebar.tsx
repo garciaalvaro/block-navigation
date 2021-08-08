@@ -1,26 +1,12 @@
 import React from "react";
 import { registerPlugin } from "@wordpress/plugins";
-import { PluginSidebarMoreMenuItem } from "@wordpress/edit-post";
-import { Fragment } from "@wordpress/element";
 
 import { App } from "@/components/app";
 import { Logo } from "@/components/logo";
-import { plugin_namespace, plugin_title } from "@/utils";
+import { plugin_namespace } from "@/utils";
 
 registerPlugin(plugin_namespace, {
 	// @ts-expect-error TODO
 	icon: <Logo />,
-
-	// eslint-disable-next-line react/display-name
-	render: () => {
-		return (
-			<Fragment>
-				<App />
-
-				<PluginSidebarMoreMenuItem target={plugin_namespace}>
-					{plugin_title}
-				</PluginSidebarMoreMenuItem>
-			</Fragment>
-		);
-	},
+	render: App,
 });

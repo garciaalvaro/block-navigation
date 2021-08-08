@@ -1,9 +1,9 @@
 === Block Navigation ===
 Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
-Requires at least: 5.5
-Tested up to: 5.7
-Stable tag: 3.4.1
+Requires at least: 5.7
+Tested up to: 5.8
+Stable tag: 4.0.0
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -74,6 +74,14 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 4.0.0 =
+* Code base refactor for improved performance
+* Fixed WP 5.8 incompatibility of the drag-and-drop functionality
+* Added duplicate button in block menu
+* Display block variant icon and name when there is no block content
+* Added toggle all blocks button
+* Small style improvements
 
 = 3.4.1 =
 * Added a temporary patch for WP 5.8 drop event

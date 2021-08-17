@@ -1,5 +1,6 @@
-import { store_slug } from "@/store";
 import { select } from "@wordpress/data";
+
+import { store_slug } from "@/store";
 
 import type { Util } from "./types";
 

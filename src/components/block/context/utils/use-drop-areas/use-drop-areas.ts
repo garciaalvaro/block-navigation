@@ -1,7 +1,7 @@
 import { useState, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
-import { store_slug } from "@/store";
 
+import { store_slug } from "@/store";
 import type { DropArea } from "@/types";
 
 import { getDropAreas } from "../get-drop-areas";

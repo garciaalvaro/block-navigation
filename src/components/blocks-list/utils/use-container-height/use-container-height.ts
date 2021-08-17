@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "@wordpress/element";
 
 import { useWindowSize } from "@/utils";
+
 import type { Util } from "./types";
 
 export const useContainerHeight: Util = () => {

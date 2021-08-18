@@ -3,6 +3,7 @@ import type { FunctionComponent, MouseEvent } from "react";
 import { useContext, useEffect } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { ArrowContainer, Popover } from "react-tiny-popover";
+import { __ } from "@wordpress/i18n";
 
 import { useColor, useClassName, Button } from "@/utils";
 import { store_slug } from "@/store";
@@ -80,6 +81,7 @@ export const BlockMenu: FunctionComponent = () => {
 		>
 			<div className={styles.button_container}>
 				<Button
+					title={menu_is_open ? __("Close menu") : __("Open menu")}
 					button_type="icon"
 					className={styles.button}
 					onClick={(e: MouseEvent) => {

@@ -7,6 +7,11 @@
 	min-width 2em
 	height 2em
 	border-radius 50%
+	overflow hidden
+	margin-left 0.3em
+
+	.separator + &
+		margin-left 0.4em
 
 	img
 		object-fit cover
@@ -19,3 +24,9 @@
 .text
 	min-width 3em
 	flex-shrink 1
+
+.separator
+.text
+	overflow hidden
+	text-overflow ellipsis
+	margin-left 0.4em

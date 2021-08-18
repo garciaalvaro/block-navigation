@@ -2,6 +2,7 @@ import { useLayoutEffect, useMemo } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 
 import { store_slug } from "@/store";
+
 import type { Util } from "./types";
 
 export const useScrollToSelectedBlock: Util = $container => {

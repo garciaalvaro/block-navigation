@@ -2,6 +2,7 @@ import React from "react";
 import type { FunctionComponent } from "react";
 import { useDispatch, useSelect, select } from "@wordpress/data";
 import { useMemo } from "@wordpress/element";
+import { __ } from "@wordpress/i18n";
 
 import { Icon } from "@/components/icon";
 import { Button } from "@/utils";
@@ -43,6 +44,11 @@ export const ButtonToggleBlocks: FunctionComponent = () => {
 
 	return (
 		<Button
+			title={
+				show_expand_all
+					? __("Expand all blocks")
+					: __("Collapse all blocks")
+			}
 			className={styles.button}
 			onClick={() => {
 				if (show_expand_all) {

@@ -1,4 +1,5 @@
 import type { BlockId } from "@/types";
+
 import type { State } from "../state";
 
 type Selector<R, P = void> = (payload: P) => R;

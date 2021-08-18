@@ -2,6 +2,7 @@ import React from "react";
 import type { FunctionComponent, MouseEventHandler } from "react";
 import { useContext } from "@wordpress/element";
 import { useDispatch, useSelect } from "@wordpress/data";
+import { __ } from "@wordpress/i18n";
 
 import { Button } from "@/utils";
 import { store_slug } from "@/store";
@@ -37,7 +38,11 @@ export const BlockToggleButton: FunctionComponent = () => {
 
 	return (
 		<div className={styles.container}>
-			<Button button_type="icon" onClick={onClick}>
+			<Button
+				title={is_expanded ? __("Collapse") : __("Expand")}
+				button_type="icon"
+				onClick={onClick}
+			>
 				<Icon icon={is_expanded ? "collapse" : "expand"} />
 			</Button>
 		</div>

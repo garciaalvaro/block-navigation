@@ -75,6 +75,9 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 4.0.1 =
+* Minor style fixes
+
 = 4.0.0 =
 * Code base refactor for improved performance
 * Fixed WP 5.8 incompatibility of the drag-and-drop functionality

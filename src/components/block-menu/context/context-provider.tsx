@@ -1,5 +1,6 @@
 import React from "react";
 import type { FunctionComponent } from "react";
+import { useMemo } from "@wordpress/element";
 
 import { useToggle } from "@/utils";
 
@@ -14,15 +15,14 @@ export const ContextProvider: FunctionComponent = props => {
 		is_open: menu_is_open,
 	} = useToggle(false);
 
-	return (
-		<context.Provider
-			value={{
-				toggleMenu,
-				closeMenu,
-				menu_is_open,
-			}}
-		>
-			{children}
-		</context.Provider>
+	const value = useMemo(
+		() => ({
+			toggleMenu,
+			closeMenu,
+			menu_is_open,
+		}),
+		[toggleMenu, closeMenu, menu_is_open]
 	);
+
+	return <context.Provider value={value}>{children}</context.Provider>;
 };

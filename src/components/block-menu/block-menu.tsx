@@ -1,6 +1,6 @@
 import React from "react";
 import type { FunctionComponent, MouseEvent } from "react";
-import { useContext, useEffect } from "@wordpress/element";
+import { useContext, useEffect, useRef } from "@wordpress/element";
 import { useSelect } from "@wordpress/data";
 import { ArrowContainer, Popover } from "react-tiny-popover";
 import { __ } from "@wordpress/i18n";
@@ -25,6 +25,8 @@ export const BlockMenu: FunctionComponent = () => {
 	const { toggleMenu, menu_is_open, closeMenu } = useContext(context);
 	const is_dev = useSelect(select => select(store_slug).is_dev());
 
+	const $root = useRef(document.getElementById("editor"));
+
 	const { className: color_className, color_type } = useColor();
 	const menu_className = useClassName(
 		[color_className],
@@ -40,15 +42,17 @@ export const BlockMenu: FunctionComponent = () => {
 	// onClickOutside is not triggered when clicking other popover
 	// buttons, so we add an event listener to manually close it.
 	useEffect(() => {
-		if (!menu_is_open) return;
+		const $root_current = $root.current;
+
+		if (!menu_is_open || !$root_current) return;
 
 		const closeMenuDelayed = () => setTimeout(closeMenu, 0);
 
-		document.body.addEventListener("click", closeMenuDelayed);
+		$root_current.addEventListener("click", closeMenuDelayed);
 
 		// eslint-disable-next-line consistent-return
 		return () =>
-			document.body.removeEventListener("click", closeMenuDelayed);
+			$root_current.removeEventListener("click", closeMenuDelayed);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [menu_is_open]);
 
@@ -58,6 +62,7 @@ export const BlockMenu: FunctionComponent = () => {
 			isOpen={menu_is_open}
 			onClickOutside={closeMenu}
 			containerStyle={{ transition: "none" }}
+			// eslint-disable-next-line react/no-unstable-nested-components
 			content={({ position, childRect, popoverRect }) => (
 				<ArrowContainer
 					position={position}

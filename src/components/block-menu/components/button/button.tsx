@@ -10,12 +10,18 @@ import type { Component } from "./types";
 import { context } from "../../context";
 
 export const Button: Component = props => {
-	const { children, icon, is_disabled, className: _className } = props;
+	const {
+		children,
+		icon,
+		is_disabled,
+		className: _className,
+		onClick: _onClick,
+	} = props;
 
 	const { closeMenu } = useContext(context);
 
 	const onClick: MouseEventHandler = (...args) => {
-		props.onClick(...args);
+		_onClick(...args);
 
 		closeMenu();
 	};

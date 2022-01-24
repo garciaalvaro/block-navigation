@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelect } from "@wordpress/data";
+import { useMemo } from "@wordpress/element";
 
 import { BlockId } from "@/types";
 
@@ -23,16 +24,15 @@ export const ContextProvider: Component = props => {
 
 	const drop_areas = useDropAreas({ id, parent_id, ancestor_ids });
 
-	return (
-		<context.Provider
-			value={{
-				ancestor_ids,
-				drop_areas,
-				id,
-				parent_id,
-			}}
-		>
-			{children}
-		</context.Provider>
+	const value = useMemo(
+		() => ({
+			ancestor_ids,
+			drop_areas,
+			id,
+			parent_id,
+		}),
+		[ancestor_ids, drop_areas, id, parent_id]
 	);
+
+	return <context.Provider value={value}>{children}</context.Provider>;
 };

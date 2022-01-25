@@ -40,6 +40,11 @@ module.exports = {
 			"ignorePackages",
 			{ ts: "never", tsx: "never" },
 		],
+
+		"react/function-component-definition": [
+			2,
+			{ namedComponents: "arrow-function" },
+		],
 	},
 
 	overrides: [
@@ -84,7 +89,7 @@ module.exports = {
 		},
 
 		react: {
-			version: "16.13.1", // Version used in WP 5.8
+			version: "17.0.1", // Version used in WP 5.9
 		},
 	},
 };

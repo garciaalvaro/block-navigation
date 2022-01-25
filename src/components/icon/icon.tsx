@@ -3,7 +3,9 @@ import React from "react";
 import type { Component } from "./types";
 
 export const Icon: Component = props => {
-	switch (props.icon) {
+	const { icon } = props;
+
+	switch (icon) {
 		case "duplicate":
 			return (
 				/* https://material.io/tools/icons/?icon=content_copy */

@@ -1,6 +1,7 @@
 import { state as initial_state } from "../state";
 import type { Reducer } from "./types";
 
+// eslint-disable-next-line default-param-last
 export const reducer: Reducer = (state = initial_state, action) => {
 	switch (action.type) {
 		case "DETACHED_CLOSE": {

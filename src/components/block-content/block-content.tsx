@@ -39,10 +39,10 @@ export const BlockContent: FunctionComponent = () => {
 		// Check for older WP versions
 		if (getActiveBlockVariation) {
 			// eslint-disable-next-line no-undef
-			const block_variation: { icon: { src: JSX.Element } } =
+			const block_variation: undefined | { icon?: { src: JSX.Element } } =
 				getActiveBlockVariation(block_name, block_attrs);
 
-			if (block_variation && block_variation.icon.src) {
+			if (block_variation?.icon?.src) {
 				return block_variation.icon.src;
 			}
 		}

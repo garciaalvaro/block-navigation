@@ -3,7 +3,7 @@ Contributors: melonpan
 Tags: gutenberg, blocks, navigation, editor, drag-and-drop
 Requires at least: 5.8
 Tested up to: 5.9
-Stable tag: 4.1.0
+Stable tag: 4.1.1
 Requires PHP: 7.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -74,6 +74,9 @@ Click the More button and inside the menu list click on the plugin name "Block N
 Images from the readme banner and screenshots belong to [Charles Postiaux](https://unsplash.com/@charlpost).
 
 == Changelog ==
+
+= 4.1.1 =
+* Fixed incompatibility with some custom blocks
 
 = 4.1.0 =
 * Minor fixes for WP 5.9

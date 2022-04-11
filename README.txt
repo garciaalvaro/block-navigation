@@ -75,6 +75,9 @@ Images from the readme banner and screenshots belong to [Charles Postiaux](https
 
 == Changelog ==
 
+= 4.1.1 =
+* Fixed incompatibility with some custom blocks
+
 = 4.1.0 =
 * Minor fixes for WP 5.9
 * Updated dependencies
